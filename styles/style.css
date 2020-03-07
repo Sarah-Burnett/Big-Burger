@@ -1,0 +1,319 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Slabo 27px';
+  font-size: 14pt;
+  line-height: 2;
+  text-align: center;
+}
+
+header {
+  height: 20vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header-fixed {
+  position: fixed;
+  height: 10vh;
+}
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+}
+
+nav li {
+  width: 15vw;
+  list-style: none;
+}
+
+section {
+  height: 100vh;
+}
+
+h2 {
+  padding: 1em;
+}
+
+.home-title, .about-title, .menu-title, .review {
+  background-image: url(/images/burger-bg.jpeg);
+  background-repeat: no-repeat no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.welcome {
+  height: 30vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.about-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  overflow: shrink;
+}
+
+.about-page img {
+  width: 50%;
+}
+
+.about-page div {
+  width: 50%;
+  padding: 2em;
+  font-size: 12pt;
+}
+
+.menu-nav {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[4];
+      grid-template-columns: repeat(4, auto);
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+  grid-gap: 1em;
+  padding: 1em;
+}
+
+.menu-nav button {
+  padding: 2em;
+  border-style: none;
+}
+
+.menu-nav button:hover {
+  background: #36970F;
+}
+
+.menu-burger {
+  font-size: 14pt;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: space-around;
+      -ms-flex-align: space-around;
+          align-items: space-around;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.review {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.review .review-box {
+  height: 50vh;
+  width: 40vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.review .review-box div {
+  position: absolute;
+  height: 50vh;
+  width: 40vw;
+  visibility: hidden;
+}
+
+.review .review-box div:nth-child(1) {
+  visibility: visible;
+}
+
+.contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.contact .contact-address {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 80vh;
+}
+
+.contact .contact-address div {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: space-around;
+      -ms-flex-align: space-around;
+          align-items: space-around;
+  padding: 1em;
+  margin: 1em;
+}
+
+.message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100vh;
+}
+
+.message form {
+  height: 80vh;
+  font-size: 12pt;
+  text-align: center;
+}
+
+.message form label {
+  display: none;
+}
+
+.message form input[type=text] {
+  font-family: 'Slabo 27px';
+  width: 35vw;
+  padding: .5em;
+  margin: .5em;
+}
+
+.message form textarea {
+  font-family: 'Slabo 27px';
+  width: 35vw;
+  height: 30vh;
+  padding: .5em;
+  margin: .5em;
+  resize: vertical;
+}
+
+.message form input[type=submit] {
+  padding: .5em;
+}
+
+footer ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  list-style: none;
+}
+
+footer li {
+  width: 6vw;
+}
+
+footer li img {
+  width: 100%;
+}
+/*# sourceMappingURL=style.css.map */
