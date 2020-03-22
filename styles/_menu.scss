@@ -1,0 +1,64 @@
+#menu-title {
+    @extend #home-title;
+    flex-direction: column;
+    h2 {
+        height: 100vh;
+        display: block;
+        @include flexCenter(row);
+    }
+    .arrow {
+        height: 10vh;
+        text-decoration: none; 
+        color: $green;
+    }
+}
+
+#menu-content {
+    height: 100vh;
+    .menu-nav {
+        padding-top: 10vh;
+        height: 25vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        button {
+            margin: 0 1em;
+            flex: 1;
+            padding: 1em;
+            height: 15vh;
+            border-style: none;
+            outline: none;
+            background: $green;
+            cursor: pointer;
+            &:hover {
+                background: darkgreen;
+            }
+        }
+    }
+    .menu-container {
+        height: 70vh;
+        width: 100vw;
+        padding: 1em;
+        overflow: hidden;
+        transition: opacity 0.6s ease;
+        @include flexCenter(column);
+        justify-content: space-around;
+    }
+}
+
+@media only screen and (min-width: 720px) {
+    .menu-nav {
+        button {
+            margin: 0 3em;
+            background: blue;
+        }
+    }
+    .menu-list {
+    width: 70vw;
+    column-count: 2;
+}
+}
+
+
+
+

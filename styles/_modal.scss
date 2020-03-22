@@ -1,0 +1,56 @@
+.modal-bg {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.modal {
+    padding: 1em;
+    position: relative;
+    background: white;
+    height: 100%;
+    width: 100%;
+}
+
+.modal div {
+    display: "none";
+}
+
+#booking-form {
+    background: lightgreen;
+    height: 100%;
+    width: 100%;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    cursor: pointer;
+    z-index: 98;
+    color: $green;
+}
+
+.modal-active {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+@media only screen and (min-width: 720px) {
+    .modal {
+        height: 500px;
+        width: 600px;
+    }
+}
+

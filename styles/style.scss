@@ -1,3 +1,6 @@
+$white: #F5F5F5;
+$green: #36970F;
+
 @mixin flexCenter ($direction) {
     display: flex;
     align-items: center;
@@ -9,188 +12,47 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
     
 }
 
 body{
     background-color: black;
-    color: white;
+    color: $white;
     font-family: 'Slabo 27px';
-    font-size: 14pt;
+    font-size: 12pt;
     line-height: 2;
     text-align: center;
-}
-
-header {
-    height: 20vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.header-fixed {
-    position: fixed;
-    height: 10vh;
-}
-    
-
-nav {
-    display: flex;
-    justify-content: flex-end;
-    a {
-        text-decoration: none;
-        color: white;
-    }
-    li {
-        width: 15vw;
-        list-style: none;
-
-    }
+    overflow-x: hidden;
 }
 
 section {
     height: 100vh;
+    width: 100vw;
+    scroll-snap-align: center;
 }
 
-h2 {
-    padding: 1em;
-}
 
-.home-title {
-    background-image: url(/images/burger-bg.jpeg);
-    background-repeat: no-repeat no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    @include flexCenter(row);  
-}
-
-.welcome {
-    height: 30vh;
-    @include flexCenter(row);
-}
-
-.about-title{
-    @extend .home-title
-}
-
-.about-page {
-    @include flexCenter(row);
-    overflow: shrink;
-    img {
-        width: 50%;
-    }
-    div {
-        width: 50%;
-        padding: 2em;
-        font-size: 12pt;     
+@media only screen and (min-width: 720px) {
+    body {
+        font-size: 14pt;
     }
 }
 
-.menu-title {
-    @extend .home-title
-}
+@import "navbar";
+@import "home";
+@import "about";
+@import "menu";
+@import "review";
+@import "location";
+@import "book";
+@import "footer";
+@import "modal";
 
-.menu-nav {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-template-rows: auto;
-    grid-gap: 1em;
-    padding: 1em;
-    button {
-        padding: 2em;
-        border-style: none;
-        &:hover {
-            background: #36970F;
-        }
-    }
-}
 
-.menu-burger {
-    font-size: 14pt;
-    display: flex;
-    flex-direction: column;
-    align-items: space-around;
-    justify-content: space-around;
-}
 
-.review {
-    @extend .home-title;
-    flex-direction: column;
-    .review-box {
-        height: 50vh;
-        width: 40vw;
-        @include flexCenter(row);
-       div {
-        position: absolute;
-        height: 50vh;
-        width: 40vw;
-        visibility: hidden
-       }
-       div:nth-child(1) {
-        visibility: visible;
-       }
-    }
-}
-
-.contact {
-    display: flex;
-    flex-direction: column;
-    .contact-address {
-        @include flexCenter(row);
-        height: 80vh;
-        div {
-            width: 50%;
-            @include flexCenter(column);
-            align-items: space-around;
-            padding: 1em;
-            margin: 1em;
-        }
-    }
-}
-
-.message {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 100vh;
-    form {
-        height: 80vh;
-        font-size: 12pt;
-        text-align: center;
-        label {
-            display: none;
-        }
-        input[type=text]{
-            font-family: 'Slabo 27px';
-            width: 35vw;
-            padding: .5em;
-            margin: .5em;
-        }
-        textarea {
-            font-family: 'Slabo 27px';
-            width: 35vw;
-            height: 30vh;
-            padding: .5em; 
-            margin: .5em;
-            resize: vertical;
-        }
-        input[type=submit] {
-            padding:.5em;
-        }
-    }
-}
-
-footer {
-    ul {
-        @include flexCenter(row);
-        list-style: none;
-    }
-    li {
-        width: 6vw; 
-        img {
-            width: 100%;
-        }
-    }
-}
+/* 320, 720, 1020 */

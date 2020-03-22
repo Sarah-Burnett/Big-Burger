@@ -194,7 +194,7 @@ nav img {
 }
 
 #home-title, #menu-title, #reviews {
-  background-image: url(/images/burger-bg.jpeg);
+  background-image: url(/burger-bg.dd8dc30b.jpeg);
   background-repeat: no-repeat no-repeat;
   background-size: cover;
   background-position: center;
@@ -676,4 +676,6 @@ footer li img {
 }
 
 /* 320, 720, 1020 */
-/*# sourceMappingURL=style.css.map */
+
+
+/*# sourceMappingURL=/style.251b6741.css.map */

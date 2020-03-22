@@ -1,0 +1,13 @@
+footer {
+    ul {
+        @include flexCenter(row);
+        list-style: none; 
+    }
+    li {
+        width: 55px;
+        img {
+            width: 55px;
+            padding-left: 10px;
+        }
+    }
+}

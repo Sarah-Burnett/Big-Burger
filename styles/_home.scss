@@ -1,0 +1,13 @@
+
+#home-title {
+    background-image: url(/images/burger-bg.jpeg);
+    background-repeat: no-repeat no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 1em;
+    @include flexCenter(row);  
+    .arrow {
+        height: 10px;
+    }
+}
+

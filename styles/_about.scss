@@ -1,0 +1,21 @@
+#about-page {
+    @include flexCenter(column);
+    .h2 {
+        height: 20vh;
+    }
+    div {
+        height: 50vh;
+        @include flexCenter(row);
+        width: 80%;
+        padding: 2em;
+        font-size: 12pt;     
+    }
+}
+
+@media only screen and (min-width: 720px) {
+#about-page {
+    div {
+        width: 50%;
+    }
+}
+}
