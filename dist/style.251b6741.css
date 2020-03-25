@@ -95,8 +95,8 @@ nav img {
       -ms-flex-pack: justify;
           justify-content: space-between;
   height: 0vh;
-  -webkit-transition: height 1s ease-in-out;
-  transition: height 1s ease-in-out;
+  -webkit-transition: height .5s ease-in-out;
+  transition: height .5s ease-in-out;
 }
 
 .nav-links li {
@@ -523,6 +523,7 @@ nav img {
 }
 
 #book {
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -536,31 +537,70 @@ nav img {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: 90vh;
   padding: 1em;
 }
 
 #book form {
-  height: 80vh;
-  width: 90vw;
+  width: 100%;
   font-size: 12pt;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-direction: space-evenly;
+      flex-direction: space-evenly;
+}
+
+#book form input {
+  font-family: 'Slabo 27px';
+  text-align: center;
+  padding: 1vw;
+  margin: 1vw;
+  width: 45vw;
+}
+
+#book form input[type="radio"] {
+  opacity: 0;
+  height: 0;
+}
+
+#book form #time {
+  width: 45vw;
+}
+
+#book form #time span {
+  background: #F5F5F5;
+  cursor: pointer;
+  margin: 1vh 0;
+  display: block;
+  color: black;
+}
+
+#book form #time span:nth-child(1) {
+  background: #36970F;
+}
+
+#book form #time label {
+  background: #F5F5F5;
+  color: black;
+  display: block;
+  margin: 1vh 0;
   text-align: center;
 }
 
-#book form label {
-  display: none;
-}
-
-#book form input[type=text], #book form textarea {
-  font-family: 'Slabo 27px';
-  padding: 1vw;
-  margin: 1vw;
-  width: 88vw;
-}
-
-#book form textarea {
-  height: 25vh;
+#book form #message textarea {
+  height: 10vh;
   resize: vertical;
+  width: 45vw;
+  font-family: 'Slabo 27px';
+  text-align: center;
 }
 
 #book form input[type=submit] {
@@ -572,17 +612,17 @@ nav img {
   cursor: pointer;
 }
 
-#book form #sent {
+#book form #submit-message {
   color: #36970F;
   opacity: 0;
 }
 
-@media only screen and (min-width: 500px) {
-  #message form {
+@media (min-width: 500px) {
+  #location form {
     width: 60vw;
   }
-  #message form input[type=text], #message #book form textarea, #book #message form textarea,
-  #message form textarea {
+  #location form input[type=text], #location #book form #message textarea, #book #location form #message textarea,
+  #location form textarea {
     width: 58vw;
   }
 }
@@ -639,19 +679,13 @@ footer li img {
 .modal {
   padding: 1em;
   position: relative;
-  background: white;
-  height: 100%;
+  background: black;
+  height: auto;
   width: 100%;
 }
 
 .modal div {
   display: "none";
-}
-
-#booking-form {
-  background: lightgreen;
-  height: 100%;
-  width: 100%;
 }
 
 .modal-close {

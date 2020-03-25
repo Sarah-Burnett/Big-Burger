@@ -199,44 +199,181 @@ module.exports = [{
     "price": "£5"
   }]
 }];
-},{}],"index.js":[function(require,module,exports) {
-// update menu container on button click
+},{}],"js/menu.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.menuContents = menuContents;
+
+// menu items
 var menuJSON = require('/menu.json');
 
 var menuContainer = document.querySelector(".menu-container");
-document.querySelector("#button-starter").addEventListener('click', function () {
-  updateMenu(0);
-});
-document.querySelector("#button-burger").addEventListener('click', function () {
-  updateMenu(2);
-});
-document.querySelector("#button-sides").addEventListener('click', function () {
-  updateMenu(1);
-});
-document.querySelector("#button-pudding").addEventListener('click', function () {
-  updateMenu(3);
-});
 
-function updateMenu(index) {
-  menuContainer.style.opacity = 0;
-  var _menuJSON$index = menuJSON[index],
-      menu = _menuJSON$index.menu,
-      intro = _menuJSON$index.intro,
-      items = _menuJSON$index.items;
-  var output = "";
-  output += "\n    <h3>".concat(menu, "</h3>\n    <p class=\"menu-description\">").concat(intro, "</p>\n    <div class=\"menu-list\">\n    ");
-
-  for (i in items) {
-    output += "\n    <div class=\"menu-item\">\n      <h4>".concat(items[i].title, "</h4>\n      <span>").concat(items[i].ingredients, "</span>\n      <div>").concat(items[i].price, "</div>\n    </div>\n    ");
+function menuContents() {
+  function updateMenu(index) {
+    menuContainer.style.opacity = 0;
+    var _menuJSON$index = menuJSON[index],
+        menu = _menuJSON$index.menu,
+        intro = _menuJSON$index.intro,
+        items = _menuJSON$index.items;
+    var output = "";
+    output += "\n      <h3>".concat(menu, "</h3>\n      <p class=\"menu-description\">").concat(intro, "</p>\n      <div class=\"menu-list\">\n      ");
+    items.forEach(function (item) {
+      output += "\n      <div class=\"menu-item\">\n        <h4>".concat(item.title, "</h4>\n        <span>").concat(item.ingredients, "</span>\n        <div>").concat(item.price, "</div>\n      </div>\n      ");
+    });
+    menuContainer.innerHTML = output;
+    menuContainer.style.opacity = 1;
   }
 
-  menuContainer.innerHTML = output;
-  menuContainer.style.opacity = 1;
+  ;
+  document.querySelector("#button-starter").addEventListener('click', function () {
+    updateMenu(0);
+  });
+  document.querySelector("#button-burger").addEventListener('click', function () {
+    updateMenu(2);
+  });
+  document.querySelector("#button-sides").addEventListener('click', function () {
+    updateMenu(1);
+  });
+  document.querySelector("#button-pudding").addEventListener('click', function () {
+    updateMenu(3);
+  });
+} //0 = starter; 1 = sides; 2= burger; 3=pudding
+},{"/menu.json":"menu.json"}],"js/review.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.reviewCarousel = reviewCarousel;
+
+function reviewCarousel() {
+  var reviewCounter = 0;
+  var reviewItems = document.querySelectorAll(".review-item");
+  var reviewDots = document.querySelectorAll(".review-dot");
+
+  function autoReview() {
+    reviewDots.forEach(function (dot) {
+      dot.style.background = "#36970F";
+    });
+    reviewItems.forEach(function (review) {
+      review.style.opacity = "0";
+    });
+    reviewDots[reviewCounter].style.background = "darkgreen";
+    reviewItems[reviewCounter].style.opacity = "1";
+    if (reviewCounter === reviewItems.length - 1) return reviewCounter = 0;
+    reviewCounter++;
+  }
+
+  ;
+
+  var reviewInterval = function reviewInterval() {
+    return setInterval(autoReview, 3000);
+  };
+
+  reviewInterval();
+
+  var clickReview = function clickReview(item, index) {
+    clearInterval(reviewInterval);
+    item.addEventListener('click', function () {
+      reviewDots.forEach(function (dot) {
+        return dot.style.background = "#36970F";
+      });
+      reviewItems.forEach(function (item) {
+        return item.style.opacity = "0";
+      });
+      reviewDots[index].style.background = "darkgreen";
+      reviewItems[index].style.opacity = "1";
+      reviewCounter = index;
+      reviewInterval();
+    });
+  };
+
+  reviewDots.forEach(clickReview);
 }
 
-; //0 = starter; 1 = sides; 2= burger; 3=pudding
-// nav bar burger
+;
+},{}],"js/location.js":[function(require,module,exports) {
+"use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.locationCarousel = locationCarousel;
+
+// location carousel 
+function locationCarousel() {
+  var locationItems = document.querySelectorAll(".location-item");
+  var locationDots = document.querySelectorAll(".location-dot");
+
+  var changeLocation = function changeLocation(item, index) {
+    item.addEventListener('click', function () {
+      locationDots.forEach(function (dot) {
+        return dot.style.background = "#36970F";
+      });
+      locationItems.forEach(function (item) {
+        return item.style.opacity = "0";
+      });
+      locationDots[index].style.background = "darkgreen";
+      locationItems[index].style.opacity = "1";
+    });
+  };
+
+  locationDots.forEach(changeLocation);
+}
+
+;
+},{}],"js/modal.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.toggleModal = toggleModal;
+
+function toggleModal() {
+  var mapBtnG = document.querySelector(".glensgaich-btn");
+  var mapBtnT = document.querySelector(".tanygrisiau-btn");
+  var modal = document.querySelector(".modal-bg");
+
+  function showModal(contents) {
+    modal.classList.remove("modal-inactive");
+    modal.classList.add("modal-active");
+    document.querySelector(contents).style.display = "block";
+  }
+
+  ;
+
+  function hideModal() {
+    modal.classList.remove("modal-active");
+    document.querySelector("#glensgaich-map").style.display = "none";
+    document.querySelector("#tanygrisiau-map").style.display = "none";
+  }
+
+  mapBtnG.addEventListener('mouseover', function () {
+    showModal("#glensgaich-map");
+  });
+  mapBtnT.addEventListener('mouseover', function () {
+    showModal("#tanygrisiau-map");
+  });
+  document.querySelector(".modal-close").addEventListener('click', hideModal);
+  hideModal();
+}
+},{}],"index.js":[function(require,module,exports) {
+"use strict";
+
+var _menu = require("./js/menu");
+
+var _review = require("./js/review");
+
+var _location = require("./js/location");
+
+var _modal = require("./js/modal");
+
+// nav bar burger
 var burger = document.querySelector(".burger");
 var nav = document.querySelector("nav");
 
@@ -244,18 +381,7 @@ function toggleNav() {
   nav.classList.toggle("nav-active");
 }
 
-burger.addEventListener('click', toggleNav); // update menu content
-//import updateMenu from './js/menu';
-//console.log(updateMenu());
-//updateMenu();
-//form submit
-
-var messageForm = document.querySelector('#messageForm');
-messageForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-  console.log("ms");
-  document.querySelector('#sent').style.opacity = 1;
-}); // fixed nav bar
+burger.addEventListener('click', toggleNav); // fixed nav bar
 
 window.onscroll = function () {
   if (window.pageYOffset >= 2) {
@@ -269,129 +395,28 @@ window.onscroll = function () {
 }; // smooth scroll 
 
 
-var home = document.querySelector("#home-title");
-var aboutBtn = document.querySelector("#aboutBtn");
-var about = document.querySelector("#about-title"); // review carousels
+var scroll = new SmoothScroll('a[href*="#"]', {
+  speed: 500,
+  speedAsDuration: true,
+  header: '[data-scroll-header]'
+}); // update menu
 
-var reviewCounter = 0;
-var reviewItems = document.querySelectorAll(".review-item");
-var reviewDots = document.querySelectorAll(".review-dot");
+(0, _menu.menuContents)(); // review carousel
 
-function autoReview() {
-  reviewDots.forEach(function (dot) {
-    dot.style.background = "#36970F";
-  });
-  reviewItems.forEach(function (review) {
-    review.style.opacity = "0";
-  });
-  reviewDots[reviewCounter].style.background = "darkgreen";
-  reviewItems[reviewCounter].style.opacity = "1";
-  if (reviewCounter === reviewItems.length - 1) return reviewCounter = 0;
-  reviewCounter++;
-}
+(0, _review.reviewCarousel)(); // location carousel
 
-;
+(0, _location.locationCarousel)(); //modal
 
-var reviewInterval = function reviewInterval() {
-  return setInterval(autoReview, 3000);
-};
+(0, _modal.toggleModal)(); //date picker 
 
-reviewInterval();
-
-var clickReview = function clickReview(item, index) {
-  clearInterval(reviewInterval);
-  item.addEventListener('click', function () {
-    reviewDots.forEach(function (dot) {
-      return dot.style.background = "#36970F";
-    });
-    reviewItems.forEach(function (item) {
-      return item.style.opacity = "0";
-    });
-    reviewDots[index].style.background = "darkgreen";
-    reviewItems[index].style.opacity = "1";
-    reviewInterval();
-  });
-};
-
-reviewDots.forEach(clickReview); // location 
-
-var locationItems = document.querySelectorAll(".location-item");
-var locationDots = document.querySelectorAll(".location-dot");
-var dot1 = locationDots[0];
-var dot2 = locationDots[1];
-
-var changeLocation = function changeLocation(item, index) {
-  item.addEventListener('click', function () {
-    locationDots.forEach(function (dot) {
-      return dot.style.background = "#36970F";
-    });
-    locationItems.forEach(function (item) {
-      return item.style.opacity = "0";
-    });
-    locationDots[index].style.background = "darkgreen";
-    locationItems[index].style.opacity = "1";
-  });
-};
-
-locationDots.forEach(changeLocation);
 /*
-function changeLocation(index) {
-  locationDots.forEach( dot => dot.style.background = "#36970F");
-  locationItems.forEach (item => item.style.opacity = "0");
-  locationDots[index].style.background = "darkgreen";
-  locationItems[index].style.opacity = "1";
- };
-
-dot1.addEventListener('click', () => changeLocation(0));
-dot2.addEventListener('click', () => changeLocation(1));
-
-*/
-// location modal - so have it open on maps for mobile devices but modal on screens
-//window.matchMedia();
-// menu 
-
-/* can't do AJAX as local file without node which not doing for this!
-const xhr = new XMLHttpRequest;
-xhr.open('GET', '/menuapi.json', true);
-xhr.onload = function(){
-  if (this.status === 200){
-    //const menu = JSON.parse(this.responseText);
-    console.log(this.responseText);
-  };
-};
-xhr.send();
-*/
-// map modal 
-
-var mapBtnG = document.querySelector(".glensgaich-btn");
-var mapBtnT = document.querySelector(".tanygrisiau-btn");
-var modal = document.querySelector(".modal-bg");
-
-function showModal(contents) {
-  //show modal
-  modal.classList.remove("modal-inactive");
-  modal.classList.add("modal-active"); // display required content
-
-  document.querySelector(contents).style.display = "block";
-}
-
-;
-
-function hideModal() {
-  modal.classList.remove("modal-active");
-  document.querySelector("#glensgaich-map").style.display = "none";
-  document.querySelector("#tanygrisiau-map").style.display = "none";
-}
-
-mapBtnG.addEventListener('mouseover', function () {
-  showModal("#glensgaich-map");
+const picker = new Pikaday({
+  field: document.querySelector('#date'),
+  firstDay: 1,
+  format: "DD/MM/YYYY",
 });
-mapBtnT.addEventListener('mouseover', function () {
-  showModal("#tanygrisiau-map");
-});
-document.querySelector(".modal-close").addEventListener('click', hideModal);
-hideModal();
-},{"/menu.json":"menu.json"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+*/
+},{"./js/menu":"js/menu.js","./js/review":"js/review.js","./js/location":"js/location.js","./js/modal":"js/modal.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -419,7 +444,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62942" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61784" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

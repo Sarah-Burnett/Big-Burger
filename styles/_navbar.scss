@@ -40,7 +40,7 @@ nav {
         align-items: center;
         justify-content: space-between;
         height: 0vh; 
-        transition: height 1s ease-in-out;
+        transition: height .5s ease-in-out;
         li {
             opacity: 0;
         };
@@ -59,10 +59,10 @@ nav {
     }
    .nav-active {
        .nav-links {
+            height: 35vh !important;
             li {
                 opacity: 1 !important;
-            };
-            height: 35vh !important;
+            };    
         }
         .line1{
             transform: rotate(-45deg) translate(-9px, 6px);

@@ -17,19 +17,13 @@
 .modal {
     padding: 1em;
     position: relative;
-    background: white;
-    height: 100%;
+    background: black;
+    height: auto;
     width: 100%;
 }
 
 .modal div {
     display: "none";
-}
-
-#booking-form {
-    background: lightgreen;
-    height: 100%;
-    width: 100%;
 }
 
 .modal-close {

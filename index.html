@@ -9,14 +9,14 @@
     <title>Big Burger Restaurant</title>
 </head>
 <body>
-    <nav class="header">
+    <nav data-scroll-header class="header">
         <a href="#home-title"><img src="/images/burger-logo.jpg" style="height: 100%; width: auto"/></a>   
         <div class="nav-links">
             <li id="aboutBtn"><a href="#about-page">About</a></li>
             <li id="menuBtn"><a href="#menu-title">Menu</a></li>
             <li id="reviewBtn"><a href="#reviews">Reviews</a></li>
             <li id="locationBtn"><a href="#location">Locations</a></li>
-            <li id="bookBtn"><a href="#book">*Book Now*</a></li>
+            <li id="bookBtn"><a href="./book.html">*Book Now*</a></li>
         </div>
         <div class="burger">
             <div class="line line1"></div>
@@ -143,19 +143,6 @@
             <span class="location-dot"></span> 
           </div>
     </section>
-    <section id="book">
-        <h2>Book a table</h2>
-        <form method="POST" action="#" id="messageForm">
-            <label for="Name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your Name"><br>
-            <label for="Email">Email</label>
-            <input type="text" id="email" name="email" placeholder="Your Email"><br>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Your Message"></textarea><br>
-            <input type="submit" value="Send">
-            <div id="sent">Sent - thank you for your message!</div>
-        </form>
-    </section>
     <footer>
         <div class="social-media">
             <h2>Connect</h2>
@@ -174,8 +161,9 @@
             
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@16.1.2/dist/smooth-scroll.min.js"></script>
     <script src="/menu.json"></script>
-    <script src="/index.js"></script>
+    <script src="./js/index.js"></script>
 </body>
 </html>
 

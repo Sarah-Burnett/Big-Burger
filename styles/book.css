@@ -1,0 +1,160 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -ms-scroll-snap-type: y mandatory;
+      scroll-snap-type: y mandatory;
+}
+
+body {
+  background-color: black;
+  color: #F5F5F5;
+  font-family: 'Slabo 27px';
+  font-size: 12pt;
+  line-height: 2;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+nav {
+  height: 20vh;
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+nav div {
+  width: 90vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+nav div button {
+  width: 10vw;
+  height: 10vh;
+  padding-right: 10px;
+  border-style: none;
+  background: #36970F;
+}
+
+#book {
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1em;
+}
+
+#book form {
+  width: 100%;
+  font-size: 12pt;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-direction: space-evenly;
+      flex-direction: space-evenly;
+}
+
+#book form input {
+  font-family: 'Slabo 27px';
+  text-align: center;
+  padding: 1vw;
+  margin: 1vw;
+  width: 45vw;
+}
+
+#book form input[type="radio"] {
+  opacity: 0;
+  height: 0;
+}
+
+#book form #time {
+  width: 45vw;
+}
+
+#book form #time span {
+  background: #F5F5F5;
+  cursor: pointer;
+  margin: 1vh 0;
+  display: block;
+  color: black;
+}
+
+#book form #time span:nth-child(1) {
+  background: #36970F;
+}
+
+#book form #time label {
+  background: #F5F5F5;
+  color: black;
+  display: block;
+  margin: 1vh 0;
+  text-align: center;
+}
+
+#book form #message textarea {
+  height: 10vh;
+  resize: vertical;
+  width: 45vw;
+  font-family: 'Slabo 27px';
+  text-align: center;
+}
+
+#book form input[type=submit] {
+  font-family: 'Slabo 27px';
+  padding: 1em;
+  border-style: none;
+  outline: none;
+  background: #36970F;
+  cursor: pointer;
+}
+
+#book form #submit-message {
+  color: #36970F;
+  opacity: 0;
+}
+
+@media (min-width: 500px) {
+  #location form {
+    width: 60vw;
+  }
+  #location form input[type=text], #location #book form #message textarea, #book #location form #message textarea,
+  #location form textarea {
+    width: 58vw;
+  }
+}
+/*# sourceMappingURL=book.css.map */

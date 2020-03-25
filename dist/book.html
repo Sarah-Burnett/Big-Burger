@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/book.7c743d5b.css">
+    <style>html {scroll-snap-type: none;}</style>
+    <title>Booking Form</title>
+<script src="/book.7c743d5b.js"></script></head>
+<body>
+    <nav data-scroll-header="" class="header">
+        <img src="/burger-logo.3176b7d0.jpg">
+        <div>
+            <a href="/index.html"><button>Back to home page</button></a>
+        </div>
+    </nav>
+    <div id="book">
+        <h2>Book a table</h2>
+        <form method="GET" action="#" id="bookForm">
+            <div id="contact">
+                <label for="name">Name*</label><br>
+                <input type="text" id="name" name="name" required=""><br>
+                <label for="email">Email*</label><br>
+                <input type="text" id="email" name="email" required=""><br>
+            </div>
+            <div id="date">
+                <label for="date">Date of booking*</label><br>
+                <input type="date" id="date" name="date" required=""><br>
+            </div>
+            <div id="time">
+                <div id="hour-selection">
+                    Time of booking*<br>
+                    <span>12-2pm</span>
+                    <span>2-4pm</span>
+                    <span>4-6pm</span>
+                    <span>6-8pm</span>
+                    <span>8-10pm</span>
+                </div>
+                <div id="time-selection">
+                    Specifically* <br>
+                        <label for="time1">12:00</label>
+                        <label for="time2">12:30</label>
+                        <label for="time3">13:00</label>
+                        <label for="time4">13:30</label>
+                        <label for="time5">14:00</label>
+                </div> 
+            </div>
+            <div id="message">
+                <label for="message">Message</label><br>
+                <textarea id="message" name="message"></textarea><br>
+            </div>
+            <input type="submit" value="Send">
+            <div id="submit-message">Booking confirmed <br> See you soon!</div>
+            <input type="radio" id="time1" name="time" value="12:00">
+                        <input type="radio" id="time2" name="time" value="12:30">
+                        <input type="radio" id="time3" name="time" value="13:00">
+                        <input type="radio" id="time4" name="time" value="13:30">
+                        <input type="radio" id="time5" name="time" value="14:00">
+        </form>
+    </div>
+    <script src="/book.198dd6d2.js"></script>
+</body>
+</html>

@@ -1,12 +1,4 @@
-$white: #F5F5F5;
-$green: #36970F;
-
-@mixin flexCenter ($direction) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: $direction
-}
+@import './variables';
 
 * {
     margin: 0px;
@@ -17,7 +9,6 @@ $green: #36970F;
 html {
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
-    
 }
 
 body{
@@ -49,7 +40,6 @@ section {
 @import "menu";
 @import "review";
 @import "location";
-@import "book";
 @import "footer";
 @import "modal";
 

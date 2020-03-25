@@ -1,31 +1,38 @@
 // menu items
-const starterBtn = document.querySelector("#button-starter"); 
-const burgerBtn = document.querySelector("#button-burger");
-const sidesBtn = document.querySelector("#button-sides");
-const puddingBtn = document.querySelector("button-pudding");
-
+const menuJSON = require('/menu.json');
 const menuContainer = document.querySelector(".menu-container");
 
+export function menuContents() {
+  function updateMenu(index) {
+    menuContainer.style.opacity = 0;
+    let {menu, intro, items} = menuJSON[index];
+    let output = "";
+    output += `
+      <h3>${menu}</h3>
+      <p class="menu-description">${intro}</p>
+      <div class="menu-list">
+      `;
+    items.forEach( item => {
+      output += `
+      <div class="menu-item">
+        <h4>${item.title}</h4>
+        <span>${item.ingredients}</span>
+        <div>${item.price}</div>
+      </div>
+      `
+    });
+    menuContainer.innerHTML = output;
+    menuContainer.style.opacity = 1;
+  };
+
+  document.querySelector("#button-starter").addEventListener('click', () => {updateMenu(0)}); 
+  document.querySelector("#button-burger").addEventListener('click', () => {updateMenu(2)}); 
+  document.querySelector("#button-sides").addEventListener('click', () => {updateMenu(1)}); 
+  document.querySelector("#button-pudding").addEventListener('click', () => {updateMenu(3)}); 
+
+}
 
 
-export function updateContainer() {
-    console.log("change div");
-    menuContainer.innerHTML = "";
-    const menuItem = document.createDocumentFragment();
-    const h3 = document.createElement("h3");
-    const p = document.createElement("p");
-    const div = document.createElement("div");
-    h3.innerHTML = menuStarter["h3"];
-    p.innerHTML = menuStarter["p"];
-    div.innerHTML = menuStarter["div"].item1 + menuStarter["div"].item2;
-    menuItem.appendChild(h3);
-    menuItem.appendChild(p);
-    menuItem.appendChild(div);
-    menuContainer.appendChild(menuItem);
-};
+//0 = starter; 1 = sides; 2= burger; 3=pudding
 
-export function updateMenu(){
-    console.log("update menu");
-    starterBtn.addEventListener('click', updateContainer());
-};
 
