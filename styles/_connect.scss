@@ -1,4 +1,6 @@
-footer {
+#connect {
+    height: 30vh;
+    padding-top: 10vh;
     ul {
         @include flexCenter(row);
         list-style: none; 

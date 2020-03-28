@@ -12,7 +12,6 @@ burger.addEventListener('click', toggleNav);
 window.onscroll = () => {
   if (window.pageYOffset >= 2) {
       nav.classList.add("nav-fixed");
-      console.log("nav-fixed");
   }
   else {nav.classList.remove("nav-fixed")};
   }

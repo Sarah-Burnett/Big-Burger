@@ -1,47 +1,78 @@
 @import './variables';
 
+@mixin selectionBox {
+    label {
+        background: $white;
+        color: black;
+        display: block;
+        margin: 1vh 0;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+
 * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
-}
-
 body{
-    background-color: black;
+    background: black;
     color: $white;
     font-family: 'Slabo 27px';
     font-size: 12pt;
     line-height: 2;
     text-align: center;
     overflow-x: hidden;
+    @media (min-width: 500px) {
+        background-image: url(/images/burger-bg.jpeg);
+        background-repeat: no-repeat no-repeat;
+        background-size: cover;
+        background-position: center;
+        }
 }
 
-nav {
-    height: 20vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    div {
-        width: 90vw;
-        display: flex;
-        justify-content: flex-end;
-        button {
-            width: 10vw;
-            height: 10vh;
-            padding-right: 10px;
-            border-style: none;
-            background: $green;
-        }
+button {
+    padding: 1em;
+    border-style: none;
+    background: $green;
+    font-family: 'Slabo 27px';
+    outline-style: none;
+    cursor: pointer;
+    &:hover {
+        background: darkgreen;
     }
 }
 
+nav {
+    width: 100vw;
+    background: black;
+    display: flex;
+    justify-content: space-between;    
+    img {
+        width: auto;
+        height: 10vh;
+    }
+    button {
+        padding-right: 2vw;
+        height: 10vh;
+        width: 20vw;
+    }
+}
+
+
+
 #book {
+    background: black;
+    margin: auto;
+    @media (min-width: 500px) {
+        margin: 10vh auto;
+    }
+    width: 95vw; 
+    @media (min-width: 500px) {
+        width: 60vw;
+    }
     height: auto;
     display: flex;
     flex-direction: column;
@@ -49,80 +80,114 @@ nav {
     justify-content: space-between;
     padding: 1em;
     form {
-        width: 100%;
         font-size: 12pt;
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
         flex-direction: space-evenly;
-        input {
+        div {
+            width: 80vw;
+            @media (min-width: 500px) {
+                width: 45vw;
+            }
+        }
+        h3::after {
+            content: ' * ';
+            font-size: larger;
+            color: $green;
+        }
+        input{
             font-family: 'Slabo 27px';
             text-align: center;
             padding: 1vw;
             margin: 1vw;
-            width: 45vw;
+            width: 75vw;
+            @media (min-width: 500px) {
+                width: 40vw;
+            }
+            background: $white;
+        }
+        .invalid {
+            border: 2px solid red;
+        }
+        .error {
+            display: none;
+            color: red;
         }
         input[type="radio"] {
-            opacity: 0;
+            opacity: 1;
             height: 0;
+            position: absolute;
         }
-        #time {
-            width: 45vw;                       
+        .time {
+            @include selectionBox();
+            width: 80vw;
+            @media (min-width: 500px) {
+                width: 45vw;
+            }
+            h3 {
+                height: 8vh;
+            }                  
             span {
                 background: $white;
                 cursor: pointer;
                 margin: 1vh 0;
                 display: block;
                 color: black;
-                &:nth-child(1) {
-                    background: $green;
+            }
+        }
+        #time-selection {
+            display: none;
+            position: relative;
+            button {
+                width: 79vw;
+                @media (min-width: 500px) {
+                    position: absolute;
+                    top: -9vh;
+                    right: 0;
+                    width: 7vw;
+                }
+            }   
+        }
+        .party {
+            @include selectionBox();
+        }
+        .message {
+            label {
+                h3:after {
+                    content: '';
                 }
             }
-
-            label {
-                background: $white;
-                color: black;
-                display: block;
-                margin: 1vh 0;
-                text-align: center;
-            }
-
-        }
-        #message {
             textarea {
-            @extend input[type=text];
-            height: 10vh;
+            @extend input;
+            height: 30vh;
             resize: vertical;
-            width: 45vw;
+            width: 80vw;
+            @media (min-width: 500px) {
+                width: 45vw;
+            }
             font-family: 'Slabo 27px';
             text-align: center;
+            background: $white;
+            color: black;
             }
         }
         input[type=submit] {
-            font-family: 'Slabo 27px';
-            padding: 1em;
-            border-style: none;
-            outline: none;
-            background: $green;
-            cursor: pointer;
+            @extend button;
+            width: 80vw;
+            @media (min-width: 500px) {
+                width: 8vw;
+            }
         }
-        #submit-message {
+        .submit-message {
             color: $green;
             opacity: 0;
-        }
-    }
-}
-
-@media (min-width: 500px) {
-    #location {
-        form {
-        width: 60vw;
-            input[type=text], 
-            textarea {
-            width: 58vw;
+            text-align: center;
+            width: 80vw;
+            @media (min-width: 500px) {
+                width: 45vw;
             }
         }
     }
 }
-    

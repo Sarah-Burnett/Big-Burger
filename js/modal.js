@@ -17,8 +17,8 @@ export function toggleModal() {
     }
 
 
-    mapBtnG.addEventListener('mouseover', () => {showModal("#glensgaich-map")});
-    mapBtnT.addEventListener('mouseover', () => {showModal("#tanygrisiau-map")});
+    mapBtnG.addEventListener('click', () => {showModal("#glensgaich-map")});
+    mapBtnT.addEventListener('click', () => {showModal("#tanygrisiau-map")});
 
     document.querySelector(".modal-close").addEventListener('click', hideModal);
 

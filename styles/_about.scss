@@ -6,9 +6,9 @@
     div {
         height: 50vh;
         @include flexCenter(row);
-        width: 80%;
+        width: 100vw;
         padding: 2em;
-        font-size: 12pt;     
+        font-size: 10pt; 
     }
 }
 
@@ -16,6 +16,7 @@
 #about-page {
     div {
         width: 50%;
+        font-size: 12pt
     }
 }
 }

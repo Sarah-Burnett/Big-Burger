@@ -5,14 +5,8 @@
           box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-  -ms-scroll-snap-type: y mandatory;
-      scroll-snap-type: y mandatory;
-}
-
 body {
-  background-color: black;
+  background: black;
   color: #F5F5F5;
   font-family: 'Slabo 27px';
   font-size: 12pt;
@@ -21,38 +15,54 @@ body {
   overflow-x: hidden;
 }
 
-nav {
-  height: 20vh;
-  width: 100vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+@media (min-width: 500px) {
+  body {
+    background-image: url(/burger-bg.dd8dc30b.jpeg);
+    background-repeat: no-repeat no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
 }
 
-nav div {
-  width: 90vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-nav div button {
-  width: 10vw;
-  height: 10vh;
-  padding-right: 10px;
+button, #book form input[type=submit], #book form .message textarea[type=submit] {
+  padding: 1em;
   border-style: none;
+  background: #36970F;
+  font-family: 'Slabo 27px';
+  outline-style: none;
+  cursor: pointer;
+}
+
+button:hover, #book form input:hover[type=submit], #book form .message textarea:hover[type=submit] {
+  background: darkgreen;
+}
+
+nav {
+  width: 100vw;
+  background: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+nav img {
+  width: auto;
+  height: 10vh;
+}
+
+nav button, nav #book form input[type=submit], #book form nav input[type=submit], nav #book form .message textarea[type=submit], #book form .message nav textarea[type=submit] {
+  padding-right: 2vw;
+  height: 10vh;
+  width: 20vw;
 }
 
 #book {
+  background: black;
+  margin: auto;
+  width: 95vw;
   height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -70,8 +80,19 @@ nav div button {
   padding: 1em;
 }
 
+@media (min-width: 500px) {
+  #book {
+    margin: 10vh auto;
+  }
+}
+
+@media (min-width: 500px) {
+  #book {
+    width: 60vw;
+  }
+}
+
 #book form {
-  width: 100%;
   font-size: 12pt;
   text-align: center;
   display: -webkit-box;
@@ -88,72 +109,150 @@ nav div button {
       flex-direction: space-evenly;
 }
 
-#book form input {
+#book form div {
+  width: 80vw;
+}
+
+@media (min-width: 500px) {
+  #book form div {
+    width: 45vw;
+  }
+}
+
+#book form h3::after {
+  content: ' * ';
+  font-size: larger;
+  color: #36970F;
+}
+
+#book form input, #book form .message textarea {
   font-family: 'Slabo 27px';
   text-align: center;
   padding: 1vw;
   margin: 1vw;
-  width: 45vw;
-}
-
-#book form input[type="radio"] {
-  opacity: 0;
-  height: 0;
-}
-
-#book form #time {
-  width: 45vw;
-}
-
-#book form #time span {
+  width: 75vw;
   background: #F5F5F5;
-  cursor: pointer;
-  margin: 1vh 0;
-  display: block;
-  color: black;
-}
-
-#book form #time span:nth-child(1) {
-  background: #36970F;
-}
-
-#book form #time label {
-  background: #F5F5F5;
-  color: black;
-  display: block;
-  margin: 1vh 0;
-  text-align: center;
-}
-
-#book form #message textarea {
-  height: 10vh;
-  resize: vertical;
-  width: 45vw;
-  font-family: 'Slabo 27px';
-  text-align: center;
-}
-
-#book form input[type=submit] {
-  font-family: 'Slabo 27px';
-  padding: 1em;
-  border-style: none;
-  outline: none;
-  background: #36970F;
-  cursor: pointer;
-}
-
-#book form #submit-message {
-  color: #36970F;
-  opacity: 0;
 }
 
 @media (min-width: 500px) {
-  #location form {
-    width: 60vw;
+  #book form input, #book form .message textarea {
+    width: 40vw;
   }
-  #location form input[type=text], #location #book form #message textarea, #book #location form #message textarea,
-  #location form textarea {
-    width: 58vw;
+}
+
+#book form .invalid {
+  border: 2px solid red;
+}
+
+#book form .error {
+  display: none;
+  color: red;
+}
+
+#book form input[type="radio"], #book form .message textarea[type="radio"] {
+  opacity: 1;
+  height: 0;
+  position: absolute;
+}
+
+#book form .time {
+  width: 80vw;
+}
+
+#book form .time label {
+  background: #F5F5F5;
+  color: black;
+  display: block;
+  margin: 1vh 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+@media (min-width: 500px) {
+  #book form .time {
+    width: 45vw;
+  }
+}
+
+#book form .time h3 {
+  height: 8vh;
+}
+
+#book form .time span {
+  background: #F5F5F5;
+  cursor: pointer;
+  margin: 1vh 0;
+  display: block;
+  color: black;
+}
+
+#book form #time-selection {
+  display: none;
+  position: relative;
+}
+
+#book form #time-selection button, #book form #time-selection input[type=submit], #book form #time-selection .message textarea[type=submit], #book form .message #time-selection textarea[type=submit] {
+  width: 79vw;
+}
+
+@media (min-width: 500px) {
+  #book form #time-selection button, #book form #time-selection input[type=submit], #book form #time-selection .message textarea[type=submit], #book form .message #time-selection textarea[type=submit] {
+    position: absolute;
+    top: -9vh;
+    right: 0;
+    width: 7vw;
+  }
+}
+
+#book form .party label {
+  background: #F5F5F5;
+  color: black;
+  display: block;
+  margin: 1vh 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+#book form .message label h3:after {
+  content: '';
+}
+
+#book form .message textarea {
+  height: 30vh;
+  resize: vertical;
+  width: 80vw;
+  font-family: 'Slabo 27px';
+  text-align: center;
+  background: #F5F5F5;
+  color: black;
+}
+
+@media (min-width: 500px) {
+  #book form .message textarea {
+    width: 45vw;
+  }
+}
+
+#book form input[type=submit], #book form .message textarea[type=submit] {
+  width: 80vw;
+}
+
+@media (min-width: 500px) {
+  #book form input[type=submit], #book form .message textarea[type=submit] {
+    width: 8vw;
+  }
+}
+
+#book form .submit-message {
+  color: #36970F;
+  opacity: 0;
+  text-align: center;
+  width: 80vw;
+}
+
+@media (min-width: 500px) {
+  #book form .submit-message {
+    width: 45vw;
   }
 }
 

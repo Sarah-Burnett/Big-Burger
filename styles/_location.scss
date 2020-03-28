@@ -8,27 +8,38 @@
         width: 100vw;
         height: 60vh;
         position: relative;
-        }
         .location-item {
-        position: absolute;
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        overflow: hidden;
-        opacity: 0;
-        &:nth-child(1) {opacity: 1}
-        button {
-            font-family: 'Slabo 27px';
-            margin: 1vh;
-            padding: 1em;
-            border-style: none;
-            outline: none;
-            background: $green;
-            cursor: pointer;
+            position: absolute;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            overflow: hidden;
+            opacity: 0;
+            &:nth-child(1) {opacity: 1}
+            button {
+                font-family: 'Slabo 27px';
+                margin: 1vh;
+                padding: 1em;
+                border-style: none;
+                background: $green;
+                cursor: pointer;
+                &:hover {
+                    background: darkgreen;
+                }
+            }
+            .contact {
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
+                p:hover {
+                    color: $green;
+                }
+            }
         }
-    }
+    } 
     .location-dot {
         height: 15px;
         width: 15px;
@@ -41,6 +52,8 @@
         cursor: pointer;
     }
 }
+
+// icons 
 
 @media only screen and (min-width: 720px) {
     .swipe {

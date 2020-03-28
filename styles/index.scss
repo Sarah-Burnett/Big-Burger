@@ -15,7 +15,7 @@ body{
     background-color: black;
     color: $white;
     font-family: 'Slabo 27px';
-    font-size: 12pt;
+    font-size: 12px; 
     line-height: 2;
     text-align: center;
     overflow-x: hidden;
@@ -27,6 +27,9 @@ section {
     scroll-snap-align: center;
 }
 
+:focus {
+    outline-color: darkgreen;
+}
 
 @media only screen and (min-width: 720px) {
     body {
@@ -40,7 +43,7 @@ section {
 @import "menu";
 @import "review";
 @import "location";
-@import "footer";
+@import "connect";
 @import "modal";
 
 

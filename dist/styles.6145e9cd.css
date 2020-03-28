@@ -15,7 +15,7 @@ body {
   background-color: black;
   color: #F5F5F5;
   font-family: 'Slabo 27px';
-  font-size: 12pt;
+  font-size: 12px;
   line-height: 2;
   text-align: center;
   overflow-x: hidden;
@@ -25,6 +25,10 @@ section {
   height: 100vh;
   width: 100vw;
   scroll-snap-align: center;
+}
+
+:focus {
+  outline-color: darkgreen;
 }
 
 @media only screen and (min-width: 720px) {
@@ -41,9 +45,12 @@ nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-decoration: none;
   list-style: none;
   -webkit-transition: height 1s ease-in-out;
@@ -55,18 +62,14 @@ nav {
 
 nav img {
   z-index: 98;
-  max-height: 20vh;
-  max-width: 20vh;
 }
 
-.burger {
-  position: absolute;
-  right: 20px;
-  top: 10px;
+nav .burger {
   cursor: pointer;
+  padding-right: 1vw;
 }
 
-.burger .line1, .burger .line2, .burger .line3 {
+nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   width: 35px;
   height: 5px;
   background-color: #F5F5F5;
@@ -253,14 +256,15 @@ nav img {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  width: 80%;
+  width: 100vw;
   padding: 2em;
-  font-size: 12pt;
+  font-size: 10pt;
 }
 
 @media only screen and (min-width: 720px) {
   #about-page div {
     width: 50%;
+    font-size: 12pt;
   }
 }
 
@@ -295,8 +299,14 @@ nav img {
   color: #36970F;
 }
 
-#menu-content {
-  height: 100vh;
+#menu-title .arrow:hover {
+  color: darkgreen;
+}
+
+@media (min-width: 720px) {
+  #menu-content {
+    height: 100vh;
+  }
 }
 
 #menu-content .menu-nav {
@@ -313,16 +323,23 @@ nav img {
 }
 
 #menu-content .menu-nav button {
-  margin: 0 1em;
+  font-family: 'Slabo 27px';
+  font-size: 12px;
+  height: 15vh;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  padding: 1em;
-  height: 15vh;
+  margin: 1vw;
   border-style: none;
-  outline: none;
   background: #36970F;
   cursor: pointer;
+}
+
+@media (min-width: 720px) {
+  #menu-content .menu-nav button {
+    padding: 1em;
+    margin: 0 1em;
+  }
 }
 
 #menu-content .menu-nav button:hover {
@@ -353,12 +370,8 @@ nav img {
       justify-content: space-around;
 }
 
-@media only screen and (min-width: 720px) {
-  .menu-nav button {
-    margin: 0 3em;
-    background: blue;
-  }
-  .menu-list {
+@media (min-width: 720px) {
+  #menu-content .menu-list {
     width: 70vw;
     -webkit-column-count: 2;
             column-count: 2;
@@ -467,7 +480,7 @@ nav img {
   position: relative;
 }
 
-#location .location-item {
+#location .location-container .location-item {
   position: absolute;
   width: 100vw;
   display: -webkit-box;
@@ -486,18 +499,30 @@ nav img {
   opacity: 0;
 }
 
-#location .location-item:nth-child(1) {
+#location .location-container .location-item:nth-child(1) {
   opacity: 1;
 }
 
-#location .location-item button {
+#location .location-container .location-item button {
   font-family: 'Slabo 27px';
   margin: 1vh;
   padding: 1em;
   border-style: none;
-  outline: none;
   background: #36970F;
   cursor: pointer;
+}
+
+#location .location-container .location-item button:hover {
+  background: darkgreen;
+}
+
+#location .location-container .location-item .contact a {
+  text-decoration: none;
+  color: white;
+}
+
+#location .location-container .location-item .contact p:hover {
+  color: #36970F;
 }
 
 #location .location-dot {
@@ -522,112 +547,12 @@ nav img {
   }
 }
 
-#book {
-  height: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 1em;
+#connect {
+  height: 30vh;
+  padding-top: 10vh;
 }
 
-#book form {
-  width: 100%;
-  font-size: 12pt;
-  text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-direction: space-evenly;
-      flex-direction: space-evenly;
-}
-
-#book form input {
-  font-family: 'Slabo 27px';
-  text-align: center;
-  padding: 1vw;
-  margin: 1vw;
-  width: 45vw;
-}
-
-#book form input[type="radio"] {
-  opacity: 0;
-  height: 0;
-}
-
-#book form #time {
-  width: 45vw;
-}
-
-#book form #time span {
-  background: #F5F5F5;
-  cursor: pointer;
-  margin: 1vh 0;
-  display: block;
-  color: black;
-}
-
-#book form #time span:nth-child(1) {
-  background: #36970F;
-}
-
-#book form #time label {
-  background: #F5F5F5;
-  color: black;
-  display: block;
-  margin: 1vh 0;
-  text-align: center;
-}
-
-#book form #message textarea {
-  height: 10vh;
-  resize: vertical;
-  width: 45vw;
-  font-family: 'Slabo 27px';
-  text-align: center;
-}
-
-#book form input[type=submit] {
-  font-family: 'Slabo 27px';
-  padding: 1em;
-  border-style: none;
-  outline: none;
-  background: #36970F;
-  cursor: pointer;
-}
-
-#book form #submit-message {
-  color: #36970F;
-  opacity: 0;
-}
-
-@media (min-width: 500px) {
-  #location form {
-    width: 60vw;
-  }
-  #location form input[type=text], #location #book form #message textarea, #book #location form #message textarea,
-  #location form textarea {
-    width: 58vw;
-  }
-}
-
-footer ul {
+#connect ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -644,11 +569,11 @@ footer ul {
   list-style: none;
 }
 
-footer li {
+#connect li {
   width: 55px;
 }
 
-footer li img {
+#connect li img {
   width: 55px;
   padding-left: 10px;
 }
@@ -679,8 +604,8 @@ footer li img {
 .modal {
   padding: 1em;
   position: relative;
-  background: black;
-  height: auto;
+  background: #F5F5F5;
+  height: 100%;
   width: 100%;
 }
 

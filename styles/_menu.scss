@@ -10,11 +10,16 @@
         height: 10vh;
         text-decoration: none; 
         color: $green;
+        &:hover{
+            color: darkgreen;
+        }
     }
 }
 
 #menu-content {
-    height: 100vh;
+    @media (min-width: 720px){
+        height: 100vh;
+    }
     .menu-nav {
         padding-top: 10vh;
         height: 25vh;
@@ -22,12 +27,16 @@
         align-items: center;
         justify-content: space-around;
         button {
-            margin: 0 1em;
-            flex: 1;
-            padding: 1em;
+            font-family: 'Slabo 27px';
+            font-size: 12px;
             height: 15vh;
+            flex: 1;
+            margin: 1vw;
+            @media (min-width: 720px) {
+                padding: 1em;
+                margin: 0 1em;
+            }
             border-style: none;
-            outline: none;
             background: $green;
             cursor: pointer;
             &:hover {
@@ -44,19 +53,12 @@
         @include flexCenter(column);
         justify-content: space-around;
     }
-}
-
-@media only screen and (min-width: 720px) {
-    .menu-nav {
-        button {
-            margin: 0 3em;
-            background: blue;
+    .menu-list {
+        @media (min-width: 720px) {
+            width: 70vw;
+            column-count: 2;
         }
     }
-    .menu-list {
-    width: 70vw;
-    column-count: 2;
-}
 }
 
 

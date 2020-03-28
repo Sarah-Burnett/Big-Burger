@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="icon" href="./images/favicon.png">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script> 
     <title>Big Burger Restaurant</title>
 </head>
 <body>
     <nav data-scroll-header class="header">
-        <a href="#home-title"><img src="/images/burger-logo.jpg" style="height: 100%; width: auto"/></a>   
+        <img src="/images/burger-logo-smaller.jpg"/>
         <div class="nav-links">
             <li id="aboutBtn"><a href="#about-page">About</a></li>
             <li id="menuBtn"><a href="#menu-title">Menu</a></li>
@@ -105,12 +106,12 @@
             <div class="location-item">
                 <h3>Glensgaich</h3>
                 <div class="location-info">
-                    <div class="address">
-                        <p>71 Brynglas Road, Glensgaich, IV14 6XG</p>
-                        <p>078 3552 7828</p>
-                        <p>glensgaich@bigburger.com</p>
-                        <a href="https://www.google.com/maps?rlz=1C1CHBF_enGB837GB837&q=71+brynglas+road&um=1&ie=UTF-8&sa=X&ved=2ahUKEwj20-TptKToAhXEi1wKHQUwCpMQ_AUoAXoECAwQAw" target="_blank"><button class="glensgaich-btn">View Location</button></a>
+                    <div class="contact">
+                        <p><a href="#">71 Brynglas Road, Glensgaich, IV14 6XG</a></p>
+                        <p><a href="tel:078 3552 7828">078 3552 7828</a></p>
+                        <p><a href="mailto:glensgaich@bigburger.com">glensgaich@bigburger.com</a></p>
                     </div>
+                    <button class="btn glensgaich-btn">View Location</button>
                     <div class="hours">
                         <h3>Opening Hours</h3>
                         <p>Mon - Fri: 5pm - 10pm</p>
@@ -122,12 +123,12 @@
                 <div class="location-item">
                     <h3>Tanygrisiau</h3>
                     <div class="location-info">
-                        <div class="address">
-                            <p>101 Essex Road, Tanygrisiau, LL41 6HR</p>
-                            <p>070 4980 1780</p>
-                            <p>tanygrisiau@bigburger.com</p>
-                            <a href="https://www.google.com/maps/place/101+Essex+Cl,+Exeter+EX4+1LS/@50.7128294,-3.558956,17z/data=!3m1!4b1!4m5!3m4!1s0x486da5d725a46d8f:0xc55d54e1dbb4c3ff!8m2!3d50.7128294!4d-3.5567673" target="_blank"><button class="tanygrisiau-btn">View Location</button></a>
+                        <div class="contact">
+                            <p><a href="#">101 Essex Road, Tanygrisiau, LL41 6HR</a></p>
+                            <p><a href="tel:070 4980 1780">070 4980 1780</a></p>
+                            <p><a href="mailto:tanygrisiau@bigburger.com">tanygrisiau@bigburger.com</a></p>
                         </div>
+                        <button class="btn tanygrisiau-btn">View Location</button>
                         <div class="hours">
                             <h3>Opening Hours</h3>
                             <p>Mon - Fri: 5pm - 10pm</p>
@@ -143,16 +144,14 @@
             <span class="location-dot"></span> 
           </div>
     </section>
-    <footer>
-        <div class="social-media">
-            <h2>Connect</h2>
-            <ul>
-                <li><img src="/images/iconfinder_80-facebook_social_4202867.png"></li>
-                <li><img src="/images/iconfinder_62-instagram_social_4202852.png"></li>
-                <li><img src="/images/iconfinder_18-tripadvisor_travel_social_4202797.png"></li>
-            </ul>
-        </div>
-    </footer>
+    <section id="connect">
+        <h2>Connect</h2>
+        <ul>
+            <li><img src="/images/iconfinder_80-facebook_social_4202867.png"></li>
+            <li><img src="/images/iconfinder_62-instagram_social_4202852.png"></li>
+            <li><img src="/images/iconfinder_18-tripadvisor_travel_social_4202797.png"></li>
+        </ul>
+    </section>      
     <div class="modal-bg modal-inactive">
         <div class="modal">
             <span class="modal-close"><i class="fas fa-times"></i></span>

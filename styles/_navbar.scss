@@ -4,7 +4,8 @@ nav {
     height: 15vh;
     background: black;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     text-decoration: none;
     list-style: none;
     transition: height 1s ease-in-out;
@@ -12,15 +13,10 @@ nav {
     z-index: 97;
     img {
         z-index: 98;
-        max-height: 20vh;
-        max-width: 20vh;
     }
-}
     .burger {
-        position: absolute;
-        right: 20px;
-        top: 10px;
         cursor: pointer;
+        padding-right: 1vw;
         .line1, .line2, .line3 {
             width: 35px;
             height: 5px;
@@ -29,6 +25,7 @@ nav {
             transition: 0.4s;
           }
     }
+}
     .nav-links {
         position: absolute;
         top: 15vh;        

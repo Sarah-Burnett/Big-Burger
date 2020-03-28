@@ -353,10 +353,10 @@ function toggleModal() {
     document.querySelector("#tanygrisiau-map").style.display = "none";
   }
 
-  mapBtnG.addEventListener('mouseover', function () {
+  mapBtnG.addEventListener('click', function () {
     showModal("#glensgaich-map");
   });
-  mapBtnT.addEventListener('mouseover', function () {
+  mapBtnT.addEventListener('click', function () {
     showModal("#tanygrisiau-map");
   });
   document.querySelector(".modal-close").addEventListener('click', hideModal);
@@ -386,7 +386,6 @@ burger.addEventListener('click', toggleNav); // fixed nav bar
 window.onscroll = function () {
   if (window.pageYOffset >= 2) {
     nav.classList.add("nav-fixed");
-    console.log("nav-fixed");
   } else {
     nav.classList.remove("nav-fixed");
   }
@@ -444,7 +443,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61784" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63249" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
