@@ -155,6 +155,16 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   position: absolute;
 }
 
+#book form .restaurant {
+  width: 75vw;
+}
+
+@media (min-width: 500px) {
+  #book form .restaurant {
+    width: 40vw;
+  }
+}
+
 #book form .restaurant label {
   background: #F5F5F5;
   color: black;
@@ -165,7 +175,13 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 }
 
 #book form .time {
-  width: 80vw;
+  width: 75vw;
+}
+
+@media (min-width: 500px) {
+  #book form .time {
+    width: 40vw;
+  }
 }
 
 #book form .time label {
@@ -175,12 +191,6 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   margin: 1vh 0;
   text-align: center;
   cursor: pointer;
-}
-
-@media (min-width: 500px) {
-  #book form .time {
-    width: 45vw;
-  }
 }
 
 #book form .time h3 {
@@ -213,6 +223,16 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   }
 }
 
+#book form .party {
+  width: 75vw;
+}
+
+@media (min-width: 500px) {
+  #book form .party {
+    width: 40vw;
+  }
+}
+
 #book form .party label {
   background: #F5F5F5;
   color: black;
@@ -229,7 +249,7 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 #book form .message textarea {
   height: 30vh;
   resize: vertical;
-  width: 80vw;
+  width: 75vw;
   font-family: 'Slabo 27px';
   text-align: center;
   background: #F5F5F5;
@@ -238,12 +258,12 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 
 @media (min-width: 500px) {
   #book form .message textarea {
-    width: 45vw;
+    width: 40vw;
   }
 }
 
 #book form input[type=submit], #book form .message textarea[type=submit] {
-  width: 80vw;
+  width: 75vw;
 }
 
 @media (min-width: 500px) {
@@ -256,12 +276,12 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   color: #36970F;
   opacity: 0;
   text-align: center;
-  width: 80vw;
+  width: 75vw;
 }
 
 @media (min-width: 500px) {
   #book form .submit-message {
-    width: 45vw;
+    width: 40vw;
   }
 }
 /*# sourceMappingURL=book.css.map */

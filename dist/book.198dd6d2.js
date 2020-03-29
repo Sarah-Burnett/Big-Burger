@@ -117,16 +117,39 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/validation.js":[function(require,module,exports) {
+})({"js/date.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.minmaxDate = minmaxDate;
+exports.dateFortnightplus1 = exports.dateTodayplus1 = void 0;
+var dateInput = document.querySelector('#date');
+var dateTodayplus1 = new Date(Date.now() + 86400000);
+exports.dateTodayplus1 = dateTodayplus1;
+var dateFortnightplus1 = new Date(Date.now() + 1296000000);
+exports.dateFortnightplus1 = dateFortnightplus1;
+
+function minmaxDate() {
+  dateInput.min = dateTodayplus1.toISOString().split('T')[0];
+  dateInput.max = dateFortnightplus1.toISOString().split('T')[0];
+  ;
+}
+
+;
+},{}],"js/validation.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.checkError = checkError;
+
+var _date = require("./date");
+
 var name = document.querySelector('#name');
 var email = document.querySelector('#email');
-var restaurant = document.querySelectorAll('input[name="restaurant"]');
 var date = document.querySelector('#date');
 var time = document.querySelector('input[name="time"]');
 var party = document.querySelector('input[name="party"]');
@@ -147,22 +170,9 @@ function checkError() {
   });
   var error = 0;
 
-  if (!name.validity.valid) {
+  if (!party.validity.valid) {
     error = 1;
-    showError(0, 'Please enter your name');
-  }
-
-  if (!email.validity.valid) {
-    error = 1;
-    showError(1, 'Please enter your valid email address');
-  }
-
-  if (!date.validity.valid) {
-    error = 1;
-    showError(3, "Please input a date (dd/mm/yy) between ".concat(dateTodayplus1.getDate(), "/").concat(dateTodayplus1.getMonth() + 1, "/").concat(dateTodayplus1.getFullYear(), " and ").concat(dateFortnightplus1.getDate(), "/").concat(dateFortnightplus1.getMonth() + 1, "/").concat(dateFortnightplus1.getFullYear()));
-  }
-
-  if (date.validity.valid) {// need to check invalid date has not been typed in! 
+    showError(5, 'Please select the number of people');
   }
 
   if (!time.validity.valid) {
@@ -170,9 +180,19 @@ function checkError() {
     showError(4, 'Please select the time you would like to book');
   }
 
-  if (!party.validity.valid) {
+  if (!date.validity.valid) {
     error = 1;
-    showError(5, 'Please select the number of people');
+    showError(3, "Please input a date (dd/mm/yy) between ".concat(_date.dateTodayplus1.getDate(), "/").concat(_date.dateTodayplus1.getMonth() + 1, "/").concat(_date.dateTodayplus1.getFullYear(), " and ").concat(_date.dateFortnightplus1.getDate(), "/").concat(_date.dateFortnightplus1.getMonth() + 1, "/").concat(_date.dateFortnightplus1.getFullYear()));
+  }
+
+  if (!email.validity.valid) {
+    error = 1;
+    showError(1, 'Please enter your valid email address');
+  }
+
+  if (!name.validity.valid) {
+    error = 1;
+    showError(0, 'Please enter your name');
   }
 
   return error;
@@ -185,8 +205,10 @@ function showError(index, msg) {
   formBoxes[index].classList.add('invalid');
   formBoxes[index].scrollIntoView();
 }
-},{}],"js/book.js":[function(require,module,exports) {
+},{"./date":"js/date.js"}],"js/book.js":[function(require,module,exports) {
 "use strict";
+
+var _date = require("./date");
 
 var _validation = require("./validation");
 
@@ -211,12 +233,7 @@ var selectRestaurant = function selectRestaurant(item, index) {
 
 restaurantBtns.forEach(selectRestaurant); //date "yyyy-mm-dd"
 
-var dateInput = document.querySelector('#date');
-var dateTodayplus1 = new Date(Date.now() + 86400000);
-var dateFortnightplus1 = new Date(Date.now() + 1296000000);
-dateInput.min = dateTodayplus1.toISOString().split('T')[0];
-dateInput.max = dateFortnightplus1.toISOString().split('T')[0];
-; // time selector
+(0, _date.minmaxDate)(); // time selector
 
 var hours = [["12:00", "12:30", "13:00", "13:30", "14:00"], ["14:00", "14:30", "15:00", "15:30", "16:00"], ["16:00", "16:30", "17:00", "17:30", "18:00"], ["18:00", "18:30", "19:00", "19:30", "20:00"], ["20:00", "20:30", "21:00", "21:30", "22:00"]];
 
@@ -276,14 +293,18 @@ partyBtns.forEach(selectParty); //form submit
 
 var bookForm = document.querySelector('#bookForm');
 bookForm.addEventListener('submit', function (e) {
-  e.preventDefault();
   var error = (0, _validation.checkError)();
+  e.preventDefault();
 
   if (error === 0) {
     document.querySelector('.submit-message').style.opacity = 1;
+  } else {
+    e.preventDefault();
   }
+
+  ;
 });
-},{"./validation":"js/validation.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./date":"js/date.js","./validation":"js/validation.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -311,7 +332,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56591" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58375" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

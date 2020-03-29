@@ -16,13 +16,9 @@ const selectRestaurant = (item, index) => {
 };
 restaurantBtns.forEach(selectRestaurant);
 
-
 //date "yyyy-mm-dd"
-const dateInput = document.querySelector('#date');
-let dateTodayplus1 = new Date(Date.now() + 86400000);
-let dateFortnightplus1 = new Date(Date.now() + 1296000000);
-dateInput.min = dateTodayplus1.toISOString().split('T')[0];
-dateInput.max = dateFortnightplus1.toISOString().split('T')[0];;
+import { minmaxDate } from './date';
+minmaxDate();
 
 // time selector
 const hours = [
@@ -89,11 +85,13 @@ import { checkError } from './validation';
 const bookForm = document.querySelector('#bookForm');
 
 bookForm.addEventListener('submit', (e) => {  
-    e.preventDefault();
     const error = checkError();
+    e.preventDefault();
     if (error === 0) {
     document.querySelector('.submit-message').style.opacity = 1;
-    }
+    } else {    
+      e.preventDefault();
+    };
 });
 
 

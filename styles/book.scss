@@ -1,6 +1,10 @@
 @import './variables';
 
 @mixin selectionBox {
+    width: 75vw;
+    @media (min-width: 500px) {
+        width: 40vw;
+    }
     label {
         background: $white;
         color: black;
@@ -125,10 +129,6 @@ nav {
         }
         .time {
             @include selectionBox();
-            width: 80vw;
-            @media (min-width: 500px) {
-                width: 45vw;
-            }
             h3 {
                 height: 8vh;
             }                  
@@ -166,9 +166,9 @@ nav {
             @extend input;
             height: 30vh;
             resize: vertical;
-            width: 80vw;
+            width: 75vw;
             @media (min-width: 500px) {
-                width: 45vw;
+                width: 40vw;
             }
             font-family: 'Slabo 27px';
             text-align: center;
@@ -178,7 +178,7 @@ nav {
         }
         input[type=submit] {
             @extend button;
-            width: 80vw;
+            width: 75vw;
             @media (min-width: 500px) {
                 width: 8vw;
             }
@@ -187,9 +187,9 @@ nav {
             color: $green;
             opacity: 0;
             text-align: center;
-            width: 80vw;
+            width: 75vw;
             @media (min-width: 500px) {
-                width: 45vw;
+                width: 40vw;
             }
         }
     }
