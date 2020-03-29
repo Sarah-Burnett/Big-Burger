@@ -84,11 +84,13 @@ const errorBoxes = document.querySelectorAll('.error');
 console.log(formBoxes);
 
 bookForm.addEventListener('submit', (e) => {  
-    e.preventDefault();
     const error = checkError();
-    if (error === 0) {
-    document.querySelector('.submit-message').style.opacity = 1;
+    if (error === 1) {
+      e.preventDefault();
     }
+    /*if (error === 0) {
+    document.querySelector('.submit-message').style.opacity = 1;
+    }*/
 });
 
 

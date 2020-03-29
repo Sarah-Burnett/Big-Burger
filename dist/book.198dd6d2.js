@@ -197,12 +197,15 @@ var formBoxes = document.querySelectorAll('#bookForm div');
 var errorBoxes = document.querySelectorAll('.error');
 console.log(formBoxes);
 bookForm.addEventListener('submit', function (e) {
-  e.preventDefault();
   var error = checkError();
 
-  if (error === 0) {
-    document.querySelector('.submit-message').style.opacity = 1;
+  if (error === 1) {
+    e.preventDefault();
   }
+  /*if (error === 0) {
+  document.querySelector('.submit-message').style.opacity = 1;
+  }*/
+
 });
 
 function checkError() {
@@ -285,7 +288,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63249" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60965" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
