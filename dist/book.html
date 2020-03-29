@@ -17,7 +17,7 @@
     <div id="book">
         <h2>Book a table</h2>
         Place your booking for the next fortnight using the form below. Group size more than 8? Give us a call
-        <form method="POST" action="/submit" id="bookForm" novalidate="">
+        <form name="booking" method="POST" id="bookForm" netlify="" novalidate="">
             <div class="name">
                 <label for="name"><h3>Name</h3></label>
                 <p class="error nameError"></p>
@@ -27,6 +27,11 @@
                 <label for="email"><h3>Email</h3></label>
                 <p class="error emailError"></p>
                 <input type="email" id="email" name="email" required=""><br>
+            </div>
+            <div class="restaurant">
+                <h3>Which restaurant?</h3>
+                <label for="glensgaich">Glensgaich</label><input type="radio" id="glensgaich" name="restaurant" value="glensgaich" required="">
+                <label for="tanygrisiau">Tanygrisiau</label><input type="radio" id="tanygrisiau" name="restaurant" value="tanygrisiau" required="">        
             </div>
             <div class="date">
                 <label for="date"><h3>Date of Booking</h3></label>
@@ -70,7 +75,7 @@
             <div class="submit-btn">
                 <input type="submit" value="Send">
             </div>
-            <div class="submit-message">Booking request sent<br>Check your emails for confirmation of the booking<br>Thank you and see you soon</div>
+            <div class="submit-message">Booking request sent<br>Thank you<br>See you soon</div>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.0/dist/js/datepicker.min.js"></script>

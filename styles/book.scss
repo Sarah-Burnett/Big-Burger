@@ -120,6 +120,9 @@ nav {
             height: 0;
             position: absolute;
         }
+        .restaurant {
+            @include selectionBox();
+        }
         .time {
             @include selectionBox();
             width: 80vw;

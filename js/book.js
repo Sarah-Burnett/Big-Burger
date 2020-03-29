@@ -1,10 +1,21 @@
+const restaurantBtns = document.querySelectorAll('.restaurant label');
 const timeContainer = document.querySelector('#time-selection');
 const hourContainer =  document.querySelector('#hour-selection')
 const hourBtns = document.querySelectorAll('#hour-selection span');
 const timeBtns = document.querySelectorAll('#time-selection label');
 const timeRadio = document.querySelectorAll('#time-selection input[type="radio"]');
 const partyBtns = document.querySelectorAll('.party label');
-//set initial checked radio
+
+//restaurant selector
+restaurantBtns[0].style.background = "darkgreen";
+const selectRestaurant = (item, index) => {
+  item.addEventListener('click', () => {
+    restaurantBtns.forEach ( btn => btn.style.background = "#F5F5F5");
+    restaurantBtns[index].style.background = "darkgreen";
+  });
+};
+restaurantBtns.forEach(selectRestaurant);
+
 
 //date "yyyy-mm-dd"
 const dateInput = document.querySelector('#date');
@@ -13,8 +24,7 @@ let dateFortnightplus1 = new Date(Date.now() + 1296000000);
 dateInput.min = dateTodayplus1.toISOString().split('T')[0];
 dateInput.max = dateFortnightplus1.toISOString().split('T')[0];;
 
-// time 
-
+// time selector
 const hours = [
   ["12:00", "12:30", "13:00", "13:30", "14:00"],
   ["14:00", "14:30", "15:00", "15:30", "16:00"],
@@ -41,7 +51,9 @@ const changeTime = (item, index) => {
     timeRadio[4].value = hours[index][4];
     /*
     for (let h = 0; h < hours[index].length; h++) {
-      timeBtns[index].innerHTML = hours[index][h]; */
+      timeBtns[index].innerHTML = hours[index][h];
+      timeRadio[index].value = hours[index][h];
+    */
     })
   };
 
@@ -73,73 +85,15 @@ partyBtns.forEach(selectParty);
 
 
 //form submit
+import { checkError } from './validation';
 const bookForm = document.querySelector('#bookForm');
-const name = document.querySelector('#name');
-const email = document.querySelector('#email');
-const date = document.querySelector('#date');
-const time = document.querySelector('input[name="time"]');
-const party = document.querySelector('input[name="party"]');
-const formBoxes = document.querySelectorAll('#bookForm div')
-const errorBoxes = document.querySelectorAll('.error');
-console.log(formBoxes);
 
 bookForm.addEventListener('submit', (e) => {  
+    e.preventDefault();
     const error = checkError();
-    if (error === 1) {
-      e.preventDefault();
-    }
-    /*if (error === 0) {
+    if (error === 0) {
     document.querySelector('.submit-message').style.opacity = 1;
-    }*/
+    }
 });
-
-
-function checkError() {
-  formBoxes.forEach( div => { 
-    if (div.classList.contains('invalid')) {
-      div.classList.remove('invalid')
-    };
-  });
-  errorBoxes.forEach( p => {
-    p.innerHTML = '';
-    p.style.display = 'none';
-  });
-  let error = 0;
-  if (!name.validity.valid) {
-    error = 1;
-    showError(0, 'Please enter your name');
-  }
-  if (!email.validity.valid) {
-    error = 1;
-    showError(1, 'Please enter your valid email address');
-  } 
-  if (!date.validity.valid) {
-    error = 1;
-    showError(2, `Please input a date (dd/mm/yy) between ${dateTodayplus1.getDate()}/${dateTodayplus1.getMonth() + 1}/${dateTodayplus1.getFullYear()} and ${dateFortnightplus1.getDate()}/${dateFortnightplus1.getMonth() + 1}/${dateFortnightplus1.getFullYear()}`);
-  } 
-  if (date.validity.valid) {
-    // need to check invalid date has not been typed in! 
-  }
-  if (!time.validity.valid) {
-    error = 1;
-    showError(3, 'Please select the time you would like to book');
-  } 
-  if (!party.validity.valid) {
-    error = 1;
-    showError(4, 'Please select the number of people');
-  }  
-  return error;
-}
-
-
-
-function showError(index, msg) {
-  let errorMsg = msg;
-  errorBoxes[index].innerHTML = errorMsg;
-  errorBoxes[index].style.display = 'block';
-  formBoxes[index].classList.add('invalid');
-  formBoxes[index].scrollIntoView();
-}
-
 
 

@@ -24,7 +24,7 @@ mongoose.connection
     console.log(`Connection error: ${err.message}`);
     });
 
-app.post('/submit', (req, res) => {
+app.post('/submit', (req, res) => { //need to switch form back to this page to use :) 
     const booking = new Booking(req.body);
     booking.save()
         .then(() => res.send("Booking successful. Looking forward to seeing you soon"))

@@ -155,6 +155,15 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   position: absolute;
 }
 
+#book form .restaurant label {
+  background: #F5F5F5;
+  color: black;
+  display: block;
+  margin: 1vh 0;
+  text-align: center;
+  cursor: pointer;
+}
+
 #book form .time {
   width: 80vw;
 }
