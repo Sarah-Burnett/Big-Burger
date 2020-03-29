@@ -86,7 +86,6 @@ const bookForm = document.querySelector('#bookForm');
 
 bookForm.addEventListener('submit', (e) => {  
     const error = checkError();
-    e.preventDefault();
     if (error === 0) {
     document.querySelector('.submit-message').style.opacity = 1;
     } else {    

@@ -154,12 +154,20 @@ var date = document.querySelector('#date');
 var time = document.querySelector('input[name="time"]');
 var party = document.querySelector('input[name="party"]');
 var formBoxes = document.querySelectorAll('#bookForm div');
+var inputs = document.querySelectorAll('input');
 var errorBoxes = document.querySelectorAll('.error');
 
 function checkError() {
   formBoxes.forEach(function (div) {
     if (div.classList.contains('invalid')) {
       div.classList.remove('invalid');
+    }
+
+    ;
+  });
+  inputs.forEach(function (input) {
+    if (input.classList.contains('invalid')) {
+      input.classList.remove('invalid');
     }
 
     ;
@@ -202,7 +210,19 @@ function showError(index, msg) {
   var errorMsg = msg;
   errorBoxes[index].innerHTML = errorMsg;
   errorBoxes[index].style.display = 'block';
-  formBoxes[index].classList.add('invalid');
+
+  if (index == 0) {
+    document.querySelector('#name').classList.add('invalid');
+  }
+
+  if (index == 1) {
+    document.querySelector('#email').classList.add('invalid');
+  }
+
+  if (index == 3) {
+    document.querySelector('#date').classList.add('invalid');
+  }
+
   formBoxes[index].scrollIntoView();
 }
 },{"./date":"js/date.js"}],"js/book.js":[function(require,module,exports) {
@@ -294,7 +314,6 @@ partyBtns.forEach(selectParty); //form submit
 var bookForm = document.querySelector('#bookForm');
 bookForm.addEventListener('submit', function (e) {
   var error = (0, _validation.checkError)();
-  e.preventDefault();
 
   if (error === 0) {
     document.querySelector('.submit-message').style.opacity = 1;
@@ -332,7 +351,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58375" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59092" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

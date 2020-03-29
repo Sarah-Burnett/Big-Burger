@@ -2,9 +2,9 @@
 
 @mixin selectionBox {
     width: 75vw;
-    @media (min-width: 500px) {
-        width: 40vw;
-    }
+        @media (min-width: 500px) {
+            width: 40vw;
+        }
     label {
         background: $white;
         color: black;
