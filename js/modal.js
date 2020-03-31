@@ -1,4 +1,3 @@
-
 export function toggleModal() {    
     const mapBtnG = document.querySelector(".glensgaich-btn");
     const mapBtnT = document.querySelector(".tanygrisiau-btn");

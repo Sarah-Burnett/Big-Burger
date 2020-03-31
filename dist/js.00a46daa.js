@@ -262,7 +262,7 @@ function reviewCarousel() {
     reviewItems.forEach(function (review) {
       review.style.opacity = "0";
     });
-    reviewDots[reviewCounter].style.background = "darkgreen";
+    reviewDots[reviewCounter].style.background = "#205909";
     reviewItems[reviewCounter].style.opacity = "1";
     if (reviewCounter === reviewItems.length - 1) return reviewCounter = 0;
     reviewCounter++;
@@ -285,7 +285,7 @@ function reviewCarousel() {
       reviewItems.forEach(function (item) {
         return item.style.opacity = "0";
       });
-      reviewDots[index].style.background = "darkgreen";
+      reviewDots[index].style.background = "#205909";
       reviewItems[index].style.opacity = "1";
       reviewCounter = index;
       reviewInterval();
@@ -315,10 +315,12 @@ function locationCarousel() {
         return dot.style.background = "#36970F";
       });
       locationItems.forEach(function (item) {
-        return item.style.opacity = "0";
+        item.style.opacity = "0";
+        item.style.pointerEvents = "none";
       });
-      locationDots[index].style.background = "darkgreen";
+      locationDots[index].style.background = "#205909";
       locationItems[index].style.opacity = "1";
+      locationItems[index].style.pointerEvents = "auto";
     });
   };
 
@@ -443,7 +445,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59092" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55776" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

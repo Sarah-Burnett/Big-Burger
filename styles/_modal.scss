@@ -15,31 +15,35 @@
 }
 
 .modal {
-    padding: 1em;
+    padding: 0 1em 1em 1em;
     position: relative;
     background: $white;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
 }
 
 .modal div {
     display: "none";
 }
 
-.modal-close {
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    cursor: pointer;
-    z-index: 98;
+.modal-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     color: $green;
+    span {
+        display: block;
+    }
+    .modal-close {
+        cursor: pointer;
+    }
 }
 
 .modal-active {
     visibility: visible;
     opacity: 1;
 }
-
 
 @media only screen and (min-width: 720px) {
     .modal {

@@ -6,12 +6,17 @@
             width: 40vw;
         }
     label {
+        display: inline-block;
+        height: 6vh;
         background: $white;
         color: black;
         display: block;
         margin: 1vh 0;
         text-align: center;
         cursor: pointer;
+        &:hover {
+            background: $green;
+        }
     }
 }
 
@@ -122,7 +127,6 @@ nav {
         input[type="radio"] {
             opacity: 1;
             height: 0;
-            position: absolute;
         }
         .restaurant {
             @include selectionBox();
@@ -138,13 +142,17 @@ nav {
                 margin: 1vh 0;
                 display: block;
                 color: black;
+                height: 6vh;
+                &:hover {
+                    background: $green;
+                }
             }
         }
         #time-selection {
             display: none;
             position: relative;
             button {
-                width: 79vw;
+                width: 75vw;
                 @media (min-width: 500px) {
                     position: absolute;
                     top: -9vh;

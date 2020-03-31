@@ -232,97 +232,115 @@ var _date = require("./date");
 
 var _validation = require("./validation");
 
-var restaurantBtns = document.querySelectorAll('.restaurant label');
-var timeContainer = document.querySelector('#time-selection');
-var hourContainer = document.querySelector('#hour-selection');
-var hourBtns = document.querySelectorAll('#hour-selection span');
-var timeBtns = document.querySelectorAll('#time-selection label');
-var timeRadio = document.querySelectorAll('#time-selection input[type="radio"]');
-var partyBtns = document.querySelectorAll('.party label'); //restaurant selector
+checkRestaurant();
+(0, _date.minmaxDate)();
+checkTime();
+backTime();
+checkParty();
+submitForm(); //restaurant selector 
 
-restaurantBtns[0].style.background = "darkgreen";
+function checkRestaurant() {
+  var restaurantBtns = document.querySelectorAll('.restaurant label');
+  restaurantBtns[0].style.background = "#205909";
 
-var selectRestaurant = function selectRestaurant(item, index) {
-  item.addEventListener('click', function () {
-    restaurantBtns.forEach(function (btn) {
-      return btn.style.background = "#F5F5F5";
+  var selectRestaurant = function selectRestaurant(item, index) {
+    item.addEventListener('click', function () {
+      restaurantBtns.forEach(function (btn) {
+        return btn.style.background = "#F5F5F5";
+      });
+      restaurantBtns[index].style.background = "#205909";
     });
-    restaurantBtns[index].style.background = "darkgreen";
-  });
-};
+  };
 
-restaurantBtns.forEach(selectRestaurant); //date "yyyy-mm-dd"
+  restaurantBtns.forEach(selectRestaurant);
+} // time selector
 
-(0, _date.minmaxDate)(); // time selector
 
-var hours = [["12:00", "12:30", "13:00", "13:30", "14:00"], ["14:00", "14:30", "15:00", "15:30", "16:00"], ["16:00", "16:30", "17:00", "17:30", "18:00"], ["18:00", "18:30", "19:00", "19:30", "20:00"], ["20:00", "20:30", "21:00", "21:30", "22:00"]];
+function checkTime() {
+  var timeContainer = document.querySelector('#time-selection');
+  var hourContainer = document.querySelector('#hour-selection');
+  var hourBtns = document.querySelectorAll('#hour-selection span');
+  var timeBtns = document.querySelectorAll('#time-selection label');
+  var timeRadio = document.querySelectorAll('#time-selection input[type="radio"]');
+  var hours = [["12:00", "12:30", "13:00", "13:30", "14:00"], ["14:00", "14:30", "15:00", "15:30", "16:00"], ["16:00", "16:30", "17:00", "17:30", "18:00"], ["18:00", "18:30", "19:00", "19:30", "20:00"], ["20:00", "20:30", "21:00", "21:30", "22:00"]];
 
-var changeTime = function changeTime(item, index) {
-  item.addEventListener('click', function () {
-    timeContainer.style.display = "block";
-    hourContainer.style.display = "none";
-    hourBtns.forEach(function (btn) {
-      return btn.style.background = "#F5F5F5";
+  var selectTime = function selectTime(item, index) {
+    item.addEventListener('click', function () {
+      timeBtns.forEach(function (btn) {
+        return btn.style.background = "#F5F5F5";
+      });
+      timeBtns[index].style.background = "#205909";
     });
-    hourBtns[index].style.background = "darkgreen";
-    timeBtns[0].innerHTML = hours[index][0];
-    timeRadio[0].value = hours[index][0];
-    timeBtns[1].innerHTML = hours[index][1];
-    timeRadio[1].value = hours[index][1];
-    timeBtns[2].innerHTML = hours[index][2];
-    timeRadio[2].value = hours[index][2];
-    timeBtns[3].innerHTML = hours[index][3];
-    timeRadio[3].value = hours[index][3];
-    timeBtns[4].innerHTML = hours[index][4];
-    timeRadio[4].value = hours[index][4];
-    /*
-    for (let h = 0; h < hours[index].length; h++) {
-      timeBtns[index].innerHTML = hours[index][h];
-      timeRadio[index].value = hours[index][h];
-    */
-  });
-};
+  };
 
-var selectTime = function selectTime(item, index) {
-  item.addEventListener('click', function () {
-    timeBtns.forEach(function (btn) {
-      return btn.style.background = "#F5F5F5";
+  var changeTime = function changeTime(item, index) {
+    item.addEventListener('click', function () {
+      timeContainer.style.display = "block";
+      hourContainer.style.display = "none";
+      hourBtns.forEach(function (btn) {
+        return btn.style.background = "#F5F5F5";
+      });
+      hourBtns[index].style.background = "#205909";
+      timeBtns[0].innerHTML = hours[index][0];
+      timeRadio[0].value = hours[index][0];
+      timeBtns[1].innerHTML = hours[index][1];
+      timeRadio[1].value = hours[index][1];
+      timeBtns[2].innerHTML = hours[index][2];
+      timeRadio[2].value = hours[index][2];
+      timeBtns[3].innerHTML = hours[index][3];
+      timeRadio[3].value = hours[index][3];
+      timeBtns[4].innerHTML = hours[index][4];
+      timeRadio[4].value = hours[index][4];
     });
-    timeBtns[index].style.background = "darkgreen";
+  };
+
+  hourBtns.forEach(changeTime);
+  timeBtns.forEach(selectTime);
+}
+
+; //time back button
+
+function backTime() {
+  var timeContainer = document.querySelector('#time-selection');
+  var hourContainer = document.querySelector('#hour-selection');
+  document.querySelector('#timebackBtn').addEventListener('click', function () {
+    timeContainer.style.display = "none";
+    hourContainer.style.display = "block";
   });
-};
+} // party selection
 
-hourBtns.forEach(changeTime);
-timeBtns.forEach(selectTime); //time back button
 
-document.querySelector('#timebackBtn').addEventListener('click', function () {
-  timeContainer.style.display = "none";
-  hourContainer.style.display = "block";
-}); // party selection
+function checkParty() {
+  var partyBtns = document.querySelectorAll('.party label');
 
-var selectParty = function selectParty(item, index) {
-  item.addEventListener('click', function () {
-    partyBtns.forEach(function (btn) {
-      return btn.style.background = "#F5F5F5";
+  var selectParty = function selectParty(item, index) {
+    item.addEventListener('click', function () {
+      partyBtns.forEach(function (btn) {
+        return btn.style.background = "#F5F5F5";
+      });
+      partyBtns[index].style.background = "205909";
     });
-    partyBtns[index].style.background = "darkgreen";
+  };
+
+  partyBtns.forEach(selectParty);
+}
+
+; //form submit
+
+function submitForm() {
+  var bookForm = document.querySelector('#bookForm');
+  bookForm.addEventListener('submit', function (e) {
+    var error = (0, _validation.checkError)();
+
+    if (error === 0) {
+      document.querySelector('.submit-message').style.opacity = 1;
+    } else {
+      e.preventDefault();
+    }
+
+    ;
   });
-};
-
-partyBtns.forEach(selectParty); //form submit
-
-var bookForm = document.querySelector('#bookForm');
-bookForm.addEventListener('submit', function (e) {
-  var error = (0, _validation.checkError)();
-
-  if (error === 0) {
-    document.querySelector('.submit-message').style.opacity = 1;
-  } else {
-    e.preventDefault();
-  }
-
-  ;
-});
+}
 },{"./date":"js/date.js","./validation":"js/validation.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -351,7 +369,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59092" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55776" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

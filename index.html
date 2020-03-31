@@ -29,13 +29,7 @@
     </section>
     <section id="about-page">
         <h2>About</h2>
-        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                Inventore deserunt sed itaque iusto doloremque ipsum eaque? 
-                Beatae voluptas quidem consequuntur sapiente iure provident 
-                quisquam neque voluptatibus accusamus, est ea? Debitis 
-                ducimus, laudantium deserunt ratione quas beatae provident 
-                aperiam dolor. Esse atque similique, veniam placeat cum 
-                perspiciatis modi sint asperiores impedit.</div>
+        <div>Since 2003, we having been hand pressing fresh local produce into our burger patties to serve our in our independently run burger restaurants. All produce is made by us on site using the finest ingredients served alongside local beer</div>
         </section>
     <section id="menu-title">
         <h2>Menu</h2>
@@ -111,7 +105,7 @@
                         <p><a href="tel:078 3552 7828">078 3552 7828</a></p>
                         <p><a href="mailto:glensgaich@bigburger.com">glensgaich@bigburger.com</a></p>
                     </div>
-                    <button class="btn glensgaich-btn">View Location</button>
+                    <button type="button" class="glensgaich-btn">View Location</button>
                     <div class="hours">
                         <h3>Opening Hours</h3>
                         <p>Mon - Fri: 5pm - 10pm</p>
@@ -128,7 +122,7 @@
                             <p><a href="tel:070 4980 1780">070 4980 1780</a></p>
                             <p><a href="mailto:tanygrisiau@bigburger.com">tanygrisiau@bigburger.com</a></p>
                         </div>
-                        <button class="btn tanygrisiau-btn">View Location</button>
+                        <button type="button" class="tanygrisiau-btn">View Location</button>
                         <div class="hours">
                             <h3>Opening Hours</h3>
                             <p>Mon - Fri: 5pm - 10pm</p>
@@ -152,12 +146,24 @@
             <li><img src="/images/iconfinder_18-tripadvisor_travel_social_4202797.png"></li>
         </ul>
     </section>      
-    <div class="modal-bg modal-inactive">
+    <div class="modal-bg">
         <div class="modal">
-            <span class="modal-close"><i class="fas fa-times"></i></span>
-            <div id="glensgaich-map" class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=71%20brynglas%20road&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>Google Maps Generator by <a href="https://www.embedgooglemap.net">embedgooglemap.net</a></div><style>.mapouter{position:relative;text-align:right;height:100%;width:100%;}.gmap_canvas {overflow:hidden;background:none!important;height:100%;width:100%;}</style></div>
-            <div id="tanygrisiau-map" class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=101%20Essex%20Road&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>Google Maps Generator by <a href="https://www.embedgooglemap.net">embedgooglemap.net</a></div><style>.mapouter{position:relative;text-align:right;height:100%;width:100%;}.gmap_canvas {overflow:hidden;background:none!important;height:100%;width:100%;}</style></div>
-            
+            <p class="modal-header">
+                <span style="font-size: small">Google Maps Generator by <a href="https://www.embedgooglemap.net">embedgooglemap.net</a></span>
+                <span class="modal-close"><i class="fas fa-times"></i></span>
+            </p>
+            <div id="glensgaich-map" class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe width="600" height="450" id="gmap_canvas" src="https://maps.google.com/maps?q=71%20brynglas%20road&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                </div>
+                <style>.mapouter{position:relative;text-align:right;height:100%;width:100%;}.gmap_canvas {overflow:hidden;background:none!important;height:100%;width:100%;}</style>
+            </div>
+            <div id="tanygrisiau-map" class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe width="600" height="450" id="gmap_canvas" src="https://maps.google.com/maps?q=101%20Essex%20Road&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                </div>
+                <style>.mapouter{position:relative;text-align:right;height:100%;width:100%;}.gmap_canvas {overflow:hidden;background:none!important;height:100%;width:100%;}</style>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@16.1.2/dist/smooth-scroll.min.js"></script>

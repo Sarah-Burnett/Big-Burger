@@ -152,7 +152,6 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 #book form input[type="radio"], #book form .message textarea[type="radio"] {
   opacity: 1;
   height: 0;
-  position: absolute;
 }
 
 #book form .restaurant {
@@ -166,12 +165,18 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 }
 
 #book form .restaurant label {
+  display: inline-block;
+  height: 6vh;
   background: #F5F5F5;
   color: black;
   display: block;
   margin: 1vh 0;
   text-align: center;
   cursor: pointer;
+}
+
+#book form .restaurant label:hover {
+  background: #36970F;
 }
 
 #book form .time {
@@ -185,12 +190,18 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 }
 
 #book form .time label {
+  display: inline-block;
+  height: 6vh;
   background: #F5F5F5;
   color: black;
   display: block;
   margin: 1vh 0;
   text-align: center;
   cursor: pointer;
+}
+
+#book form .time label:hover {
+  background: #36970F;
 }
 
 #book form .time h3 {
@@ -203,6 +214,11 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   margin: 1vh 0;
   display: block;
   color: black;
+  height: 6vh;
+}
+
+#book form .time span:hover {
+  background: #36970F;
 }
 
 #book form #time-selection {
@@ -211,7 +227,7 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 }
 
 #book form #time-selection button, #book form #time-selection input[type=submit], #book form #time-selection .message textarea[type=submit], #book form .message #time-selection textarea[type=submit] {
-  width: 79vw;
+  width: 75vw;
 }
 
 @media (min-width: 500px) {
@@ -234,12 +250,18 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 }
 
 #book form .party label {
+  display: inline-block;
+  height: 6vh;
   background: #F5F5F5;
   color: black;
   display: block;
   margin: 1vh 0;
   text-align: center;
   cursor: pointer;
+}
+
+#book form .party label:hover {
+  background: #36970F;
 }
 
 #book form .message label h3:after {

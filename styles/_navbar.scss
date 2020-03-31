@@ -38,6 +38,7 @@ nav {
         justify-content: space-between;
         height: 0vh; 
         transition: height .5s ease-in-out;
+        pointer-events: none;
         li {
             opacity: 0;
         };
@@ -56,6 +57,7 @@ nav {
     }
    .nav-active {
        .nav-links {
+           pointer-events: auto;
             height: 35vh !important;
             li {
                 opacity: 1 !important;
@@ -91,6 +93,7 @@ nav {
         height: 20vh;
         img {z-index: 99;}
         .nav-links {
+            pointer-events: auto;
             position: static;
             height: 100%;
             flex-direction: row;

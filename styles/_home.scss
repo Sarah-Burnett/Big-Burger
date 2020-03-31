@@ -1,6 +1,9 @@
 
 #home-title {
-    background-image: url(/images/burger-bg.jpeg);
+    background-image: url(/images/burger-mob.jpg);
+    @media (min-width: 720px) {
+        background-image: url(/images/burger-desktop.jpg);
+    }
     background-repeat: no-repeat no-repeat;
     background-size: cover;
     background-position: center;

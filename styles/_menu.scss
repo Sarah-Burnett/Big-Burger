@@ -11,18 +11,19 @@
         text-decoration: none; 
         color: $green;
         &:hover{
-            color: darkgreen;
+            color: $darkgreen;
         }
     }
 }
 
 #menu-content {
-    @media (min-width: 720px){
+    height: auto;
+    @media (min-width: 500px){
         height: 100vh;
     }
     .menu-nav {
-        padding-top: 10vh;
         height: 25vh;
+        padding-top: 10vh;
         display: flex;
         align-items: center;
         justify-content: space-around;
@@ -40,27 +41,29 @@
             background: $green;
             cursor: pointer;
             &:hover {
-                background: darkgreen;
+                background: $darkgreen;
+            }
+        }
+    }  
+    .menu-container {
+        width: 100vw;
+        overflow-y: scroll;
+        transition: opacity 0.6s ease;
+        padding: 1em;
+        @media (min-width: 500px) {
+            height: 75vh;
+            @include flexCenter(column);
+            justify-content: space-evenly;
+            .menu-list{
+                padding: 0em;
+                column-count: 2;
+                .menu-item{
+                    display: inline-block;
+                }
+                @media (min-width: 720px) {
+                    width: 70vw;
+                };
             }
         }
     }
-    .menu-container {
-        height: 70vh;
-        width: 100vw;
-        padding: 1em;
-        overflow: hidden;
-        transition: opacity 0.6s ease;
-        @include flexCenter(column);
-        justify-content: space-around;
-    }
-    .menu-list {
-        @media (min-width: 720px) {
-            width: 70vw;
-            column-count: 2;
-        }
-    }
 }
-
-
-
-

@@ -12,7 +12,7 @@ export function reviewCarousel() {
     reviewItems.forEach ( review => {
         review.style.opacity = "0";
     });
-    reviewDots[reviewCounter].style.background = "darkgreen";
+    reviewDots[reviewCounter].style.background = "#205909";
     reviewItems[reviewCounter].style.opacity = "1";
     if (reviewCounter === reviewItems.length -1 ) return reviewCounter = 0;
     reviewCounter ++;
@@ -27,7 +27,7 @@ export function reviewCarousel() {
     item.addEventListener('click', () => {
         reviewDots.forEach( dot => dot.style.background = "#36970F");
         reviewItems.forEach (item => item.style.opacity = "0");
-        reviewDots[index].style.background = "darkgreen";
+        reviewDots[index].style.background = "#205909";
         reviewItems[index].style.opacity = "1";
         reviewCounter = index;
         reviewInterval();

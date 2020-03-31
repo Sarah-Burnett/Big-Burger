@@ -17,7 +17,8 @@
             justify-content: space-around;
             overflow: hidden;
             opacity: 0;
-            &:nth-child(1) {opacity: 1}
+            pointer-events: none;
+            &:nth-child(1) {opacity: 1; pointer-events: auto}
             button {
                 font-family: 'Slabo 27px';
                 margin: 1vh;
@@ -26,7 +27,7 @@
                 background: $green;
                 cursor: pointer;
                 &:hover {
-                    background: darkgreen;
+                    background: $darkgreen;
                 }
             }
             .contact {
@@ -45,7 +46,7 @@
         width: 15px;
         margin: 0 2px;
         background-color: $green;
-        &:nth-child(1) {background-color: darkgreen};
+        &:nth-child(1) {background-color:$darkgreen};
         border-radius: 50%;
         display: inline-block;
         transition: background-color 0.3s ease;
