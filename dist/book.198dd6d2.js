@@ -318,7 +318,7 @@ function checkParty() {
       partyBtns.forEach(function (btn) {
         return btn.style.background = "#F5F5F5";
       });
-      partyBtns[index].style.background = "205909";
+      partyBtns[index].style.background = "#205909";
     });
   };
 
@@ -369,7 +369,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55776" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64531" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -88,7 +88,7 @@ function checkParty() {
   const selectParty = (item, index) => {
     item.addEventListener('click', () => {
       partyBtns.forEach ( btn => btn.style.background = "#F5F5F5");
-      partyBtns[index].style.background = "205909";
+      partyBtns[index].style.background = "#205909";
     });
   };
 

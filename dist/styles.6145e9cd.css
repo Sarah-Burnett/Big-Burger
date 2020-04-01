@@ -17,6 +17,7 @@ body {
   font-family: 'Slabo 27px';
   font-size: 14px;
   line-height: 2;
+  text-shadow: 1px 1px 2px black;
   text-align: center;
   overflow-x: hidden;
 }
@@ -230,7 +231,13 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   height: 10px;
 }
 
-#about-page {
+#about-page .about-image {
+  display: none;
+}
+
+#about-page .about-content {
+  height: 100vh;
+  padding: 10vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -246,12 +253,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
           flex-direction: column;
 }
 
-#about-page .h2 {
-  height: 20vh;
-}
-
-#about-page div {
-  height: 50vh;
+#about-page .about-content div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -271,9 +273,37 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 }
 
 @media only screen and (min-width: 720px) {
-  #about-page div {
-    width: 50%;
+  #about-page {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  #about-page .about-image {
+    display: block;
+    width: 50vw;
+    height: 100vh;
+    background-image: url(/waitress.91bd79d5.jpg);
+    background-repeat: no-repeat no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  #about-page .about-content {
+    width: 50vw;
+    height: 100vh;
+  }
+  #about-page .about-content div {
     font-size: 12pt;
+    width: 40vw;
   }
 }
 
@@ -361,7 +391,6 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 
 #menu-content .menu-container {
   width: 100vw;
-  overflow-y: scroll;
   -webkit-transition: opacity 0.6s ease;
   transition: opacity 0.6s ease;
   padding: 1em;
@@ -393,7 +422,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
             column-count: 2;
   }
   #menu-content .menu-container .menu-list .menu-item {
-    display: inline-block;
+    display: block;
   }
 }
 
@@ -404,6 +433,11 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 }
 
 #reviews {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url(/burger-mob.a9b91a67.jpg);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url(/burger-mob.a9b91a67.jpg);
+  background-repeat: no-repeat no-repeat;
+  background-size: cover;
+  background-position: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -417,6 +451,13 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@media (min-width: 720px) {
+  #reviews {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url(/burger-desktop.37203440.jpg);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url(/burger-desktop.37203440.jpg);
+  }
 }
 
 #reviews h2 {
@@ -471,11 +512,8 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   opacity: 1;
 }
 
-@media only screen and (min-width: 720px) {
-  #reviews .review-box {
-    height: 70vh;
-    font-size: 1rem;
-  }
+#reviews .review-container .review-item .review-text {
+  width: 50vw;
 }
 
 #location {

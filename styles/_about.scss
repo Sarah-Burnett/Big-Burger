@@ -1,22 +1,39 @@
 #about-page {
-    @include flexCenter(column);
-    .h2 {
-        height: 20vh;
+    .about-image{
+        display: none;
     }
-    div {
-        height: 50vh;
-        @include flexCenter(row);
-        width: 100vw;
-        padding: 2em;
-        font-size: 10pt; 
+    .about-content{
+        height: 100vh;
+        padding: 10vh;
+        @include flexCenter(column);
+        div {
+            @include flexCenter(row);
+            width: 100vw;
+            padding: 2em;
+            font-size: 10pt; 
+        }
     }
 }
 
 @media only screen and (min-width: 720px) {
 #about-page {
-    div {
-        width: 50%;
-        font-size: 12pt
+    @include flexCenter(row);
+    .about-image {
+        display: block; 
+        width: 50vw;
+        height: 100vh;
+        background-image: url(../images/waitress.jpg);
+        background-repeat: no-repeat no-repeat;
+        background-size: cover;
+        background-position: center;   
+    }
+    .about-content {
+        width: 50vw;
+        height: 100vh;
+        div {
+            font-size: 12pt;
+            width: 40vw;
+        }
     }
 }
 }

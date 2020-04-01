@@ -187,14 +187,14 @@ module.exports = [{
     "price": "£5"
   }, {
     "title": "Apple crumble",
-    "ingredients": "Get in mu belly",
+    "ingredients": "Get in my belly",
     "price": "£5"
   }, {
     "title": "Another pudding",
-    "ingredients": "yum yum pudding",
+    "ingredients": "Did I look hard enough for a menu api?",
     "price": "£5"
   }, {
-    "title": "Brownies",
+    "title": "Brownie",
     "ingredients": "Classic with side of raspberry coulis",
     "price": "£5"
   }]
@@ -227,7 +227,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55776" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64531" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

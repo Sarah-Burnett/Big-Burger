@@ -47,7 +47,6 @@
     }  
     .menu-container {
         width: 100vw;
-        overflow-y: scroll;
         transition: opacity 0.6s ease;
         padding: 1em;
         @media (min-width: 500px) {
@@ -58,7 +57,7 @@
                 padding: 0em;
                 column-count: 2;
                 .menu-item{
-                    display: inline-block;
+                    display: block;
                 }
                 @media (min-width: 720px) {
                     width: 70vw;
