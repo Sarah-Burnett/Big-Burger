@@ -1,3 +1,4 @@
+"use strict";
 
 // nav bar burger
 const burger = document.querySelector(".burger");

@@ -337,8 +337,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.toggleModal = toggleModal;
 
 function toggleModal() {
-  var mapBtnG = document.querySelector(".glensgaich-btn");
-  var mapBtnT = document.querySelector(".tanygrisiau-btn");
   var modal = document.querySelector(".modal-bg");
 
   function showModal(contents) {
@@ -353,19 +351,27 @@ function toggleModal() {
     modal.classList.remove("modal-active");
     document.querySelector("#glensgaich-map").style.display = "none";
     document.querySelector("#tanygrisiau-map").style.display = "none";
+    document.querySelector("#notification").style.display = "none";
   }
 
-  mapBtnG.addEventListener('click', function () {
+  function showClosure() {
+    var message = "<h1>Covid-19 Coronavirus</h1><p>Unfortunately we are CLOSED until further notice<br><br>Thank you to all our loyal customers<br><br>Take care and hopefully see you soon</p>";
+    document.querySelector("#notification").innerHTML = message;
+    showModal("#notification");
+  }
+
+  document.querySelector(".glensgaich-btn").addEventListener('click', function () {
     showModal("#glensgaich-map");
   });
-  mapBtnT.addEventListener('click', function () {
+  document.querySelector(".tanygrisiau-btn").addEventListener('click', function () {
     showModal("#tanygrisiau-map");
   });
   document.querySelector(".modal-close").addEventListener('click', hideModal);
   hideModal();
+  showClosure();
 }
 },{}],"js/index.js":[function(require,module,exports) {
-"use strict";
+"use strict"; // nav bar burger
 
 var _menu = require("./menu");
 
@@ -375,7 +381,6 @@ var _location = require("./location");
 
 var _modal = require("./modal");
 
-// nav bar burger
 var burger = document.querySelector(".burger");
 var nav = document.querySelector("nav");
 
@@ -445,7 +450,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64531" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55762" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

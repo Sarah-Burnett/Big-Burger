@@ -15,7 +15,7 @@ body {
   overflow-x: hidden;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 720px) {
   body {
     background-image: url(/images/burger-bg.jpeg);
     background-repeat: no-repeat no-repeat;
@@ -80,13 +80,13 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   padding: 1em;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 720px) {
   #book {
     margin: 10vh auto;
   }
 }
 
-@media (min-width: 500px) {
+@media (min-width: 720px) {
   #book {
     width: 60vw;
   }
@@ -113,7 +113,7 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   width: 80vw;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 720px) {
   #book form div {
     width: 45vw;
   }
@@ -134,7 +134,7 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   background: #F5F5F5;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 720px) {
   #book form input, #book form .message textarea {
     width: 40vw;
   }
@@ -150,7 +150,7 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 }
 
 #book form input[type="radio"], #book form .message textarea[type="radio"] {
-  opacity: 1;
+  opacity: 0;
   height: 0;
 }
 
@@ -158,7 +158,7 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   width: 75vw;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 720px) {
   #book form .restaurant {
     width: 40vw;
   }
@@ -183,7 +183,7 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   width: 75vw;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 720px) {
   #book form .time {
     width: 40vw;
   }
@@ -208,7 +208,7 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   height: 8vh;
 }
 
-#book form .time span {
+#book form .time #hour-selection span {
   background: #F5F5F5;
   cursor: pointer;
   margin: 1vh 0;
@@ -217,21 +217,21 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   height: 6vh;
 }
 
-#book form .time span:hover {
+#book form .time #hour-selection span:hover {
   background: #36970F;
 }
 
-#book form #time-selection {
+#book form .time #time-selection {
   display: none;
   position: relative;
 }
 
-#book form #time-selection button, #book form #time-selection input[type=submit], #book form #time-selection .message textarea[type=submit], #book form .message #time-selection textarea[type=submit] {
+#book form .time #time-selection button, #book form .time #time-selection input[type=submit], #book form .time #time-selection .message textarea[type=submit], #book form .message .time #time-selection textarea[type=submit] {
   width: 75vw;
 }
 
-@media (min-width: 500px) {
-  #book form #time-selection button, #book form #time-selection input[type=submit], #book form #time-selection .message textarea[type=submit], #book form .message #time-selection textarea[type=submit] {
+@media (min-width: 720px) {
+  #book form .time #time-selection button, #book form .time #time-selection input[type=submit], #book form .time #time-selection .message textarea[type=submit], #book form .message .time #time-selection textarea[type=submit] {
     position: absolute;
     top: -9vh;
     right: 0;
@@ -243,7 +243,7 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   width: 75vw;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 720px) {
   #book form .party {
     width: 40vw;
   }
@@ -278,7 +278,7 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   color: black;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 720px) {
   #book form .message textarea {
     width: 40vw;
   }
@@ -288,21 +288,23 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   width: 75vw;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 720px) {
   #book form input[type=submit], #book form .message textarea[type=submit] {
     width: 8vw;
   }
 }
 
-#book form .submit-message {
+#book form .submit-message, #book form .failure-message {
   color: #36970F;
-  opacity: 0;
   text-align: center;
   width: 75vw;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-in;
+  transition: opacity 0.2s ease-in;
 }
 
-@media (min-width: 500px) {
-  #book form .submit-message {
+@media (min-width: 720px) {
+  #book form .submit-message, #book form .failure-message {
     width: 40vw;
   }
 }

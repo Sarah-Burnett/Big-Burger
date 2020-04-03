@@ -1,3 +1,5 @@
+import { dateFortnightplus1, dateTodayplus1 } from './date';
+
 const name = document.querySelector('#name');
 const email = document.querySelector('#email');
 const date = document.querySelector('#date');
@@ -6,8 +8,6 @@ const party = document.querySelector('input[name="party"]');
 const formBoxes = document.querySelectorAll('#bookForm div');
 const inputs = document.querySelectorAll('input');
 const errorBoxes = document.querySelectorAll('.error');
-
-import { dateFortnightplus1, dateTodayplus1 } from './date';
 
 export function checkError() {
     formBoxes.forEach( div => { 

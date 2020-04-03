@@ -24,14 +24,14 @@ mongoose.connection
     console.log(`Connection error: ${err.message}`);
     });
 
-app.post('/submit', (req, res) => { //need to switch form back to this page to use :) 
+app.post('/book', (req, res) => {
     const booking = new Booking(req.body);
     booking.save()
-        .then(() => res.send("Booking successful. Looking forward to seeing you soon"))
-        .catch((err) => {
-            console.log(err);
-            res.send("Booking error. Please try again or give us a call");
-          });
+    .then(() => res.send("Booking successful. Looking forward to seeing you soon"))
+    .catch((err) => {
+        console.log(err);
+        res.send("Booking error. Please try again or give us a call");
+      });
 });
 
 app.use(express.static('dist'));

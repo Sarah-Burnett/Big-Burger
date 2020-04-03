@@ -1,3 +1,5 @@
+"use strict";
+
 import { minmaxDate } from './date';
 import { checkError } from './validation';
 
@@ -28,8 +30,9 @@ function checkTime() {
   const hourContainer =  document.querySelector('#hour-selection')
   const hourBtns = document.querySelectorAll('#hour-selection span');
   const timeBtns = document.querySelectorAll('#time-selection label');
-  const timeRadio = document.querySelectorAll('#time-selection input[type="radio"]');
-  
+  const timeTxt = document.querySelectorAll('#time-selection label span');
+  const timeRadio = document.querySelectorAll('#time-selection input[type="radio"]');  
+
   const hours = [
     ["12:00", "12:30", "13:00", "13:30", "14:00"],
     ["14:00", "14:30", "15:00", "15:30", "16:00"],
@@ -52,15 +55,15 @@ function checkTime() {
       hourContainer.style.display = "none";
       hourBtns.forEach( btn => btn.style.background = "#F5F5F5");
       hourBtns[index].style.background = "#205909";
-      timeBtns[0].innerHTML = hours[index][0];
+      timeTxt[0].innerHTML = hours[index][0];
       timeRadio[0].value = hours[index][0];
-      timeBtns[1].innerHTML = hours[index][1];
+      timeTxt[1].innerHTML = hours[index][1];
       timeRadio[1].value = hours[index][1];
-      timeBtns[2].innerHTML = hours[index][2];
+      timeTxt[2].innerHTML = hours[index][2];
       timeRadio[2].value = hours[index][2];
-      timeBtns[3].innerHTML = hours[index][3];
+      timeTxt[3].innerHTML = hours[index][3];
       timeRadio[3].value = hours[index][3];
-      timeBtns[4].innerHTML = hours[index][4];
+      timeTxt[4].innerHTML = hours[index][4];
       timeRadio[4].value = hours[index][4];
       })
     };
@@ -101,14 +104,34 @@ function submitForm() {
   const bookForm = document.querySelector('#bookForm');
 
   bookForm.addEventListener('submit', (e) => {  
+      e.preventDefault();
       const error = checkError();
       if (error === 0) {
-      document.querySelector('.submit-message').style.opacity = 1;
-      } else {    
-        e.preventDefault();
-      };
+        postForm();
+      }
   });
 }
 
+const postForm = () => {
+  const form = document.querySelector('#bookForm');
+  const name = form.elements["name"].value;
+  const email = form.elements["email"].value;
+  const restaurant = form.elements["restaurant"].value;
+  const date = form.elements["date"].value;
+  const time = form.elements["time"].value;
+  const party = form.elements["party"].value;
+  const message = form.elements["message"].value;
 
-
+  const params = `name=${name}&email=${email}&restaurant=${restaurant}&date=${date}&time=${time}&party=${party}&message=${message}`;
+  const xhr = new XMLHttpRequest;
+  xhr.open('POST', '/book', true);
+  xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  xhr.onload = function(){
+    if(this.status === 200){
+      document.querySelector('.submit-message').style.opacity = 1;
+    } else {
+      document.querySelector('.failure-message').style.opacity = 1;
+    }
+  };
+  xhr.send(params);
+};

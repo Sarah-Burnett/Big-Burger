@@ -660,40 +660,31 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
       -ms-flex-pack: center;
           justify-content: center;
   z-index: 99;
-  visibility: hidden;
   opacity: 0;
   -webkit-transition: opacity 0.6s ease;
   transition: opacity 0.6s ease;
+  pointer-events: none;
 }
 
 .modal {
   padding: 0 1em 1em 1em;
   position: relative;
   background: #F5F5F5;
-  height: 100vh;
+  height: 60vh;
   width: 100vw;
+  text-shadow: none;
 }
 
 .modal div {
+  background: black;
   display: "none";
+  height: 50vh;
 }
 
 .modal-header {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  text-align: right;
   color: #36970F;
-}
-
-.modal-header span {
-  display: block;
 }
 
 .modal-header .modal-close {
@@ -701,14 +692,14 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 }
 
 .modal-active {
-  visibility: visible;
   opacity: 1;
+  pointer-events: auto;
 }
 
 @media only screen and (min-width: 720px) {
   .modal {
-    height: 500px;
-    width: 600px;
+    height: 60vh;
+    width: 50vw;
   }
 }
 

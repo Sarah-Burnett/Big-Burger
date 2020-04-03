@@ -261,6 +261,7 @@ function checkTime() {
   var hourContainer = document.querySelector('#hour-selection');
   var hourBtns = document.querySelectorAll('#hour-selection span');
   var timeBtns = document.querySelectorAll('#time-selection label');
+  var timeTxt = document.querySelectorAll('#time-selection label span');
   var timeRadio = document.querySelectorAll('#time-selection input[type="radio"]');
   var hours = [["12:00", "12:30", "13:00", "13:30", "14:00"], ["14:00", "14:30", "15:00", "15:30", "16:00"], ["16:00", "16:30", "17:00", "17:30", "18:00"], ["18:00", "18:30", "19:00", "19:30", "20:00"], ["20:00", "20:30", "21:00", "21:30", "22:00"]];
 
@@ -281,15 +282,15 @@ function checkTime() {
         return btn.style.background = "#F5F5F5";
       });
       hourBtns[index].style.background = "#205909";
-      timeBtns[0].innerHTML = hours[index][0];
+      timeTxt[0].innerHTML = hours[index][0];
       timeRadio[0].value = hours[index][0];
-      timeBtns[1].innerHTML = hours[index][1];
+      timeTxt[1].innerHTML = hours[index][1];
       timeRadio[1].value = hours[index][1];
-      timeBtns[2].innerHTML = hours[index][2];
+      timeTxt[2].innerHTML = hours[index][2];
       timeRadio[2].value = hours[index][2];
-      timeBtns[3].innerHTML = hours[index][3];
+      timeTxt[3].innerHTML = hours[index][3];
       timeRadio[3].value = hours[index][3];
-      timeBtns[4].innerHTML = hours[index][4];
+      timeTxt[4].innerHTML = hours[index][4];
       timeRadio[4].value = hours[index][4];
     });
   };
@@ -330,17 +331,39 @@ function checkParty() {
 function submitForm() {
   var bookForm = document.querySelector('#bookForm');
   bookForm.addEventListener('submit', function (e) {
+    e.preventDefault();
     var error = (0, _validation.checkError)();
 
     if (error === 0) {
-      document.querySelector('.submit-message').style.opacity = 1;
-    } else {
-      e.preventDefault();
+      postForm();
     }
-
-    ;
   });
 }
+
+var postForm = function postForm() {
+  var form = document.querySelector('#bookForm');
+  var name = form.elements["name"].value;
+  var email = form.elements["email"].value;
+  var restaurant = form.elements["restaurant"].value;
+  var date = form.elements["date"].value;
+  var time = form.elements["time"].value;
+  var party = form.elements["party"].value;
+  var message = form.elements["message"].value;
+  var params = "name=".concat(name, "&email=").concat(email, "&restaurant=").concat(restaurant, "&date=").concat(date, "&time=").concat(time, "&party=").concat(party, "&message=").concat(message);
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/book', true);
+  xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+
+  xhr.onload = function () {
+    if (this.status === 200) {
+      document.querySelector('.submit-message').style.opacity = 1;
+    } else {
+      document.querySelector('.failure-message').style.opacity = 1;
+    }
+  };
+
+  xhr.send(params);
+};
 },{"./date":"js/date.js","./validation":"js/validation.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -369,7 +392,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64531" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55762" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

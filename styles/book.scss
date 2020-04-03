@@ -2,7 +2,7 @@
 
 @mixin selectionBox {
     width: 75vw;
-        @media (min-width: 500px) {
+        @media (min-width: 720px) {
             width: 40vw;
         }
     label {
@@ -34,7 +34,7 @@ body{
     line-height: 2;
     text-align: center;
     overflow-x: hidden;
-    @media (min-width: 500px) {
+    @media (min-width: 720px) {
         background-image: url(/images/burger-bg.jpeg);
         background-repeat: no-repeat no-repeat;
         background-size: cover;
@@ -75,11 +75,11 @@ nav {
 #book {
     background: black;
     margin: auto;
-    @media (min-width: 500px) {
+    @media (min-width: 720px) {
         margin: 10vh auto;
     }
     width: 95vw; 
-    @media (min-width: 500px) {
+    @media (min-width: 720px) {
         width: 60vw;
     }
     height: auto;
@@ -97,7 +97,7 @@ nav {
         flex-direction: space-evenly;
         div {
             width: 80vw;
-            @media (min-width: 500px) {
+            @media (min-width: 720px) {
                 width: 45vw;
             }
         }
@@ -112,7 +112,7 @@ nav {
             padding: 1vw;
             margin: 1vw;
             width: 75vw;
-            @media (min-width: 500px) {
+            @media (min-width: 720px) {
                 width: 40vw;
             }
             background: $white;
@@ -125,7 +125,7 @@ nav {
             color: red;
         }
         input[type="radio"] {
-            opacity: 1;
+            opacity: 0;
             height: 0;
         }
         .restaurant {
@@ -136,30 +136,32 @@ nav {
             h3 {
                 height: 8vh;
             }                  
-            span {
-                background: $white;
-                cursor: pointer;
-                margin: 1vh 0;
-                display: block;
-                color: black;
-                height: 6vh;
-                &:hover {
-                    background: $green;
+            #hour-selection {
+                span {
+                    background: $white;
+                    cursor: pointer;
+                    margin: 1vh 0;
+                    display: block;
+                    color: black;
+                    height: 6vh;
+                    &:hover {
+                        background: $green;
+                    }
                 }
             }
-        }
-        #time-selection {
-            display: none;
-            position: relative;
-            button {
-                width: 75vw;
-                @media (min-width: 500px) {
-                    position: absolute;
-                    top: -9vh;
-                    right: 0;
-                    width: 7vw;
-                }
-            }   
+            #time-selection {
+                display: none;
+                position: relative;
+                button {
+                    width: 75vw;
+                    @media (min-width: 720px) {
+                        position: absolute;
+                        top: -9vh;
+                        right: 0;
+                        width: 7vw;
+                    }
+                }   
+            }    
         }
         .party {
             @include selectionBox();
@@ -175,7 +177,7 @@ nav {
             height: 30vh;
             resize: vertical;
             width: 75vw;
-            @media (min-width: 500px) {
+            @media (min-width: 720px) {
                 width: 40vw;
             }
             font-family: 'Slabo 27px';
@@ -187,18 +189,22 @@ nav {
         input[type=submit] {
             @extend button;
             width: 75vw;
-            @media (min-width: 500px) {
+            @media (min-width: 720px) {
                 width: 8vw;
             }
         }
         .submit-message {
             color: $green;
-            opacity: 0;
             text-align: center;
             width: 75vw;
-            @media (min-width: 500px) {
+            opacity: 0;
+            transition: opacity 0.2s ease-in;
+            @media (min-width: 720px) {
                 width: 40vw;
             }
+        }
+        .failure-message {
+            @extend .submit-message;
         }
     }
 }
