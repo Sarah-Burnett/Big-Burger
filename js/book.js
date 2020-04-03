@@ -122,14 +122,16 @@ const postForm = () => {
   const party = form.elements["party"].value;
   const message = form.elements["message"].value;
 
-  const params = `name=${name}&email=${email}&restaurant=${restaurant}&date=${date}&time=${time}&party=${party}&message=${message}`;
+  const params = `form-name=booking&name=${name}&email=${email}&restaurant=${restaurant}&date=${date}&time=${time}&party=${party}&message=${message}`;
   const xhr = new XMLHttpRequest;
   xhr.open('POST', '/book', true);
   xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
   xhr.onload = function(){
     if(this.status === 200){
+      document.querySelector('.submit-message').style.display = 1;
       document.querySelector('.submit-message').style.opacity = 1;
     } else {
+      document.querySelector('.failure-message').style.display = 1;
       document.querySelector('.failure-message').style.opacity = 1;
     }
   };

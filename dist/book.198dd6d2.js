@@ -349,15 +349,17 @@ var postForm = function postForm() {
   var time = form.elements["time"].value;
   var party = form.elements["party"].value;
   var message = form.elements["message"].value;
-  var params = "name=".concat(name, "&email=").concat(email, "&restaurant=").concat(restaurant, "&date=").concat(date, "&time=").concat(time, "&party=").concat(party, "&message=").concat(message);
+  var params = "form-name=booking&name=".concat(name, "&email=").concat(email, "&restaurant=").concat(restaurant, "&date=").concat(date, "&time=").concat(time, "&party=").concat(party, "&message=").concat(message);
   var xhr = new XMLHttpRequest();
   xhr.open('POST', '/book', true);
   xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function () {
     if (this.status === 200) {
+      document.querySelector('.submit-message').style.display = 1;
       document.querySelector('.submit-message').style.opacity = 1;
     } else {
+      document.querySelector('.failure-message').style.display = 1;
       document.querySelector('.failure-message').style.opacity = 1;
     }
   };
@@ -392,7 +394,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55762" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60077" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
