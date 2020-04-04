@@ -6,12 +6,11 @@
             width: 40vw;
         }
     label {
-        display: inline-block;
-        height: 6vh;
+        display: block;
         background: $white;
         color: black;
-        display: block;
-        margin: 1vh 0;
+        height: 8vh;
+        margin: 2vh 0;
         text-align: center;
         cursor: pointer;
         &:hover {
@@ -42,12 +41,15 @@ body{
         }
 }
 
+:focus {
+    outline-color: darkgreen;
+}
+
 button {
     padding: 1em;
     border-style: none;
     background: $green;
     font-family: 'Slabo 27px';
-    outline-style: none;
     cursor: pointer;
     &:hover {
         background: darkgreen;
@@ -56,6 +58,7 @@ button {
 
 nav {
     width: 100vw;
+    height: 10vh;
     background: black;
     display: flex;
     justify-content: space-between;    
@@ -109,10 +112,13 @@ nav {
         input{
             font-family: 'Slabo 27px';
             text-align: center;
-            padding: 1vw;
-            margin: 1vw;
+            height: 8vh;
+            padding: 2vw;
+            margin: 2vw;
             width: 75vw;
             @media (min-width: 720px) {
+                padding: 1vw;
+                margin: 1vw;
                 width: 40vw;
             }
             background: $white;
@@ -140,10 +146,10 @@ nav {
                 span {
                     background: $white;
                     cursor: pointer;
-                    margin: 1vh 0;
+                    height: 8vh;
+                    margin: 2vh 0;
                     display: block;
                     color: black;
-                    height: 6vh;
                     &:hover {
                         background: $green;
                     }

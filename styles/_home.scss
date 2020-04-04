@@ -9,8 +9,5 @@
     background-position: center;
     padding: 1em;
     @include flexCenter(row);  
-    .arrow {
-        height: 10px;
-    }
 }
 

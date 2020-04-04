@@ -1,10 +1,10 @@
 nav {
-    scroll-snap-align: center;
     width: 100vw;
     height: 15vh;
     background: black;
     display: flex;
     justify-content: space-between;
+    scroll-snap-align: center;
     align-items: center;
     text-decoration: none;
     list-style: none;
@@ -91,7 +91,10 @@ nav {
         align-items: space-between;
         justify-content: space-between;
         height: 20vh;
-        img {z-index: 99;}
+        img {
+            z-index: 99;
+            height: 10vh;
+        }
         .nav-links {
             pointer-events: auto;
             position: static;

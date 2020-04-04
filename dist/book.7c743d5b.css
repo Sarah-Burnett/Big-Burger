@@ -17,11 +17,15 @@ body {
 
 @media (min-width: 720px) {
   body {
-    background-image: url(/burger-bg.dd8dc30b.jpeg);
+    background-image: url(/8a529690a574089d571a7afadd8dc30b.jpeg);
     background-repeat: no-repeat no-repeat;
     background-size: cover;
     background-position: center;
   }
+}
+
+:focus {
+  outline-color: darkgreen;
 }
 
 button, #book form input[type=submit], #book form .message textarea[type=submit] {
@@ -29,7 +33,6 @@ button, #book form input[type=submit], #book form .message textarea[type=submit]
   border-style: none;
   background: #36970F;
   font-family: 'Slabo 27px';
-  outline-style: none;
   cursor: pointer;
 }
 
@@ -39,6 +42,7 @@ button:hover, #book form input:hover[type=submit], #book form .message textarea:
 
 nav {
   width: 100vw;
+  height: 10vh;
   background: black;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -128,14 +132,17 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 #book form input, #book form .message textarea {
   font-family: 'Slabo 27px';
   text-align: center;
-  padding: 1vw;
-  margin: 1vw;
+  height: 8vh;
+  padding: 2vw;
+  margin: 2vw;
   width: 75vw;
   background: #F5F5F5;
 }
 
 @media (min-width: 720px) {
   #book form input, #book form .message textarea {
+    padding: 1vw;
+    margin: 1vw;
     width: 40vw;
   }
 }
@@ -165,12 +172,11 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 }
 
 #book form .restaurant label {
-  display: inline-block;
-  height: 6vh;
+  display: block;
   background: #F5F5F5;
   color: black;
-  display: block;
-  margin: 1vh 0;
+  height: 8vh;
+  margin: 2vh 0;
   text-align: center;
   cursor: pointer;
 }
@@ -190,12 +196,11 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 }
 
 #book form .time label {
-  display: inline-block;
-  height: 6vh;
+  display: block;
   background: #F5F5F5;
   color: black;
-  display: block;
-  margin: 1vh 0;
+  height: 8vh;
+  margin: 2vh 0;
   text-align: center;
   cursor: pointer;
 }
@@ -211,10 +216,10 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 #book form .time #hour-selection span {
   background: #F5F5F5;
   cursor: pointer;
-  margin: 1vh 0;
+  height: 8vh;
+  margin: 2vh 0;
   display: block;
   color: black;
-  height: 6vh;
 }
 
 #book form .time #hour-selection span:hover {
@@ -250,12 +255,11 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 }
 
 #book form .party label {
-  display: inline-block;
-  height: 6vh;
+  display: block;
   background: #F5F5F5;
   color: black;
-  display: block;
-  margin: 1vh 0;
+  height: 8vh;
+  margin: 2vh 0;
   text-align: center;
   cursor: pointer;
 }

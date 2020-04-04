@@ -39,7 +39,6 @@ section {
 }
 
 nav {
-  scroll-snap-align: center;
   width: 100vw;
   height: 15vh;
   background: black;
@@ -49,6 +48,7 @@ nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  scroll-snap-align: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -175,6 +175,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   }
   nav img {
     z-index: 99;
+    height: 10vh;
   }
   nav .nav-links {
     pointer-events: auto;
@@ -225,10 +226,6 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   #home-title, #menu-title, #reviews {
     background-image: url(/images/burger-desktop.jpg);
   }
-}
-
-#home-title .arrow, #menu-title .arrow, #reviews .arrow {
-  height: 10px;
 }
 
 #about-page .about-image {
@@ -517,6 +514,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 }
 
 #location {
+  height: auto;
   padding: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -531,6 +529,12 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@media (min-width: 500px) {
+  #location {
+    height: 100vh;
+  }
 }
 
 #location h2 {
@@ -558,7 +562,6 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  overflow: hidden;
   opacity: 0;
   pointer-events: none;
 }
@@ -613,6 +616,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 }
 
 #connect {
+  scroll-snap-align: center;
   height: 30vh;
   padding-top: 10vh;
 }
@@ -667,21 +671,35 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 }
 
 .modal {
-  padding: 0 1em 1em 1em;
+  border: 1.5em solid #F5F5F5;
+  border-top: none;
   position: relative;
-  background: #F5F5F5;
-  height: 60vh;
+  background: #000;
+  height: 100vh;
   width: 100vw;
   text-shadow: none;
 }
 
+@media (min-width: 720px) {
+  .modal {
+    height: 60vh;
+    width: 50vw;
+  }
+}
+
 .modal div {
-  background: black;
   display: "none";
-  height: 50vh;
+  height: 100%;
+  width: 100%;
+}
+
+#notification {
+  height: 60vh;
 }
 
 .modal-header {
+  height: 1.5em;
+  background: #F5F5F5;
   width: 100%;
   text-align: right;
   color: #36970F;
@@ -694,13 +712,6 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 .modal-active {
   opacity: 1;
   pointer-events: auto;
-}
-
-@media only screen and (min-width: 720px) {
-  .modal {
-    height: 60vh;
-    width: 50vw;
-  }
 }
 
 /* 320, 720, 1020 */

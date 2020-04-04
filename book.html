@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav data-scroll-header class="header">
-        <img src="/images/burger-logo-smaller.jpg"/>
+        <img src="/images/burger-logo-smaller.jpg" alt="Big Burger Logo"/>
         <a href="/"><button>Back</button></a>
     </nav>
     <div id="book">
@@ -31,8 +31,8 @@
             <div class="restaurant">
                 <h3>Which restaurant?</h3>
                 <p class="error restaurantError"></p>
-                <label for="glensgaich">Glensgaich<input type="radio" id="glensgaich" name="restaurant" value="glensgaich" required checked></label>
-                <label for="tanygrisiau">Tanygrisiau<input type="radio" id="tanygrisiau" name="restaurant" value="tanygrisiau" required></label>        
+                <label for="glensgaich" role="button" tabindex="0">Glensgaich<input type="radio" id="glensgaich" name="restaurant" value="glensgaich" required checked></label>
+                <label for="tanygrisiau" role="button" tabindex="0">Tanygrisiau<input type="radio" id="tanygrisiau" name="restaurant" value="tanygrisiau" required></label>        
             </div>
             <div class="date">
                 <label for="date"><h3>Date of Booking</h3></label>
@@ -43,31 +43,31 @@
                 <h3>Time of Booking</h3>
                 <p class="error timeError"></p>
                 <p id="hour-selection">
-                    <span>12-2pm</span>
-                    <span>2-4pm</span>
-                    <span>4-6pm</span>
-                    <span>6-8pm</span>
-                    <span>8-10pm</span>
+                    <span role="button" tabindex="0">12-2pm</span>
+                    <span role="button" tabindex="0">2-4pm</span>
+                    <span role="button" tabindex="0">4-6pm</span>
+                    <span role="button" tabindex="0">6-8pm</span>
+                    <span role="button" tabindex="0">8-10pm</span>
                 </p>
                 <p id="time-selection">
                         <button id="timebackBtn" type="button">Back</button>
-                        <label for="time1"><span>12:00</span><input type="radio" id="time1" name="time" value="12:00" required></label>
-                        <label for="time2"><span>12:30</span><input type="radio" id="time2" name="time" value="12:30" required></label>
-                        <label for="time3"><span>13:00</span><input type="radio" id="time3" name="time" value="13:00" required></label>
-                        <label for="time4"><span>13:30</span><input type="radio" id="time4" name="time" value="13:30" required></label>
-                        <label for="time5"><span>14:00</span><input type="radio" id="time5" name="time" value="14:00" required></label>
+                        <label for="time1" role="button" tabindex="0"><span>12:00</span><input type="radio" id="time1" name="time" value="12:00" required></label>
+                        <label for="time2" role="button" tabindex="0"><span>12:30</span><input type="radio" id="time2" name="time" value="12:30" required></label>
+                        <label for="time3" role="button" tabindex="0"><span>13:00</span><input type="radio" id="time3" name="time" value="13:00" required></label>
+                        <label for="time4" role="button" tabindex="0"><span>13:30</span><input type="radio" id="time4" name="time" value="13:30" required></label>
+                        <label for="time5" role="button" tabindex="0"><span>14:00</span><input type="radio" id="time5" name="time" value="14:00" required></label>
                 </span> 
             </div>
             <div class="party">
                 <h3>Booking party</h3>
                 <p class="error partyError"></p>
-                <label for="party2">2 people<input type="radio" id="party2" name="party" value="2" required></label>
-                <label for="party3">3 people<input type="radio" id="party3" name="party" value="3" required></label>
-                <label for="party4">4 people<input type="radio" id="party4" name="party" value="4" required></label>
-                <label for="party5">5 people<input type="radio" id="party5" name="party" value="5" required></label>
-                <label for="party6">6 people<input type="radio" id="party6" name="party" value="6" required></label>
-                <label for="party7">7 people<input type="radio" id="party7" name="party" value="7" required></label>
-                <label for="party8">8 people<input type="radio" id="party8" name="party" value="8" required></label>
+                <label for="party2" role="button" tabindex="0">2 people<input type="radio" id="party2" name="party" value="2" required></label>
+                <label for="party3" role="button" tabindex="0">3 people<input type="radio" id="party3" name="party" value="3" required></label>
+                <label for="party4" role="button" tabindex="0">4 people<input type="radio" id="party4" name="party" value="4" required></label>
+                <label for="party5" role="button" tabindex="0">5 people<input type="radio" id="party5" name="party" value="5" required></label>
+                <label for="party6" role="button" tabindex="0">6 people<input type="radio" id="party6" name="party" value="6" required></label>
+                <label for="party7" role="button" tabindex="0">7 people<input type="radio" id="party7" name="party" value="7" required></label>
+                <label for="party8" role="button" tabindex="0">8 people<input type="radio" id="party8" name="party" value="8" required></label>
             </div>
             <div class="message">
                 <label for="message"><h3>Message</h3></label>
