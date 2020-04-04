@@ -128,11 +128,11 @@ const postForm = () => {
   xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
   xhr.onload = function(){
     if(this.status === 200){
-      document.querySelector('.submit-message').style.display = 1;
-      document.querySelector('.submit-message').style.opacity = 1;
+      document.querySelector('.submit-message').style.display = "block";
+      document.querySelector('.submit-message').style.opacity = "1";
     } else {
-      document.querySelector('.failure-message').style.display = 1;
-      document.querySelector('.failure-message').style.opacity = 1;
+      document.querySelector('.failure-message').style.display = "block";
+      document.querySelector('.failure-message').style.opacity = "1";
     }
   };
   xhr.send(params);

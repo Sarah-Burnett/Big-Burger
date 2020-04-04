@@ -693,10 +693,6 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   width: 100%;
 }
 
-#notification {
-  height: 60vh;
-}
-
 .modal-header {
   height: 1.5em;
   background: #F5F5F5;
