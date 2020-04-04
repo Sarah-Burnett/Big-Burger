@@ -128,6 +128,7 @@ const postForm = () => {
   xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
   xhr.onload = function(){
     if(this.status === 200){
+      console.log("this boi got it");
       document.querySelector('.submit-message').style.display = "block";
       document.querySelector('.submit-message').style.opacity = "1";
     } else {

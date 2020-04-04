@@ -356,11 +356,12 @@ var postForm = function postForm() {
 
   xhr.onload = function () {
     if (this.status === 200) {
-      document.querySelector('.submit-message').style.display = 1;
-      document.querySelector('.submit-message').style.opacity = 1;
+      console.log("this boi got it");
+      document.querySelector('.submit-message').style.display = "block";
+      document.querySelector('.submit-message').style.opacity = "1";
     } else {
-      document.querySelector('.failure-message').style.display = 1;
-      document.querySelector('.failure-message').style.opacity = 1;
+      document.querySelector('.failure-message').style.display = "block";
+      document.querySelector('.failure-message').style.opacity = "1";
     }
   };
 
@@ -394,7 +395,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64737" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49988" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
