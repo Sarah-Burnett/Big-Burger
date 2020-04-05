@@ -354,7 +354,6 @@ function submitForm() {
     var party = form.elements["party"].value;
     var message = form.elements["message"].value;
     var params = "form-name=booking&name=".concat(name, "&email=").concat(email, "&restaurant=").concat(restaurant, "&date=").concat(date, "&time=").concat(time, "&party=").concat(party, "&message=").concat(message);
-    console.log(params);
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/book', true);
     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
@@ -408,7 +407,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49533" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50468" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

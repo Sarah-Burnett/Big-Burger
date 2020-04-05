@@ -126,7 +126,6 @@ function submitForm() {
     const party = form.elements["party"].value;
     const message = form.elements["message"].value;
     const params = `form-name=booking&name=${name}&email=${email}&restaurant=${restaurant}&date=${date}&time=${time}&party=${party}&message=${message}`;
-    console.log(params);
     const xhr = new XMLHttpRequest;
     xhr.open('POST', '/book', true);
     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
