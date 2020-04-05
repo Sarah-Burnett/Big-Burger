@@ -121,6 +121,8 @@ const postForm = () => {
   const time = form.elements["time"].value;
   const party = form.elements["party"].value;
   const message = form.elements["message"].value;
+  const submitMsg = document.querySelector('.submit-message');
+  const failureMsg = document.querySelector('.failure-message');
 
   const params = `form-name=booking&name=${name}&email=${email}&restaurant=${restaurant}&date=${date}&time=${time}&party=${party}&message=${message}`;
   const xhr = new XMLHttpRequest;
@@ -128,12 +130,13 @@ const postForm = () => {
   xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
   xhr.onload = function(){
     if(this.status === 200){
-      console.log("this boi got it");
-      document.querySelector('.submit-message').style.display = "block";
-      document.querySelector('.submit-message').style.opacity = "1";
+      submitMsg.style.display = "block";
+      submitMsg.style.opacity = "1";
+      submitMsg.scrollIntoView();
     } else {
-      document.querySelector('.failure-message').style.display = "block";
-      document.querySelector('.failure-message').style.opacity = "1";
+      failureMsg.style.display = "block";
+      failureMsg.style.opacity = "1";
+      failureMsg.scrollIntoView();
     }
   };
   xhr.send(params);

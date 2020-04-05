@@ -383,7 +383,7 @@ function toggleNav() {
 burger.addEventListener('click', toggleNav); // fixed nav bar
 
 window.onscroll = function () {
-  if (window.pageYOffset >= 2) {
+  if (window.pageYOffset >= 10) {
     nav.classList.add("nav-fixed");
   } else {
     nav.classList.remove("nav-fixed");
@@ -405,15 +405,7 @@ var scroll = new SmoothScroll('a[href*="#"]', {
 
 (0, _location.locationCarousel)(); //modal
 
-(0, _modal.toggleModal)(); //date picker 
-
-/*
-const picker = new Pikaday({
-  field: document.querySelector('#date'),
-  firstDay: 1,
-  format: "DD/MM/YYYY",
-});
-*/
+(0, _modal.toggleModal)();
 },{"./menu":"js/menu.js","./review":"js/review.js","./location":"js/location.js","./modal":"js/modal.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -442,7 +434,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49988" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62219" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

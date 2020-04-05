@@ -6,7 +6,8 @@
             width: 40vw;
         }
     label {
-        display: block;
+        @include flexCenter(row);
+        width: inherit;
         background: $white;
         color: black;
         height: 8vh;
@@ -17,6 +18,12 @@
             background: $green;
         }
     }
+    input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        height: 0;
+        width: 0;
+    }
 }
 
 * {
@@ -25,11 +32,18 @@
     box-sizing: border-box;
 }
 
-body{
-    background: black;
+html {
+    background: #000;
     color: $white;
-    font-family: 'Slabo 27px';
-    font-size: 12pt;
+    font-family: 'Slabo 27px', serif;
+    font-size: 14px; 
+    @media (min-width: 600px) {font-size: 16px};
+    @media (min-width: 900px) {font-size: 18px};
+    @media (min-width: 1200px) {font-size: 20px};
+    @media (min-width: 1800px) {font-size: 22px};
+}
+
+body{
     line-height: 2;
     text-align: center;
     overflow-x: hidden;
@@ -42,7 +56,7 @@ body{
 }
 
 :focus {
-    outline-color: darkgreen;
+    outline-color: $darkgreen;
 }
 
 button {
@@ -57,9 +71,9 @@ button {
 }
 
 nav {
+    background: #000;
     width: 100vw;
     height: 10vh;
-    background: black;
     display: flex;
     justify-content: space-between;    
     img {
@@ -76,7 +90,7 @@ nav {
 
 
 #book {
-    background: black;
+    background: #000;
     margin: auto;
     @media (min-width: 720px) {
         margin: 10vh auto;
@@ -92,7 +106,6 @@ nav {
     justify-content: space-between;
     padding: 1em;
     form {
-        font-size: 12pt;
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -106,7 +119,6 @@ nav {
         }
         h3::after {
             content: ' * ';
-            font-size: larger;
             color: $green;
         }
         input{
@@ -130,10 +142,6 @@ nav {
             display: none;
             color: red;
         }
-        input[type="radio"] {
-            opacity: 0;
-            height: 0;
-        }
         .restaurant {
             @include selectionBox();
         }
@@ -143,16 +151,9 @@ nav {
                 height: 8vh;
             }                  
             #hour-selection {
+                @include selectionBox();
                 span {
-                    background: $white;
-                    cursor: pointer;
-                    height: 8vh;
-                    margin: 2vh 0;
-                    display: block;
-                    color: black;
-                    &:hover {
-                        background: $green;
-                    }
+                   @extend label;
                 }
             }
             #time-selection {

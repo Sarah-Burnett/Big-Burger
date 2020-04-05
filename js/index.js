@@ -11,19 +11,21 @@ burger.addEventListener('click', toggleNav);
 
 // fixed nav bar
 window.onscroll = () => {
-  if (window.pageYOffset >= 2) {
-      nav.classList.add("nav-fixed");
+  if (window.pageYOffset >= 10) {
+     nav.classList.add("nav-fixed");
   }
-  else {nav.classList.remove("nav-fixed")};
-  }
+  else {
+    nav.classList.remove("nav-fixed")
+  };
+}
+
   
-  
-  // smooth scroll 
-  const scroll = new SmoothScroll('a[href*="#"]', {
-    speed: 500,
-    speedAsDuration: true,
-    header: '[data-scroll-header]'
-  });
+// smooth scroll 
+const scroll = new SmoothScroll('a[href*="#"]', {
+  speed: 500,
+  speedAsDuration: true,
+  header: '[data-scroll-header]'
+});
 
 // update menu
 import { menuContents } from './menu';
@@ -40,15 +42,6 @@ locationCarousel();
 //modal
 import { toggleModal } from './modal';
 toggleModal();
-
-//date picker 
-/*
-const picker = new Pikaday({
-  field: document.querySelector('#date'),
-  firstDay: 1,
-  format: "DD/MM/YYYY",
-});
-*/
 
 
 

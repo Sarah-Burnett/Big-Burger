@@ -1,5 +1,6 @@
 #location {
     height: auto;
+    min-height: 100vh;
     @media (min-width: 500px){
         height: 100vh;
     };

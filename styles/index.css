@@ -9,13 +9,37 @@ html {
   scroll-behavior: smooth;
   -ms-scroll-snap-type: y mandatory;
       scroll-snap-type: y mandatory;
+  font-family: 'Slabo 27px', serif;
+  font-size: 14px;
+}
+
+@media (min-width: 600px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1800px) {
+  html {
+    font-size: 22px;
+  }
 }
 
 body {
   background: #000;
   color: #F5F5F5;
-  font-family: 'Slabo 27px';
-  font-size: 14px;
   line-height: 2;
   text-shadow: 1px 1px 2px black;
   text-align: center;
@@ -32,12 +56,6 @@ section {
   outline-color: darkgreen;
 }
 
-@media only screen and (min-width: 720px) {
-  body {
-    font-size: 14pt;
-  }
-}
-
 nav {
   width: 100vw;
   height: 15vh;
@@ -48,7 +66,7 @@ nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -146,10 +164,10 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 }
 
 .nav-fixed {
+  height: 10vh;
   position: fixed;
   top: 0;
   left: 0;
-  height: 10vh;
 }
 
 .nav-fixed .nav-links {
@@ -171,7 +189,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-    height: 20vh;
+    height: 15vh;
   }
   nav img {
     z-index: 99;
@@ -266,7 +284,6 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
           flex-direction: row;
   width: 100vw;
   padding: 2em;
-  font-size: 10pt;
 }
 
 @media only screen and (min-width: 720px) {
@@ -299,7 +316,6 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
     height: 100vh;
   }
   #about-page .about-content div {
-    font-size: 12pt;
     width: 40vw;
   }
 }
@@ -341,6 +357,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 
 #menu-content {
   height: auto;
+  min-height: 100vh;
 }
 
 @media (min-width: 500px) {
@@ -363,8 +380,6 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 }
 
 #menu-content .menu-nav button {
-  font-family: 'Slabo 27px';
-  font-size: 14px;
   height: 15vh;
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -515,6 +530,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 
 #location {
   height: auto;
+  min-height: 100vh;
   padding: 1em;
   display: -webkit-box;
   display: -ms-flexbox;

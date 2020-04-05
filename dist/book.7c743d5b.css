@@ -5,11 +5,38 @@
           box-sizing: border-box;
 }
 
-body {
-  background: black;
+html {
+  background: #000;
   color: #F5F5F5;
-  font-family: 'Slabo 27px';
-  font-size: 12pt;
+  font-family: 'Slabo 27px', serif;
+  font-size: 14px;
+}
+
+@media (min-width: 600px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1800px) {
+  html {
+    font-size: 22px;
+  }
+}
+
+body {
   line-height: 2;
   text-align: center;
   overflow-x: hidden;
@@ -25,7 +52,7 @@ body {
 }
 
 :focus {
-  outline-color: darkgreen;
+  outline-color: #205909;
 }
 
 button, #book form input[type=submit], #book form .message textarea[type=submit] {
@@ -41,9 +68,9 @@ button:hover, #book form input:hover[type=submit], #book form .message textarea:
 }
 
 nav {
+  background: #000;
   width: 100vw;
   height: 10vh;
-  background: black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -64,7 +91,7 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 }
 
 #book {
-  background: black;
+  background: #000;
   margin: auto;
   width: 95vw;
   height: auto;
@@ -97,7 +124,6 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 }
 
 #book form {
-  font-size: 12pt;
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -125,7 +151,6 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 
 #book form h3::after {
   content: ' * ';
-  font-size: larger;
   color: #36970F;
 }
 
@@ -156,11 +181,6 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   color: red;
 }
 
-#book form input[type="radio"], #book form .message textarea[type="radio"] {
-  opacity: 0;
-  height: 0;
-}
-
 #book form .restaurant {
   width: 75vw;
 }
@@ -171,8 +191,21 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   }
 }
 
-#book form .restaurant label {
-  display: block;
+#book form .restaurant label, #book form .restaurant .time #hour-selection span, #book form .time #hour-selection .restaurant span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: inherit;
   background: #F5F5F5;
   color: black;
   height: 8vh;
@@ -181,8 +214,15 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   cursor: pointer;
 }
 
-#book form .restaurant label:hover {
+#book form .restaurant label:hover, #book form .restaurant .time #hour-selection span:hover, #book form .time #hour-selection .restaurant span:hover {
   background: #36970F;
+}
+
+#book form .restaurant input[type="radio"], #book form .restaurant .message textarea[type="radio"], #book form .message .restaurant textarea[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
 }
 
 #book form .time {
@@ -195,8 +235,21 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   }
 }
 
-#book form .time label {
-  display: block;
+#book form .time label, #book form .time #hour-selection span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: inherit;
   background: #F5F5F5;
   color: black;
   height: 8vh;
@@ -205,25 +258,63 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   cursor: pointer;
 }
 
-#book form .time label:hover {
+#book form .time label:hover, #book form .time #hour-selection span:hover {
   background: #36970F;
+}
+
+#book form .time input[type="radio"], #book form .time .message textarea[type="radio"], #book form .message .time textarea[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
 }
 
 #book form .time h3 {
   height: 8vh;
 }
 
-#book form .time #hour-selection span {
-  background: #F5F5F5;
-  cursor: pointer;
-  height: 8vh;
-  margin: 2vh 0;
-  display: block;
-  color: black;
+#book form .time #hour-selection {
+  width: 75vw;
 }
 
-#book form .time #hour-selection span:hover {
+@media (min-width: 720px) {
+  #book form .time #hour-selection {
+    width: 40vw;
+  }
+}
+
+#book form .time #hour-selection label, #book form .time #hour-selection span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: inherit;
+  background: #F5F5F5;
+  color: black;
+  height: 8vh;
+  margin: 2vh 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+#book form .time #hour-selection label:hover, #book form .time #hour-selection span:hover {
   background: #36970F;
+}
+
+#book form .time #hour-selection input[type="radio"], #book form .time #hour-selection .message textarea[type="radio"], #book form .message .time #hour-selection textarea[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
 }
 
 #book form .time #time-selection {
@@ -254,8 +345,21 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   }
 }
 
-#book form .party label {
-  display: block;
+#book form .party label, #book form .party .time #hour-selection span, #book form .time #hour-selection .party span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: inherit;
   background: #F5F5F5;
   color: black;
   height: 8vh;
@@ -264,11 +368,18 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   cursor: pointer;
 }
 
-#book form .party label:hover {
+#book form .party label:hover, #book form .party .time #hour-selection span:hover, #book form .time #hour-selection .party span:hover {
   background: #36970F;
 }
 
-#book form .message label h3:after {
+#book form .party input[type="radio"], #book form .party .message textarea[type="radio"], #book form .message .party textarea[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+#book form .message label h3:after, #book form .message .time #hour-selection span h3:after, #book form .time #hour-selection .message span h3:after {
   content: '';
 }
 

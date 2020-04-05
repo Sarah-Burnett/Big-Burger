@@ -18,6 +18,7 @@
 
 #menu-content {
     height: auto;
+    min-height: 100vh;
     @media (min-width: 500px){
         height: 100vh;
     }
@@ -28,8 +29,6 @@
         align-items: center;
         justify-content: space-around;
         button {
-            font-family: 'Slabo 27px';
-            font-size: 14px;
             height: 15vh;
             flex: 1;
             margin: 1vw;
