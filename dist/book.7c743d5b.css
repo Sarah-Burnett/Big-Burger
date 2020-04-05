@@ -48,6 +48,7 @@ body {
     background-repeat: no-repeat no-repeat;
     background-size: cover;
     background-position: center;
+    padding-bottom: 10vh;
   }
 }
 
@@ -59,12 +60,37 @@ button, #book form input[type=submit], #book form .message textarea[type=submit]
   padding: 1em;
   border-style: none;
   background: #36970F;
-  font-family: 'Slabo 27px';
+  font-family: 'Slabo 27px', serif;
+  font-size: 14px;
   cursor: pointer;
 }
 
+@media (min-width: 600px) {
+  button, #book form input[type=submit], #book form .message textarea[type=submit] {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  button, #book form input[type=submit], #book form .message textarea[type=submit] {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  button, #book form input[type=submit], #book form .message textarea[type=submit] {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1800px) {
+  button, #book form input[type=submit], #book form .message textarea[type=submit] {
+    font-size: 22px;
+  }
+}
+
 button:hover, #book form input:hover[type=submit], #book form .message textarea:hover[type=submit] {
-  background: darkgreen;
+  background: #205909;
 }
 
 nav {
@@ -113,7 +139,7 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 
 @media (min-width: 720px) {
   #book {
-    margin: 10vh auto;
+    margin-top: 10vh;
   }
 }
 
@@ -156,12 +182,37 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 
 #book form input, #book form .message textarea {
   font-family: 'Slabo 27px';
+  font-size: 14px;
   text-align: center;
   height: 8vh;
   padding: 2vw;
   margin: 2vw;
   width: 75vw;
   background: #F5F5F5;
+}
+
+@media (min-width: 600px) {
+  #book form input, #book form .message textarea {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  #book form input, #book form .message textarea {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #book form input, #book form .message textarea {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1800px) {
+  #book form input, #book form .message textarea {
+    font-size: 22px;
+  }
 }
 
 @media (min-width: 720px) {
@@ -324,6 +375,7 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 
 #book form .time #time-selection button, #book form .time #time-selection input[type=submit], #book form .time #time-selection .message textarea[type=submit], #book form .message .time #time-selection textarea[type=submit] {
   width: 75vw;
+  padding: 0.6em;
 }
 
 @media (min-width: 720px) {
@@ -387,7 +439,6 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
   height: 30vh;
   resize: vertical;
   width: 75vw;
-  font-family: 'Slabo 27px';
   text-align: center;
   background: #F5F5F5;
   color: black;
@@ -400,27 +451,28 @@ nav button, nav #book form input[type=submit], #book form nav input[type=submit]
 }
 
 #book form input[type=submit], #book form .message textarea[type=submit] {
+  height: auto;
+  padding: 1em;
   width: 75vw;
 }
 
 @media (min-width: 720px) {
   #book form input[type=submit], #book form .message textarea[type=submit] {
-    width: 8vw;
+    width: auto;
   }
 }
 
-#book form .submit-message, #book form .failure-message {
+#book form .submit-message {
   color: #36970F;
   text-align: center;
   width: 75vw;
-  display: none;
   opacity: 0;
-  -webkit-transition: opacity 0.2s ease-in;
-  transition: opacity 0.2s ease-in;
+  -webkit-transition: opacity 0.4s ease-in;
+  transition: opacity 0.4s ease-in;
 }
 
 @media (min-width: 720px) {
-  #book form .submit-message, #book form .failure-message {
+  #book form .submit-message {
     width: 40vw;
   }
 }

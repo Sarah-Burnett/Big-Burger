@@ -102,42 +102,51 @@ function checkParty() {
 //form submit
 function submitForm() {
   const bookForm = document.querySelector('#bookForm');
+  const submitBtn = document.querySelector('input[type="submit"]');
+  const submitMsg = document.querySelector('.submit-message');
 
   bookForm.addEventListener('submit', (e) => {  
       e.preventDefault();
       const error = checkError();
       if (error === 0) {
+        submitBtn.background = "#205909";
+        submitBtn.value = "Sent";
+        submitBtn.style.pointerEvents = "none";
         postForm();
       }
   });
+
+  function postForm() {    
+    const form = document.querySelector('#bookForm');
+    const name = form.elements["name"].value;
+    const email = form.elements["email"].value;
+    const restaurant = form.elements["restaurant"].value;
+    const date = form.elements["date"].value;
+    const time = form.elements["time"].value;
+    const party = form.elements["party"].value;
+    const message = form.elements["message"].value;
+    const params = `form-name=booking&name=${name}&email=${email}&restaurant=${restaurant}&date=${date}&time=${time}&party=${party}&message=${message}`;
+    console.log(params);
+    const xhr = new XMLHttpRequest;
+    xhr.open('POST', '/book', true);
+    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+    xhr.onload = function(){
+      if(this.status === 200){
+        submitBtn.background = "#205909";
+        submitMsg.style.opacity = "0";
+        submitMsg.innerHTML = "Booking complete<br>Thank you<br>See you soon</div>";
+        submitMsg.style.opacity = "1";
+        submitMsg.scrollIntoView();
+      } else {
+        submitMsg.style.opacity = "0";
+        submitMsg.innerHTML = "Oh no! Something went wrong<br>Please try again</div>";
+        submitMsg.style.opacity = "1";
+        submitMsg.scrollIntoView();
+        submitBtn.style.pointerEvents = "auto";
+      }
+    };
+    xhr.send(params);
+  };
 }
 
-const postForm = () => {
-  const form = document.querySelector('#bookForm');
-  const name = form.elements["name"].value;
-  const email = form.elements["email"].value;
-  const restaurant = form.elements["restaurant"].value;
-  const date = form.elements["date"].value;
-  const time = form.elements["time"].value;
-  const party = form.elements["party"].value;
-  const message = form.elements["message"].value;
-  const submitMsg = document.querySelector('.submit-message');
-  const failureMsg = document.querySelector('.failure-message');
 
-  const params = `form-name=booking&name=${name}&email=${email}&restaurant=${restaurant}&date=${date}&time=${time}&party=${party}&message=${message}`;
-  const xhr = new XMLHttpRequest;
-  xhr.open('POST', '/book', true);
-  xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-  xhr.onload = function(){
-    if(this.status === 200){
-      submitMsg.style.display = "block";
-      submitMsg.style.opacity = "1";
-      submitMsg.scrollIntoView();
-    } else {
-      failureMsg.style.display = "block";
-      failureMsg.style.opacity = "1";
-      failureMsg.scrollIntoView();
-    }
-  };
-  xhr.send(params);
-};

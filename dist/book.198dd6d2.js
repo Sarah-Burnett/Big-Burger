@@ -330,46 +330,56 @@ function checkParty() {
 
 function submitForm() {
   var bookForm = document.querySelector('#bookForm');
+  var submitBtn = document.querySelector('input[type="submit"]');
+  var submitMsg = document.querySelector('.submit-message');
   bookForm.addEventListener('submit', function (e) {
     e.preventDefault();
     var error = (0, _validation.checkError)();
 
     if (error === 0) {
+      submitBtn.background = "#205909";
+      submitBtn.value = "Sent";
+      submitBtn.style.pointerEvents = "none";
       postForm();
     }
   });
+
+  function postForm() {
+    var form = document.querySelector('#bookForm');
+    var name = form.elements["name"].value;
+    var email = form.elements["email"].value;
+    var restaurant = form.elements["restaurant"].value;
+    var date = form.elements["date"].value;
+    var time = form.elements["time"].value;
+    var party = form.elements["party"].value;
+    var message = form.elements["message"].value;
+    var params = "form-name=booking&name=".concat(name, "&email=").concat(email, "&restaurant=").concat(restaurant, "&date=").concat(date, "&time=").concat(time, "&party=").concat(party, "&message=").concat(message);
+    console.log(params);
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/book', true);
+    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+
+    xhr.onload = function () {
+      if (this.status === 200) {
+        submitBtn.background = "#205909";
+        submitMsg.style.opacity = "0";
+        submitMsg.innerHTML = "Booking complete<br>Thank you<br>See you soon</div>";
+        submitMsg.style.opacity = "1";
+        submitMsg.scrollIntoView();
+      } else {
+        submitMsg.style.opacity = "0";
+        submitMsg.innerHTML = "Oh no! Something went wrong<br>Please try again</div>";
+        submitMsg.style.opacity = "1";
+        submitMsg.scrollIntoView();
+        submitBtn.style.pointerEvents = "auto";
+      }
+    };
+
+    xhr.send(params);
+  }
+
+  ;
 }
-
-var postForm = function postForm() {
-  var form = document.querySelector('#bookForm');
-  var name = form.elements["name"].value;
-  var email = form.elements["email"].value;
-  var restaurant = form.elements["restaurant"].value;
-  var date = form.elements["date"].value;
-  var time = form.elements["time"].value;
-  var party = form.elements["party"].value;
-  var message = form.elements["message"].value;
-  var submitMsg = document.querySelector('.submit-message');
-  var failureMsg = document.querySelector('.failure-message');
-  var params = "form-name=booking&name=".concat(name, "&email=").concat(email, "&restaurant=").concat(restaurant, "&date=").concat(date, "&time=").concat(time, "&party=").concat(party, "&message=").concat(message);
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/book', true);
-  xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-
-  xhr.onload = function () {
-    if (this.status === 200) {
-      submitMsg.style.display = "block";
-      submitMsg.style.opacity = "1";
-      submitMsg.scrollIntoView();
-    } else {
-      failureMsg.style.display = "block";
-      failureMsg.style.opacity = "1";
-      failureMsg.scrollIntoView();
-    }
-  };
-
-  xhr.send(params);
-};
 },{"./date":"js/date.js","./validation":"js/validation.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -398,7 +408,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62219" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49533" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

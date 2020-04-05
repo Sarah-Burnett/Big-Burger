@@ -52,6 +52,7 @@ body{
         background-repeat: no-repeat no-repeat;
         background-size: cover;
         background-position: center;
+        padding-bottom: 10vh;
         }
 }
 
@@ -63,10 +64,15 @@ button {
     padding: 1em;
     border-style: none;
     background: $green;
-    font-family: 'Slabo 27px';
+    font-family: 'Slabo 27px', serif;
+    font-size: 14px; 
+    @media (min-width: 600px) {font-size: 16px};
+    @media (min-width: 900px) {font-size: 18px};
+    @media (min-width: 1200px) {font-size: 20px};
+    @media (min-width: 1800px) {font-size: 22px};
     cursor: pointer;
     &:hover {
-        background: darkgreen;
+        background: $darkgreen;
     }
 }
 
@@ -93,7 +99,7 @@ nav {
     background: #000;
     margin: auto;
     @media (min-width: 720px) {
-        margin: 10vh auto;
+        margin-top: 10vh;
     }
     width: 95vw; 
     @media (min-width: 720px) {
@@ -123,6 +129,11 @@ nav {
         }
         input{
             font-family: 'Slabo 27px';
+            font-size: 14px; 
+            @media (min-width: 600px) {font-size: 16px};
+            @media (min-width: 900px) {font-size: 18px};
+            @media (min-width: 1200px) {font-size: 20px};
+            @media (min-width: 1800px) {font-size: 22px};
             text-align: center;
             height: 8vh;
             padding: 2vw;
@@ -161,6 +172,7 @@ nav {
                 position: relative;
                 button {
                     width: 75vw;
+                    padding: 0.6em;
                     @media (min-width: 720px) {
                         position: absolute;
                         top: -9vh;
@@ -187,7 +199,6 @@ nav {
             @media (min-width: 720px) {
                 width: 40vw;
             }
-            font-family: 'Slabo 27px';
             text-align: center;
             background: $white;
             color: black;
@@ -195,24 +206,22 @@ nav {
         }
         input[type=submit] {
             @extend button;
+            height: auto;
+            padding: 1em;
             width: 75vw;
             @media (min-width: 720px) {
-                width: 8vw;
+                width: auto;
             }
         }
         .submit-message {
             color: $green;
             text-align: center;
             width: 75vw;
-            display: none;
             opacity: 0;
-            transition: opacity 0.2s ease-in;
+            transition: opacity 0.4s ease-in;
             @media (min-width: 720px) {
                 width: 40vw;
             }
-        }
-        .failure-message {
-            @extend .submit-message;
         }
     }
 }
