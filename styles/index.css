@@ -9,41 +9,41 @@ html {
   scroll-behavior: smooth;
   -ms-scroll-snap-type: y mandatory;
       scroll-snap-type: y mandatory;
-  font-family: 'Slabo 27px', serif;
-  font-size: 14px;
-}
-
-@media (min-width: 600px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-@media (min-width: 900px) {
-  html {
-    font-size: 18px;
-  }
-}
-
-@media (min-width: 1200px) {
-  html {
-    font-size: 20px;
-  }
-}
-
-@media (min-width: 1800px) {
-  html {
-    font-size: 22px;
-  }
 }
 
 body {
+  font-family: 'Slabo 27px', serif;
+  font-size: 14px;
   background: #000;
   color: #F5F5F5;
   line-height: 2;
   text-shadow: 1px 1px 2px black;
   text-align: center;
   overflow-x: hidden;
+}
+
+@media (min-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1800px) {
+  body {
+    font-size: 22px;
+  }
 }
 
 section {
@@ -380,6 +380,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 }
 
 #menu-content .menu-nav button {
+  font-family: 'Slabo 27px', serif;
   height: 15vh;
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -559,7 +560,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 
 #location .location-container {
   width: 100vw;
-  height: 60vh;
+  height: 70vh;
   position: relative;
 }
 

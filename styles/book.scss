@@ -32,7 +32,7 @@
     box-sizing: border-box;
 }
 
-html {
+body{
     background: #000;
     color: $white;
     font-family: 'Slabo 27px', serif;
@@ -41,9 +41,6 @@ html {
     @media (min-width: 900px) {font-size: 18px};
     @media (min-width: 1200px) {font-size: 20px};
     @media (min-width: 1800px) {font-size: 22px};
-}
-
-body{
     line-height: 2;
     text-align: center;
     overflow-x: hidden;
