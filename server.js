@@ -24,17 +24,29 @@ mongoose.connection
     console.log(`Connection error: ${err.message}`);
     });
 
-app.post('/book', (req, res) => {
+app.post('/book', async (req, res) => {
     const booking = new Booking(req.body);
-    booking.save()
-    .then(() => res.send("Booking successful. Looking forward to seeing you soon"))
+    await booking.save()
+    .then((booking) => {
+        res.send(booking._id);
+    })
     .catch((err) => {
         console.log(err);
-        res.send("Booking error. Please try again or give us a call");
+        res.status(400);
       });
 });
 
-app.use(express.static('dist'));
+app.get('/bookings/date/:date', (req, res) => {
+    Booking.find({date: req.params.date})
+        .then((query) => res.send(query));
+});
+
+app.get('/bookings/id/:id', (req, res) => {
+    Booking.findById(req.params.id)
+        .then((query) => res.send(query));
+});
+
+app.use(express.static('./client/dist'));
 
 const server = app.listen(3000, () => {
     console.log(`Server is running on port ${server.address().port}`);

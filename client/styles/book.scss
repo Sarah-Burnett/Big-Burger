@@ -1,0 +1,214 @@
+@import './variables';
+
+@mixin selectionBox {
+    width: 75vw;
+        @media (min-width: 720px) {
+            width: 40vw;
+        }
+    label {
+        @include flexCenter(row);
+        width: inherit;
+        background: $white;
+        color: black;
+        height: 8vh;
+        margin: 2vh 0;
+        text-align: center;
+        cursor: pointer;
+        &:hover {
+            background: $green;
+        }
+    }
+    input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        height: 0;
+        width: 0;
+    }
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background: #000;
+    color: $white;
+    font-family: 'Slabo 27px', serif;
+    font-size: 14px; 
+    min-height: 100vh;
+    @media (min-width: 600px) {font-size: 16px};
+    @media (min-width: 900px) {font-size: 18px};
+    @media (min-width: 1200px) {font-size: 20px};
+    @media (min-width: 1800px) {font-size: 22px};
+    line-height: 2;
+    text-align: center;
+    overflow-x: hidden;
+    @media (min-width: 720px) {
+        background-image: url(/images/burger-bg.jpeg);
+        background-repeat: no-repeat no-repeat;
+        background-size: cover;
+        background-position: center;
+        }
+}
+
+:focus {
+    outline-color: $darkgreen;
+}
+
+button {
+    padding: 1em;
+    border-style: none;
+    background: $green;
+    font-family: 'Slabo 27px', serif;
+    font-size: 14px; 
+    @media (min-width: 600px) {font-size: 16px};
+    @media (min-width: 900px) {font-size: 18px};
+    @media (min-width: 1200px) {font-size: 20px};
+    @media (min-width: 1800px) {font-size: 22px};
+    cursor: pointer;
+    &:hover {
+        background: $darkgreen;
+    }
+}
+
+nav {
+    background: #000;
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;    
+    img {
+        width: auto;
+        height: 10vh;
+    }
+    button {
+        padding-right: 2vw;
+        height: 10vh;
+        width: 20vw;
+    }
+}
+
+
+
+#book {
+    background: #000;
+    margin: auto;
+    @media (min-width: 720px) {
+        margin-top: 10vh;
+    }
+    width: 95vw; 
+    @media (min-width: 720px) {
+        width: 60vw;
+    }
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    form {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-direction: space-evenly;
+        div {
+            width: 80vw;
+            @media (min-width: 720px) {
+                width: 45vw;
+            }
+        }
+        h3::after {
+            content: ' * ';
+            color: $green;
+        }
+        input{
+            font-family: 'Slabo 27px';
+            font-size: 14px; 
+            @media (min-width: 600px) {font-size: 16px};
+            @media (min-width: 900px) {font-size: 18px};
+            @media (min-width: 1200px) {font-size: 20px};
+            @media (min-width: 1800px) {font-size: 22px};
+            text-align: center;
+            height: 8vh;
+            padding: 2vw;
+            margin: 2vw;
+            width: 75vw;
+            @media (min-width: 720px) {
+                padding: 1vw;
+                margin: 1vw;
+                width: 40vw;
+            }
+            background: $white;
+        }
+        .invalid {
+            border: 2px solid red;
+        }
+        .error {
+            display: none;
+            color: red;
+        }
+        .restaurant {
+            @include selectionBox();
+        }
+        .time {
+            @include selectionBox();
+            h3 {
+                height: 8vh;
+            }                  
+            #hour-selection {
+                @include selectionBox();
+                span {
+                   @extend label;
+                }
+            }
+            #time-selection {
+                display: none;
+                position: relative;
+                button {
+                    width: 75vw;
+                    padding: 0.6em;
+                    @media (min-width: 720px) {
+                        position: absolute;
+                        top: -9vh;
+                        right: 0;
+                        width: 7vw;
+                    }
+                }   
+            }    
+        }
+        .party {
+            @include selectionBox();
+        }
+        .message {
+            label {
+                h3:after {
+                    content: '';
+                }
+            }
+            textarea {
+            @extend input;
+            height: 30vh;
+            resize: vertical;
+            width: 75vw;
+            @media (min-width: 720px) {
+                width: 40vw;
+            }
+            text-align: center;
+            background: $white;
+            color: black;
+            }
+        }
+        input[type=submit] {
+            @extend button;
+            height: auto;
+            padding: 1em;
+            width: 75vw;
+            @media (min-width: 720px) {
+                width: auto;
+            }
+        }
+    }
+}

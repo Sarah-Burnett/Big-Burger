@@ -4,7 +4,10 @@
   "description": "burger restaurant",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -17,12 +20,11 @@
   },
   "homepage": "https://github.com/Sarah-Burnett/staticburger#readme",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.13.0",
     "body-parser": "^1.19.0",
+    "concurrently": "^5.1.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.7",
-    "nodemon": "^2.0.2",
-    "parcel": "^1.12.4"
+    "nodemon": "^2.0.2"
   }
 }
