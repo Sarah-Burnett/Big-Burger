@@ -18,13 +18,12 @@
 
 #menu-content {
     height: auto;
-    min-height: 100vh;
+    min-height: 90vh;
     @media (min-width: 500px){
-        height: 100vh;
+        height: 90vh;
     }
     .menu-nav {
         height: 25vh;
-        padding-top: 10vh;
         display: flex;
         align-items: center;
         justify-content: space-around;
@@ -50,7 +49,7 @@
         transition: opacity 0.6s ease;
         padding: 1em;
         @media (min-width: 500px) {
-            height: 75vh;
+            height: 65vh;
             @include flexCenter(column);
             justify-content: space-evenly;
             .menu-list{

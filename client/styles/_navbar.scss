@@ -24,8 +24,8 @@ nav {
             margin: 6px 0;
             transition: 0.4s;
           }
+        }
     }
-}
     .nav-links {
         position: absolute;
         top: 15vh;        
@@ -39,15 +39,21 @@ nav {
         height: 0vh; 
         transition: height .5s ease-in-out;
         pointer-events: none;
-        li {
-            opacity: 0;
-        };
         a {
+            opacity: 0;
             text-decoration: none;
             color: $white;   
+            &:hover, &:active {
+                color: $green;
+            }
         }
-        a:hover {
-            color: $green;
+        #bookBtn {
+            background: $green;
+            padding: 0 2vw;
+            &:hover {
+                color: $white;
+                background: $darkgreen;
+            }
         }
     }
     .nav-scroll {
@@ -58,10 +64,11 @@ nav {
    .nav-active {
        .nav-links {
            pointer-events: auto;
-            height: 35vh !important;
-            li {
+           padding-bottom: 1em;
+            height: 40vh !important;
+            a {
                 opacity: 1 !important;
-            };    
+            }
         }
         .line1{
             transform: rotate(-45deg) translate(-9px, 6px);
@@ -73,7 +80,6 @@ nav {
             transform: rotate(45deg) translate(-8px, -8px);
         }
     }
-    
     .nav-fixed {
         height: 10vh;
         position: fixed;
@@ -102,9 +108,9 @@ nav {
             flex-direction: row;
             align-items: center;
             justify-content: flex-end; 
-            li {
-            opacity: 1;
-            width: 15vw;
+            a {
+                opacity: 1;
+                width: 15vw;
             }
         }
     }

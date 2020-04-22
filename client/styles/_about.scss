@@ -1,9 +1,9 @@
 #about-page {
+    height: 90vh;
     .about-image{
         display: none;
     }
     .about-content{
-        height: 100vh;
         padding: 10vh;
         @include flexCenter(column);
         div {
@@ -20,7 +20,7 @@
     .about-image {
         display: block; 
         width: 50vw;
-        height: 100vh;
+        height: 90vh;
         background-image: url(../images/waitress.jpg);
         background-repeat: no-repeat no-repeat;
         background-size: cover;
@@ -28,7 +28,7 @@
     }
     .about-content {
         width: 50vw;
-        height: 100vh;
+        height: 90vh;
         div {
             width: 40vw;
         }

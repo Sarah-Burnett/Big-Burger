@@ -1,5 +1,5 @@
 // location carousel 
-export function locationCarousel() {
+export const locationCarousel = () => {
     const locationItems = document.querySelectorAll(".location-item");
     const locationDots = document.querySelectorAll(".location-dot");
 

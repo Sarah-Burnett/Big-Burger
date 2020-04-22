@@ -9,7 +9,7 @@ const formBoxes = document.querySelectorAll('#bookForm div');
 const inputs = document.querySelectorAll('input');
 const errorBoxes = document.querySelectorAll('.error');
 
-export function checkError() {
+export const checkError = () => {
     formBoxes.forEach( div => { 
       if (div.classList.contains('invalid')) {
         div.classList.remove('invalid')
@@ -48,7 +48,7 @@ export function checkError() {
     return error;
   }
   
-  function showError(index, msg) {
+  const showError = (index, msg) => {
     let errorMsg = msg;
     errorBoxes[index].innerHTML = errorMsg;
     errorBoxes[index].style.display = 'block';

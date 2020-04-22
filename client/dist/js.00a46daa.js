@@ -117,7 +117,37 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"menu.json":[function(require,module,exports) {
+})({"js/navbar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.navBar = void 0;
+
+var navBar = function navBar() {
+  var nav = document.querySelector("nav");
+  var burger = document.querySelector(".burger"); // nav bar burger
+
+  var toggleNav = function toggleNav() {
+    nav.classList.toggle("nav-active");
+  };
+
+  burger.addEventListener('click', toggleNav);
+
+  window.onscroll = function () {
+    if (window.pageYOffset >= 10) {
+      nav.classList.add("nav-fixed");
+    } else {
+      nav.classList.remove("nav-fixed");
+    }
+
+    ;
+  };
+};
+
+exports.navBar = navBar;
+},{}],"menu.json":[function(require,module,exports) {
 module.exports = [{
   "menu": "To tempt your appetite",
   "intro": "What will it be",
@@ -205,15 +235,15 @@ module.exports = [{
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.menuContents = menuContents;
+exports.menuContents = void 0;
 
 // menu items
 var menuJSON = require('/menu.json');
 
 var menuContainer = document.querySelector(".menu-container");
 
-function menuContents() {
-  function updateMenu(index) {
+var menuContents = function menuContents() {
+  var updateMenu = function updateMenu(index) {
     menuContainer.style.opacity = 0;
     var _menuJSON$index = menuJSON[index],
         menu = _menuJSON$index.menu,
@@ -226,9 +256,8 @@ function menuContents() {
     });
     menuContainer.innerHTML = output;
     menuContainer.style.opacity = 1;
-  }
+  };
 
-  ;
   document.querySelector("#button-starter").addEventListener('click', function () {
     updateMenu(0);
   });
@@ -241,21 +270,24 @@ function menuContents() {
   document.querySelector("#button-pudding").addEventListener('click', function () {
     updateMenu(3);
   });
-} //0 = starter; 1 = sides; 2= burger; 3=pudding
+}; //0 = starter; 1 = sides; 2= burger; 3=pudding
+
+
+exports.menuContents = menuContents;
 },{"/menu.json":"menu.json"}],"js/review.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.reviewCarousel = reviewCarousel;
+exports.reviewCarousel = void 0;
 
-function reviewCarousel() {
+var reviewCarousel = function reviewCarousel() {
   var reviewCounter = 0;
   var reviewItems = document.querySelectorAll(".review-item");
   var reviewDots = document.querySelectorAll(".review-dot");
 
-  function autoReview() {
+  var autoReview = function autoReview() {
     reviewDots.forEach(function (dot) {
       dot.style.background = "#36970F";
     });
@@ -266,9 +298,7 @@ function reviewCarousel() {
     reviewItems[reviewCounter].style.opacity = "1";
     if (reviewCounter === reviewItems.length - 1) return reviewCounter = 0;
     reviewCounter++;
-  }
-
-  ;
+  };
 
   var reviewInterval = function reviewInterval() {
     return setInterval(autoReview, 3000);
@@ -293,19 +323,19 @@ function reviewCarousel() {
   };
 
   reviewDots.forEach(clickReview);
-}
+};
 
-;
+exports.reviewCarousel = reviewCarousel;
 },{}],"js/location.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.locationCarousel = locationCarousel;
+exports.locationCarousel = void 0;
 
 // location carousel 
-function locationCarousel() {
+var locationCarousel = function locationCarousel() {
   var locationItems = document.querySelectorAll(".location-item");
   var locationDots = document.querySelectorAll(".location-dot");
 
@@ -325,33 +355,31 @@ function locationCarousel() {
   };
 
   locationDots.forEach(changeLocation);
-}
+};
 
-;
+exports.locationCarousel = locationCarousel;
 },{}],"js/modal.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.toggleModal = toggleModal;
+exports.toggleModal = void 0;
 
-function toggleModal() {
+var toggleModal = function toggleModal() {
   var modal = document.querySelector(".modal-bg");
 
-  function showModal(contents) {
+  var showModal = function showModal(contents) {
     modal.classList.remove("modal-inactive");
     modal.classList.add("modal-active");
     document.querySelector(contents).style.display = "block";
-  }
+  };
 
-  ;
-
-  function hideModal() {
+  var hideModal = function hideModal() {
     modal.classList.remove("modal-active");
     document.querySelector("#glensgaich-map").style.display = "none";
     document.querySelector("#tanygrisiau-map").style.display = "none";
-  }
+  };
 
   document.querySelector(".glensgaich-btn").addEventListener('click', function () {
     showModal("#glensgaich-map");
@@ -361,9 +389,13 @@ function toggleModal() {
   });
   document.querySelector(".modal-close").addEventListener('click', hideModal);
   hideModal();
-}
+};
+
+exports.toggleModal = toggleModal;
 },{}],"js/index.js":[function(require,module,exports) {
-"use strict"; // nav bar burger
+"use strict";
+
+var _navbar = require("./navbar");
 
 var _menu = require("./menu");
 
@@ -373,40 +405,18 @@ var _location = require("./location");
 
 var _modal = require("./modal");
 
-var nav = document.querySelector("nav");
-var burger = document.querySelector(".burger");
-
-function toggleNav() {
-  nav.classList.toggle("nav-active");
-}
-
-burger.addEventListener('click', toggleNav); // fixed nav bar
-
-window.onscroll = function () {
-  if (window.pageYOffset >= 10) {
-    nav.classList.add("nav-fixed");
-  } else {
-    nav.classList.remove("nav-fixed");
-  }
-
-  ;
-}; // smooth scroll 
-
-
+// smooth scroll 
 var scroll = new SmoothScroll('a[href*="#"]', {
   speed: 500,
   speedAsDuration: true,
   header: '[data-scroll-header]'
-}); // update menu
-
-(0, _menu.menuContents)(); // review carousel
-
-(0, _review.reviewCarousel)(); // location carousel
-
-(0, _location.locationCarousel)(); //modal
-
+});
+(0, _navbar.navBar)();
+(0, _menu.menuContents)();
+(0, _review.reviewCarousel)();
+(0, _location.locationCarousel)();
 (0, _modal.toggleModal)();
-},{"./menu":"js/menu.js","./review":"js/review.js","./location":"js/location.js","./modal":"js/modal.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./navbar":"js/navbar.js","./menu":"js/menu.js","./review":"js/review.js","./location":"js/location.js","./modal":"js/modal.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -434,7 +444,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54247" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56046" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

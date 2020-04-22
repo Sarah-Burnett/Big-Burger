@@ -1,31 +1,24 @@
-"use strict";
-
 import { minmaxDate } from './date';
 import { checkError } from './validation';
 
-checkRestaurant();
-minmaxDate();
-checkTime();
-backTime();
-checkParty();
-submitForm();
-
 //restaurant selector 
-function checkRestaurant() {
+const checkRestaurant = () => {
   const restaurantBtns = document.querySelectorAll('.restaurant label');
 
   restaurantBtns[0].style.background = "#205909";
+  
   const selectRestaurant = (item, index) => {
     item.addEventListener('click', () => {
       restaurantBtns.forEach ( btn => btn.style.background = "#F5F5F5");
       restaurantBtns[index].style.background = "#205909";
     });
   };
+  
   restaurantBtns.forEach(selectRestaurant);
 }
 
 // time selector
-function checkTime() {
+const checkTime = () => {
   const timeContainer = document.querySelector('#time-selection');
   const hourContainer =  document.querySelector('#hour-selection')
   const hourBtns = document.querySelectorAll('#hour-selection span');
@@ -73,7 +66,7 @@ function checkTime() {
 
 //time back button
 
-function backTime() {
+const backTime = () => {
   const timeContainer = document.querySelector('#time-selection');
   const hourContainer =  document.querySelector('#hour-selection')   
   document.querySelector('#timebackBtn').addEventListener('click', () => {
@@ -85,22 +78,20 @@ function backTime() {
 
 // party selection
 
-function checkParty() {
+const checkParty = () => {
   const partyBtns = document.querySelectorAll('.party label');
-
   const selectParty = (item, index) => {
     item.addEventListener('click', () => {
       partyBtns.forEach ( btn => btn.style.background = "#F5F5F5");
       partyBtns[index].style.background = "#205909";
     });
   };
-
   partyBtns.forEach(selectParty);
 };
 
 
 //form submit
-function submitForm() {
+const submitForm = () => {
   const bookForm = document.querySelector('#bookForm');
   const submitBtn = document.querySelector('input[type="submit"]');
 
@@ -114,7 +105,7 @@ function submitForm() {
       }
   });
 
-  function postForm() {    
+  const postForm = () => {    
     const form = document.querySelector('#bookForm');
     const name = form.elements["name"].value;
     const email = form.elements["email"].value;
@@ -128,15 +119,21 @@ function submitForm() {
     xhr.open('POST', '/book', true);
     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
     xhr.onload = function(){
-        if(this.status === 200){
-          const bookingId = this.response;
-          document.querySelector('#book').innerHTML = `Booking successful. <br> Your booking reference is <br>${bookingId} <br> Looking forward to seeing you soon`;
-      } else {
+        if(this.status === 404){
           document.querySelector('#book').innerHTML = "Booking error. <br> Please try again or give us a call";
+        } else {
+        document.querySelector('#book').innerHTML = this.response;
       }
     };
     xhr.send(params);
   };
 }
 
+//call functions
+checkRestaurant();
+minmaxDate();
+checkTime();
+backTime();
+checkParty();
+submitForm();
 

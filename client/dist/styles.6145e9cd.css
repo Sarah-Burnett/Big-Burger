@@ -7,8 +7,6 @@
 
 html {
   scroll-behavior: smooth;
-  -ms-scroll-snap-type: y mandatory;
-      scroll-snap-type: y mandatory;
 }
 
 body {
@@ -44,12 +42,6 @@ body {
   body {
     font-size: 22px;
   }
-}
-
-section {
-  height: 100vh;
-  width: 100vw;
-  scroll-snap-align: center;
 }
 
 :focus {
@@ -122,17 +114,24 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   pointer-events: none;
 }
 
-.nav-links li {
-  opacity: 0;
-}
-
 .nav-links a {
+  opacity: 0;
   text-decoration: none;
   color: #F5F5F5;
 }
 
-.nav-links a:hover {
+.nav-links a:hover, .nav-links a:active {
   color: #36970F;
+}
+
+.nav-links #bookBtn {
+  background: #36970F;
+  padding: 0 2vw;
+}
+
+.nav-links #bookBtn:hover {
+  color: #F5F5F5;
+  background: #205909;
 }
 
 .nav-scroll .nav-links a {
@@ -142,10 +141,11 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 
 .nav-active .nav-links {
   pointer-events: auto;
-  height: 35vh !important;
+  padding-bottom: 1em;
+  height: 40vh !important;
 }
 
-.nav-active .nav-links li {
+.nav-active .nav-links a {
   opacity: 1 !important;
 }
 
@@ -210,7 +210,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
         -ms-flex-pack: end;
             justify-content: flex-end;
   }
-  nav .nav-links li {
+  nav .nav-links a {
     opacity: 1;
     width: 15vw;
   }
@@ -220,6 +220,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 }
 
 #home-title, #menu-title, #reviews {
+  height: 90vh;
   background-image: url(/burger-mob.a9b91a67.jpg);
   background-repeat: no-repeat no-repeat;
   background-size: cover;
@@ -246,12 +247,15 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   }
 }
 
+#about-page {
+  height: 90vh;
+}
+
 #about-page .about-image {
   display: none;
 }
 
 #about-page .about-content {
-  height: 100vh;
   padding: 10vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -305,7 +309,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   #about-page .about-image {
     display: block;
     width: 50vw;
-    height: 100vh;
+    height: 90vh;
     background-image: url(/waitress.91bd79d5.jpg);
     background-repeat: no-repeat no-repeat;
     background-size: cover;
@@ -313,7 +317,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   }
   #about-page .about-content {
     width: 50vw;
-    height: 100vh;
+    height: 90vh;
   }
   #about-page .about-content div {
     width: 40vw;
@@ -357,18 +361,17 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 
 #menu-content {
   height: auto;
-  min-height: 100vh;
+  min-height: 90vh;
 }
 
 @media (min-width: 500px) {
   #menu-content {
-    height: 100vh;
+    height: 90vh;
   }
 }
 
 #menu-content .menu-nav {
   height: 25vh;
-  padding-top: 10vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -411,7 +414,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 
 @media (min-width: 500px) {
   #menu-content .menu-container {
-    height: 75vh;
+    height: 65vh;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -531,7 +534,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 
 #location {
   height: auto;
-  min-height: 100vh;
+  min-height: 90vh;
   padding: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -550,7 +553,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 
 @media (min-width: 500px) {
   #location {
-    height: 100vh;
+    height: 90vh;
   }
 }
 

@@ -2,8 +2,8 @@
 const menuJSON = require('/menu.json');
 const menuContainer = document.querySelector(".menu-container");
 
-export function menuContents() {
-  function updateMenu(index) {
+export const menuContents = () => {
+  const updateMenu = (index) => {
     menuContainer.style.opacity = 0;
     let {menu, intro, items} = menuJSON[index];
     let output = "";

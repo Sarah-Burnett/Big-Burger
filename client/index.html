@@ -11,13 +11,13 @@
 </head>
 <body>
     <nav data-scroll-header class="header">
-        <img src="/images/burger-logo-smaller.jpg" alt="Big Burger Logo"/>
+        <a href="#home"><img src="/images/burger-logo-smaller.jpg" alt="Big Burger Logo"/></a>
         <div class="nav-links">
-            <li id="aboutBtn"><a href="#about-page">About</a></li>
-            <li id="menuBtn"><a href="#menu-title">Menu</a></li>
-            <li id="reviewBtn"><a href="#reviews">Reviews</a></li>
-            <li id="locationBtn"><a href="#location">Locations</a></li>
-            <li id="bookBtn"><a href="./book.html">*Book Now*</a></li>
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#location">Locations</a>
+            <a id="bookBtn" href="./book.html">Book Now</a>
         </div>
         <div class="burger">
             <div class="line line1"></div>
@@ -25,51 +25,56 @@
             <div class="line line3"></div>   
         </div>  
     </nav>
-    <section id="home-title"><h2>Handmade gourmet burgers</h2>
+    <section id="home">
+        <div id="home-title" class="section"><h2>Handmade gourmet burgers</h2></div>
     </section>
-    <section id="about-page">
+    <section id="about">
+        <div id="about-page" class="section">
         <div class="about-image"></div>
         <div class="about-content">
             <h2>About</h2>
             <div>Since 2003, we having been hand pressing fresh local produce into our BIG BURGER patties. Old favourites served alongside our monthly special in both our independently run restaurants. All produce is made by us on site using the finest ingredients served alongside local beer. We look forward to seeing you soon</div>
         </div>
-        </section>
-    <section id="menu-title">
-        <h2>Menu</h2>
-        <a class="arrow" href="#menu-content"><i class="fas fa-angle-double-down fa-2x"></i></a>
+        </div>
     </section>
-    <section id="menu-content">
-        <div class="menu-nav">
-            <button id="button-starter">To start with</button>
-            <button id="button-burger">The Burgers</button>
-            <button id="button-sides">Fries, Sides and Dips</button>
-            <button id="button-pudding">To finish up</button>
-        </div> 
-        <div class="menu-container">
-            <h3>Choose your burger</h3>
-            <p class="menu-description">All handcrafter burgers come with lettuce, 
-                tomato and a fresh bun</p>
-            <div class="menu-list">
-                <div class="menu-item"><h4>Smoking cow</h4>
-                    <span class="menu-text">Our patty, bbq sauce, jalapenos</span>
-                    <div class="menu-price">£9</div>
-                </div>
-                <div class="menu-item"><h4>Chickn Lickn</h4>
-                    <span class="menu-text">Southern fried chicken, bbq sauce</span>
-                    <div class="menu-price">£9</div>
-                </div>
-                <div class="menu-item"><h4>Three pigs</h4>
-                    <span class="menu-text">Sausage patty, Bacon, Chorizo</span>
-                    <div class="menu-price">£9</div>
-                </div>
-                <div class="menu-item"><h4>Classic</h4>
-                    <span class="menu-text">Beef patty, Gherkins, Tomato sauce</span>
-                    <div class="menu-price">£9</div>
-                </div>
-            </div>   
-        </div> 
+    <section id="menu">
+        <div id="menu-title" class="fullPage">
+            <h2>Menu</h2>
+            <a class="arrow" href="#menu-content"><i class="fas fa-angle-double-down fa-2x"></i></a>
+        </div>
+        <div id="menu-content" class="fullPage">
+            <div class="menu-nav">
+                <button id="button-starter">To start with</button>
+                <button id="button-burger">The Burgers</button>
+                <button id="button-sides">Fries, Sides and Dips</button>
+                <button id="button-pudding">To finish up</button>
+            </div> 
+            <div class="menu-container">
+                <h3>Choose your burger</h3>
+                <p class="menu-description">All handcrafter burgers come with lettuce, 
+                    tomato and a fresh bun</p>
+                <div class="menu-list">
+                    <div class="menu-item"><h4>Smoking cow</h4>
+                        <span class="menu-text">Our patty, bbq sauce, jalapenos</span>
+                        <div class="menu-price">£9</div>
+                    </div>
+                    <div class="menu-item"><h4>Chickn Lickn</h4>
+                        <span class="menu-text">Southern fried chicken, bbq sauce</span>
+                        <div class="menu-price">£9</div>
+                    </div>
+                    <div class="menu-item"><h4>Three pigs</h4>
+                        <span class="menu-text">Sausage patty, Bacon, Chorizo</span>
+                        <div class="menu-price">£9</div>
+                    </div>
+                    <div class="menu-item"><h4>Classic</h4>
+                        <span class="menu-text">Beef patty, Gherkins, Tomato sauce</span>
+                        <div class="menu-price">£9</div>
+                    </div>
+                </div>   
+            </div>     
+        </div>
     </section>
-    <section id="reviews">
+    <section id="reviews" class="fullPage">
         <h2>Reviews</h2>
         <div class="review-container">
                 <div class="review-item">
@@ -97,7 +102,7 @@
             <span class="review-dot" role="button" tabindex="0"></span> 
           </div>
     </section>
-    <section id="location">
+    <section id="location" class="fullPage">
         <h2>Locations</h2>
         <div class="location-container">
             <div class="location-item">

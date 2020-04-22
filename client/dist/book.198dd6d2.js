@@ -123,28 +123,27 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.minmaxDate = minmaxDate;
-exports.dateFortnightplus1 = exports.dateTodayplus1 = void 0;
+exports.minmaxDate = exports.dateFortnightplus1 = exports.dateTodayplus1 = void 0;
 var dateInput = document.querySelector('#date');
 var dateTodayplus1 = new Date(Date.now() + 86400000);
 exports.dateTodayplus1 = dateTodayplus1;
 var dateFortnightplus1 = new Date(Date.now() + 1296000000);
 exports.dateFortnightplus1 = dateFortnightplus1;
 
-function minmaxDate() {
+var minmaxDate = function minmaxDate() {
   dateInput.min = dateTodayplus1.toISOString().split('T')[0];
   dateInput.max = dateFortnightplus1.toISOString().split('T')[0];
   ;
-}
+};
 
-;
+exports.minmaxDate = minmaxDate;
 },{}],"js/validation.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.checkError = checkError;
+exports.checkError = void 0;
 
 var _date = require("./date");
 
@@ -157,7 +156,7 @@ var formBoxes = document.querySelectorAll('#bookForm div');
 var inputs = document.querySelectorAll('input');
 var errorBoxes = document.querySelectorAll('.error');
 
-function checkError() {
+var checkError = function checkError() {
   formBoxes.forEach(function (div) {
     if (div.classList.contains('invalid')) {
       div.classList.remove('invalid');
@@ -204,9 +203,11 @@ function checkError() {
   }
 
   return error;
-}
+};
 
-function showError(index, msg) {
+exports.checkError = checkError;
+
+var showError = function showError(index, msg) {
   var errorMsg = msg;
   errorBoxes[index].innerHTML = errorMsg;
   errorBoxes[index].style.display = 'block';
@@ -224,7 +225,7 @@ function showError(index, msg) {
   }
 
   formBoxes[index].scrollIntoView();
-}
+};
 },{"./date":"js/date.js"}],"js/book.js":[function(require,module,exports) {
 "use strict";
 
@@ -232,14 +233,8 @@ var _date = require("./date");
 
 var _validation = require("./validation");
 
-checkRestaurant();
-(0, _date.minmaxDate)();
-checkTime();
-backTime();
-checkParty();
-submitForm(); //restaurant selector 
-
-function checkRestaurant() {
+//restaurant selector 
+var checkRestaurant = function checkRestaurant() {
   var restaurantBtns = document.querySelectorAll('.restaurant label');
   restaurantBtns[0].style.background = "#205909";
 
@@ -253,10 +248,10 @@ function checkRestaurant() {
   };
 
   restaurantBtns.forEach(selectRestaurant);
-} // time selector
+}; // time selector
 
 
-function checkTime() {
+var checkTime = function checkTime() {
   var timeContainer = document.querySelector('#time-selection');
   var hourContainer = document.querySelector('#hour-selection');
   var hourBtns = document.querySelectorAll('#hour-selection span');
@@ -297,21 +292,20 @@ function checkTime() {
 
   hourBtns.forEach(changeTime);
   timeBtns.forEach(selectTime);
-}
+}; //time back button
 
-; //time back button
 
-function backTime() {
+var backTime = function backTime() {
   var timeContainer = document.querySelector('#time-selection');
   var hourContainer = document.querySelector('#hour-selection');
   document.querySelector('#timebackBtn').addEventListener('click', function () {
     timeContainer.style.display = "none";
     hourContainer.style.display = "block";
   });
-} // party selection
+}; // party selection
 
 
-function checkParty() {
+var checkParty = function checkParty() {
   var partyBtns = document.querySelectorAll('.party label');
 
   var selectParty = function selectParty(item, index) {
@@ -324,11 +318,10 @@ function checkParty() {
   };
 
   partyBtns.forEach(selectParty);
-}
+}; //form submit
 
-; //form submit
 
-function submitForm() {
+var submitForm = function submitForm() {
   var bookForm = document.querySelector('#bookForm');
   var submitBtn = document.querySelector('input[type="submit"]');
   bookForm.addEventListener('submit', function (e) {
@@ -342,7 +335,7 @@ function submitForm() {
     }
   });
 
-  function postForm() {
+  var postForm = function postForm() {
     var form = document.querySelector('#bookForm');
     var name = form.elements["name"].value;
     var email = form.elements["email"].value;
@@ -357,19 +350,24 @@ function submitForm() {
     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function () {
-      if (this.status === 200) {
-        var bookingId = this.response;
-        document.querySelector('#book').innerHTML = "Booking successful. <br> Your booking reference is <br>".concat(bookingId, " <br> Looking forward to seeing you soon");
-      } else {
+      if (this.status === 404) {
         document.querySelector('#book').innerHTML = "Booking error. <br> Please try again or give us a call";
+      } else {
+        document.querySelector('#book').innerHTML = this.response;
       }
     };
 
     xhr.send(params);
-  }
+  };
+}; //call functions
 
-  ;
-}
+
+checkRestaurant();
+(0, _date.minmaxDate)();
+checkTime();
+backTime();
+checkParty();
+submitForm();
 },{"./date":"js/date.js","./validation":"js/validation.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -398,7 +396,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54247" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56046" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

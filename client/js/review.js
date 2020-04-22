@@ -1,11 +1,10 @@
 
-export function reviewCarousel() {
-
+export const reviewCarousel = () => {
     let reviewCounter = 0;
     const reviewItems = document.querySelectorAll(".review-item");
     const reviewDots = document.querySelectorAll(".review-dot");
 
-    function autoReview() {
+    const autoReview = () => {
     reviewDots.forEach( dot => {
         dot.style.background = "#36970F";
         });
@@ -17,7 +16,6 @@ export function reviewCarousel() {
     if (reviewCounter === reviewItems.length -1 ) return reviewCounter = 0;
     reviewCounter ++;
     };
-
 
     const reviewInterval = () => setInterval(autoReview, 3000);
     reviewInterval();
