@@ -48,6 +48,10 @@ body {
   outline-color: darkgreen;
 }
 
+.dots {
+  text-align: center;
+}
+
 nav {
   width: 100vw;
   height: 15vh;

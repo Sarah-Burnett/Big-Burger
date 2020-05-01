@@ -22,8 +22,8 @@ router.post('/book', (req, res) => {
         .catch((err) => {res.status(500); res.send(err)})
 });
 
-router.get('/booking/', (req, res) => {
-    Booking.findById(req.query.id)
+router.get('/booking/:id', (req, res) => {
+    Booking.findById(req.params.id)
     .then((booking) => res.render('booking', {booking}))
     .catch((error) => {res.status(404); res.send({response: "No booking"})})
 })

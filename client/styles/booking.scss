@@ -193,9 +193,19 @@ form {
     width: 100%;
     align-items: center;
     justify-content: space-evenly;
+    #editBtn {
+        @extend button;
+        background: $green;
+    }
+    #cancelBtn {
+        @extend button;
+        background: $green;
+        display: none;
+    }
     #updateBtn {
     @extend button;
-    background: $green;
+    background: $blue;
+    display: none;
     }
     #deleteBtn {
         @extend button;
