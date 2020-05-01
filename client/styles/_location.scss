@@ -1,7 +1,7 @@
 #location {
     height: auto;
     min-height: 90vh;
-    @media (min-width: 500px){
+    @include media($tablet){
         height: 90vh;
     };
     padding: 1em;
@@ -27,6 +27,7 @@
                 font-family: 'Slabo 27px';
                 margin: 1vh;
                 padding: 1em;
+                border-radius: 15px;
                 border-style: none;
                 background: $green;
                 cursor: pointer;
@@ -60,7 +61,7 @@
 
 // icons 
 
-@media only screen and (min-width: 720px) {
+@include media($tablet) {
     .swipe {
         display: none;
     }

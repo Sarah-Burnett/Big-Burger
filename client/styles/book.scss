@@ -2,7 +2,7 @@
 
 @mixin selectionBox {
     width: 75vw;
-        @media (min-width: 720px) {
+        @include media($desktop) {
             width: 40vw;
         }
     label {
@@ -36,16 +36,12 @@ body{
     background: #000;
     color: $white;
     font-family: 'Slabo 27px', serif;
-    font-size: 14px; 
     min-height: 100vh;
-    @media (min-width: 600px) {font-size: 16px};
-    @media (min-width: 900px) {font-size: 18px};
-    @media (min-width: 1200px) {font-size: 20px};
-    @media (min-width: 1800px) {font-size: 22px};
+    @include fontSize;
     line-height: 2;
     text-align: center;
     overflow-x: hidden;
-    @media (min-width: 720px) {
+    @include media($desktop) {
         background-image: url(/images/burger-bg.jpeg);
         background-repeat: no-repeat no-repeat;
         background-size: cover;
@@ -62,11 +58,7 @@ button {
     border-style: none;
     background: $green;
     font-family: 'Slabo 27px', serif;
-    font-size: 14px; 
-    @media (min-width: 600px) {font-size: 16px};
-    @media (min-width: 900px) {font-size: 18px};
-    @media (min-width: 1200px) {font-size: 20px};
-    @media (min-width: 1800px) {font-size: 22px};
+    @include fontSize;
     cursor: pointer;
     &:hover {
         background: $darkgreen;
@@ -94,6 +86,10 @@ nav {
         color: $white;
         min-width: 10vw;
         text-decoration: none;
+        padding: 0 2vw;
+        width: auto;
+        margin-right: 1vw;
+        border-radius: 15px;
         &:hover {
             background: $darkgreen;
         }
@@ -105,11 +101,9 @@ nav {
 #book {
     background: #000;
     margin: auto;
-    @media (min-width: 720px) {
-        margin-top: 10vh;
-    }
     width: 95vw; 
-    @media (min-width: 720px) {
+    @include media($desktop) {
+        margin-top: 10vh;
         width: 60vw;
     }
     height: auto;
@@ -126,7 +120,7 @@ nav {
         flex-direction: space-evenly;
         div {
             width: 80vw;
-            @media (min-width: 720px) {
+            @include media($desktop) {
                 width: 45vw;
             }
         }
@@ -136,17 +130,13 @@ nav {
         }
         input{
             font-family: 'Slabo 27px';
-            font-size: 14px; 
-            @media (min-width: 600px) {font-size: 16px};
-            @media (min-width: 900px) {font-size: 18px};
-            @media (min-width: 1200px) {font-size: 20px};
-            @media (min-width: 1800px) {font-size: 22px};
+            @include fontSize;
             text-align: center;
             height: 8vh;
             padding: 2vw;
             margin: 2vw;
             width: 75vw;
-            @media (min-width: 720px) {
+            @include media($desktop) {
                 padding: 1vw;
                 margin: 1vw;
                 width: 40vw;
@@ -180,7 +170,7 @@ nav {
                 button {
                     width: 75vw;
                     padding: 0.6em;
-                    @media (min-width: 720px) {
+                    @include media($desktop) {
                         position: absolute;
                         top: -9vh;
                         right: 0;
@@ -203,7 +193,7 @@ nav {
             height: 30vh;
             resize: vertical;
             width: 75vw;
-            @media (min-width: 720px) {
+            @include media($desktop) {
                 width: 40vw;
             }
             text-align: center;
@@ -216,7 +206,8 @@ nav {
             height: auto;
             padding: 1em;
             width: 75vw;
-            @media (min-width: 720px) {
+            border-radius: 15px;
+            @include media($desktop) {
                 width: auto;
             }
         }

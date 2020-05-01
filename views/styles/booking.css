@@ -1,0 +1,344 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #F5F5F5;
+  font-family: 'Slabo 27px', serif;
+  font-size: 14px;
+  min-height: 100vh;
+  line-height: 2;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+@media (min-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1800px) {
+  body {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 720px) {
+  body {
+    background-image: url(/images/burger-bg.jpeg);
+    background-repeat: no-repeat no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+:focus {
+  outline-color: #205909;
+}
+
+button, .buttons #updateBtn, .buttons #deleteBtn {
+  padding: 1em;
+  border-style: none;
+  font-family: 'Slabo 27px', serif;
+  height: auto;
+  border-radius: 15px;
+  font-size: 14px;
+  color: #F5F5F5;
+  cursor: pointer;
+}
+
+@media (min-width: 600px) {
+  button, .buttons #updateBtn, .buttons #deleteBtn {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  button, .buttons #updateBtn, .buttons #deleteBtn {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  button, .buttons #updateBtn, .buttons #deleteBtn {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1800px) {
+  button, .buttons #updateBtn, .buttons #deleteBtn {
+    font-size: 22px;
+  }
+}
+
+nav {
+  background: #000;
+  width: 100vw;
+  padding: 0 2vw;
+  height: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+nav img {
+  width: auto;
+  height: 10vh;
+}
+
+nav #backBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-shadow: 1px 1px 2px black;
+  background: #36970F;
+  color: #F5F5F5;
+  min-width: 10vw;
+  text-decoration: none;
+  padding: 0 2vw;
+  width: auto;
+  margin-right: 1vw;
+  border-radius: 15px;
+}
+
+nav #backBtn:hover {
+  background: #205909;
+}
+
+#booking {
+  background: #000;
+  margin: 2vh auto;
+  width: 95vw;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1em;
+}
+
+@media (min-width: 720px) {
+  #booking {
+    margin: 10vh auto;
+  }
+}
+
+@media (min-width: 720px) {
+  #booking {
+    margin-top: 10vh;
+    width: 60vw;
+  }
+}
+
+form {
+  width: 95vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-direction: space-evenly;
+      flex-direction: space-evenly;
+}
+
+@media (min-width: 720px) {
+  form {
+    margin-top: 10vh;
+    width: 60vw;
+  }
+}
+
+form .row {
+  width: 95vw;
+  height: auto;
+  display: -ms-grid;
+  display: grid;
+  margin: 1vh 0;
+  padding: 1vh 1vw;
+  -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+  -ms-grid-rows: (min-content)[2];
+      grid-template-rows: repeat(2, -webkit-min-content);
+      grid-template-rows: repeat(2, min-content);
+      grid-template-areas: "label" "field";
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (min-width: 720px) {
+  form .row {
+    margin-top: 10vh;
+    width: 60vw;
+  }
+}
+
+@media (min-width: 720px) {
+  form .row {
+    margin: 1vw 0;
+    -ms-grid-columns: (1fr)[6];
+        grid-template-columns: repeat(6, 1fr);
+    -ms-grid-rows: min-content;
+        grid-template-rows: -webkit-min-content;
+        grid-template-rows: min-content;
+        grid-template-areas: "label label field field field field";
+  }
+}
+
+form .row .label {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: label;
+  display: block;
+}
+
+form .row .field {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: field;
+}
+
+form h3::after {
+  content: ' * ';
+  color: #36970F;
+}
+
+form input, form textarea {
+  display: block;
+  width: 95%;
+  font-family: 'Slabo 27px';
+  font-size: larger;
+  text-align: center;
+  height: 8vh;
+  padding: 2vw;
+  margin: 2vw;
+  background: #F5F5F5;
+  border-radius: 15px;
+}
+
+@media (min-width: 720px) {
+  form input, form textarea {
+    padding: 1vw;
+    margin: 1vw;
+  }
+}
+
+form .invalid {
+  border: 2px solid red;
+}
+
+form .error {
+  display: none;
+  color: red;
+}
+
+form textarea {
+  min-height: 25vh;
+  width: 95%;
+  resize: vertical;
+  text-align: center;
+  background: #F5F5F5;
+  color: black;
+}
+
+.restaurant .restaurants {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.restaurant label {
+  padding: 2vw;
+  margin: 2vw;
+  width: 100%;
+  background: #36970F;
+  border-radius: 15px;
+}
+
+@media (min-width: 720px) {
+  .restaurant label {
+    padding: 1vw;
+    margin: 1vw;
+  }
+}
+
+.restaurant label:hover {
+  background: #205909;
+}
+
+.restaurant input[type=radio], .restaurant form textarea[type=radio], form .restaurant textarea[type=radio] {
+  height: 0;
+  width: 0;
+}
+
+.restaurant input[type=radio]:checked + label, .restaurant form textarea[type=radio]:checked + label, form .restaurant textarea[type=radio]:checked + label {
+  background: #205909;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.buttons #updateBtn {
+  background: #36970F;
+}
+
+.buttons #deleteBtn {
+  background: red;
+}
+/*# sourceMappingURL=booking.css.map */

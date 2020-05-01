@@ -2,9 +2,26 @@ $white: #F5F5F5;
 $green: #36970F;
 $darkgreen: #205909;
 
+$desktop: 720px;
+$tablet: 500px;
+
 @mixin flexCenter ($direction) {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: $direction
+}
+
+@mixin fontSize {
+    font-size: 14px; 
+    @media (min-width: 600px) {font-size: 16px};
+    @media (min-width: 900px) {font-size: 18px};
+    @media (min-width: 1200px) {font-size: 20px};
+    @media (min-width: 1800px) {font-size: 22px};
+}
+
+@mixin media($px) {
+    @media (min-width: $px) {
+        @content
+    }
 }

@@ -1,5 +1,6 @@
 import { minmaxDate } from './date';
 import { checkError } from './validation';
+import { postForm } from './postForm';
 
 //restaurant selector 
 const checkRestaurant = () => {
@@ -101,33 +102,13 @@ const submitForm = () => {
       if (error === 0) {
         submitBtn.value = "Sending...";
         submitBtn.disabled = true;
-        postForm();
+        postForm('/book')
+          .then((reply) => document.querySelector('#book').innerHTML = reply)
+          .catch(() => document.querySelector('#book').innerHTML = "Booking error. <br> Please try again or give us a call")
       }
   });
-
-  const postForm = () => {    
-    const form = document.querySelector('#bookForm');
-    const name = form.elements["name"].value;
-    const email = form.elements["email"].value;
-    const restaurant = form.elements["restaurant"].value;
-    const date = form.elements["date"].value;
-    const time = form.elements["time"].value;
-    const party = form.elements["party"].value;
-    const message = form.elements["message"].value;
-    const params = `form-name=booking&name=${name}&email=${email}&restaurant=${restaurant}&date=${date}&time=${time}&party=${party}&message=${message}`;
-    const xhr = new XMLHttpRequest;
-    xhr.open('POST', '/book', true);
-    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-    xhr.onload = function(){
-        if(this.status === 404){
-          document.querySelector('#book').innerHTML = "Booking error. <br> Please try again or give us a call";
-        } else {
-        document.querySelector('#book').innerHTML = this.response;
-      }
-    };
-    xhr.send(params);
-  };
 }
+  
 
 //call functions
 checkRestaurant();

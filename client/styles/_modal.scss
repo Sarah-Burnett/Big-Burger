@@ -22,7 +22,7 @@
     height: 100vh;
     width: 100vw;
     text-shadow: none;
-    @media (min-width: 720px) {
+    @include media($desktop) {
         height: 60vh;
         width: 50vw;
     }

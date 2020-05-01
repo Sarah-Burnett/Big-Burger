@@ -226,12 +226,61 @@ var showError = function showError(index, msg) {
 
   formBoxes[index].scrollIntoView();
 };
-},{"./date":"js/date.js"}],"js/book.js":[function(require,module,exports) {
+},{"./date":"js/date.js"}],"js/postForm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.postForm = void 0;
+
+var postForm = function postForm(url) {
+  var form = document.querySelector('#bookForm');
+  var name = form.elements["name"].value;
+  var email = form.elements["email"].value;
+  var restaurant = form.elements["restaurant"].value;
+  var date = form.elements["date"].value;
+  var time = form.elements["time"].value;
+  var party = form.elements["party"].value;
+  var message = form.elements["message"].value;
+  var params = "form-name=booking&name=".concat(name, "&email=").concat(email, "&restaurant=").concat(restaurant, "&date=").concat(date, "&time=").concat(time, "&party=").concat(party, "&message=").concat(message);
+  return new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+
+    xhr.onload = function () {
+      var _JSON$parse = JSON.parse(this.responseText),
+          _id = _JSON$parse._id,
+          date = _JSON$parse.date,
+          time = _JSON$parse.time;
+
+      if (this.status === 200) {
+        resolve("Booking successful. <br> Your booking reference is <br><a href=\"./booking.html?id=".concat(_id, "\">").concat(_id, "</a><br> Looking forward to seeing you soon"));
+      } else if (this.status === 403) {
+        resolve("Booking full at your selected time and date.<br>Date: ".concat(date, "<br>Time: ").concat(time, "<br> Please update booking for a different time"));
+      } else {
+        reject('Booking error. <br> Please try again or give us a call');
+      }
+    };
+
+    xhr.onerror = function () {
+      reject("Booking error. <br> Please try again or give us a call");
+    };
+
+    xhr.send(params);
+  });
+};
+
+exports.postForm = postForm;
+},{}],"js/book.js":[function(require,module,exports) {
 "use strict";
 
 var _date = require("./date");
 
 var _validation = require("./validation");
+
+var _postForm = require("./postForm");
 
 //restaurant selector 
 var checkRestaurant = function checkRestaurant() {
@@ -331,34 +380,13 @@ var submitForm = function submitForm() {
     if (error === 0) {
       submitBtn.value = "Sending...";
       submitBtn.disabled = true;
-      postForm();
+      (0, _postForm.postForm)('/book').then(function (reply) {
+        return document.querySelector('#book').innerHTML = reply;
+      }).catch(function () {
+        return document.querySelector('#book').innerHTML = "Booking error. <br> Please try again or give us a call";
+      });
     }
   });
-
-  var postForm = function postForm() {
-    var form = document.querySelector('#bookForm');
-    var name = form.elements["name"].value;
-    var email = form.elements["email"].value;
-    var restaurant = form.elements["restaurant"].value;
-    var date = form.elements["date"].value;
-    var time = form.elements["time"].value;
-    var party = form.elements["party"].value;
-    var message = form.elements["message"].value;
-    var params = "form-name=booking&name=".concat(name, "&email=").concat(email, "&restaurant=").concat(restaurant, "&date=").concat(date, "&time=").concat(time, "&party=").concat(party, "&message=").concat(message);
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/book', true);
-    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-
-    xhr.onload = function () {
-      if (this.status === 404) {
-        document.querySelector('#book').innerHTML = "Booking error. <br> Please try again or give us a call";
-      } else {
-        document.querySelector('#book').innerHTML = this.response;
-      }
-    };
-
-    xhr.send(params);
-  };
 }; //call functions
 
 
@@ -368,7 +396,7 @@ checkTime();
 backTime();
 checkParty();
 submitForm();
-},{"./date":"js/date.js","./validation":"js/validation.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./date":"js/date.js","./validation":"js/validation.js","./postForm":"js/postForm.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -396,7 +424,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56046" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62146" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

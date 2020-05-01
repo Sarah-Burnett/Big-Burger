@@ -126,7 +126,10 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 
 .nav-links #bookBtn {
   background: #36970F;
-  padding: 0 2vw;
+  padding: 2vh 2vw;
+  margin-right: 2vw;
+  border-radius: 15px;
+  line-height: 1;
 }
 
 .nav-links #bookBtn:hover {
@@ -174,7 +177,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   top: 10vh;
 }
 
-@media only screen and (min-width: 720px) {
+@media (min-width: 720px) {
   nav {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -595,6 +598,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   font-family: 'Slabo 27px';
   margin: 1vh;
   padding: 1em;
+  border-radius: 15px;
   border-style: none;
   background: #36970F;
   cursor: pointer;
@@ -629,7 +633,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   background-color: #205909;
 }
 
-@media only screen and (min-width: 720px) {
+@media (min-width: 500px) {
   .swipe {
     display: none;
   }

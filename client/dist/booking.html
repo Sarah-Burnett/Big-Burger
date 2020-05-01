@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/booking.a9f7890d.css">
+    <link rel="icon" href="/favicon.8003f84c.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script> 
+    <title>Booking</title>
+<script src="/booking.a9f7890d.js"></script></head>
+<body>
+    <nav data-scroll-header="" class="header">
+        <img src="/burger-logo-smaller.e1b388bd.jpg" alt="Big Burger Logo">
+        <a id="backBtn" href="/">Back</a>
+    </nav>
+    <div id="booking">
+        <h2>Your Booking</h2>
+        <form name="booking" method="POST" action="/book" id="bookForm" novalidate="">
+            <div id="bookForm">
+                <div class="row name">
+                    <div class="label">
+                        <label for="name"><h3>Name</h3></label>
+                        <p class="error nameError"></p>
+                    </div>
+                    <div class="field">
+                        <input type="text" id="name" name="name" required="" readonly="">
+                    </div>
+                </div>
+                <div class="row email">
+                    <div class="label">
+                        <label for="email"><h3>Email</h3></label>
+                    </div>
+                    <div class="field">
+                        <input type="email" id="email" name="email" required="" readonly="">
+                        <p class="error emailError"></p>
+                    </div>
+                </div>
+                <div class="row restaurant">
+                    <div class="label">
+                        <h3>Restaurant</h3>
+                    </div>
+                    <div class="field">
+                        <div class="restaurants">
+                            <input type="radio" id="glensgaich" name="restaurant" value="glensgaich" required="" readonly="">
+                            <label for="glensgaich" role="button" tabindex="0">Glensgaich</label>
+                            <input type="radio" id="tanygrisiau" name="restaurant" value="tanygrisiau" required="">
+                            <label for="tanygrisiau" role="button" tabindex="0">Tanygrisiau</label>
+                        </div>
+                        <p class="error restaurantError"></p>        
+                    </div>
+                </div>
+                <div class="row date">
+                    <div class="label">
+                        <label for="date"><h3>Date of Booking</h3></label>
+                    </div>
+                    <div class="field">
+                        <input type="date" id="date" name="date" min="2020-04-01" max="2020-04-30" required="" readonly="">
+                        <p class="error dateError"></p>
+                    </div>
+                </div>
+                <div class="row time">
+                    <div class="label">                
+                        <label for="time"><h3>Time of Booking</h3></label>
+                    </div>
+                    <div class="field">
+                        <input type="time" id="time" name="time" required="" readonly="">
+                        <p class="error timeError"></p>
+                    </div>
+                </div>
+                <div class="row party">
+                    <div class="label">
+                        <label for="party"><h3>Booking party</h3></label>
+                    </div>
+                    <div class="field">
+                        <input type="number" id="party" name="party" min="2" max="8" required="" readonly="">
+                        <p class="error partyError"></p>
+                    </div> 
+                </div>
+                <div class="row message">
+                    <div class="label">
+                         <label for="message"><h3>Message</h3></label>
+                    </div>
+                    <div class="field">
+                        <textarea id="message" name="message" placeholder="Any dietary/allergy requirements or special occasions please let us know here"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+                <button type="submit" id="updateBtn"><i class="fas fa-edit"></i>&nbsp;&nbsp;Update</button>
+                <button type="button" id="deleteBtn"><i class="fas fa-trash"></i>&nbsp;&nbsp;Delete</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.0/dist/js/datepicker.min.js"></script>
+</body>
+</html>
