@@ -2,8 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const clientRoutes = require('./routes/clientroutes');
-const managerRoutes = require('./routes/managerroutes');
+const routes = require('./routes/routes');
 
 require('dotenv').config();
 
@@ -29,8 +28,7 @@ app.set('views', path.join(__dirname, 'views/'));
 app.set('view engine', 'pug');
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/', clientRoutes);
-app.use('/', managerRoutes);
+app.use('/', routes);
 app.use(express.static('./client/dist'))
 
 const server = app.listen(3000, () => {

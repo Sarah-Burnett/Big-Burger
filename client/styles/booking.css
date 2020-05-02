@@ -62,6 +62,7 @@ button, .buttons #editBtn, .buttons #cancelBtn, .buttons #updateBtn, .buttons #d
   font-size: 14px;
   color: #F5F5F5;
   cursor: pointer;
+  background: #36970F;
 }
 
 @media (min-width: 600px) {
@@ -89,6 +90,9 @@ button, .buttons #editBtn, .buttons #cancelBtn, .buttons #updateBtn, .buttons #d
 }
 
 nav {
+  position: fixed;
+  top: 0;
+  left: 0;
   background: #000;
   width: 100vw;
   padding: 0 2vw;
@@ -134,7 +138,7 @@ nav #backBtn:hover {
   background: #205909;
 }
 
-#booking {
+#editBooking {
   background: #000;
   margin: 2vh auto;
   width: 95vw;
@@ -156,13 +160,13 @@ nav #backBtn:hover {
 }
 
 @media (min-width: 720px) {
-  #booking {
+  #editBooking {
     margin: 10vh auto;
   }
 }
 
 @media (min-width: 720px) {
-  #booking {
+  #editBooking {
     margin-top: 10vh;
     width: 60vw;
   }
@@ -344,11 +348,51 @@ form textarea {
 }
 
 .buttons #updateBtn {
-  background: #36970F;
+  background: blue;
   display: none;
 }
 
 .buttons #deleteBtn {
   background: red;
+}
+
+.modalBg {
+  position: fixed;
+  top: 10vh;
+  left: 0;
+  background: rgba(0, 0, 0, 0.9);
+  height: 90vh;
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.6s ease-in-out;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.modalBg .modal {
+  height: auto;
+  width: auto;
+  line-height: 2;
+  background: black;
+}
+
+.modalBg .modal a {
+  font-size: larger;
+  color: #36970F;
+  text-decoration: none;
+}
+
+.modalActive {
+  pointer-events: all;
+  opacity: 1;
 }
 /*# sourceMappingURL=booking.css.map */

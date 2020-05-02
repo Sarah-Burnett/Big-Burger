@@ -44,9 +44,13 @@ button {
     @include fontSize;
     color: $white;
     cursor: pointer;
+    background: $green;
 }
 
 nav {
+    position: fixed;
+    top: 0;
+    left: 0;
     background: #000;
     width: 100vw;
     padding: 0 2vw;
@@ -77,7 +81,7 @@ nav {
     }
 }
 
-#booking {
+#editBooking {
     background: #000;
     margin: 2vh auto;
     @include media($desktop) {
@@ -204,7 +208,7 @@ form {
     }
     #updateBtn {
     @extend button;
-    background: $blue;
+    background: blue;
     display: none;
     }
     #deleteBtn {
@@ -213,3 +217,33 @@ form {
     }
 }
 
+.modalBg {
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0; 
+    transition: opacity 0.6s ease-in-out;
+    .modal {
+        height: auto;
+        width: auto;
+        line-height: 2;
+        background: black;
+        a {
+            font-size: larger;
+            color: $green;
+            text-decoration: none;
+        }
+    }
+}
+
+.modalActive {
+    pointer-events: all;
+    opacity: 1;
+}

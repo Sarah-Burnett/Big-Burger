@@ -117,127 +117,61 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/date.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.minmaxDate = exports.dateFortnightplus1 = exports.dateTodayplus1 = void 0;
-var dateInput = document.querySelector('#date');
-var dateTodayplus1 = new Date(Date.now() + 86400000);
-exports.dateTodayplus1 = dateTodayplus1;
-var dateFortnightplus1 = new Date(Date.now() + 1296000000);
-exports.dateFortnightplus1 = dateFortnightplus1;
-
-var minmaxDate = function minmaxDate() {
-  dateInput.min = dateTodayplus1.toISOString().split('T')[0];
-  dateInput.max = dateFortnightplus1.toISOString().split('T')[0];
-  ;
-};
-
-exports.minmaxDate = minmaxDate;
-},{}],"js/validation.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.checkError = void 0;
-
-var _date = require("./date");
-
-var name = document.querySelector('#name');
-var email = document.querySelector('#email');
-var date = document.querySelector('#date');
-var time = document.querySelector('input[name="time"]');
-var party = document.querySelector('input[name="party"]');
-var formBoxes = document.querySelectorAll('#bookForm div');
-var inputs = document.querySelectorAll('input');
-var errorBoxes = document.querySelectorAll('.error');
-
-var checkError = function checkError() {
-  formBoxes.forEach(function (div) {
-    if (div.classList.contains('invalid')) {
-      div.classList.remove('invalid');
-    }
-
-    ;
-  });
-  inputs.forEach(function (input) {
-    if (input.classList.contains('invalid')) {
-      input.classList.remove('invalid');
-    }
-
-    ;
-  });
-  errorBoxes.forEach(function (p) {
-    p.innerHTML = '';
-    p.style.display = 'none';
-  });
-  var error = 0;
-
-  if (!party.validity.valid) {
-    error = 1;
-    showError(5, 'Please select the number of people');
-  }
-
-  if (!time.validity.valid) {
-    error = 1;
-    showError(4, 'Please select the time you would like to book');
-  }
-
-  if (!date.validity.valid) {
-    error = 1;
-    showError(3, "Please input a date (dd/mm/yy) between ".concat(_date.dateTodayplus1.getDate(), "/").concat(_date.dateTodayplus1.getMonth() + 1, "/").concat(_date.dateTodayplus1.getFullYear(), " and ").concat(_date.dateFortnightplus1.getDate(), "/").concat(_date.dateFortnightplus1.getMonth() + 1, "/").concat(_date.dateFortnightplus1.getFullYear()));
-  }
-
-  if (!email.validity.valid) {
-    error = 1;
-    showError(1, 'Please enter your valid email address');
-  }
-
-  if (!name.validity.valid) {
-    error = 1;
-    showError(0, 'Please enter your name');
-  }
-
-  return error;
-};
-
-exports.checkError = checkError;
-
-var showError = function showError(index, msg) {
-  var errorMsg = msg;
-  errorBoxes[index].innerHTML = errorMsg;
-  errorBoxes[index].style.display = 'block';
-
-  if (index == 0) {
-    document.querySelector('#name').classList.add('invalid');
-  }
-
-  if (index == 1) {
-    document.querySelector('#email').classList.add('invalid');
-  }
-
-  if (index == 3) {
-    document.querySelector('#date').classList.add('invalid');
-  }
-
-  formBoxes[index].scrollIntoView();
-};
-},{"./date":"js/date.js"}],"js/booking.js":[function(require,module,exports) {
-"use strict";
-
-var _validation = require("./validation");
-
+})({"js/booking.js":[function(require,module,exports) {
+var findBtn = document.querySelector('#findBtn');
+var editBtn = document.querySelector('#editBtn');
 var updateBtn = document.querySelector('#updateBtn');
 var deleteBtn = document.querySelector('#deleteBtn');
 
-var Booking = function Booking(method, url) {
+var getBooking = function getBooking(id) {
   return new Promise(function (resolve, reject) {
     var xhr = new XMLHttpRequest();
-    xhr.open(method, url, true);
+    xhr.open('GET', "/api/bookings/".concat(id), true);
+
+    xhr.onload = function () {
+      if (this.status === 200) resolve(this.responseText);else reject({
+        error: "no booking found"
+      });
+    };
+
+    xhr.send();
+  });
+};
+
+var findBooking = function findBooking(event) {
+  event.preventDefault();
+  getBooking(document.querySelector('#id').value).then(function (response) {
+    return inputForm(response);
+  }).catch(function (error) {
+    return console.log(error);
+  });
+};
+
+var inputForm = function inputForm(booking) {
+  booking = JSON.parse(booking);
+  var inputs = document.querySelectorAll('input');
+  inputs.forEach(function (input) {
+    if (input.name !== "id") input.value = booking[input.name];
+  });
+  document.querySelector('.modalBg').classList.remove("modalActive");
+};
+
+var editForm = function editForm(event) {
+  var inputs = document.querySelectorAll('input');
+  event.preventDefault();
+  inputs.forEach(function (input) {
+    return input.readOnly = false;
+  });
+  cancelBtn.style.display = "block";
+  updateBtn.style.display = "block";
+  editBtn.style.display = "none";
+  deleteBtn.style.display = "none";
+};
+
+var updateBooking = function updateBooking() {
+  return new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/bookings', true);
 
     xhr.onload = function () {
       var _JSON$parse = JSON.parse(this.responseText),
@@ -251,9 +185,14 @@ var Booking = function Booking(method, url) {
           message = _JSON$parse.message;
 
       if (this.status === 200) {
-        resolve("Booking successful. <br> Your booking reference is <br><a href=\"./booking.html?id=".concat(_id, "\">").concat(_id, "</a><br> Looking forward to seeing you soon"));
+        resolve({
+          message: "bookSuccess",
+          id: _id
+        });
       } else {
-        reject('No booking');
+        reject({
+          message: "bookFail"
+        });
       }
     };
 
@@ -265,8 +204,48 @@ var Booking = function Booking(method, url) {
   });
 };
 
-deleteBtn.onclick = document.querySelector('form').onsubmit = _validation.checkError;
-},{"./validation":"js/validation.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var deleteBooking = function deleteBooking(event) {
+  console.log("delete me bro");
+  event.preventDefault();
+  var xhr = new XMLHttpRequest();
+  xhr.open('DELETE', "/api/bookings/".concat(id), true);
+
+  xhr.onload = function () {
+    console.log(this.responseText);
+  };
+
+  xhr.send();
+};
+
+var submitForm = function submitForm(event) {
+  event.preventDefault();
+  updateBooking();
+};
+
+var id = location.search.substr(1);
+
+if (id !== "") {
+  document.querySelector('#id').value = id;
+  getBooking(id).then(function (response) {
+    return inputForm(response);
+  }).catch(function (error) {
+    return console.log(error);
+  });
+}
+
+findBtn.onclick = function (event) {
+  return findBooking(event);
+};
+
+editBtn.onclick = function (event) {
+  return editForm(event);
+};
+
+deleteBtn.onclick = function (event) {
+  return deleteBooking(event);
+}; //updateBtn.onclick = (event) => submitForm(event);
+//document.querySelector('form').onsubmit = checkError;
+},{}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -294,7 +273,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62146" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60786" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

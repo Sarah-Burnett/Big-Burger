@@ -91,6 +91,9 @@ button:hover, #book form input:hover[type=submit], #book form .message textarea:
 }
 
 nav {
+  position: fixed;
+  top: 0;
+  right: 0;
   background: #000;
   width: 100vw;
   padding: 0 2vw;
@@ -159,7 +162,7 @@ nav #backBtn:hover {
 
 @media (min-width: 720px) {
   #book {
-    margin-top: 10vh;
+    margin: 20vh auto;
     width: 60vw;
   }
 }
@@ -476,6 +479,38 @@ nav #backBtn:hover {
   #book form input[type=submit], #book form .message textarea[type=submit] {
     width: auto;
   }
+}
+
+.modalBg {
+  position: fixed;
+  top: 10vh;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  height: 90vh;
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.6s ease-in-out;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.modalBg .modal {
+  min-width: 50%;
+  min-height: 50%;
+}
+
+.modalActive {
+  pointer-events: all;
+  opacity: 1;
 }
 
 

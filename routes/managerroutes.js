@@ -4,11 +4,7 @@ const mongoose = require('mongoose');
 const router = express.Router();
 const Booking = require('../models/Booking');
 
-router.get('/bookings', (req, res) => {
-    Booking.find()
-        .then((bookings) => res.render('bookings', {bookings}))
-        .catch((error) => {res.status(404); res.send({response: "No bookings"})})
-})
+
 
 router.get('/bookings/:restaurant/:date', (req, res) => {
     Booking.find({restaurant: req.params.restaurant, date: req.params.date})

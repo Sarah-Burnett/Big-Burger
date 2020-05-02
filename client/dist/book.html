@@ -78,8 +78,33 @@
             </div>
         </form>
     </div>
-    <div class="modal-bg">
-        <div class="modal"></div>
+    <div class="bookSuccess modalBg">
+        <div class="modal">
+            <h2>Booking successful</h2>
+            <p>Your booking reference is:</p>
+            <h3 id="id"></h3>
+            <p>Looking forward to seeing you soon</p>
+        </div>
+    </div>
+    <div class="bookFull modalBg">
+        <div class="modal">
+            <h2>Booking full at your selected time and date</h2>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+                    <td id="date"></td>
+                    <td id="time"></td>
+            </table>
+            <p>Please update booking for a different time</p>
+        </div>
+    </div>
+    <div class="bookFail modalBg">
+        <div class="modal">
+            <h3>Booking error</h3>
+            <p>Please try again or give us a call</p>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.0/dist/js/datepicker.min.js"></script>
     <script src="/book.198dd6d2.js"></script>
