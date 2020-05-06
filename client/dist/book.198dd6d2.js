@@ -233,97 +233,48 @@ var _date = require("./date");
 
 var _validation = require("./validation");
 
-//restaurant selector 
-var checkRestaurant = function checkRestaurant() {
-  var restaurantBtns = document.querySelectorAll('.restaurant label');
-  restaurantBtns[0].style.background = "#205909";
+var increment = function increment(field, _increment, max) {
+  var _document$querySelect = document.querySelector(field),
+      value = _document$querySelect.value;
 
-  var selectRestaurant = function selectRestaurant(item, index) {
-    item.addEventListener('click', function () {
-      restaurantBtns.forEach(function (btn) {
-        return btn.style.background = "#F5F5F5";
-      });
-      restaurantBtns[index].style.background = "#205909";
-    });
-  };
+  if (value < max) document.querySelector(field).value = parseInt(value) + _increment;
+};
 
-  restaurantBtns.forEach(selectRestaurant);
-}; // time selector
+var decrement = function decrement(field, _decrement, min) {
+  var _document$querySelect2 = document.querySelector(field),
+      value = _document$querySelect2.value;
 
+  if (value > min) document.querySelector(field).value = parseInt(value) - _decrement;
+};
 
-var checkTime = function checkTime() {
-  var timeContainer = document.querySelector('#time-selection');
-  var hourContainer = document.querySelector('#hour-selection');
-  var hourBtns = document.querySelectorAll('#hour-selection span');
-  var timeBtns = document.querySelectorAll('#time-selection label');
-  var timeTxt = document.querySelectorAll('#time-selection label span');
-  var timeRadio = document.querySelectorAll('#time-selection input[type="radio"]');
-  var hours = [["12:00", "12:30", "13:00", "13:30", "14:00"], ["14:00", "14:30", "15:00", "15:30", "16:00"], ["16:00", "16:30", "17:00", "17:30", "18:00"], ["18:00", "18:30", "19:00", "19:30", "20:00"], ["20:00", "20:30", "21:00", "21:30", "22:00"]];
-
-  var selectTime = function selectTime(item, index) {
-    item.addEventListener('click', function () {
-      timeBtns.forEach(function (btn) {
-        return btn.style.background = "#F5F5F5";
-      });
-      timeBtns[index].style.background = "#205909";
-    });
-  };
-
-  var changeTime = function changeTime(item, index) {
-    item.addEventListener('click', function () {
-      timeContainer.style.display = "block";
-      hourContainer.style.display = "none";
-      hourBtns.forEach(function (btn) {
-        return btn.style.background = "#F5F5F5";
-      });
-      hourBtns[index].style.background = "#205909";
-      timeTxt[0].innerHTML = hours[index][0];
-      timeRadio[0].value = hours[index][0];
-      timeTxt[1].innerHTML = hours[index][1];
-      timeRadio[1].value = hours[index][1];
-      timeTxt[2].innerHTML = hours[index][2];
-      timeRadio[2].value = hours[index][2];
-      timeTxt[3].innerHTML = hours[index][3];
-      timeRadio[3].value = hours[index][3];
-      timeTxt[4].innerHTML = hours[index][4];
-      timeRadio[4].value = hours[index][4];
-    });
-  };
-
-  hourBtns.forEach(changeTime);
-  timeBtns.forEach(selectTime);
-}; //time back button
+var add30mins = function add30mins() {
+  var time = ["12:00", "12:30", "13:00", "13:30", "14:30", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"];
+  var index = time.indexOf(document.querySelector('#time').value);
+  document.querySelector('#time').value = time[index + 1];
+  console.log(time, index);
+}; // party buttons
 
 
-var backTime = function backTime() {
-  var timeContainer = document.querySelector('#time-selection');
-  var hourContainer = document.querySelector('#hour-selection');
-  document.querySelector('#timebackBtn').addEventListener('click', function () {
-    timeContainer.style.display = "none";
-    hourContainer.style.display = "block";
-  });
-}; // party selection
+document.querySelector(".incPartyBtn").onclick = function () {
+  return increment('#party', 1, 8);
+};
 
+document.querySelector(".decPartyBtn").onclick = function () {
+  return decrement('#party', 1, 2);
+};
 
-var checkParty = function checkParty() {
-  var partyBtns = document.querySelectorAll('.party label');
+document.querySelector(".incTimeBtn").onclick = function () {
+  return add30mins();
+};
 
-  var selectParty = function selectParty(item, index) {
-    item.addEventListener('click', function () {
-      partyBtns.forEach(function (btn) {
-        return btn.style.background = "#F5F5F5";
-      });
-      partyBtns[index].style.background = "#205909";
-    });
-  };
-
-  partyBtns.forEach(selectParty);
+document.querySelector(".decTimeBtn").onclick = function () {
+  return decrement('#time', "00:30", "22:00");
 }; //form submit
 
 
 var submitForm = function submitForm() {
   var bookForm = document.querySelector('#bookForm');
-  var submitBtn = document.querySelector('input[type="submit"]');
+  var bookBtn = document.querySelector('#bookBtn');
 
   var postBooking = function postBooking(url) {
     var form = document.querySelector('#bookForm');
@@ -379,8 +330,8 @@ var submitForm = function submitForm() {
     var error = (0, _validation.checkError)();
 
     if (error === 0) {
-      submitBtn.value = "Sending...";
-      submitBtn.disabled = true;
+      bookBtn.value = "Sending...";
+      bookBtn.disabled = true;
       postBooking('/api/bookings').then(function (reply) {
         var message = reply.message,
             id = reply.id,
@@ -398,11 +349,7 @@ var submitForm = function submitForm() {
 }; //call functions
 
 
-checkRestaurant();
 (0, _date.minmaxDate)();
-checkTime();
-backTime();
-checkParty();
 submitForm();
 },{"./date":"js/date.js","./validation":"js/validation.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -432,7 +379,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60786" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57107" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

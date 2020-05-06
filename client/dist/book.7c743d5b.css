@@ -53,40 +53,41 @@ body {
   outline-color: #205909;
 }
 
-button, #book form input[type=submit], #book form .message textarea[type=submit] {
+button, .buttons #editBtn, .buttons #cancelBtn, .buttons #updateBtn, .buttons #deleteBtn {
   padding: 1em;
   border-style: none;
   background: #36970F;
   font-family: 'Slabo 27px', serif;
+  border-radius: 15px;
   font-size: 14px;
   cursor: pointer;
 }
 
 @media (min-width: 600px) {
-  button, #book form input[type=submit], #book form .message textarea[type=submit] {
+  button, .buttons #editBtn, .buttons #cancelBtn, .buttons #updateBtn, .buttons #deleteBtn {
     font-size: 16px;
   }
 }
 
 @media (min-width: 900px) {
-  button, #book form input[type=submit], #book form .message textarea[type=submit] {
+  button, .buttons #editBtn, .buttons #cancelBtn, .buttons #updateBtn, .buttons #deleteBtn {
     font-size: 18px;
   }
 }
 
 @media (min-width: 1200px) {
-  button, #book form input[type=submit], #book form .message textarea[type=submit] {
+  button, .buttons #editBtn, .buttons #cancelBtn, .buttons #updateBtn, .buttons #deleteBtn {
     font-size: 20px;
   }
 }
 
 @media (min-width: 1800px) {
-  button, #book form input[type=submit], #book form .message textarea[type=submit] {
+  button, .buttons #editBtn, .buttons #cancelBtn, .buttons #updateBtn, .buttons #deleteBtn {
     font-size: 22px;
   }
 }
 
-button:hover, #book form input:hover[type=submit], #book form .message textarea:hover[type=submit] {
+button:hover, .buttons #editBtn:hover, .buttons #cancelBtn:hover, .buttons #updateBtn:hover, .buttons #deleteBtn:hover {
   background: #205909;
 }
 
@@ -139,9 +140,9 @@ nav #backBtn:hover {
   background: #205909;
 }
 
-#book {
+#editBooking, #makeBooking {
   background: #000;
-  margin: auto;
+  margin: 2vh auto;
   width: 95vw;
   height: auto;
   display: -webkit-box;
@@ -161,14 +162,20 @@ nav #backBtn:hover {
 }
 
 @media (min-width: 720px) {
-  #book {
+  #editBooking, #makeBooking {
     margin: 20vh auto;
+  }
+}
+
+@media (min-width: 720px) {
+  #editBooking, #makeBooking {
+    margin-top: 10vh;
     width: 60vw;
   }
 }
 
-#book form {
-  text-align: center;
+form {
+  width: 95vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -183,302 +190,203 @@ nav #backBtn:hover {
       flex-direction: space-evenly;
 }
 
-#book form div {
-  width: 80vw;
-}
-
 @media (min-width: 720px) {
-  #book form div {
-    width: 45vw;
+  form {
+    margin-top: 10vh;
+    width: 60vw;
   }
 }
 
-#book form h3::after {
-  content: ' * ';
-  color: #36970F;
+form .row {
+  width: 95vw;
+  height: auto;
+  display: -ms-grid;
+  display: grid;
+  margin: 1vh 0;
+  padding: 1vh 1vw;
+  -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+  -ms-grid-rows: (min-content)[2];
+      grid-template-rows: repeat(2, -webkit-min-content);
+      grid-template-rows: repeat(2, min-content);
+      grid-template-areas: "label" "field";
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-#book form input, #book form .message textarea {
+@media (min-width: 720px) {
+  form .row {
+    margin-top: 10vh;
+    width: 60vw;
+  }
+}
+
+@media (min-width: 720px) {
+  form .row {
+    margin: 1vw 0;
+    -ms-grid-columns: (1fr)[6];
+        grid-template-columns: repeat(6, 1fr);
+    -ms-grid-rows: min-content;
+        grid-template-rows: -webkit-min-content;
+        grid-template-rows: min-content;
+        grid-template-areas: "label label field field field field";
+  }
+}
+
+form .row .label {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: label;
+  display: block;
+}
+
+form .row .field {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: field;
+}
+
+form input, form textarea {
+  display: block;
+  width: 95%;
   font-family: 'Slabo 27px';
-  font-size: 14px;
+  font-size: larger;
   text-align: center;
   height: 8vh;
   padding: 2vw;
   margin: 2vw;
-  width: 75vw;
   background: #F5F5F5;
-}
-
-@media (min-width: 600px) {
-  #book form input, #book form .message textarea {
-    font-size: 16px;
-  }
-}
-
-@media (min-width: 900px) {
-  #book form input, #book form .message textarea {
-    font-size: 18px;
-  }
-}
-
-@media (min-width: 1200px) {
-  #book form input, #book form .message textarea {
-    font-size: 20px;
-  }
-}
-
-@media (min-width: 1800px) {
-  #book form input, #book form .message textarea {
-    font-size: 22px;
-  }
-}
-
-@media (min-width: 720px) {
-  #book form input, #book form .message textarea {
-    padding: 1vw;
-    margin: 1vw;
-    width: 40vw;
-  }
-}
-
-#book form .invalid {
-  border: 2px solid red;
-}
-
-#book form .error {
-  display: none;
-  color: red;
-}
-
-#book form .restaurant {
-  width: 75vw;
-}
-
-@media (min-width: 720px) {
-  #book form .restaurant {
-    width: 40vw;
-  }
-}
-
-#book form .restaurant label, #book form .restaurant .time #hour-selection span, #book form .time #hour-selection .restaurant span {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  width: inherit;
-  background: #F5F5F5;
-  color: black;
-  height: 8vh;
-  margin: 2vh 0;
-  text-align: center;
-  cursor: pointer;
-}
-
-#book form .restaurant label:hover, #book form .restaurant .time #hour-selection span:hover, #book form .time #hour-selection .restaurant span:hover {
-  background: #36970F;
-}
-
-#book form .restaurant input[type="radio"], #book form .restaurant .message textarea[type="radio"], #book form .message .restaurant textarea[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  height: 0;
-  width: 0;
-}
-
-#book form .time {
-  width: 75vw;
-}
-
-@media (min-width: 720px) {
-  #book form .time {
-    width: 40vw;
-  }
-}
-
-#book form .time label, #book form .time #hour-selection span {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  width: inherit;
-  background: #F5F5F5;
-  color: black;
-  height: 8vh;
-  margin: 2vh 0;
-  text-align: center;
-  cursor: pointer;
-}
-
-#book form .time label:hover, #book form .time #hour-selection span:hover {
-  background: #36970F;
-}
-
-#book form .time input[type="radio"], #book form .time .message textarea[type="radio"], #book form .message .time textarea[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  height: 0;
-  width: 0;
-}
-
-#book form .time h3 {
-  height: 8vh;
-}
-
-#book form .time #hour-selection {
-  width: 75vw;
-}
-
-@media (min-width: 720px) {
-  #book form .time #hour-selection {
-    width: 40vw;
-  }
-}
-
-#book form .time #hour-selection label, #book form .time #hour-selection span {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  width: inherit;
-  background: #F5F5F5;
-  color: black;
-  height: 8vh;
-  margin: 2vh 0;
-  text-align: center;
-  cursor: pointer;
-}
-
-#book form .time #hour-selection label:hover, #book form .time #hour-selection span:hover {
-  background: #36970F;
-}
-
-#book form .time #hour-selection input[type="radio"], #book form .time #hour-selection .message textarea[type="radio"], #book form .message .time #hour-selection textarea[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  height: 0;
-  width: 0;
-}
-
-#book form .time #time-selection {
-  display: none;
-  position: relative;
-}
-
-#book form .time #time-selection button, #book form .time #time-selection input[type=submit], #book form .time #time-selection .message textarea[type=submit], #book form .message .time #time-selection textarea[type=submit] {
-  width: 75vw;
-  padding: 0.6em;
-}
-
-@media (min-width: 720px) {
-  #book form .time #time-selection button, #book form .time #time-selection input[type=submit], #book form .time #time-selection .message textarea[type=submit], #book form .message .time #time-selection textarea[type=submit] {
-    position: absolute;
-    top: -9vh;
-    right: 0;
-    width: 7vw;
-  }
-}
-
-#book form .party {
-  width: 75vw;
-}
-
-@media (min-width: 720px) {
-  #book form .party {
-    width: 40vw;
-  }
-}
-
-#book form .party label, #book form .party .time #hour-selection span, #book form .time #hour-selection .party span {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  width: inherit;
-  background: #F5F5F5;
-  color: black;
-  height: 8vh;
-  margin: 2vh 0;
-  text-align: center;
-  cursor: pointer;
-}
-
-#book form .party label:hover, #book form .party .time #hour-selection span:hover, #book form .time #hour-selection .party span:hover {
-  background: #36970F;
-}
-
-#book form .party input[type="radio"], #book form .party .message textarea[type="radio"], #book form .message .party textarea[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  height: 0;
-  width: 0;
-}
-
-#book form .message label h3:after, #book form .message .time #hour-selection span h3:after, #book form .time #hour-selection .message span h3:after {
-  content: '';
-}
-
-#book form .message textarea {
-  height: 30vh;
-  resize: vertical;
-  width: 75vw;
-  text-align: center;
-  background: #F5F5F5;
-  color: black;
-}
-
-@media (min-width: 720px) {
-  #book form .message textarea {
-    width: 40vw;
-  }
-}
-
-#book form input[type=submit], #book form .message textarea[type=submit] {
-  height: auto;
-  padding: 1em;
-  width: 75vw;
   border-radius: 15px;
 }
 
 @media (min-width: 720px) {
-  #book form input[type=submit], #book form .message textarea[type=submit] {
-    width: auto;
+  form input, form textarea {
+    padding: 1vw;
+    margin: 1vw;
   }
+}
+
+form .invalid {
+  border: 2px solid red;
+}
+
+form .error {
+  display: none;
+  color: red;
+}
+
+form textarea {
+  min-height: 25vh;
+  width: 95%;
+  resize: vertical;
+  text-align: center;
+  background: #F5F5F5;
+  color: black;
+}
+
+.restaurant .restaurants {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.restaurant label {
+  padding: 2vw;
+  margin: 2vw;
+  width: 100%;
+  background: #36970F;
+  border-radius: 15px;
+}
+
+@media (min-width: 720px) {
+  .restaurant label {
+    padding: 1vw;
+    margin: 1vw;
+  }
+}
+
+.restaurant label:hover {
+  background: #205909;
+}
+
+.restaurant input[type=radio], .restaurant form textarea[type=radio], form .restaurant textarea[type=radio] {
+  height: 2vh;
+}
+
+.restaurant input[type=radio]:checked + label, .restaurant form textarea[type=radio]:checked + label, form .restaurant textarea[type=radio]:checked + label {
+  background: #205909;
+}
+
+.time, .party {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.time button, .time .buttons #editBtn, .buttons .time #editBtn, .time .buttons #cancelBtn, .buttons .time #cancelBtn, .time .buttons #updateBtn, .buttons .time #updateBtn, .time .buttons #deleteBtn, .buttons .time #deleteBtn, .party button, .party .buttons #editBtn, .buttons .party #editBtn, .party .buttons #cancelBtn, .buttons .party #cancelBtn, .party .buttons #updateBtn, .buttons .party #updateBtn, .party .buttons #deleteBtn, .buttons .party #deleteBtn {
+  margin: 1vh 0;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.buttons #editBtn {
+  background: #36970F;
+}
+
+.buttons #cancelBtn {
+  background: #36970F;
+  display: none;
+}
+
+.buttons #updateBtn {
+  background: blue;
+  display: none;
+}
+
+.buttons #deleteBtn {
+  background: red;
+}
+
+@media (min-width: 720px) {
+  .party, .date {
+    position: relative;
+  }
+  .party h3::after, .date h3::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 60%;
+    margin: auto;
+    border-bottom: 2px dotted #36970F;
+  }
+}
+
+.tooltip {
+  position: absolute;
+  opacity: 0;
+  background: #36970F;
+  width: auto;
+  padding: 1vh 1vw;
+  border-radius: 15px;
+}
+
+.tooltip:hover {
+  opacity: 1;
 }
 
 .modalBg {

@@ -1,5 +1,13 @@
 @import './variables';
 
+@mixin width {
+    width: 95vw; 
+    @include media($desktop) {
+        margin-top: 10vh;
+        width: 60vw;
+    }
+}
+
 @mixin selectionBox {
     width: 75vw;
         @include media($desktop) {
@@ -58,6 +66,7 @@ button {
     border-style: none;
     background: $green;
     font-family: 'Slabo 27px', serif;
+    border-radius: 15px;
     @include fontSize;
     cursor: pointer;
     &:hover {
@@ -99,121 +108,167 @@ nav {
     }
 }
 
-
-
-#book {
+#editBooking, #makeBooking {
     background: #000;
-    margin: auto;
-    width: 95vw; 
+    margin: 2vh auto;
     @include media($desktop) {
         margin: 20vh auto;
-        width: 60vw;
     }
+    @include width;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 1em;
-    form {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
+}
+
+form {
+    @include width;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-direction: space-evenly;
+    .row {
+        @include width;
+        height: auto;
+        display: grid;        
+        margin: 1vh 0;
+        padding: 1vh 1vw;
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(2, min-content);
+        grid-template-areas: "label" "field";
         align-items: center;
-        flex-direction: space-evenly;
-        div {
-            width: 80vw;
-            @include media($desktop) {
-                width: 45vw;
-            }
+        justify-content: center;
+        @include media($desktop){
+            margin: 1vw 0;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: min-content;
+            grid-template-areas: "label label field field field field"
         }
+        .label {
+            grid-area: label;
+            display: block;
+        }
+        .field {
+            grid-area: field;
+        }
+    }
+    input {
+        display: block;
+        width: 95%;
+        font-family: 'Slabo 27px';
+        font-size: larger;
+        text-align: center;
+        height: 8vh;
+        padding: 2vw;
+        margin: 2vw;
+        @include media ($desktop) {
+            padding: 1vw;
+            margin: 1vw;
+        }
+        background: $white;
+        border-radius: 15px;
+    }
+    .invalid {
+        border: 2px solid red;
+    }
+    .error {
+        display: none;
+        color: red;
+    }
+    textarea {
+        @extend input;
+        min-height: 25vh;
+        width: 95%;
+        resize: vertical;
+        text-align: center;
+        background: $white;
+        color: black;
+    }
+}
+
+.restaurant {
+    .restaurants {
+        display: flex;
+    }
+    label {
+        padding: 2vw;
+        margin: 2vw;
+        @include media ($desktop) {
+            padding: 1vw;
+            margin: 1vw;
+        }
+        width: 100%;
+        background: $green;
+        border-radius: 15px;
+        &:hover {
+            background: $darkgreen;
+        }
+    }
+    input[type=radio] {
+        height: 2vh;
+    }
+    input[type=radio]:checked + label {
+        background: $darkgreen;
+    }
+}
+
+.time, .party {
+    display: flex;
+    button {
+        margin: 1vh 0;
+    }
+}
+
+.buttons {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    #editBtn {
+        @extend button;
+        background: $green;
+    }
+    #cancelBtn {
+        @extend button;
+        background: $green;
+        display: none;
+    }
+    #updateBtn {
+    @extend button;
+    background: blue;
+    display: none;
+    }
+    #deleteBtn {
+        @extend button;
+        background: red;
+    }
+}
+
+.party, .date {
+    @include media($desktop){
         h3::after {
-            content: ' * ';
-            color: $green;
+            content: "";
+            display: block;
+            height: 2px;
+            width: 60%;
+            margin: auto;
+            border-bottom: 2px dotted $green;
         }
-        input{
-            font-family: 'Slabo 27px';
-            @include fontSize;
-            text-align: center;
-            height: 8vh;
-            padding: 2vw;
-            margin: 2vw;
-            width: 75vw;
-            @include media($desktop) {
-                padding: 1vw;
-                margin: 1vw;
-                width: 40vw;
-            }
-            background: $white;
-        }
-        .invalid {
-            border: 2px solid red;
-        }
-        .error {
-            display: none;
-            color: red;
-        }
-        .restaurant {
-            @include selectionBox();
-        }
-        .time {
-            @include selectionBox();
-            h3 {
-                height: 8vh;
-            }                  
-            #hour-selection {
-                @include selectionBox();
-                span {
-                   @extend label;
-                }
-            }
-            #time-selection {
-                display: none;
-                position: relative;
-                button {
-                    width: 75vw;
-                    padding: 0.6em;
-                    @include media($desktop) {
-                        position: absolute;
-                        top: -9vh;
-                        right: 0;
-                        width: 7vw;
-                    }
-                }   
-            }    
-        }
-        .party {
-            @include selectionBox();
-        }
-        .message {
-            label {
-                h3:after {
-                    content: '';
-                }
-            }
-            textarea {
-            @extend input;
-            height: 30vh;
-            resize: vertical;
-            width: 75vw;
-            @include media($desktop) {
-                width: 40vw;
-            }
-            text-align: center;
-            background: $white;
-            color: black;
-            }
-        }
-        input[type=submit] {
-            @extend button;
-            height: auto;
-            padding: 1em;
-            width: 75vw;
-            border-radius: 15px;
-            @include media($desktop) {
-                width: auto;
-            }
-        }
+        position: relative;
+    }
+}
+
+.tooltip {
+    position: absolute;
+    opacity: 0;
+    background: $green;
+    width: auto;
+    padding: 1vh 1vw;
+    border-radius: 15px;
+    &:hover {
+        opacity: 1;
     }
 }
 
