@@ -1,3 +1,8 @@
+import { minmaxDate } from './date';
+import { selectBtns } from './selectBtns'
+import { checkError } from './validation';
+
+
 const findBtn = document.querySelector('#findBtn')
 const editBtn = document.querySelector('#editBtn')
 const updateBtn = document.querySelector('#updateBtn')
@@ -30,13 +35,12 @@ const inputForm = (booking) => {
 }
 
 const editForm = (event) => {
+  const form = document.querySelector('#editForm')
   const inputs = document.querySelectorAll('input')
   event.preventDefault()
   inputs.forEach(input => input.readOnly = false)
-  cancelBtn.style.display = "block"
-  updateBtn.style.display = "block"
-  editBtn.style.display = "none"
-  deleteBtn.style.display = "none"
+  form.classList.remove('formDisabled')
+  form.classList.add('formEditable')
 }
 
 const updateBooking = () => {
@@ -60,7 +64,8 @@ const deleteBooking = (event) => {
   const xhr = new XMLHttpRequest
   xhr.open('DELETE', `/api/bookings/${id}`, true) 
   xhr.onload = function(){
-    console.log(this.responseText);
+    if (this.status === 200) document.querySelector('.bookDeleted').classList.add("modalActive")
+   else document.querySelector('.bookFail').classList.add("modalActive")
   }
   xhr.send()
 }
@@ -85,3 +90,6 @@ deleteBtn.onclick = (event) => deleteBooking(event);
 
 
 //document.querySelector('form').onsubmit = checkError;
+
+minmaxDate()
+selectBtns()

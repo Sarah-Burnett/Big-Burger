@@ -137,6 +137,82 @@ var minmaxDate = function minmaxDate() {
 };
 
 exports.minmaxDate = minmaxDate;
+},{}],"js/selectBtns.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.selectBtns = void 0;
+
+var selectBtns = function selectBtns() {
+  // party buttons
+  var selectParty = function selectParty() {
+    var increment = function increment(field, _increment, max) {
+      var _document$querySelect = document.querySelector(field),
+          value = _document$querySelect.value;
+
+      if (value < max) document.querySelector(field).value = parseInt(value) + _increment;
+    };
+
+    var decrement = function decrement(field, _decrement, min) {
+      var _document$querySelect2 = document.querySelector(field),
+          value = _document$querySelect2.value;
+
+      if (value > min) document.querySelector(field).value = parseInt(value) - _decrement;
+    };
+
+    document.querySelector(".incPartyBtn").onclick = function () {
+      return increment('#party', 1, 8);
+    };
+
+    document.querySelector(".decPartyBtn").onclick = function () {
+      return decrement('#party', 1, 2);
+    };
+  }; //time selection
+
+
+  var selectTime = function selectTime() {
+    var time = ["17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00"];
+
+    var plus30 = function plus30() {
+      var index = time.indexOf(document.querySelector('#time').value);
+      if (index < time.length - 1) document.querySelector('#time').value = time[index + 1];
+    };
+
+    var minus30 = function minus30() {
+      var index = time.indexOf(document.querySelector('#time').value);
+      if (index > 0) document.querySelector('#time').value = time[index - 1];
+    };
+
+    document.querySelector(".incTimeBtn").onclick = plus30;
+    document.querySelector(".decTimeBtn").onclick = minus30;
+  }; //restaurant selection
+
+
+  var selectRestaurant = function selectRestaurant() {
+    var rest = ["Glensgaich", "Tanyrisiau"];
+
+    var inc = function inc() {
+      var index = rest.indexOf(document.querySelector('#restaurant').value);
+      if (index < rest.length - 1) document.querySelector('#restaurant').value = rest[index + 1];
+    };
+
+    var dec = function dec() {
+      var index = rest.indexOf(document.querySelector('#restaurant').value);
+      if (index > 0) document.querySelector('#restaurant').value = rest[index - 1];
+    };
+
+    document.querySelector(".incRestBtn").onclick = inc;
+    document.querySelector(".decRestBtn").onclick = dec;
+  };
+
+  selectRestaurant();
+  selectTime();
+  selectParty();
+};
+
+exports.selectBtns = selectBtns;
 },{}],"js/validation.js":[function(require,module,exports) {
 "use strict";
 
@@ -150,8 +226,8 @@ var _date = require("./date");
 var name = document.querySelector('#name');
 var email = document.querySelector('#email');
 var date = document.querySelector('#date');
-var time = document.querySelector('input[name="time"]');
-var party = document.querySelector('input[name="party"]');
+var time = document.querySelector('#time');
+var party = document.querySelector('#party');
 var formBoxes = document.querySelectorAll('#bookForm div');
 var inputs = document.querySelectorAll('input');
 var errorBoxes = document.querySelectorAll('.error');
@@ -231,47 +307,11 @@ var showError = function showError(index, msg) {
 
 var _date = require("./date");
 
+var _selectBtns = require("./selectBtns");
+
 var _validation = require("./validation");
 
-var increment = function increment(field, _increment, max) {
-  var _document$querySelect = document.querySelector(field),
-      value = _document$querySelect.value;
-
-  if (value < max) document.querySelector(field).value = parseInt(value) + _increment;
-};
-
-var decrement = function decrement(field, _decrement, min) {
-  var _document$querySelect2 = document.querySelector(field),
-      value = _document$querySelect2.value;
-
-  if (value > min) document.querySelector(field).value = parseInt(value) - _decrement;
-};
-
-var add30mins = function add30mins() {
-  var time = ["12:00", "12:30", "13:00", "13:30", "14:30", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"];
-  var index = time.indexOf(document.querySelector('#time').value);
-  document.querySelector('#time').value = time[index + 1];
-  console.log(time, index);
-}; // party buttons
-
-
-document.querySelector(".incPartyBtn").onclick = function () {
-  return increment('#party', 1, 8);
-};
-
-document.querySelector(".decPartyBtn").onclick = function () {
-  return decrement('#party', 1, 2);
-};
-
-document.querySelector(".incTimeBtn").onclick = function () {
-  return add30mins();
-};
-
-document.querySelector(".decTimeBtn").onclick = function () {
-  return decrement('#time', "00:30", "22:00");
-}; //form submit
-
-
+//form submit
 var submitForm = function submitForm() {
   var bookForm = document.querySelector('#bookForm');
   var bookBtn = document.querySelector('#bookBtn');
@@ -350,8 +390,9 @@ var submitForm = function submitForm() {
 
 
 (0, _date.minmaxDate)();
+(0, _selectBtns.selectBtns)();
 submitForm();
-},{"./date":"js/date.js","./validation":"js/validation.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./date":"js/date.js","./selectBtns":"js/selectBtns.js","./validation":"js/validation.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -379,7 +420,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57107" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55918" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

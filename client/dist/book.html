@@ -14,6 +14,7 @@
         <img src="/burger-logo-smaller.e1b388bd.jpg" alt="Big Burger Logo">
         <a id="backBtn" href="/">Back</a>
     </nav>
+    <div id="blank"></div>
     <div id="makeBooking">
         <h2>Book a table</h2>
         Place your booking for the next fortnight using the form below
@@ -38,16 +39,13 @@
             </div>
             <div class="row restaurant">
                 <div class="label">
-                    <h3>Restaurant</h3>
+                    <label for="restaurant"><h3>Restaurant</h3></label>
                 </div>
                 <div class="field">
-                    <div class="restaurants">
-                        <label for="glensgaich" role="button" tabindex="0">Glensgaich
-                            <input type="radio" id="glensgaich" name="restaurant" value="glensgaich" checked="" required="">
-                        </label>
-                        <label for="tanygrisiau" role="button" tabindex="0">Tanygrisiau
-                            <input type="radio" id="tanygrisiau" name="restaurant" value="tanygrisiau" required="">
-                        </label>
+                    <div class="restaurant">
+                        <button type="button" class="decBtn decRestBtn"><</button>
+                        <input name="restaurant" id="restaurant" readonly="" value="Glensgaich" required="">
+                        <button type="button" class="incBtn incRestBtn">></button>
                     </div>
                     <p class="error restaurantError"></p>        
                 </div>
@@ -64,12 +62,13 @@
             </div>
             <div class="row time">
                 <div class="label">                
-                    <label for="time"><h3>Time of Booking</h3></label>
+                    <label for="time"><h3 class="hover">Time of Booking</h3></label>
+                    <p class="tooltip">Booking slots every half an hour between 5pm - 9pm</p>
                 </div>
                 <div class="field">
                     <div class="time">
                         <button type="button" class="decBtn decTimeBtn">-</button>
-                        <input type="time" id="time" name="time" value="12:00" min="12:00" max="22:00" required="">
+                        <input type="time" id="time" name="time" value="17:00" min="17:00" max="21:00" required="">
                         <button type="button" class="incBtn incTimeBtn">+</button>
                     </div>
                     <p class="error timeError"></p>
@@ -83,7 +82,7 @@
                 <div class="field">
                     <div class="party">
                         <button type="button" class="decBtn decPartyBtn">-</button>
-                        <input type="number" id="party" name="party" min="2" max="8" value="2" required="">
+                        <input type="number" id="party" name="party" min="2" max="8" value="2" readonly="" required="">
                         <button type="button" class="incBtn incPartyBtn">+</button>
                     </div>
                     <p class="error partyError"></p>

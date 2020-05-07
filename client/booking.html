@@ -24,16 +24,17 @@
         </form>
         </div>
     </div>
+    <div id="blank"></div>
     <div id="editBooking">
         <h2>Your Booking</h2>
-        <form method="POST" action="/api/bookings" id="editForm" novalidate>
+        <form method="POST" action="/api/bookings" id="editForm" class="formDisabled" novalidate>
             <div class="row name">
                 <div class="label">
                     <label for="name"><h3>Name</h3></label>
                     <p class="error nameError"></p>
                 </div>
                 <div class="field">
-                    <input type="text" id="name" name="name" required readonly>
+                    <input type="text" id="name" name="name" readonly required>
                 </div>
             </div>
             <div class="row email">
@@ -41,50 +42,58 @@
                     <label for="email"><h3>Email</h3></label>
                 </div>
                 <div class="field">
-                    <input type="email" id="email" name="email" required readonly>
+                    <input type="email" id="email" name="email" readonly required>
                     <p class="error emailError"></p>
                 </div>
             </div>
             <div class="row restaurant">
                 <div class="label">
-                    <h3>Restaurant</h3>
+                    <label for="restaurant"><h3>Restaurant</h3></label>
                 </div>
                 <div class="field">
-                    <div class="restaurants">
-                        <label for="glensgaich" role="button" tabindex="0">Glensgaich
-                            <input type="radio" id="glensgaich" name="restaurant" value="glensgaich" readonly required>
-                        </label>
-                        <label for="tanygrisiau" role="button" tabindex="0">Tanygrisiau
-                            <input type="radio" id="tanygrisiau" name="restaurant" value="tanygrisiau" required>
-                        </label>
+                    <div class="restaurant">
+                        <button type="button" class="decBtn decRestBtn"><</button>
+                        <input name="restaurant" id="restaurant" readonly value="Glensgaich" required>
+                        <button type="button" class="incBtn incRestBtn">></button>
                     </div>
                     <p class="error restaurantError"></p>        
                 </div>
             </div>
             <div class="row date">
                 <div class="label">
-                    <label for="date"><h3>Date of Booking</h3></label>
+                    <label for="date"><h3 class="hover">Date of Booking</h3></label>
+                    <p class="tooltip">Book from tomorrow for the next two weeks</p>
                 </div>
                 <div class="field">
-                    <input type="date" id="date" name="date" min="2020-04-01" max="2020-04-30" required readonly>
+                    <input type="date" id="date" name="date" min="2020-04-01" max="2020-04-30" readonly required>
                     <p class="error dateError"></p>
                 </div>
             </div>
             <div class="row time">
                 <div class="label">                
-                    <label for="time"><h3>Time of Booking</h3></label>
+                    <label for="time"><h3 class="hover">Time of Booking</h3></label>
+                    <p class="tooltip">Booking slots every half an hour between 5pm - 9pm</p>
                 </div>
                 <div class="field">
-                    <input type="time" id="time" name="time" required readonly>
+                    <div class="time">
+                        <button type="button" class="decBtn decTimeBtn">-</button>
+                        <input type="time" id="time" name="time" value="17:00" min="17:00" max="21:00" readonly required>
+                        <button type="button" class="incBtn incTimeBtn">+</button>
+                    </div>
                     <p class="error timeError"></p>
                 </div>
             </div>
             <div class="row party">
                 <div class="label">
-                    <label for="party"><h3>Booking party</h3></label>
+                    <label for="party"><h3 class="hover">Booking party</h3></label>
+                    <p class="tooltip">Book here for between 2-8 people</p>
                 </div>
                 <div class="field">
-                    <input type="number" id="party" name="party" min="2" max="8" required readonly>
+                    <div class="party">
+                        <button type="button" class="decBtn decPartyBtn">-</button>
+                        <input type="number" id="party" name="party" min="2" max="8" value="2" required readonly>
+                        <button type="button" class="incBtn incPartyBtn">+</button>
+                    </div>
                     <p class="error partyError"></p>
                 </div> 
             </div>
@@ -99,9 +108,43 @@
             <div class="buttons">
                 <button type="button" id="editBtn"><i class="fas fa-edit"></i>&nbsp;&nbsp;Edit</button>
                 <button type="button" id="deleteBtn"><i class="fas fa-trash"></i>&nbsp;&nbsp;Delete</button>
-                <button type="submit" id="updateBtn"><i class="fas fa-edit"></i>&nbsp;&nbsp;Update</button>
+                <button type="submit" id="updateBtn">Update</button>
             </div>
         </form>
+    </div>
+    <div class="bookSuccess modalBg">
+        <div class="modal">
+            <h2>Booking successful</h2>
+            <p>Your booking reference is:</p>
+            <h3 id="id"></h3>
+            <p>Looking forward to seeing you soon</p>
+        </div>
+    </div>
+    <div class="bookFull modalBg">
+        <div class="modal">
+            <h2>Booking full at your selected time and date</h2>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+                    <td id="date"></td>
+                    <td id="time"></td>
+            </table>
+            <p>Please update booking for a different time</p>
+        </div>
+    </div>
+    <div class="bookFail modalBg">
+        <div class="modal">
+            <h3>Booking error</h3>
+            <p>Please try again or give us a call</p>
+        </div>
+    </div>
+    <div class="bookDeleted modalBg">
+        <div class="modal">
+            <h3>Booking deleted</h3>
+            <p>We hope to see you soon</p>
+        </div>
     </div>
     <script src="./js/booking.js"></script>
 </body>

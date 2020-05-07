@@ -53,7 +53,7 @@ body {
   outline-color: #205909;
 }
 
-button, .buttons #editBtn, .buttons #cancelBtn, .buttons #updateBtn, .buttons #deleteBtn {
+button, .buttons #deleteBtn {
   padding: 1em;
   border-style: none;
   background: #36970F;
@@ -64,35 +64,36 @@ button, .buttons #editBtn, .buttons #cancelBtn, .buttons #updateBtn, .buttons #d
 }
 
 @media (min-width: 600px) {
-  button, .buttons #editBtn, .buttons #cancelBtn, .buttons #updateBtn, .buttons #deleteBtn {
+  button, .buttons #deleteBtn {
     font-size: 16px;
   }
 }
 
 @media (min-width: 900px) {
-  button, .buttons #editBtn, .buttons #cancelBtn, .buttons #updateBtn, .buttons #deleteBtn {
+  button, .buttons #deleteBtn {
     font-size: 18px;
   }
 }
 
 @media (min-width: 1200px) {
-  button, .buttons #editBtn, .buttons #cancelBtn, .buttons #updateBtn, .buttons #deleteBtn {
+  button, .buttons #deleteBtn {
     font-size: 20px;
   }
 }
 
 @media (min-width: 1800px) {
-  button, .buttons #editBtn, .buttons #cancelBtn, .buttons #updateBtn, .buttons #deleteBtn {
+  button, .buttons #deleteBtn {
     font-size: 22px;
   }
 }
 
-button:hover, .buttons #editBtn:hover, .buttons #cancelBtn:hover, .buttons #updateBtn:hover, .buttons #deleteBtn:hover {
+button:hover, .buttons #deleteBtn:hover {
   background: #205909;
 }
 
 nav {
   position: fixed;
+  z-index: 99;
   top: 0;
   right: 0;
   background: #000;
@@ -140,6 +141,10 @@ nav #backBtn:hover {
   background: #205909;
 }
 
+#blank {
+  height: 10vh;
+}
+
 #editBooking, #makeBooking {
   background: #000;
   margin: 2vh auto;
@@ -163,7 +168,7 @@ nav #backBtn:hover {
 
 @media (min-width: 720px) {
   #editBooking, #makeBooking {
-    margin: 20vh auto;
+    margin: 10vh auto;
   }
 }
 
@@ -257,7 +262,6 @@ form input, form textarea {
   font-size: larger;
   text-align: center;
   height: 8vh;
-  padding: 2vw;
   margin: 2vw;
   background: #F5F5F5;
   border-radius: 15px;
@@ -288,85 +292,22 @@ form textarea {
   color: black;
 }
 
-.restaurant .restaurants {
+.time, .party, .restaurant {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.restaurant label {
-  padding: 2vw;
-  margin: 2vw;
-  width: 100%;
-  background: #36970F;
-  border-radius: 15px;
-}
-
-@media (min-width: 720px) {
-  .restaurant label {
-    padding: 1vw;
-    margin: 1vw;
-  }
-}
-
-.restaurant label:hover {
-  background: #205909;
-}
-
-.restaurant input[type=radio], .restaurant form textarea[type=radio], form .restaurant textarea[type=radio] {
-  height: 2vh;
-}
-
-.restaurant input[type=radio]:checked + label, .restaurant form textarea[type=radio]:checked + label, form .restaurant textarea[type=radio]:checked + label {
-  background: #205909;
-}
-
-.time, .party {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.time button, .time .buttons #editBtn, .buttons .time #editBtn, .time .buttons #cancelBtn, .buttons .time #cancelBtn, .time .buttons #updateBtn, .buttons .time #updateBtn, .time .buttons #deleteBtn, .buttons .time #deleteBtn, .party button, .party .buttons #editBtn, .buttons .party #editBtn, .party .buttons #cancelBtn, .buttons .party #cancelBtn, .party .buttons #updateBtn, .buttons .party #updateBtn, .party .buttons #deleteBtn, .buttons .party #deleteBtn {
+.time button, .time .buttons #deleteBtn, .buttons .time #deleteBtn, .party button, .party .buttons #deleteBtn, .buttons .party #deleteBtn, .restaurant button, .restaurant .buttons #deleteBtn, .buttons .restaurant #deleteBtn {
   margin: 1vh 0;
 }
 
-.buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-}
-
-.buttons #editBtn {
-  background: #36970F;
-}
-
-.buttons #cancelBtn {
-  background: #36970F;
-  display: none;
-}
-
-.buttons #updateBtn {
-  background: blue;
-  display: none;
-}
-
-.buttons #deleteBtn {
-  background: red;
-}
-
 @media (min-width: 720px) {
-  .party, .date {
+  .party, .time, .date {
     position: relative;
+    z-index: 0;
   }
-  .party h3::after, .date h3::after {
+  .party h3::after, .time h3::after, .date h3::after {
     content: "";
     display: block;
     height: 2px;
@@ -391,6 +332,7 @@ form textarea {
 
 .modalBg {
   position: fixed;
+  z-index: 99;
   top: 10vh;
   left: 0;
   background: rgba(0, 0, 0, 0.8);
@@ -412,13 +354,44 @@ form textarea {
 }
 
 .modalBg .modal {
-  min-width: 50%;
-  min-height: 50%;
+  min-width: 50vw;
+  min-height: 50vh;
+  background: #000;
 }
 
 .modalActive {
   pointer-events: all;
   opacity: 1;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.buttons #deleteBtn {
+  background: red;
+}
+
+.formEditable #updateBtn, .formEditable .decBtn, .formEditable .incBtn, .formEditable .restaurantBtn {
+  display: block;
+}
+
+.formEditable #editBtn, .formEditable #deleteBtn {
+  color: orange;
+  display: none;
+}
+
+.formDisabled #updateBtn, .formDisabled .decBtn, .formDisabled .incBtn, .formDisabled .restaurantBtn {
+  display: none;
 }
 
 

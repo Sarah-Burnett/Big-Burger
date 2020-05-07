@@ -117,7 +117,200 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/booking.js":[function(require,module,exports) {
+})({"js/date.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.minmaxDate = exports.dateFortnightplus1 = exports.dateTodayplus1 = void 0;
+var dateInput = document.querySelector('#date');
+var dateTodayplus1 = new Date(Date.now() + 86400000);
+exports.dateTodayplus1 = dateTodayplus1;
+var dateFortnightplus1 = new Date(Date.now() + 1296000000);
+exports.dateFortnightplus1 = dateFortnightplus1;
+
+var minmaxDate = function minmaxDate() {
+  dateInput.min = dateTodayplus1.toISOString().split('T')[0];
+  dateInput.max = dateFortnightplus1.toISOString().split('T')[0];
+  ;
+};
+
+exports.minmaxDate = minmaxDate;
+},{}],"js/selectBtns.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.selectBtns = void 0;
+
+var selectBtns = function selectBtns() {
+  // party buttons
+  var selectParty = function selectParty() {
+    var increment = function increment(field, _increment, max) {
+      var _document$querySelect = document.querySelector(field),
+          value = _document$querySelect.value;
+
+      if (value < max) document.querySelector(field).value = parseInt(value) + _increment;
+    };
+
+    var decrement = function decrement(field, _decrement, min) {
+      var _document$querySelect2 = document.querySelector(field),
+          value = _document$querySelect2.value;
+
+      if (value > min) document.querySelector(field).value = parseInt(value) - _decrement;
+    };
+
+    document.querySelector(".incPartyBtn").onclick = function () {
+      return increment('#party', 1, 8);
+    };
+
+    document.querySelector(".decPartyBtn").onclick = function () {
+      return decrement('#party', 1, 2);
+    };
+  }; //time selection
+
+
+  var selectTime = function selectTime() {
+    var time = ["17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00"];
+
+    var plus30 = function plus30() {
+      var index = time.indexOf(document.querySelector('#time').value);
+      if (index < time.length - 1) document.querySelector('#time').value = time[index + 1];
+    };
+
+    var minus30 = function minus30() {
+      var index = time.indexOf(document.querySelector('#time').value);
+      if (index > 0) document.querySelector('#time').value = time[index - 1];
+    };
+
+    document.querySelector(".incTimeBtn").onclick = plus30;
+    document.querySelector(".decTimeBtn").onclick = minus30;
+  }; //restaurant selection
+
+
+  var selectRestaurant = function selectRestaurant() {
+    var rest = ["Glensgaich", "Tanyrisiau"];
+
+    var inc = function inc() {
+      var index = rest.indexOf(document.querySelector('#restaurant').value);
+      if (index < rest.length - 1) document.querySelector('#restaurant').value = rest[index + 1];
+    };
+
+    var dec = function dec() {
+      var index = rest.indexOf(document.querySelector('#restaurant').value);
+      if (index > 0) document.querySelector('#restaurant').value = rest[index - 1];
+    };
+
+    document.querySelector(".incRestBtn").onclick = inc;
+    document.querySelector(".decRestBtn").onclick = dec;
+  };
+
+  selectRestaurant();
+  selectTime();
+  selectParty();
+};
+
+exports.selectBtns = selectBtns;
+},{}],"js/validation.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.checkError = void 0;
+
+var _date = require("./date");
+
+var name = document.querySelector('#name');
+var email = document.querySelector('#email');
+var date = document.querySelector('#date');
+var time = document.querySelector('#time');
+var party = document.querySelector('#party');
+var formBoxes = document.querySelectorAll('#bookForm div');
+var inputs = document.querySelectorAll('input');
+var errorBoxes = document.querySelectorAll('.error');
+
+var checkError = function checkError() {
+  formBoxes.forEach(function (div) {
+    if (div.classList.contains('invalid')) {
+      div.classList.remove('invalid');
+    }
+
+    ;
+  });
+  inputs.forEach(function (input) {
+    if (input.classList.contains('invalid')) {
+      input.classList.remove('invalid');
+    }
+
+    ;
+  });
+  errorBoxes.forEach(function (p) {
+    p.innerHTML = '';
+    p.style.display = 'none';
+  });
+  var error = 0;
+
+  if (!party.validity.valid) {
+    error = 1;
+    showError(5, 'Please select the number of people');
+  }
+
+  if (!time.validity.valid) {
+    error = 1;
+    showError(4, 'Please select the time you would like to book');
+  }
+
+  if (!date.validity.valid) {
+    error = 1;
+    showError(3, "Please input a date (dd/mm/yy) between ".concat(_date.dateTodayplus1.getDate(), "/").concat(_date.dateTodayplus1.getMonth() + 1, "/").concat(_date.dateTodayplus1.getFullYear(), " and ").concat(_date.dateFortnightplus1.getDate(), "/").concat(_date.dateFortnightplus1.getMonth() + 1, "/").concat(_date.dateFortnightplus1.getFullYear()));
+  }
+
+  if (!email.validity.valid) {
+    error = 1;
+    showError(1, 'Please enter your valid email address');
+  }
+
+  if (!name.validity.valid) {
+    error = 1;
+    showError(0, 'Please enter your name');
+  }
+
+  return error;
+};
+
+exports.checkError = checkError;
+
+var showError = function showError(index, msg) {
+  var errorMsg = msg;
+  errorBoxes[index].innerHTML = errorMsg;
+  errorBoxes[index].style.display = 'block';
+
+  if (index == 0) {
+    document.querySelector('#name').classList.add('invalid');
+  }
+
+  if (index == 1) {
+    document.querySelector('#email').classList.add('invalid');
+  }
+
+  if (index == 3) {
+    document.querySelector('#date').classList.add('invalid');
+  }
+
+  formBoxes[index].scrollIntoView();
+};
+},{"./date":"js/date.js"}],"js/booking.js":[function(require,module,exports) {
+"use strict";
+
+var _date = require("./date");
+
+var _selectBtns = require("./selectBtns");
+
+var _validation = require("./validation");
+
 var findBtn = document.querySelector('#findBtn');
 var editBtn = document.querySelector('#editBtn');
 var updateBtn = document.querySelector('#updateBtn');
@@ -157,15 +350,14 @@ var inputForm = function inputForm(booking) {
 };
 
 var editForm = function editForm(event) {
+  var form = document.querySelector('#editForm');
   var inputs = document.querySelectorAll('input');
   event.preventDefault();
   inputs.forEach(function (input) {
     return input.readOnly = false;
   });
-  cancelBtn.style.display = "block";
-  updateBtn.style.display = "block";
-  editBtn.style.display = "none";
-  deleteBtn.style.display = "none";
+  form.classList.remove('formDisabled');
+  form.classList.add('formEditable');
 };
 
 var updateBooking = function updateBooking() {
@@ -211,7 +403,7 @@ var deleteBooking = function deleteBooking(event) {
   xhr.open('DELETE', "/api/bookings/".concat(id), true);
 
   xhr.onload = function () {
-    console.log(this.responseText);
+    if (this.status === 200) document.querySelector('.bookDeleted').classList.add("modalActive");else document.querySelector('.bookFail').classList.add("modalActive");
   };
 
   xhr.send();
@@ -245,7 +437,11 @@ deleteBtn.onclick = function (event) {
   return deleteBooking(event);
 }; //updateBtn.onclick = (event) => submitForm(event);
 //document.querySelector('form').onsubmit = checkError;
-},{}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+
+(0, _date.minmaxDate)();
+(0, _selectBtns.selectBtns)();
+},{"./date":"js/date.js","./selectBtns":"js/selectBtns.js","./validation":"js/validation.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -273,7 +469,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57107" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55918" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

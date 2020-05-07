@@ -1,28 +1,6 @@
 import { minmaxDate } from './date';
+import { selectBtns } from './selectBtns'
 import { checkError } from './validation';
-
-const increment = (field, increment, max) => {
-  let {value} = document.querySelector(field);
-  if (value < max) document.querySelector(field).value = parseInt(value) + increment
-}
-
-const decrement = (field, decrement, min) => {
-  let {value} = document.querySelector(field);
-  if (value > min) document.querySelector(field).value = parseInt(value) - decrement
-}
-
-const add30mins = () => {
-  const time = ["12:00", "12:30", "13:00", "13:30", "14:30", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"]
-  const index = time.indexOf(document.querySelector('#time').value)
-  document.querySelector('#time').value = time[index + 1]
-  console.log(time, index)
-}
-
-// party buttons
-document.querySelector(".incPartyBtn").onclick = () => increment('#party', 1, 8)
-document.querySelector(".decPartyBtn").onclick = () => decrement('#party', 1, 2)
-document.querySelector(".incTimeBtn").onclick = () => add30mins()
-document.querySelector(".decTimeBtn").onclick = () => decrement('#time', "00:30", "22:00")
 
 //form submit
 const submitForm = () => {
@@ -77,6 +55,8 @@ const submitForm = () => {
 }
   
 //call functions
-minmaxDate();
-submitForm();
+minmaxDate()
+selectBtns()
+submitForm()
+
 
