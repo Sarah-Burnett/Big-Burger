@@ -166,7 +166,7 @@ form {
         font-size: larger;
         text-align: center;
         height: 8vh;
-        //padding: 2vw;
+        padding: 2vw;
         margin: 2vw;
         @include media ($desktop) {
             padding: 1vw;
@@ -244,7 +244,17 @@ form {
     .modal {
         min-width: 50vw;
         min-height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
         background: #000;
+        border: 5vw solid $white;
+        padding: 2vw;
+        a {
+            text-decoration: none;
+            color: $green;
+        }
     }
 }
 

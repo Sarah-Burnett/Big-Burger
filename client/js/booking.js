@@ -1,3 +1,4 @@
+import { url } from './api'
 import { minmaxDate } from './date';
 import { selectBtns } from './selectBtns'
 import { checkError } from './validation';
@@ -46,7 +47,7 @@ const editForm = (event) => {
 const updateBooking = () => {
     return new Promise ((resolve, reject) => {
         const xhr = new XMLHttpRequest;
-        xhr.open('POST', '/api/bookings', true);
+        xhr.open('POST', url, true);
         xhr.onload = function(){
           const {_id, name, email, restaurant, date, time, party, message} = JSON.parse(this.responseText);
           if (this.status === 200) {
@@ -62,7 +63,7 @@ const deleteBooking = (event) => {
   console.log("delete me bro")
   event.preventDefault()
   const xhr = new XMLHttpRequest
-  xhr.open('DELETE', `/api/bookings/${id}`, true) 
+  xhr.open('DELETE', `${url}/${id}`, true) 
   xhr.onload = function(){
     if (this.status === 200) document.querySelector('.bookDeleted').classList.add("modalActive")
    else document.querySelector('.bookFail').classList.add("modalActive")

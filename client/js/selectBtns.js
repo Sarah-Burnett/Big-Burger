@@ -32,7 +32,7 @@ const selectParty = () => {
   
   //restaurant selection
   const selectRestaurant = () => {
-    const rest = ["Glensgaich", "Tanyrisiau"]
+    const rest = ["Glensgaich", "Tanygrisiau"]
     const inc = () => {
       const index = rest.indexOf(document.querySelector('#restaurant').value)
       if (index < rest.length-1) document.querySelector('#restaurant').value = rest[index + 1]

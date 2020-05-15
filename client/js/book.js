@@ -1,6 +1,9 @@
+import { url } from './api'
 import { minmaxDate } from './date';
 import { selectBtns } from './selectBtns'
 import { checkError } from './validation';
+
+console.log(url);
 
 //form submit
 const submitForm = () => {
@@ -17,6 +20,7 @@ const submitForm = () => {
     const party = form.elements["party"].value;
     const message = form.elements["message"].value;
     const params = `form-name=booking&name=${name}&email=${email}&restaurant=${restaurant}&date=${date}&time=${time}&party=${party}&message=${message}`;
+    console.log(params);
     return new Promise ((resolve, reject) => {
       const xhr = new XMLHttpRequest;
       xhr.open('POST', url, true);
@@ -41,7 +45,7 @@ const submitForm = () => {
       if (error === 0) {
         bookBtn.value = "Sending...";
         bookBtn.disabled = true;
-        postBooking('/api/bookings')
+        postBooking(url)
           .then((reply) => {
             const { message, id, date, time } = reply
             document.querySelector('#id').innerHTML = `<a href="booking.html?${id}">${id}</a>`

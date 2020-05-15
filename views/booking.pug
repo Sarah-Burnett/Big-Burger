@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Slabo+27px&display=swap")
+        link(rel="stylesheet", href="/styles/booking.css")
+        link(rel="icon", href="/images/favicon.png")
+        title Booking
+    body
+        nav.header
+            img(src="/images/burger-logo-smaller.jpg", alt="Big Burger Logo",)
+            a#backBtn(href="/") Back
+        #booking
+            h2 Your Booking
+            form.bookForm(action=`api/bookings/${booking._id}`, method="post" name="bookForm" class="bookForm" data-id=booking._id novalidate)
+                #bookForm
+                    .row.name
+                        .label
+                            label(for="name")
+                                h3 Name
+                        .field
+                            input(type="text", name="name" id="name" value=booking.name required readonly)
+                            p.error.nameError
+                    .row.email
+                        .label
+                            label(for="email")
+                                h3 Email
+                        .field 
+                            input(type="email" id="email" name="email" value=booking.email required readonly)
+                            p.error.emailError
+                    .row.restaurant
+                        .label
+                                h3 Restaurant
+                        .field
+                            .restaurants
+                                script.
+                                        if (booking.restaurant) document.querySelector(`#${booking.restaurant}`).checked = true;
+                                input(type="radio" id="glensgaich" name="restaurant" value="glensgaich" required readonly)
+                                label(for="glensgaich" role="button" tabindex="0") Glengaich
+                                input(type="radio" id="tanygrisisau" name="restaurant" value="tanygrisiau" required readonly)
+                                label(for="tanygrisiau" role="button" tabindex="0") Tanygrisiau
+                            p.error.restaurantError
+                    .row.date
+                        .label 
+                            label(for="date")
+                                h3 Date of Booking
+                        .field
+                            input(type="date" id="date" name="date" min="2020-04-01" max="2020-04-30" value=booking.date required readonly)
+                            p.error.dateError
+                    .row.time
+                        .label
+                            label(for="time")
+                                h3 Time of Booking
+                        .field
+                            input(type="time" id="time" name="time" value=booking.time required readonly)
+                            p.error.timeError
+                    .row.party
+                        .label
+                            label(for="party")
+                                h3 Booking party
+                        .field
+                            input(type="number" id="party" name="party" min="2" max="8" value=booking.party required readonly)
+                            p.error.partyError
+                    .row.message
+                        .label
+                            label(for="message")
+                                h3 Message
+                        .field
+                            textarea(name="message" id="message" placeholder="Any dietary/allergy requirements or special occasions please let us know here" value=booking.message)
+                .buttons
+                    button#editBtn(type="button") Edit
+                    button#deleteBtn(type="button") Delete
+                    button#updateBtn(type="submit") Update
+                    button#cancelBtn(type="button") 
+                        a(href=`/booking/${booking._id}`) Cancel  
+        script(src="/js/booking.js")
+
+                        
+
+                    
+
+                
+                    
+
+
+
+
+                
+

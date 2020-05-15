@@ -117,7 +117,16 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/date.js":[function(require,module,exports) {
+})({"js/api.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.url = void 0;
+var url = './api/guest/booking';
+exports.url = url;
+},{}],"js/date.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -191,7 +200,7 @@ var selectBtns = function selectBtns() {
 
 
   var selectRestaurant = function selectRestaurant() {
-    var rest = ["Glensgaich", "Tanyrisiau"];
+    var rest = ["Glensgaich", "Tanygrisiau"];
 
     var inc = function inc() {
       var index = rest.indexOf(document.querySelector('#restaurant').value);
@@ -305,6 +314,8 @@ var showError = function showError(index, msg) {
 },{"./date":"js/date.js"}],"js/booking.js":[function(require,module,exports) {
 "use strict";
 
+var _api = require("./api");
+
 var _date = require("./date");
 
 var _selectBtns = require("./selectBtns");
@@ -363,7 +374,7 @@ var editForm = function editForm(event) {
 var updateBooking = function updateBooking() {
   return new Promise(function (resolve, reject) {
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/api/bookings', true);
+    xhr.open('POST', _api.url, true);
 
     xhr.onload = function () {
       var _JSON$parse = JSON.parse(this.responseText),
@@ -400,7 +411,7 @@ var deleteBooking = function deleteBooking(event) {
   console.log("delete me bro");
   event.preventDefault();
   var xhr = new XMLHttpRequest();
-  xhr.open('DELETE', "/api/bookings/".concat(id), true);
+  xhr.open('DELETE', "".concat(_api.url, "/").concat(id), true);
 
   xhr.onload = function () {
     if (this.status === 200) document.querySelector('.bookDeleted').classList.add("modalActive");else document.querySelector('.bookFail').classList.add("modalActive");
@@ -441,7 +452,7 @@ deleteBtn.onclick = function (event) {
 
 (0, _date.minmaxDate)();
 (0, _selectBtns.selectBtns)();
-},{"./date":"js/date.js","./selectBtns":"js/selectBtns.js","./validation":"js/validation.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./api":"js/api.js","./date":"js/date.js","./selectBtns":"js/selectBtns.js","./validation":"js/validation.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -469,7 +480,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55918" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50034" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

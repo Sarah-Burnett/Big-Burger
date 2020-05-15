@@ -117,7 +117,16 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/date.js":[function(require,module,exports) {
+})({"js/api.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.url = void 0;
+var url = './api/guest/booking';
+exports.url = url;
+},{}],"js/date.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -191,7 +200,7 @@ var selectBtns = function selectBtns() {
 
 
   var selectRestaurant = function selectRestaurant() {
-    var rest = ["Glensgaich", "Tanyrisiau"];
+    var rest = ["Glensgaich", "Tanygrisiau"];
 
     var inc = function inc() {
       var index = rest.indexOf(document.querySelector('#restaurant').value);
@@ -305,13 +314,16 @@ var showError = function showError(index, msg) {
 },{"./date":"js/date.js"}],"js/book.js":[function(require,module,exports) {
 "use strict";
 
+var _api = require("./api");
+
 var _date = require("./date");
 
 var _selectBtns = require("./selectBtns");
 
 var _validation = require("./validation");
 
-//form submit
+console.log(_api.url); //form submit
+
 var submitForm = function submitForm() {
   var bookForm = document.querySelector('#bookForm');
   var bookBtn = document.querySelector('#bookBtn');
@@ -326,6 +338,7 @@ var submitForm = function submitForm() {
     var party = form.elements["party"].value;
     var message = form.elements["message"].value;
     var params = "form-name=booking&name=".concat(name, "&email=").concat(email, "&restaurant=").concat(restaurant, "&date=").concat(date, "&time=").concat(time, "&party=").concat(party, "&message=").concat(message);
+    console.log(params);
     return new Promise(function (resolve, reject) {
       var xhr = new XMLHttpRequest();
       xhr.open('POST', url, true);
@@ -372,7 +385,7 @@ var submitForm = function submitForm() {
     if (error === 0) {
       bookBtn.value = "Sending...";
       bookBtn.disabled = true;
-      postBooking('/api/bookings').then(function (reply) {
+      postBooking(_api.url).then(function (reply) {
         var message = reply.message,
             id = reply.id,
             date = reply.date,
@@ -392,7 +405,7 @@ var submitForm = function submitForm() {
 (0, _date.minmaxDate)();
 (0, _selectBtns.selectBtns)();
 submitForm();
-},{"./date":"js/date.js","./selectBtns":"js/selectBtns.js","./validation":"js/validation.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./api":"js/api.js","./date":"js/date.js","./selectBtns":"js/selectBtns.js","./validation":"js/validation.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -420,7 +433,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55918" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50034" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
