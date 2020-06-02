@@ -23,7 +23,7 @@ app.set('view engine', 'pug');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/guest', guestRoutes);
-app.use('/api/manager', managerRoutes);
+app.use('/', managerRoutes);
 app.use(express.static('./client/dist'))
 
 const PORT = process.env.PORT || 3000;

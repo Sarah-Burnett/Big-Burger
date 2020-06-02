@@ -367,28 +367,22 @@ Object.defineProperty(exports, "__esModule", {
 exports.toggleModal = void 0;
 
 var toggleModal = function toggleModal() {
-  var modal = document.querySelector(".modal-bg");
-
-  var showModal = function showModal(contents) {
-    modal.classList.remove("modal-inactive");
-    modal.classList.add("modal-active");
-    document.querySelector(contents).style.display = "block";
+  var showModal = function showModal(modal) {
+    if (document.querySelector(".modal-active")) document.querySelector("modal-active").classList.remove("modal-active");
+    document.querySelector(modal).classList.add("modal-active");
   };
 
   var hideModal = function hideModal() {
-    modal.classList.remove("modal-active");
-    document.querySelector("#glensgaich-map").style.display = "none";
-    document.querySelector("#tanygrisiau-map").style.display = "none";
+    document.querySelector(".modal-active").classList.remove("modal-active");
   };
 
   document.querySelector(".glensgaich-btn").addEventListener('click', function () {
-    showModal("#glensgaich-map");
+    return showModal(".glensgaich-map");
   });
   document.querySelector(".tanygrisiau-btn").addEventListener('click', function () {
-    showModal("#tanygrisiau-map");
+    return showModal(".tanygirisau-map");
   });
-  document.querySelector(".modal-close").addEventListener('click', hideModal);
-  hideModal();
+  document.querySelector(".modal-close span").addEventListener('click', hideModal);
 };
 
 exports.toggleModal = toggleModal;
@@ -444,7 +438,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50034" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57886" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

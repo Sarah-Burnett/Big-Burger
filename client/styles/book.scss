@@ -1,36 +1,39 @@
 @import './variables';
+@import './modal';
 
 @mixin width {
     width: 95vw; 
+    .label, .field, input, textarea, .dropdown-content {
+        width: 95vw;
+    }
     @include media($desktop) {
         margin-top: 10vh;
         width: 60vw;
+        .label {
+            width: 20vw;
+        }
+        .field, input, textarea, .dropdown-content {
+            width: 35vw;
+        }
     }
 }
 
-@mixin selectionBox {
-    width: 75vw;
-        @include media($desktop) {
-            width: 40vw;
-        }
-    label {
-        @include flexCenter(row);
-        width: inherit;
-        background: $white;
-        color: black;
-        height: 8vh;
-        margin: 2vh 0;
-        text-align: center;
+@mixin button {
+    button, input[type=submit] {
+        padding: 1em;
+        border-style: none;
+        background: $green;
+        font-family: 'Slabo 27px', serif;
+        @include fontSize;
         cursor: pointer;
         &:hover {
-            background: $green;
+            background: $darkgreen;
         }
-    }
-    input[type="radio"] {
-        position: absolute;
-        opacity: 0;
-        height: 0;
-        width: 0;
+        width: 100%;
+        @include media($desktop){
+            width: auto;
+            min-width: 10vw;
+        }
     }
 }
 
@@ -61,18 +64,7 @@ body{
     outline-color: $darkgreen;
 }
 
-button {
-    padding: 1em;
-    border-style: none;
-    background: $green;
-    font-family: 'Slabo 27px', serif;
-    border-radius: 15px;
-    @include fontSize;
-    cursor: pointer;
-    &:hover {
-        background: $darkgreen;
-    }
-}
+
 
 nav {
     position: fixed;
@@ -91,20 +83,12 @@ nav {
         height: 10vh;
     }
     #backBtn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         text-shadow: 1px 1px 2px black;
-        background: $green;
         color: $white;
-        min-width: 10vw;
         text-decoration: none;
-        padding: 0 2vw;
-        width: auto;
-        margin-right: 1vw;
-        border-radius: 15px;
+        font-size: larger;
         &:hover {
-            background: $darkgreen;
+            color: $darkgreen;
         }
     }
 }
@@ -113,7 +97,7 @@ nav {
     height: 10vh;
 }
 
-#editBooking, #makeBooking {
+#bookingForm {
     background: #000;
     margin: 2vh auto;
     @include media($desktop) {
@@ -136,44 +120,24 @@ form {
     flex-direction: space-evenly;
     .row {
         @include width;
-        height: auto;
-        display: grid;        
-        margin: 1vh 0;
-        padding: 1vh 1vw;
-        grid-template-columns: 100%;
-        grid-template-rows: repeat(2, min-content);
-        grid-template-areas: "label" "field";
-        align-items: center;
-        justify-content: center;
-        @include media($desktop){
-            margin: 1vw 0;
-            grid-template-columns: repeat(6, 1fr);
-            grid-template-rows: min-content;
-            grid-template-areas: "label label field field field field"
-        }
-        .label {
-            grid-area: label;
-            display: block;
-        }
-        .field {
-            grid-area: field;
+        margin: 3vh 0;
+        @include media($desktop) {
+            display: flex;
+            margin: 2vw 0;
         }
     }
     input {
         display: block;
-        width: 95%;
+        width: 100%;
         font-family: 'Slabo 27px';
         font-size: larger;
         text-align: center;
         height: 8vh;
         padding: 2vw;
-        margin: 2vw;
         @include media ($desktop) {
             padding: 1vw;
-            margin: 1vw;
         }
         background: $white;
-        border-radius: 15px;
     }
     .invalid {
         border: 2px solid red;
@@ -185,7 +149,6 @@ form {
     textarea {
         @extend input;
         min-height: 25vh;
-        width: 95%;
         resize: vertical;
         text-align: center;
         background: $white;
@@ -193,75 +156,41 @@ form {
     }
 }
 
-.time, .party, .restaurant {
-    display: flex;
-    button {
-        margin: 1vh 0;
-    }
+//dropdown
+.dropdown {
+    position: relative;
 }
-
-.party, .time, .date {
-    @include media($desktop){
-        h3::after {
-            content: "";
-            display: block;
-            height: 2px;
-            width: 60%;
-            margin: auto;
-            border-bottom: 2px dotted $green;
-        }
-        position: relative;
-        z-index: 0;
-    }
-}
-
-.tooltip {
+.dropdown-content {
     position: absolute;
-    opacity: 0;
-    background: $green;
-    width: auto;
-    padding: 1vh 1vw;
-    border-radius: 15px;
-    &:hover {
-        opacity: 1;
-    }
-}
-
-.modalBg {
-    position: fixed;
-    z-index: 99;
-    top: 10vh;
+    background: grey;
+    top: 8vh;
     left: 0;
-    background: rgba(0, 0, 0, 0.8);
-    height: 90vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 0;
+    opacity: 0;
     pointer-events: none;
-    opacity: 0; 
-    transition: opacity 0.6s ease-in-out;
-    .modal {
-        min-width: 50vw;
-        min-height: 50vh;
+    transition: height 1s ease-in-out;
+    @include button;
+    button {
+        border: 1px solid grey;
+        display: block;
+        min-width: 50%;
+    }
+    @include media($desktop){
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-        background: #000;
-        border: 5vw solid $white;
-        padding: 2vw;
-        a {
-            text-decoration: none;
-            color: $green;
-        }
+        flex-wrap: wrap;
     }
 }
 
-.modalActive {
-    pointer-events: all;
-    opacity: 1;
+.dropdown:hover {
+    .dropdown-content {
+        height: auto;
+        opacity: 1;
+        transition: height 1s ease-in-out;
+        pointer-events: all;
+    }
 }
+
+
 
 //booking
 
@@ -270,18 +199,23 @@ form {
     width: 100%;
     align-items: center;
     justify-content: space-evenly;
+    @include button;
     #deleteBtn {
-        @extend button;
         background: red;
     }
 }
 
 
 .formEditable {
-    #updateBtn, .decBtn, .incBtn, .restaurantBtn {display: block};
-    #editBtn, #deleteBtn {color: orange; display: none}
+    #updateBtn {display: block};
+    #editBtn, #deleteBtn {display: none};
+    pointer-events: all;
 }
 
 .formDisabled {
-    #updateBtn, .decBtn, .incBtn, .restaurantBtn {display: none}
+    #updateBtn {display: none};
+    pointer-events: none;
+    #editBtn, #deleteBtn {
+        pointer-events: all;
+    }
 }

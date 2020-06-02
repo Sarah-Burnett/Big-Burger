@@ -1,9 +1,9 @@
-.modal-bg {
+.modalBg {
     position: fixed;
-    top: 0; 
-    left: 0;
-    height: 100vh;
-    width: 100vw;
+    top: 15vh; 
+    left: 5vw;
+    height: 80vh;
+    width: 90vw;
     background: rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
@@ -15,40 +15,89 @@
 }
 
 .modal {
-    border: 1.5em solid $white;
-    border-top: none;
-    position: relative;
     background: #000;
-    height: 100vh;
-    width: 100vw;
+    box-shadow: 0px 0px 16px 10px $green;
+    padding: 1vh;
     text-shadow: none;
-    @include media($desktop) {
-        height: 60vh;
-        width: 50vw;
-    }
-}
-
-.modal div {
-    display: "none";
     height: 100%;
     width: 100%;
+    @include media($desktop) {
+        min-width: 50vw;
+        min-height: 60vh;
+    }
+    button {
+        margin: 1em;
+        padding: 1em;
+        border-style: none;
+        background: $green;
+        font-family: 'Slabo 27px', serif;
+        @include fontSize;
+        cursor: pointer;
+        &:hover {
+            background: $darkgreen;
+        }
+        width: 90%;
+        @include media($desktop){
+            width: auto;
+            min-width: 10vw;
+        }
+    }
+    input {
+        width: 90%;
+    }
 }
 
-
-.modal-header {
-    height: 1.5em;
-    background: $white;
-    width: 100%;
+.modal-close {
     text-align: right;
     color: $green;
-    .modal-close {
+    span {
         cursor: pointer;
     }
+    &:focus {
+        outline: none;
+    }
+}
+
+.booking {
+    padding: 1vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    background: #000;
+    a {
+        text-decoration: none;
+        color: $green;
+    }
+    min-width: 50vw;
+    min-height: 60vh;
+}
+
+.map {
+    padding: 1vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    background: #000;
+    a {
+        text-decoration: none;
+        color: $green;
+    }
+    min-width: 50vw;
+    min-height: 60vh;
 }
 
 .modal-active {
     opacity: 1;
-    pointer-events: auto;
+    pointer-events: all;
+}
+
+.map div {
+    min-width: 50vw;
+    min-height: 60vh;
 }
 
 

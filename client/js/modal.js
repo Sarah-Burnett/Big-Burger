@@ -1,21 +1,16 @@
 export const toggleModal = () => {    
-    const modal = document.querySelector(".modal-bg");
 
-    const showModal = (contents) => {
-    modal.classList.remove("modal-inactive");
-    modal.classList.add("modal-active");
-    document.querySelector(contents).style.display = "block";
+    const showModal = (modal) => {
+    if (document.querySelector(".modal-active")) document.querySelector("modal-active").classList.remove("modal-active");
+    document.querySelector(modal).classList.add("modal-active");
     };
 
     const hideModal = () => {
-    modal.classList.remove("modal-active");
-    document.querySelector("#glensgaich-map").style.display = "none";
-    document.querySelector("#tanygrisiau-map").style.display = "none";
+    document.querySelector(".modal-active").classList.remove("modal-active")
     }
 
-    document.querySelector(".glensgaich-btn").addEventListener('click', () => {showModal("#glensgaich-map")});
-    document.querySelector(".tanygrisiau-btn").addEventListener('click', () => {showModal("#tanygrisiau-map")});
-    document.querySelector(".modal-close").addEventListener('click', hideModal);
+    document.querySelector(".glensgaich-btn").addEventListener('click', () => showModal(".glensgaich-map"));
+    document.querySelector(".tanygrisiau-btn").addEventListener('click', () => showModal(".tanygirisau-map"));
+    document.querySelector(".modal-close span").addEventListener('click', hideModal);
 
-    hideModal();
 }

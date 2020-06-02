@@ -1,96 +1,71 @@
-import { url } from './api'
-import { minmaxDate } from './date';
-import { selectBtns } from './selectBtns'
-import { checkError } from './validation';
+import { bookForm } from './bookForm'
+import { getBooking } from './getBooking';
+import { submitBooking } from './sendBooking';
 
+//preparing form and form Buttons
+bookForm();
 
-const findBtn = document.querySelector('#findBtn')
-const editBtn = document.querySelector('#editBtn')
-const updateBtn = document.querySelector('#updateBtn')
-const deleteBtn = document.querySelector('#deleteBtn')
-
-const getBooking = (id) => {
-  return new Promise ((resolve, reject) => {
-    const xhr = new XMLHttpRequest
-    xhr.open('GET', `/api/bookings/${id}`, true)
-    xhr.onload = function(){
-      if (this.status === 200) resolve(this.responseText)
-      else reject({error: "no booking found"})
-    }
-    xhr.send()
-  })
-}
-
-const findBooking = (event) => {
-  event.preventDefault()
-  getBooking(document.querySelector('#id').value)
-  .then((response) => inputForm(response))
-  .catch((error) => console.log(error))
-}
+//find existing booking
+const findBtn = document.querySelector('#findBtn');
 
 const inputForm = (booking) => {
-  booking = JSON.parse(booking)
-  const inputs = document.querySelectorAll('input')
-  inputs.forEach(input => {if (input.name !== "id") input.value = booking[input.name]})
-  document.querySelector('.modalBg').classList.remove("modalActive")
-}
+  booking = JSON.parse(booking);
+  const inputs = document.querySelectorAll('input');
+  inputs.forEach(input => {if (input.name !== "id") input.value = booking[input.name]});
+  document.querySelector('.modalBg').classList.remove("modalActive");
+};
+
+const findBooking = (event) => {
+  event.preventDefault();
+  getBooking(document.querySelector('#id').value)
+  .then((response) => {
+    inputForm(response);
+    document.querySelector(".modal-active").classList.remove("modal-active");
+    })
+  .catch((error) => console.log(error))
+};
+
+const id = location.search.substr(1);
+if (id !== "") {
+  document.querySelector('#id').value = id;
+  getBooking(id)
+    .then((response) => {
+      inputForm(response);
+      document.querySelector(".modal-active").classList.remove("modal-active");
+      })
+    .catch((error) => console.log(error))
+};
+
+
+findBtn.onclick = (event) => findBooking(event);
+
+//crud booking buttons
+const editBtn = document.querySelector('#editBtn');
+const updateBtn = document.querySelector('#updateBtn');
+const deleteBtn = document.querySelector('#deleteBtn');
 
 const editForm = (event) => {
-  const form = document.querySelector('#editForm')
-  const inputs = document.querySelectorAll('input')
-  event.preventDefault()
-  inputs.forEach(input => input.readOnly = false)
-  form.classList.remove('formDisabled')
-  form.classList.add('formEditable')
-}
-
-const updateBooking = () => {
-    return new Promise ((resolve, reject) => {
-        const xhr = new XMLHttpRequest;
-        xhr.open('POST', url, true);
-        xhr.onload = function(){
-          const {_id, name, email, restaurant, date, time, party, message} = JSON.parse(this.responseText);
-          if (this.status === 200) {
-            resolve({message: "bookSuccess", id:_id})}
-          else {reject({message: "bookFail"})}
-        };
-        xhr.onerror = function(){reject("Booking error. <br> Please try again or give us a call")};
-        xhr.send(params);
-      })
-    }
+  const form = document.querySelector('#bookForm');
+  const inputs = document.querySelectorAll('input');
+  event.preventDefault();
+  inputs.forEach(input => {if (input.name !== "restaurant") input.readOnly = false});
+  form.classList.remove('formDisabled');
+  form.classList.add('formEditable');
+};
 
 const deleteBooking = (event) => {
-  console.log("delete me bro")
-  event.preventDefault()
-  const xhr = new XMLHttpRequest
-  xhr.open('DELETE', `${url}/${id}`, true) 
+  console.log("delete me bro");
+  event.preventDefault();
+  const xhr = new XMLHttpRequest;
+  xhr.open('DELETE', `${url}/${id}`, true) ;
   xhr.onload = function(){
     if (this.status === 200) document.querySelector('.bookDeleted').classList.add("modalActive")
    else document.querySelector('.bookFail').classList.add("modalActive")
-  }
-  xhr.send()
-}
+  };
+  xhr.send();
+};
 
-const submitForm = (event) => {
-  event.preventDefault();
-  updateBooking()
-}
-
-const id = location.search.substr(1)
-if (id !== "") {
-  document.querySelector('#id').value = id
-  getBooking(id)
-    .then((response) => inputForm(response))
-    .catch((error) => console.log(error))
-}
-
-findBtn.onclick = (event) => findBooking(event)
 editBtn.onclick = (event) => editForm(event);
 deleteBtn.onclick = (event) => deleteBooking(event);
-//updateBtn.onclick = (event) => submitForm(event);
+updateBtn.onclick = (event) => submitBooking('PUT', `./api/guest/booking/${document.querySelector('#id').value}`);
 
-
-//document.querySelector('form').onsubmit = checkError;
-
-minmaxDate()
-selectBtns()

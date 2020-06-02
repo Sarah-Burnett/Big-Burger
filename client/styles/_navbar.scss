@@ -48,15 +48,7 @@ nav {
             }
         }
         #bookBtn {
-            background: $green;
-            padding: 2vh 2vw;
-            margin-right: 2vw;
-            border-radius: 15px;
-            line-height: 1;
-            &:hover {
-                color: $white;
-                background: $darkgreen;
-            }
+            font-size: larger;
         }
     }
     .nav-scroll {

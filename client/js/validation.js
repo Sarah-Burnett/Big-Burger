@@ -1,5 +1,3 @@
-import { dateFortnightplus1, dateTodayplus1 } from './date';
-
 const name = document.querySelector('#name');
 const email = document.querySelector('#email');
 const date = document.querySelector('#date');
@@ -24,31 +22,31 @@ export const checkError = () => {
       p.innerHTML = '';
       p.style.display = 'none';
     });
-    let error = 0;
+    let error = false;
     if (!party.validity.valid) {
-      error = 1;
-      showError(5, 'Please select the number of people');
+      error = true;
+      showError(5, 'Please select the number of people between 2-8');
     }  
     if (!time.validity.valid) {
-        error = 1;
+        error = true;
         showError(4, 'Please select the time you would like to book');
       }
     if (!date.validity.valid) {
-        error = 1;
-        showError(3, `Please input a date (dd/mm/yy) between ${dateTodayplus1.getDate()}/${dateTodayplus1.getMonth() + 1}/${dateTodayplus1.getFullYear()} and ${dateFortnightplus1.getDate()}/${dateFortnightplus1.getMonth() + 1}/${dateFortnightplus1.getFullYear()}`);
+        error = true;
+        showError(3, `Please select a date (dd/mm/yy) in the next two weeks`);
       } 
     if (!email.validity.valid) {
-        error = 1;
+        error = true;
         showError(1, 'Please enter your valid email address');
       } 
     if (!name.validity.valid) {
-        error = 1;
+        error = true;
         showError(0, 'Please enter your name');
       }
     return error;
   }
   
-  const showError = (index, msg) => {
+  export const showError = (index, msg) => {
     let errorMsg = msg;
     errorBoxes[index].innerHTML = errorMsg;
     errorBoxes[index].style.display = 'block';
