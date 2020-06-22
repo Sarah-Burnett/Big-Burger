@@ -149,7 +149,7 @@ var availableTimes = function availableTimes(event) {
   }, "Sat", ["17:00", "20:00"]);
 
   if (event.target.validity.valid) {
-    var dayOfWeek = ""; //get day of week from time
+    var dayOfWeek = "Mon"; // edit to this to get day of week
 
     timeInput.min = hours[dayofWeek][0];
     timeInput.max = hours[dayoffWeek][1];
@@ -161,12 +161,9 @@ var selectBtns = function selectBtns() {
     return document.querySelector(input).value = value;
   };
 
-  var closeDropdown = function closeDropdown(dropdown) {
-    return document.querySelector('.dropdown-content').style.height = 0;
-  };
-
   var restaurantBtns = document.querySelectorAll(".restaurant .dropdown-content button");
   var partyBtns = document.querySelectorAll(".party .dropdown-content button");
+  var timeBtns = document.querySelectorAll(".time .dropdown-content button");
   restaurantBtns.forEach(function (btn) {
     return btn.addEventListener('click', function () {
       return selectBtn("#restaurant", btn.dataset.value);
@@ -175,6 +172,11 @@ var selectBtns = function selectBtns() {
   partyBtns.forEach(function (btn) {
     return btn.addEventListener('click', function () {
       return selectBtn("#party", btn.dataset.value);
+    });
+  });
+  timeBtns.forEach(function (btn) {
+    return btn.addEventListener('click', function () {
+      return selectBtn("#time", btn.dataset.value);
     });
   });
 };
@@ -203,13 +205,6 @@ var inputs = document.querySelectorAll('input');
 var errorBoxes = document.querySelectorAll('.error');
 
 var checkError = function checkError() {
-  formBoxes.forEach(function (div) {
-    if (div.classList.contains('invalid')) {
-      div.classList.remove('invalid');
-    }
-
-    ;
-  });
   inputs.forEach(function (input) {
     if (input.classList.contains('invalid')) {
       input.classList.remove('invalid');
@@ -217,6 +212,7 @@ var checkError = function checkError() {
 
     ;
   });
+  console.log(time.validity);
   errorBoxes.forEach(function (p) {
     p.innerHTML = '';
     p.style.display = 'none';
@@ -230,7 +226,7 @@ var checkError = function checkError() {
 
   if (!time.validity.valid) {
     error = true;
-    showError(4, 'Please select the time you would like to book');
+    showError(4, 'Booking slots are available every 30 minutes during our opening hours. Please select the time you would like to book');
   }
 
   if (!date.validity.valid) {
@@ -257,20 +253,8 @@ var showError = function showError(index, msg) {
   var errorMsg = msg;
   errorBoxes[index].innerHTML = errorMsg;
   errorBoxes[index].style.display = 'block';
-
-  if (index == 0) {
-    document.querySelector('#name').classList.add('invalid');
-  }
-
-  if (index == 1) {
-    document.querySelector('#email').classList.add('invalid');
-  }
-
-  if (index == 3) {
-    document.querySelector('#date').classList.add('invalid');
-  }
-
-  formBoxes[index].scrollIntoView();
+  inputs[index].classList.add('.invalid');
+  inputs[index].scrollIntoView();
 };
 
 exports.showError = showError;
@@ -406,7 +390,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57886" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57356" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

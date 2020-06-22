@@ -14,7 +14,7 @@
         <img src="/images/burger-logo-smaller.jpg" alt="Big Burger Logo"/>
         <a id="backBtn" href="/">Back</a>
     </nav>
-    <div id="blank"></div>
+    <div class="blank"></div>
     <div id="findBooking" class="modalBg modal-active">
         <div class="modal booking">
             <form id="findForm">
@@ -52,7 +52,7 @@
                     <label for="restaurant"><h3>Restaurant</h3></label>
                 </div>
                 <div class="field dropdown">
-                    <input name="restaurant" id="restaurant" value="Glensgaich" required>
+                    <input readonly name="restaurant" id="restaurant" value="Glensgaich" pattern="'Tanygirisau'||'Glensgaich'" required>
                     <div class="dropdown-content">
                         <button type="button" class="valueBtn restaurantBtn" data-input="#restaurant" data-value="Glensgaich">Glensgaich</button>
                         <button type="button" class="valueBtn restaurantBtn" data-input="#restaurant" data-value="Tanygirisau">Tanygirisau</button>
@@ -73,9 +73,28 @@
                 <div class="label">                
                     <label for="time"><h3>Time of Booking</h3></label>
                 </div>
-                <div class="field">
-                    <div class="time">
-                        <input class="hiddenInput" type="time" id="time" name="time" value="17:00" min="17:00" max="21:00" required>
+                <div class="field dropdown">
+                    <input readonly id="time" name="time" value="17:00" pattern="^[0-2][0-9]:[03][0]$" required>
+                    <div class="dropdown-content">
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="12:00" data-day="wkend">12:00</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="12:30" data-day="wkend">12:30</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="13:00" data-day="wkend">13:00</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="13:30" data-day="wkend">13:30</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="14:00" data-day="wkend">14:00</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="14:30" data-day="wkend">14:30</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="15:00" data-day="wkend">15:00</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="15:30" data-day="wkend">15:30</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="16:00" data-day="wkend">16:00</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="16:30" data-day="wkend">16:30</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="17:00">17:00</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="17:30">17:30</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="18:00">18:00</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="18:30">18:30</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="19:00">19:00</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="19:30">19:00</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="20:00">20:00</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="20:30" data-day="nosun">20:30</button>
+                        <button type="button" class="valueBtn timeBtn" data-input="#time" data-value="21:00" data-day="nosun">21:00</button>
                     </div>
                     <p class="error timeError"></p>
                 </div>
@@ -85,7 +104,7 @@
                     <label for="party"><h3>Booking party</h3></label>
                 </div>
                 <div class="field dropdown">
-                    <input class="readonlyInput" type="number" id="party" name="party" min="2" max="8" value="2" required>
+                    <input readonly type="number" id="party" name="party" min="2" max="8" value="2" required>
                     <div class="dropdown-content">
                         <button type="button" class="valueBtn partyBtn" data-input="#party" data-value=2>2</button>
                         <button type="button" class="valueBtn partyBtn" data-input="#party" data-value=3>3</button>

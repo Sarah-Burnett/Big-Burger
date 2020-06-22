@@ -8,16 +8,12 @@ const inputs = document.querySelectorAll('input');
 const errorBoxes = document.querySelectorAll('.error');
 
 export const checkError = () => {
-    formBoxes.forEach( div => { 
-      if (div.classList.contains('invalid')) {
-        div.classList.remove('invalid')
-      };
-    });
     inputs.forEach( input => { 
         if (input.classList.contains('invalid')) {
           input.classList.remove('invalid')
         };
       });
+    console.log(time.validity);
     errorBoxes.forEach( p => {
       p.innerHTML = '';
       p.style.display = 'none';
@@ -29,7 +25,7 @@ export const checkError = () => {
     }  
     if (!time.validity.valid) {
         error = true;
-        showError(4, 'Please select the time you would like to book');
+        showError(4, 'Booking slots are available every 30 minutes during our opening hours. Please select the time you would like to book');
       }
     if (!date.validity.valid) {
         error = true;
@@ -50,16 +46,8 @@ export const checkError = () => {
     let errorMsg = msg;
     errorBoxes[index].innerHTML = errorMsg;
     errorBoxes[index].style.display = 'block';
-    if (index == 0) {
-        document.querySelector('#name').classList.add('invalid');
-    }
-    if (index == 1) {
-        document.querySelector('#email').classList.add('invalid');
-    }
-    if (index == 3) {
-        document.querySelector('#date').classList.add('invalid');
-    }
-    formBoxes[index].scrollIntoView();
+    inputs[index].classList.add('.invalid');
+    inputs[index].scrollIntoView();
   }
   
   

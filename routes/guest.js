@@ -12,12 +12,12 @@ router.post('/booking', [
     check('email').notEmpty().isEmail(),
     check('restaurant').notEmpty().matches(/'Tanygirisau'||'Glensgaich'/),
     check('date').notEmpty().isISO8601(),
+    check('time').notEmpty().isLength(5).matches(/^[0-2][0-9]:[03][0]$/),
     check('party').notEmpty().isNumeric().isLength(1)
 ], (req, res) => {
     const errors = validationResult(req);
-    console.log(errors);
     if (!errors.isEmpty()) return res.status(422).json(errors)
-    Booking.find({restaurant: req.body.restaurant, date: req.body.date})
+    Booking.find({restaurant: req.body.restaurant, date: req.body.date, time: req.body.time})
         .then((query) => {
             partySum = (total, num) => {
                 return total + num

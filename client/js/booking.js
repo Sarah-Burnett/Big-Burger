@@ -57,10 +57,10 @@ const deleteBooking = (event) => {
   console.log("delete me bro");
   event.preventDefault();
   const xhr = new XMLHttpRequest;
-  xhr.open('DELETE', `${url}/${id}`, true) ;
+  xhr.open('DELETE', `./api/guest/booking/${id}`, true) ;
   xhr.onload = function(){
-    if (this.status === 200) document.querySelector('.bookDeleted').classList.add("modalActive")
-   else document.querySelector('.bookFail').classList.add("modalActive")
+    if (this.status === 200) document.querySelector('.bookDeleted').classList.add("modal-active")
+   else document.querySelector('.bookFail').classList.add("modal-active")
   };
   xhr.send();
 };

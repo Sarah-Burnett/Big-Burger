@@ -7,7 +7,6 @@
         width: 95vw;
     }
     @include media($desktop) {
-        margin-top: 10vh;
         width: 60vw;
         .label {
             width: 20vw;
@@ -20,7 +19,8 @@
 
 @mixin button {
     button, input[type=submit] {
-        padding: 1em;
+        height: 10vh;
+        line-height: 10vh;
         border-style: none;
         background: $green;
         font-family: 'Slabo 27px', serif;
@@ -52,6 +52,7 @@ body{
     line-height: 2;
     text-align: center;
     overflow-x: hidden;
+    overflow-y: auto;
     @include media($desktop) {
         background-image: url(/images/burger-bg.jpeg);
         background-repeat: no-repeat no-repeat;
@@ -94,22 +95,26 @@ nav {
 }
 
 #blank {
-    height: 10vh;
+    height: 0;
+    @include media($desktop) {
+        height: 10vh;
+    }
 }
 
 #bookingForm {
     background: #000;
-    margin: 2vh auto;
-    @include media($desktop) {
-        margin: 10vh auto;
-    }
     @include width;
+    margin: auto;
+    margin-top: 10vh;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 1em;
+    @include media($desktop) {
+        margin: 10vh auto;
+    }
 }
 
 form {
@@ -118,6 +123,7 @@ form {
     flex-direction: column;
     align-items: center;
     flex-direction: space-evenly;
+    
     .row {
         @include width;
         margin: 3vh 0;
@@ -162,13 +168,16 @@ form {
 }
 .dropdown-content {
     position: absolute;
-    background: grey;
+    background: $white;
     top: 8vh;
     left: 0;
     height: 0;
     opacity: 0;
+    z-index: 99;
     pointer-events: none;
     transition: height 1s ease-in-out;
+    border: 2px solid grey;
+    overflow-y: hidden;
     @include button;
     button {
         border: 1px solid grey;
@@ -184,13 +193,17 @@ form {
 .dropdown:hover {
     .dropdown-content {
         height: auto;
+        max-height: 40vh;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            display: none;
+          }
+        -ms-overflow-style: none;
         opacity: 1;
         transition: height 1s ease-in-out;
         pointer-events: all;
     }
 }
-
-
 
 //booking
 

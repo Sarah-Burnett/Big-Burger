@@ -45,6 +45,7 @@
   background: #36970F;
   font-family: 'Slabo 27px', serif;
   font-size: 14px;
+  line-height: 1.2;
   cursor: pointer;
   width: 90%;
 }
@@ -176,9 +177,11 @@ body {
   font-family: 'Slabo 27px', serif;
   min-height: 100vh;
   font-size: 14px;
+  line-height: 1.2;
   line-height: 2;
   text-align: center;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 @media (min-width: 600px) {
@@ -255,13 +258,20 @@ nav #backBtn:hover {
 }
 
 #blank {
-  height: 10vh;
+  height: 0;
+}
+
+@media (min-width: 720px) {
+  #blank {
+    height: 10vh;
+  }
 }
 
 #bookingForm {
   background: #000;
-  margin: 2vh auto;
   width: 95vw;
+  margin: auto;
+  margin-top: 10vh;
   height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -279,19 +289,12 @@ nav #backBtn:hover {
   padding: 1em;
 }
 
-@media (min-width: 720px) {
-  #bookingForm {
-    margin: 10vh auto;
-  }
-}
-
 #bookingForm .label, #bookingForm .field, #bookingForm input, #bookingForm form textarea, form #bookingForm textarea, #bookingForm textarea, #bookingForm .dropdown-content {
   width: 95vw;
 }
 
 @media (min-width: 720px) {
   #bookingForm {
-    margin-top: 10vh;
     width: 60vw;
   }
   #bookingForm .label {
@@ -299,6 +302,12 @@ nav #backBtn:hover {
   }
   #bookingForm .field, #bookingForm input, #bookingForm form textarea, form #bookingForm textarea, #bookingForm textarea, #bookingForm .dropdown-content {
     width: 35vw;
+  }
+}
+
+@media (min-width: 720px) {
+  #bookingForm {
+    margin: 10vh auto;
   }
 }
 
@@ -324,7 +333,6 @@ form .label, form .field, form input, form textarea, form textarea, form .dropdo
 
 @media (min-width: 720px) {
   form {
-    margin-top: 10vh;
     width: 60vw;
   }
   form .label {
@@ -346,7 +354,6 @@ form .row .label, form .row .field, form .row input, form .row textarea, form .r
 
 @media (min-width: 720px) {
   form .row {
-    margin-top: 10vh;
     width: 60vw;
   }
   form .row .label {
@@ -406,22 +413,27 @@ form textarea {
 
 .dropdown-content {
   position: absolute;
-  background: grey;
+  background: #F5F5F5;
   top: 8vh;
   left: 0;
   height: 0;
   opacity: 0;
+  z-index: 99;
   pointer-events: none;
   -webkit-transition: height 1s ease-in-out;
   transition: height 1s ease-in-out;
+  border: 2px solid grey;
+  overflow-y: hidden;
 }
 
 .dropdown-content button, .dropdown-content input[type=submit], .dropdown-content form textarea[type=submit], form .dropdown-content textarea[type=submit] {
-  padding: 1em;
+  height: 10vh;
+  line-height: 10vh;
   border-style: none;
   background: #36970F;
   font-family: 'Slabo 27px', serif;
   font-size: 14px;
+  line-height: 1.2;
   cursor: pointer;
   width: 100%;
 }
@@ -479,10 +491,17 @@ form textarea {
 
 .dropdown:hover .dropdown-content {
   height: auto;
+  max-height: 40vh;
+  overflow-y: auto;
+  -ms-overflow-style: none;
   opacity: 1;
   -webkit-transition: height 1s ease-in-out;
   transition: height 1s ease-in-out;
   pointer-events: all;
+}
+
+.dropdown:hover .dropdown-content::-webkit-scrollbar {
+  display: none;
 }
 
 .buttons {
@@ -499,11 +518,13 @@ form textarea {
 }
 
 .buttons button, .buttons input[type=submit], .buttons form textarea[type=submit], form .buttons textarea[type=submit] {
-  padding: 1em;
+  height: 10vh;
+  line-height: 10vh;
   border-style: none;
   background: #36970F;
   font-family: 'Slabo 27px', serif;
   font-size: 14px;
+  line-height: 1.2;
   cursor: pointer;
   width: 100%;
 }

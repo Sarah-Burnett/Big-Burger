@@ -196,7 +196,6 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   nav .nav-links {
     pointer-events: auto;
     position: static;
-    height: 100%;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -634,36 +633,60 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   }
 }
 
-#connect {
+#footer {
+  margin-top: 5vh;
   scroll-snap-align: center;
-  height: 30vh;
-  padding-top: 10vh;
+  width: 100vw;
+  padding: 1vh 1vw;
 }
 
-#connect ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+#footer li {
+  line-height: 3;
   list-style: none;
 }
 
-#connect li {
-  width: 55px;
+#footer li a {
+  text-decoration: none;
+  color: #F5F5F5;
 }
 
-#connect li img {
-  width: 55px;
-  padding-left: 10px;
+#footer li a:hover {
+  color: #36970F;
+}
+
+#footer li img {
+  cursor: pointer;
+  width: 45px;
+  display: block;
+}
+
+#footer li img:hover {
+  opacity: 0.7;
+}
+
+#footer img {
+  max-width: 100%;
+  padding: 1vh 0;
+  margin: auto;
+}
+
+@media (min-width: 720px) {
+  #footer {
+    text-align: left;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+    grid-gap: 3vw;
+    font-size: smaller;
+  }
+  #footer li {
+    line-height: inherit;
+  }
+  #footer li img {
+    display: inline;
+    margin-right: 5px;
+  }
 }
 
 .modalBg {
@@ -713,6 +736,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   background: #36970F;
   font-family: 'Slabo 27px', serif;
   font-size: 14px;
+  line-height: 1.2;
   cursor: pointer;
   width: 90%;
 }

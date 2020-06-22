@@ -52,7 +52,7 @@ export const submitBooking = (method, url) => {
             document.querySelector(`.${message}`).classList.add("modal-active")
           })
           .catch(() => document.querySelector(".bookFail").classList.add("modal-active"))
-        }
+      }
   });
 }
 
