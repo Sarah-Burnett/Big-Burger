@@ -127,13 +127,13 @@ exports.navBar = void 0;
 
 var navBar = function navBar() {
   var nav = document.querySelector("nav");
-  var burger = document.querySelector(".burger"); // nav bar burger
+  var burger = document.querySelector(".burger"); // mob nav bar
 
   var toggleNav = function toggleNav() {
     nav.classList.toggle("nav-active");
   };
 
-  burger.addEventListener('click', toggleNav);
+  burger.addEventListener('click', toggleNav); // fixed on scroll
 
   window.onscroll = function () {
     if (window.pageYOffset >= 10) {
@@ -438,7 +438,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57356" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54945" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -182,7 +182,7 @@ var selectBtns = function selectBtns() {
 };
 
 var bookForm = function bookForm() {
-  availableDates(); //document.querySelector('#date').addEventListener('onchange', availableTimes(event))
+  availableDates(); //document.querySelector('#date').addEventListener('onchange', availableTimes(event)) ;
 
   selectBtns();
 };
@@ -218,70 +218,36 @@ exports.getBooking = getBooking;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.showError = exports.checkError = void 0;
-var name = document.querySelector('#name');
-var email = document.querySelector('#email');
-var date = document.querySelector('#date');
-var time = document.querySelector('#time');
-var party = document.querySelector('#party');
-var formBoxes = document.querySelectorAll('#bookForm div');
+exports.removeError = exports.checkError = void 0;
 var inputs = document.querySelectorAll('input');
 var errorBoxes = document.querySelectorAll('.error');
 
 var checkError = function checkError() {
-  inputs.forEach(function (input) {
-    if (input.classList.contains('invalid')) {
-      input.classList.remove('invalid');
-    }
-
-    ;
-  });
-  console.log(time.validity);
-  errorBoxes.forEach(function (p) {
-    p.innerHTML = '';
-    p.style.display = 'none';
-  });
   var error = false;
-
-  if (!party.validity.valid) {
-    error = true;
-    showError(5, 'Please select the number of people between 2-8');
-  }
-
-  if (!time.validity.valid) {
-    error = true;
-    showError(4, 'Booking slots are available every 30 minutes during our opening hours. Please select the time you would like to book');
-  }
-
-  if (!date.validity.valid) {
-    error = true;
-    showError(3, "Please select a date (dd/mm/yy) in the next two weeks");
-  }
-
-  if (!email.validity.valid) {
-    error = true;
-    showError(1, 'Please enter your valid email address');
-  }
-
-  if (!name.validity.valid) {
-    error = true;
-    showError(0, 'Please enter your name');
-  }
-
+  inputs.forEach(function (input, index) {
+    if (!input.validity.valid) {
+      error = true;
+      errorBoxes[index].style.display = 'block';
+      inputs[index].classList.add('invalid');
+      inputs[index].scrollIntoView();
+      removeError(index);
+    }
+  });
   return error;
 };
 
 exports.checkError = checkError;
 
-var showError = function showError(index, msg) {
-  var errorMsg = msg;
-  errorBoxes[index].innerHTML = errorMsg;
-  errorBoxes[index].style.display = 'block';
-  inputs[index].classList.add('.invalid');
-  inputs[index].scrollIntoView();
+var removeError = function removeError(index) {
+  inputs[index].oninput = function () {
+    if (inputs[index].validity.valid) {
+      inputs[index].classList.remove('invalid');
+      errorBoxes[index].style.display = 'none';
+    }
+  };
 };
 
-exports.showError = showError;
+exports.removeError = removeError;
 },{}],"js/sendBooking.js":[function(require,module,exports) {
 "use strict";
 
@@ -306,7 +272,6 @@ var setParams = function setParams() {
 
 var sendBooking = function sendBooking(method, url) {
   var params = setParams();
-  console.log(params);
   return new Promise(function (resolve, reject) {
     var xhr = new XMLHttpRequest();
     xhr.open(method, url, true);
@@ -494,7 +459,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57356" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54945" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

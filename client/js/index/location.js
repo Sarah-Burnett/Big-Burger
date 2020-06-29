@@ -16,4 +16,4 @@ export const locationCarousel = () => {
     })};
 
     locationDots.forEach(changeLocation);
-};
+}; 

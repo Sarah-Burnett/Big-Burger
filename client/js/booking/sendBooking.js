@@ -14,7 +14,6 @@ const setParams = () => {
 
 const sendBooking = (method, url) => {
   const params = setParams();
-  console.log(params);
   return new Promise ((resolve, reject) => {
     const xhr = new XMLHttpRequest;
     xhr.open(method, url, true);

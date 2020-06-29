@@ -19,12 +19,17 @@
 #menu-content {
     height: auto;
     min-height: 90vh;
-    @media (min-width: 500px){
-        height: 90vh;
-    }
     .menu-nav {
-        height: 25vh;
-        display: flex;
+        min-height: 25vh;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        @include media(450px){
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        @include media(600px){
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            color: orange;
+        }
         align-items: center;
         justify-content: space-around;
         button {
@@ -48,19 +53,13 @@
         width: 100vw;
         transition: opacity 0.6s ease;
         padding: 1em;
-        @include media ($tablet) {
-            height: 65vh;
-            @include flexCenter(column);
-            justify-content: space-evenly;
-            .menu-list{
-                padding: 0em;
-                column-count: 2;
-                .menu-item{
-                    display: block;
-                }
-                @include media($desktop) {
-                    width: 70vw;
-                };
+        min-height: 65vh;
+        .menu-list {
+            padding: 2vh 1vw;
+            @include media($tablet){
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 10px
             }
         }
     }

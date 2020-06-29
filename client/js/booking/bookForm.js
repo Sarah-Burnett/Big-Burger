@@ -36,6 +36,6 @@ const selectBtns = () => {
 
 export const bookForm = () => {
     availableDates();
-    //document.querySelector('#date').addEventListener('onchange', availableTimes(event))
+    //document.querySelector('#date').addEventListener('onchange', availableTimes(event)) ;
     selectBtns();
 }

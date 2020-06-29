@@ -208,13 +208,18 @@ form {
 //booking
 
 .buttons {
-    display: flex;
     width: 100%;
-    align-items: center;
-    justify-content: space-evenly;
     @include button;
     #deleteBtn {
         background: red;
+    }
+    button {
+        margin: 1vh 1vw;
+    }
+    @include media($desktop) {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
     }
 }
 
