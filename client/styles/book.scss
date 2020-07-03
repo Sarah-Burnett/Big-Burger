@@ -48,22 +48,20 @@ html {
 }
 
 body{
-    background: #000;
+    background-image: url(/images/burger-bg.jpeg);
+    background-repeat: no-repeat no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    margin-top: 10vh;
+    width: 100vw;
     color: $white;
     font-family: 'Slabo 27px', serif;
     @include fontSize;
     line-height: 2;
-    width: 100vw;
     text-align: center;
     overflow-x: hidden;
     overflow-y: hidden;
-    @include media($desktop) {
-        background-image: url(/images/burger-bg.jpeg);
-        background-repeat: no-repeat no-repeat;
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        }
 }
 
 :focus {
@@ -107,20 +105,17 @@ nav {
 }
 
 #bookingForm {
-    background: #000;
-    @include width;
-    margin: auto;
+    background: rgba(0,0,0,0.7);
+    width: 100vw;
+    height: 90vh;
     margin-top: 10vh;
-    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 1em;
+    overflow-y: scroll;
     @include media($desktop) {
-        margin: 10vh auto;
-        height: 70vh;
-        overflow-y: scroll;
         -ms-overflow-style: none; 
         &::-webkit-scrollbar { 
             width: 0;

@@ -172,17 +172,22 @@
 }
 
 html {
-  scroll-behaviour: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: #000;
+  background-image: url(/burger-bg.dd8dc30b.jpeg);
+  background-repeat: no-repeat no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  margin-top: 10vh;
+  width: 100vw;
   color: #F5F5F5;
   font-family: 'Slabo 27px', serif;
   font-size: 14px;
   line-height: 1.2;
   line-height: 2;
-  width: 100vw;
   text-align: center;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -209,16 +214,6 @@ body {
 @media (min-width: 1800px) {
   body {
     font-size: 22px;
-  }
-}
-
-@media (min-width: 720px) {
-  body {
-    background-image: url(/burger-bg.dd8dc30b.jpeg);
-    background-repeat: no-repeat no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
   }
 }
 
@@ -273,11 +268,10 @@ nav #backBtn:hover {
 }
 
 #bookingForm {
-  background: #000;
-  width: 95vw;
-  margin: auto;
+  background: rgba(0, 0, 0, 0.7);
+  width: 100vw;
+  height: 90vh;
   margin-top: 10vh;
-  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -292,29 +286,11 @@ nav #backBtn:hover {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 1em;
-}
-
-#bookingForm .label, #bookingForm .field, #bookingForm input, #bookingForm form textarea, form #bookingForm textarea, #bookingForm textarea, #bookingForm .dropdownContent {
-  width: 95vw;
+  overflow-y: scroll;
 }
 
 @media (min-width: 720px) {
   #bookingForm {
-    width: 70vw;
-  }
-  #bookingForm .label {
-    width: 25vw;
-  }
-  #bookingForm .field, #bookingForm input, #bookingForm form textarea, form #bookingForm textarea, #bookingForm textarea, #bookingForm .dropdownContent {
-    width: 40vw;
-  }
-}
-
-@media (min-width: 720px) {
-  #bookingForm {
-    margin: 10vh auto;
-    height: 70vh;
-    overflow-y: scroll;
     -ms-overflow-style: none;
   }
   #bookingForm::-webkit-scrollbar {
