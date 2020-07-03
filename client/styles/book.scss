@@ -3,16 +3,16 @@
 
 @mixin width {
     width: 95vw; 
-    .label, .field, input, textarea, .dropdown-content {
+    .label, .field, input, textarea, .dropdownContent {
         width: 95vw;
     }
     @include media($desktop) {
-        width: 60vw;
+        width: 70vw;
         .label {
-            width: 20vw;
+            width: 25vw;
         }
-        .field, input, textarea, .dropdown-content {
-            width: 35vw;
+        .field, input, textarea, .dropdownContent {
+            width: 40vw;
         }
     }
 }
@@ -43,21 +43,26 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body{
     background: #000;
     color: $white;
     font-family: 'Slabo 27px', serif;
-    min-height: 100vh;
     @include fontSize;
     line-height: 2;
+    width: 100vw;
     text-align: center;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
     @include media($desktop) {
         background-image: url(/images/burger-bg.jpeg);
         background-repeat: no-repeat no-repeat;
         background-size: cover;
         background-position: center;
+        height: 100vh;
         }
 }
 
@@ -114,6 +119,13 @@ nav {
     padding: 1em;
     @include media($desktop) {
         margin: 10vh auto;
+        height: 70vh;
+        overflow-y: scroll;
+        -ms-overflow-style: none; 
+        &::-webkit-scrollbar { 
+            width: 0;
+            height: 0;
+        }
     }
 }
 
@@ -123,13 +135,12 @@ form {
     flex-direction: column;
     align-items: center;
     flex-direction: space-evenly;
-    
     .row {
         @include width;
-        margin: 3vh 0;
+        margin: 3vh 0 1vh;
         @include media($desktop) {
             display: flex;
-            margin: 2vw 0;
+            margin: 2vh 0 1vw;
         }
     }
     input {
@@ -145,12 +156,18 @@ form {
         }
         background: $white;
     }
-    .invalid {
+    .inputInvalid {
         border: 2px solid red;
     }
     .error {
-        display: none;
+        opacity: 0;
         color: red;
+        @include media ($desktop) {
+            text-align: left;
+        }
+    }
+    .errorActive{
+        opacity: 1;
     }
     textarea {
         @extend input;
@@ -166,7 +183,7 @@ form {
 .dropdown {
     position: relative;
 }
-.dropdown-content {
+.dropdownContent {
     position: absolute;
     background: $white;
     top: 8vh;
@@ -191,7 +208,7 @@ form {
 }
 
 .dropdown:hover {
-    .dropdown-content {
+    .dropdownContent {
         height: auto;
         max-height: 40vh;
         overflow-y: auto;

@@ -171,17 +171,21 @@
           box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #000;
   color: #F5F5F5;
   font-family: 'Slabo 27px', serif;
-  min-height: 100vh;
   font-size: 14px;
   line-height: 1.2;
   line-height: 2;
+  width: 100vw;
   text-align: center;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 @media (min-width: 600px) {
@@ -214,6 +218,7 @@ body {
     background-repeat: no-repeat no-repeat;
     background-size: cover;
     background-position: center;
+    height: 100vh;
   }
 }
 
@@ -289,25 +294,32 @@ nav #backBtn:hover {
   padding: 1em;
 }
 
-#bookingForm .label, #bookingForm .field, #bookingForm input, #bookingForm form textarea, form #bookingForm textarea, #bookingForm textarea, #bookingForm .dropdown-content {
+#bookingForm .label, #bookingForm .field, #bookingForm input, #bookingForm form textarea, form #bookingForm textarea, #bookingForm textarea, #bookingForm .dropdownContent {
   width: 95vw;
 }
 
 @media (min-width: 720px) {
   #bookingForm {
-    width: 60vw;
+    width: 70vw;
   }
   #bookingForm .label {
-    width: 20vw;
+    width: 25vw;
   }
-  #bookingForm .field, #bookingForm input, #bookingForm form textarea, form #bookingForm textarea, #bookingForm textarea, #bookingForm .dropdown-content {
-    width: 35vw;
+  #bookingForm .field, #bookingForm input, #bookingForm form textarea, form #bookingForm textarea, #bookingForm textarea, #bookingForm .dropdownContent {
+    width: 40vw;
   }
 }
 
 @media (min-width: 720px) {
   #bookingForm {
     margin: 10vh auto;
+    height: 70vh;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+  }
+  #bookingForm::-webkit-scrollbar {
+    width: 0;
+    height: 0;
   }
 }
 
@@ -327,40 +339,40 @@ form {
       flex-direction: space-evenly;
 }
 
-form .label, form .field, form input, form textarea, form textarea, form .dropdown-content {
+form .label, form .field, form input, form textarea, form textarea, form .dropdownContent {
   width: 95vw;
 }
 
 @media (min-width: 720px) {
   form {
-    width: 60vw;
+    width: 70vw;
   }
   form .label {
-    width: 20vw;
+    width: 25vw;
   }
-  form .field, form input, form textarea, form textarea, form .dropdown-content {
-    width: 35vw;
+  form .field, form input, form textarea, form textarea, form .dropdownContent {
+    width: 40vw;
   }
 }
 
 form .row {
   width: 95vw;
-  margin: 3vh 0;
+  margin: 3vh 0 1vh;
 }
 
-form .row .label, form .row .field, form .row input, form .row textarea, form .row textarea, form .row .dropdown-content {
+form .row .label, form .row .field, form .row input, form .row textarea, form .row textarea, form .row .dropdownContent {
   width: 95vw;
 }
 
 @media (min-width: 720px) {
   form .row {
-    width: 60vw;
+    width: 70vw;
   }
   form .row .label {
-    width: 20vw;
+    width: 25vw;
   }
-  form .row .field, form .row input, form .row textarea, form .row textarea, form .row .dropdown-content {
-    width: 35vw;
+  form .row .field, form .row input, form .row textarea, form .row textarea, form .row .dropdownContent {
+    width: 40vw;
   }
 }
 
@@ -369,7 +381,7 @@ form .row .label, form .row .field, form .row input, form .row textarea, form .r
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin: 2vw 0;
+    margin: 2vh 0 1vw;
   }
 }
 
@@ -390,13 +402,23 @@ form input, form textarea {
   }
 }
 
-form .invalid {
+form .inputInvalid {
   border: 2px solid red;
 }
 
 form .error {
-  display: none;
+  opacity: 0;
   color: red;
+}
+
+@media (min-width: 720px) {
+  form .error {
+    text-align: left;
+  }
+}
+
+form .errorActive {
+  opacity: 1;
 }
 
 form textarea {
@@ -411,7 +433,7 @@ form textarea {
   position: relative;
 }
 
-.dropdown-content {
+.dropdownContent {
   position: absolute;
   background: #F5F5F5;
   top: 8vh;
@@ -426,7 +448,7 @@ form textarea {
   overflow-y: hidden;
 }
 
-.dropdown-content button, .dropdown-content input[type=submit], .dropdown-content form textarea[type=submit], form .dropdown-content textarea[type=submit] {
+.dropdownContent button, .dropdownContent input[type=submit], .dropdownContent form textarea[type=submit], form .dropdownContent textarea[type=submit] {
   height: 10vh;
   line-height: 10vh;
   border-style: none;
@@ -439,48 +461,48 @@ form textarea {
 }
 
 @media (min-width: 600px) {
-  .dropdown-content button, .dropdown-content input[type=submit], .dropdown-content form textarea[type=submit], form .dropdown-content textarea[type=submit] {
+  .dropdownContent button, .dropdownContent input[type=submit], .dropdownContent form textarea[type=submit], form .dropdownContent textarea[type=submit] {
     font-size: 16px;
   }
 }
 
 @media (min-width: 900px) {
-  .dropdown-content button, .dropdown-content input[type=submit], .dropdown-content form textarea[type=submit], form .dropdown-content textarea[type=submit] {
+  .dropdownContent button, .dropdownContent input[type=submit], .dropdownContent form textarea[type=submit], form .dropdownContent textarea[type=submit] {
     font-size: 18px;
   }
 }
 
 @media (min-width: 1200px) {
-  .dropdown-content button, .dropdown-content input[type=submit], .dropdown-content form textarea[type=submit], form .dropdown-content textarea[type=submit] {
+  .dropdownContent button, .dropdownContent input[type=submit], .dropdownContent form textarea[type=submit], form .dropdownContent textarea[type=submit] {
     font-size: 20px;
   }
 }
 
 @media (min-width: 1800px) {
-  .dropdown-content button, .dropdown-content input[type=submit], .dropdown-content form textarea[type=submit], form .dropdown-content textarea[type=submit] {
+  .dropdownContent button, .dropdownContent input[type=submit], .dropdownContent form textarea[type=submit], form .dropdownContent textarea[type=submit] {
     font-size: 22px;
   }
 }
 
-.dropdown-content button:hover, .dropdown-content input[type=submit]:hover, .dropdown-content form textarea[type=submit]:hover, form .dropdown-content textarea[type=submit]:hover {
+.dropdownContent button:hover, .dropdownContent input[type=submit]:hover, .dropdownContent form textarea[type=submit]:hover, form .dropdownContent textarea[type=submit]:hover {
   background: #205909;
 }
 
 @media (min-width: 720px) {
-  .dropdown-content button, .dropdown-content input[type=submit], .dropdown-content form textarea[type=submit], form .dropdown-content textarea[type=submit] {
+  .dropdownContent button, .dropdownContent input[type=submit], .dropdownContent form textarea[type=submit], form .dropdownContent textarea[type=submit] {
     width: auto;
     min-width: 10vw;
   }
 }
 
-.dropdown-content button {
+.dropdownContent button {
   border: 1px solid grey;
   display: block;
   min-width: 50%;
 }
 
 @media (min-width: 720px) {
-  .dropdown-content {
+  .dropdownContent {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -489,7 +511,7 @@ form textarea {
   }
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdownContent {
   height: auto;
   max-height: 40vh;
   overflow-y: auto;
@@ -500,7 +522,7 @@ form textarea {
   pointer-events: all;
 }
 
-.dropdown:hover .dropdown-content::-webkit-scrollbar {
+.dropdown:hover .dropdownContent::-webkit-scrollbar {
   display: none;
 }
 

@@ -6,8 +6,8 @@ export const checkError = () => {
     inputs.forEach( (input, index) => {
       if (!input.validity.valid) {
         error = true; 
-        errorBoxes[index].style.display = 'block';
-        inputs[index].classList.add('invalid');
+        errorBoxes[index].classList.add('errorActive');
+        inputs[index].classList.add('inputInvalid');
         inputs[index].scrollIntoView();
         removeError(index);     
       }
@@ -18,8 +18,8 @@ export const checkError = () => {
   export const removeError = (index) => {
     inputs[index].oninput = () => {
       if (inputs[index].validity.valid) {
-         inputs[index].classList.remove('invalid');
-        errorBoxes[index].style.display = 'none';
+         inputs[index].classList.remove('inputInvalid');
+        errorBoxes[index].classList.remove('errorActive');
       }
     }
 }

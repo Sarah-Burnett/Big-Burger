@@ -161,9 +161,9 @@ var selectBtns = function selectBtns() {
     return document.querySelector(input).value = value;
   };
 
-  var restaurantBtns = document.querySelectorAll(".restaurant .dropdown-content button");
-  var partyBtns = document.querySelectorAll(".party .dropdown-content button");
-  var timeBtns = document.querySelectorAll(".time .dropdown-content button");
+  var restaurantBtns = document.querySelectorAll(".restaurant .dropdownContent button");
+  var partyBtns = document.querySelectorAll(".party .dropdownContent button");
+  var timeBtns = document.querySelectorAll(".time .dropdownContent button");
   restaurantBtns.forEach(function (btn) {
     return btn.addEventListener('click', function () {
       return selectBtn("#restaurant", btn.dataset.value);
@@ -227,8 +227,8 @@ var checkError = function checkError() {
   inputs.forEach(function (input, index) {
     if (!input.validity.valid) {
       error = true;
-      errorBoxes[index].style.display = 'block';
-      inputs[index].classList.add('invalid');
+      errorBoxes[index].classList.add('errorActive');
+      inputs[index].classList.add('inputInvalid');
       inputs[index].scrollIntoView();
       removeError(index);
     }
@@ -241,8 +241,8 @@ exports.checkError = checkError;
 var removeError = function removeError(index) {
   inputs[index].oninput = function () {
     if (inputs[index].validity.valid) {
-      inputs[index].classList.remove('invalid');
-      errorBoxes[index].style.display = 'none';
+      inputs[index].classList.remove('inputInvalid');
+      errorBoxes[index].classList.remove('errorActive');
     }
   };
 };
@@ -397,6 +397,7 @@ var updateBtn = document.querySelector('#updateBtn');
 var deleteBtn = document.querySelector('#deleteBtn');
 
 var editForm = function editForm(event) {
+  var h2 = document.querySelector('#bookingForm h2');
   var form = document.querySelector('#bookForm');
   var inputs = document.querySelectorAll('input');
   event.preventDefault();
@@ -405,6 +406,10 @@ var editForm = function editForm(event) {
   });
   form.classList.remove('formDisabled');
   form.classList.add('formEditable');
+  h2.innerHTML = "Edit your booking";
+  h2.scrollIntoView({
+    behavior: "smooth"
+  });
 };
 
 var deleteBooking = function deleteBooking(event) {
@@ -459,7 +464,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63338" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53220" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

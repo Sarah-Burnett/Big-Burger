@@ -367,6 +367,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.toggleModal = void 0;
 
 var toggleModal = function toggleModal() {
+  var closes = document.querySelectorAll(".modal-close span");
+
   var showModal = function showModal(modal) {
     if (document.querySelector(".modal-active")) document.querySelector("modal-active").classList.remove("modal-active");
     document.querySelector(modal).classList.add("modal-active");
@@ -382,7 +384,9 @@ var toggleModal = function toggleModal() {
   document.querySelector(".tanygrisiau-btn").addEventListener('click', function () {
     return showModal(".tanygirisau-map");
   });
-  document.querySelector(".modal-close span").addEventListener('click', hideModal);
+  closes.forEach(function (close) {
+    return close.addEventListener('click', hideModal);
+  });
 };
 
 exports.toggleModal = toggleModal;
@@ -438,7 +442,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63338" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53220" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,4 +1,5 @@
 export const toggleModal = () => {    
+    const closes = document.querySelectorAll(".modal-close span");
 
     const showModal = (modal) => {
     if (document.querySelector(".modal-active")) document.querySelector("modal-active").classList.remove("modal-active");
@@ -11,6 +12,7 @@ export const toggleModal = () => {
 
     document.querySelector(".glensgaich-btn").addEventListener('click', () => showModal(".glensgaich-map"));
     document.querySelector(".tanygrisiau-btn").addEventListener('click', () => showModal(".tanygirisau-map"));
-    document.querySelector(".modal-close span").addEventListener('click', hideModal);
+    closes.forEach( close => close.addEventListener('click', hideModal));
+
 
 }
