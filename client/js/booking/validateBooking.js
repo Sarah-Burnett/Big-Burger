@@ -1,7 +1,16 @@
 const inputs = document.querySelectorAll('input');
 const errorBoxes = document.querySelectorAll('.error');
 
-export const checkError = () => {
+const removeError = (index) => {
+  inputs[index].oninput = () => {
+    if (inputs[index].validity.valid) {
+       inputs[index].classList.remove('inputInvalid');
+      errorBoxes[index].classList.remove('errorActive');
+    }
+  }
+}
+
+export const validateBooking = () => {
     let error = false;
     inputs.forEach( (input, index) => {
       if (!input.validity.valid) {
@@ -15,13 +24,6 @@ export const checkError = () => {
     return error;
 }
 
-  export const removeError = (index) => {
-    inputs[index].oninput = () => {
-      if (inputs[index].validity.valid) {
-         inputs[index].classList.remove('inputInvalid');
-        errorBoxes[index].classList.remove('errorActive');
-      }
-    }
-}
+
   
   

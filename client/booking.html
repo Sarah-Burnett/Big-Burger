@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.0/dist/css/datepicker.min.css">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/book.css">
+    <link rel="stylesheet" href="styles/book.scss">
     <link rel="icon" href="./images/favicon.png">
     <title>Booking Form</title>
 </head>
@@ -116,18 +116,14 @@
                     <p class="error">Please select the number of people between 2-8</p>
                 </div> 
             </div>
-            <div class="row message">
-                <div class="label">
-                     <label for="message"><h3>Message</h3></label>
-                </div>
-                <div class="field">
-                    <textarea id="message" name="message" placeholder="Any dietary/allergy requirements or special occasions please let us know here"></textarea>
-                </div>
+            <div class="message">
+                <label for="message"><h3>Option to include a message</h3></label>
+                <textarea id="message" name="message" placeholder="Any dietary/allergy requirements or special occasions please let us know here"></textarea>
             </div>
             <div class="buttons">
                 <button type="button" id="editBtn"><i class="fas fa-edit"></i>&nbsp;&nbsp;Edit</button>
                 <button type="button" id="deleteBtn"><i class="fas fa-trash"></i>&nbsp;&nbsp;Delete</button>
-                <button type="submit" id="updateBtn" class="bookBtn">Update</button>
+                <button id="updateBtn" class="bookBtn">Update</button>
             </div>
         </form>
     </div>
@@ -144,14 +140,7 @@
     <div class="bookFull modalBg">
         <div class="modal booking">
             <h2>Booking full at your selected time and date</h2>
-            <table>
-                <tr>
-                    <th>Date</th>
-                    <th>Time</th>
-                </tr>
-                    <td id="date"></td>
-                    <td id="time"></td>
-            </table>
+            <div class="bookingDetails"></div>
             <p>Please update booking for a different time</p>
         </div>
     </div>

@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.0/dist/css/datepicker.min.css">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/book.7c743d5b.css">
+    <link rel="stylesheet" href="/book.b09b7cea.css">
     <link rel="icon" href="/favicon.8003f84c.png">
     <title>Booking Form</title>
-<script src="/book.7c743d5b.js"></script></head>
+<script src="/book.b09b7cea.js"></script></head>
 <body>
     <nav data-scroll-header="" class="header">
         <img src="/burger-logo-smaller.e1b388bd.jpg" alt="Big Burger Logo">
@@ -106,13 +106,9 @@
                     <p class="error">Please select the number of people between 2-8</p>
                 </div> 
             </div>
-            <div class="row message">
-                <div class="label">
-                     <label for="message"><h3>Message</h3></label>
-                </div>
-                <div class="field">
-                    <textarea id="message" name="message" placeholder="Any dietary/allergy requirements or special occasions please let us know here"></textarea>
-                </div>
+            <div class="message">
+                <label for="message"><h3>Option to include a message</h3></label>
+                <textarea id="message" name="message" placeholder="Any dietary/allergy requirements or special occasions please let us know here"></textarea>
             </div>
             <div class="buttons">
                 <button type="submit" class="bookBtn">Send</button>
@@ -132,15 +128,8 @@
     <div class="bookFull modalBg">
         <div class="modal booking">
             <h2>Booking full at your selected time and date</h2>
-            <table>
-                <tr>
-                    <th>Date</th>
-                    <th>Time</th>
-                </tr>
-                    <td id="date"></td>
-                    <td id="time"></td>
-            </table>
-            <p>Please update booking for a different time</p>
+            <div class="bookingDate"></div>
+            <p>Please create booking for a different time</p>
         </div>
     </div>
     <div class="bookFail modalBg">

@@ -1,0 +1,18 @@
+TODO:
+CLIENT
+index.css
+tab index modal
+edit design of modals - i.e. red for failed etc.
+
+submitBooking.js
+save form contents session storage and then find form from storage
+need to handle no booking found (findBooking.js)
+
+SERVER
+check validate is actually validating (guest.js)
+check post/put for existing booking (guest.js)
+move the middleware to diff folder (guest.js)
+
+ALL
+write tests
+remove console.log

@@ -117,217 +117,79 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/bookForm.js":[function(require,module,exports) {
-"use strict";
+})({"node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.bookForm = void 0;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var availableDates = function availableDates() {
-  var dateInput = document.querySelector('#date');
-  var minDate = new Date(Date.now() + 86400000);
-  var maxDate = new Date(Date.now() + 1296000000);
-  dateInput.min = minDate.toISOString().split('T')[0];
-  dateInput.max = maxDate.toISOString().split('T')[0];
-  ;
-};
-
-var availableTimes = function availableTimes(event) {
-  var timeInput = document.querySelector('#time');
-
-  var hours = _defineProperty({
-    "Mon": ["17:00", "21:00"],
-    "Tues": ["17:00", "21:00"],
-    "Wed": ["17:00", "21:00"],
-    "Thurs": ["17:00", "21:00"],
-    "Fri": ["17:00", "21:00"],
-    "Sat": ["12:00", "21:00"]
-  }, "Sat", ["17:00", "20:00"]);
-
-  if (event.target.validity.valid) {
-    var dayOfWeek = "Mon"; // edit to this to get day of week
-
-    timeInput.min = hours[dayofWeek][0];
-    timeInput.max = hours[dayoffWeek][1];
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
   }
-};
 
-var selectBtns = function selectBtns() {
-  var selectBtn = function selectBtn(input, value) {
-    return document.querySelector(input).value = value;
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"node_modules/parcel/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
   };
 
-  var restaurantBtns = document.querySelectorAll(".restaurant .dropdown-content button");
-  var partyBtns = document.querySelectorAll(".party .dropdown-content button");
-  var timeBtns = document.querySelectorAll(".time .dropdown-content button");
-  restaurantBtns.forEach(function (btn) {
-    return btn.addEventListener('click', function () {
-      return selectBtn("#restaurant", btn.dataset.value);
-    });
-  });
-  partyBtns.forEach(function (btn) {
-    return btn.addEventListener('click', function () {
-      return selectBtn("#party", btn.dataset.value);
-    });
-  });
-  timeBtns.forEach(function (btn) {
-    return btn.addEventListener('click', function () {
-      return selectBtn("#time", btn.dataset.value);
-    });
-  });
-};
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
 
-var bookForm = function bookForm() {
-  availableDates(); //document.querySelector('#date').addEventListener('onchange', availableTimes(event)) ;
+var cssTimeout = null;
 
-  selectBtns();
-};
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
 
-exports.bookForm = bookForm;
-},{}],"js/validation.js":[function(require,module,exports) {
-"use strict";
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.removeError = exports.checkError = void 0;
-var inputs = document.querySelectorAll('input');
-var errorBoxes = document.querySelectorAll('.error');
-
-var checkError = function checkError() {
-  var error = false;
-  inputs.forEach(function (input, index) {
-    if (!input.validity.valid) {
-      error = true;
-      errorBoxes[index].style.display = 'block';
-      inputs[index].classList.add('invalid');
-      inputs[index].scrollIntoView();
-      removeError(index);
-    }
-  });
-  return error;
-};
-
-exports.checkError = checkError;
-
-var removeError = function removeError(index) {
-  inputs[index].oninput = function () {
-    if (inputs[index].validity.valid) {
-      inputs[index].classList.remove('invalid');
-      errorBoxes[index].style.display = 'none';
-    }
-  };
-};
-
-exports.removeError = removeError;
-},{}],"js/sendBooking.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.submitBooking = void 0;
-
-var _validation = require("./validation");
-
-var setParams = function setParams() {
-  var form = document.querySelector('#bookForm');
-  var name = form.elements["name"].value;
-  var email = form.elements["email"].value;
-  var restaurant = form.elements["restaurant"].value;
-  var date = form.elements["date"].value;
-  var time = form.elements["time"].value;
-  var party = form.elements["party"].value;
-  var message = form.elements["message"].value;
-  return "name=".concat(name, "&email=").concat(email, "&restaurant=").concat(restaurant, "&date=").concat(date, "&time=").concat(time, "&party=").concat(party, "&message=").concat(message);
-};
-
-var sendBooking = function sendBooking(method, url) {
-  var params = setParams();
-  return new Promise(function (resolve, reject) {
-    var xhr = new XMLHttpRequest();
-    xhr.open(method, url, true);
-    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-
-    xhr.onload = function () {
-      if (this.status === 200) {
-        var _JSON$parse = JSON.parse(this.responseText),
-            _id = _JSON$parse._id;
-
-        resolve({
-          message: "bookSuccess",
-          id: _id
-        });
-      } else if (this.status === 403) {
-        var _JSON$parse2 = JSON.parse(this.responseText),
-            date = _JSON$parse2.date,
-            time = _JSON$parse2.time;
-
-        resolve({
-          message: "bookFull",
-          date: date,
-          time: time
-        });
-      } else {
-        reject({
-          message: "bookFail"
-        });
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
       }
-    };
-
-    xhr.onerror = function () {
-      reject({
-        message: "bookFail"
-      });
-    };
-
-    xhr.send(params);
-  });
-};
-
-var submitBooking = function submitBooking(method, url) {
-  var bookBtn = document.querySelector('.bookBtn');
-  document.querySelector('#bookForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var error = (0, _validation.checkError)();
-
-    if (!error) {
-      bookBtn.value = "Sending...";
-      bookBtn.disabled = true;
-      sendBooking(method, url).then(function (reply) {
-        var message = reply.message,
-            id = reply.id,
-            date = reply.date,
-            time = reply.time;
-        if (document.querySelector('#id')) id = document.querySelector('#id').value;
-        document.querySelector('#_id').innerHTML = "<a href=\"booking.html?".concat(id, "\">").concat(id, "</a>");
-        document.querySelector('#date').innerHTML = date;
-        document.querySelector('#time').innerHTML = time;
-        document.querySelector(".".concat(message)).classList.add("modal-active");
-      }).catch(function () {
-        return document.querySelector(".bookFail").classList.add("modal-active");
-      });
     }
-  });
-};
 
-exports.submitBooking = submitBooking;
-},{"./validation":"js/validation.js"}],"js/book.js":[function(require,module,exports) {
-"use strict";
+    cssTimeout = null;
+  }, 50);
+}
 
-var _bookForm = require("./bookForm");
+module.exports = reloadCSS;
+},{"./bundle-url":"node_modules/parcel/src/builtins/bundle-url.js"}],"styles/index.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
 
-var _sendBooking = require("./sendBooking");
-
-//preparing form and form Buttons
-(0, _bookForm.bookForm)(); //send booking
-
-document.querySelector('#bookForm').addEventListener('submit', (0, _sendBooking.submitBooking)('POST', './api/guest/booking'));
-},{"./bookForm":"js/bookForm.js","./sendBooking":"js/sendBooking.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"C:\\Users\\becky\\Desktop\\big-burger\\client\\images\\burger-mob.jpg":[["burger-mob.a9b91a67.jpg","images/burger-mob.jpg"],"images/burger-mob.jpg"],"C:\\Users\\becky\\Desktop\\big-burger\\client\\images\\burger-desktop.jpg":[["burger-desktop.37203440.jpg","images/burger-desktop.jpg"],"images/burger-desktop.jpg"],"./..\\images\\waitress.jpg":[["waitress.91bd79d5.jpg","images/waitress.jpg"],"images/waitress.jpg"],"_css_loader":"node_modules/parcel/src/builtins/css-loader.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -355,7 +217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54945" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50464" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -531,5 +393,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel/src/builtins/hmr-runtime.js","js/book.js"], null)
-//# sourceMappingURL=/book.198dd6d2.js.map
+},{}]},{},["node_modules/parcel/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/styles.434540e1.js.map

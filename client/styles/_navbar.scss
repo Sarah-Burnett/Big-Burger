@@ -1,6 +1,6 @@
 nav {
     width: 100vw;
-    height: 15vh;
+    height: 10vh;
     background: black;
     display: flex;
     justify-content: space-between;
@@ -16,7 +16,7 @@ nav {
     }
     .burger {
         cursor: pointer;
-        padding-right: 1vw;
+        padding: 1vw;
         .line1, .line2, .line3 {
             width: 35px;
             height: 5px;
@@ -24,11 +24,11 @@ nav {
             margin: 6px 0;
             transition: 0.4s;
           }
-        }
+        } 
     }
     .nav-links {
         position: absolute;
-        top: 15vh;        
+        top: 10vh;        
         width: 100vw;
         background: black;
         color: $white;

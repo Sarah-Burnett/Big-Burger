@@ -3,16 +3,16 @@
 
 @mixin width {
     width: 95vw; 
-    .label, .field, input, textarea, .dropdownContent {
+    .label, .field, input, .dropdownContent {
         width: 95vw;
     }
     @include media($desktop) {
         width: 70vw;
         .label {
-            width: 25vw;
+            width: 20vw;
         }
-        .field, input, textarea, .dropdownContent {
-            width: 40vw;
+        .field, input, .dropdownContent {
+            width: 50vw;
         }
     }
 }
@@ -26,13 +26,9 @@
         font-family: 'Slabo 27px', serif;
         @include fontSize;
         cursor: pointer;
-        &:hover {
-            background: $darkgreen;
-        }
         width: 100%;
-        @include media($desktop){
-            width: auto;
-            min-width: 10vw;
+        &:hover {
+            background: $darkGreen;
         }
     }
 }
@@ -65,10 +61,8 @@ body{
 }
 
 :focus {
-    outline-color: $darkgreen;
+    outline-color: $darkGreen;
 }
-
-
 
 nav {
     position: fixed;
@@ -92,7 +86,7 @@ nav {
         text-decoration: none;
         font-size: larger;
         &:hover {
-            color: $darkgreen;
+            color: $darkGreen;
         }
     }
 }
@@ -125,16 +119,17 @@ nav {
 }
 
 form {
+    margin-top: 3vh;
     @include width;
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-direction: space-evenly;
     .row {
         @include width;
         margin: 3vh 0 1vh;
         @include media($desktop) {
             display: flex;
+            align-items: flex-start;
             margin: 2vh 0 1vw;
         }
     }
@@ -163,6 +158,15 @@ form {
     }
     .errorActive{
         opacity: 1;
+    }
+    .message {
+        @include width;
+        @include media($desktop){
+            textarea {
+                margin-top: 2vh;
+                width: 70vw;
+            }
+        }
     }
     textarea {
         @extend input;
@@ -194,11 +198,13 @@ form {
     button {
         border: 1px solid grey;
         display: block;
-        min-width: 50%;
     }
     @include media($desktop){
         display: flex;
         flex-wrap: wrap;
+        button {
+            width: 50%;
+        }
     }
 }
 
@@ -220,18 +226,20 @@ form {
 //booking
 
 .buttons {
-    width: 100%;
+    @include width;
     @include button;
     #deleteBtn {
         background: red;
     }
     button {
-        margin: 1vh 1vw;
+        margin: 1vh 0;
     }
-    @include media($desktop) {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
+    margin: 5vh 0;
+    @include media($desktop){
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(auto-fit, 20vw);
+        grid-gap: 30vw;
     }
 }
 
@@ -247,5 +255,13 @@ form {
     pointer-events: none;
     #editBtn, #deleteBtn {
         pointer-events: all;
+    }
+}
+
+.bookingDate {
+    text-align: left;
+    span {
+        color: $darkGreen;
+        font-size: larger;
     }
 }

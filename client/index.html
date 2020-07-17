@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/index.scss">
     <link rel="icon" href="./images/favicon.png">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script> 
     <title>Big Burger Restaurant</title>
@@ -12,6 +12,11 @@
 <body>
     <nav data-scroll-header class="header">
         <a href="#home"><img src="/images/burger-logo-smaller.jpg" alt="Big Burger Logo"/></a>
+        <div class="burger" role="button" tabindex="0" aria-label="menu icon">
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>   
+        </div>  
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#menu">Menu</a>
@@ -19,11 +24,6 @@
             <a href="#location">Locations</a>
             <a id="bookBtn" href="./book.html">Book Now</a>
         </div>
-        <div class="burger">
-            <div class="line line1"></div>
-            <div class="line line2"></div>
-            <div class="line line3"></div>   
-        </div>  
     </nav>
     <section id="home">
         <div id="home-title" class="section"><h2>Handmade gourmet burgers</h2></div>
@@ -94,9 +94,9 @@
                 </div>
         </div>
         <div style="text-align:center">
-            <span class="review-dot" role="button" tabindex="0"></span> 
-            <span class="review-dot" role="button" tabindex="0"></span> 
-            <span class="review-dot" role="button" tabindex="0"></span> 
+            <span class="review-dot dot" role="button" tabindex="0" aria-label="review 1"></span> 
+            <span class="review-dot dot" role="button" tabindex="0" aria-label="review 2"></span> 
+            <span class="review-dot dot" role="button" tabindex="0" aria-label="review 3"></span> 
           </div>
     </section>
     <section id="location" class="fullPage">
@@ -106,7 +106,7 @@
                 <h3>Glensgaich</h3>
                 <div class="location-info">
                     <div class="contact">
-                        <p><a href="#">71 Brynglas Road, Glensgaich, IV14 6XG</a></p>
+                        <p><a>71 Brynglas Road, Glensgaich, IV14 6XG</a></p>
                         <p><a href="tel:078 3552 7828">078 3552 7828</a></p>
                         <p><a href="mailto:glensgaich@bigburger.com">glensgaich@bigburger.com</a></p>
                     </div>
@@ -123,7 +123,7 @@
                     <h3>Tanygrisiau</h3>
                     <div class="location-info">
                         <div class="contact">
-                            <p><a href="#">101 Essex Road, Tanygrisiau, LL41 6HR</a></p>
+                            <p><a>101 Essex Road, Tanygrisiau, LL41 6HR</a></p>
                             <p><a href="tel:070 4980 1780">070 4980 1780</a></p>
                             <p><a href="mailto:tanygrisiau@bigburger.com">tanygrisiau@bigburger.com</a></p>
                         </div>
@@ -139,8 +139,8 @@
             </div>
         </div>
         <div style="text-align:center">
-            <span class="location-dot" role="button" tabindex="0"></span> 
-            <span class="location-dot"role="button" tabindex="0"></span> 
+            <span class="location-dot dot" role="button" tabindex="0" aria-label="location 1"></span> 
+            <span class="location-dot dot"role="button" tabindex="0" aria-label="location 2"></span> 
           </div>
     </section>
     <section id="footer">
@@ -158,34 +158,23 @@
         <ul>
             <li><h3>Connect with us</h3></li>
             <li id="connect">
-                <img src="/images/iconfinder_80-facebook_social_4202867.png">
-                <img src="/images/iconfinder_62-instagram_social_4202852.png">
-                <img src="/images/iconfinder_18-tripadvisor_travel_social_4202797.png">
+                <a><img src="/images/iconfinder_80-facebook_social_4202867.png"></a>
+                <a><img src="/images/iconfinder_62-instagram_social_4202852.png"></a>
+                <a><img src="/images/iconfinder_18-tripadvisor_travel_social_4202797.png"></a>
             </li>
-        </ul>
+        </ul> 
     </section>    
-    <div class="glensgaich-map modalBg">
+    <div class="glensgaich-map modalBg" tabindex="-1">
         <div class="modal">
-            <p class="modal-close" role="button" tabindex="1"><span><i class="fas fa-times"></i></span></p>
-            <div class="map model-contents" class="mapouter">
-                <div class="gmap_canvas">
-                    <iframe width="100%" height="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=71%20brynglas%20road&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                </div>
-                <span style="font-size: small">Google Maps Generator by <a href="https://www.embedgooglemap.net">embedgooglemap.net</a></span>
-                <style>.mapouter{position:relative;text-align:right;height:100%;width:100%;}.gmap_canvas {overflow:hidden;background:none!important;height:100%;width:100%;}</style>
+            <span class="modal-close" role="button" tabindex="0" aria-label="close"><i class="fas fa-times"></i></span>
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2478.0514495829952!2d-2.9997390846673735!3d51.603945879651086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871e7283b811bdf%3A0x8818b6975d7db7f6!2s71%20Brynglas%20Rd%2C%20Newport!5e0!3m2!1sen!2suk!4v1594998820059!5m2!1sen!2suk" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
         </div>
     </div>
-    <div class="tanygirisau-map modalBg">
+    <div class="tanygirisau-map modalBg" tabindex="-1">
         <div class="modal">
-            <p class="modal-close" role="button" tabindex="1"><span><i class="fas fa-times"></i></span></p>
-            <div class="map model-contents" class="mapouter">
-                <div class="gmap_canvas">
-                    <iframe width="100%" height="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=101%20Essex%20Road&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                </div>
-                <span style="font-size: small">Google Maps Generator by <a href="https://www.embedgooglemap.net">embedgooglemap.net</a></span>
-                <style>.mapouter{position:relative;text-align:right;height:100%;width:100%;}.gmap_canvas {overflow:hidden;background:none!important;height:100%;width:100%;}</style>
-            </div>
+            <span class="modal-close" role="button" tabindex="0" aria-label="close"><i class="fas fa-times"></i></span>
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2526.383211684436!2d-3.5567672999999997!3d50.71282939999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486da5d725a46d8f%3A0xc55d54e1dbb4c3ff!2s101%20Essex%20Cl%2C%20Exeter%20EX4%201LS!5e0!3m2!1sen!2suk!4v1594998353836!5m2!1sen!2suk" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@16.1.2/dist/smooth-scroll.min.js"></script>

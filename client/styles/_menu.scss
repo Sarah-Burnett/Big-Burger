@@ -11,7 +11,7 @@
         text-decoration: none; 
         color: $green;
         &:hover{
-            color: $darkgreen;
+            color: $darkGreen;
         }
     }
 }
@@ -28,7 +28,6 @@
         }
         @include media(600px){
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            color: orange;
         }
         align-items: center;
         justify-content: space-around;
@@ -45,7 +44,7 @@
             background: $green;
             cursor: pointer;
             &:hover {
-                background: $darkgreen;
+                background: $darkGreen;
             }
         }
     }  

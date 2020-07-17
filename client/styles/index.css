@@ -18,6 +18,7 @@ body {
   text-shadow: 1px 1px 2px black;
   text-align: center;
   overflow-x: hidden;
+  padding: 1vh;
 }
 
 @media (min-width: 600px) {
@@ -45,11 +46,24 @@ body {
 }
 
 :focus {
-  outline-color: darkgreen;
+  outline: none;
+  border: 1px solid #205909;
 }
 
-.dots {
-  text-align: center;
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #36970F;
+  border-radius: 50%;
+  display: inline-block;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.dot:nth-child(1) {
+  background-color: #205909;
 }
 
 nav {
@@ -81,7 +95,7 @@ nav img {
 
 nav .burger {
   cursor: pointer;
-  padding-right: 1vw;
+  padding: 1vw;
 }
 
 nav .burger .line1, nav .burger .line2, nav .burger .line3 {
@@ -385,7 +399,6 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   #menu-content .menu-nav {
     -ms-grid-columns: (minmax(150px, 1fr))[auto-fit];
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    color: orange;
   }
 }
 
@@ -464,22 +477,6 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 
 #reviews h2 {
   height: 10vh;
-}
-
-#reviews .review-dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #36970F;
-  border-radius: 50%;
-  display: inline-block;
-  -webkit-transition: background-color 0.3s ease;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
-}
-
-#reviews .review-dot:nth-child(1) {
-  background: #205909;
 }
 
 #reviews .review-container {
@@ -599,22 +596,6 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   color: #36970F;
 }
 
-#location .location-dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #36970F;
-  border-radius: 50%;
-  display: inline-block;
-  -webkit-transition: background-color 0.3s ease;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
-}
-
-#location .location-dot:nth-child(1) {
-  background-color: #205909;
-}
-
 @media (min-width: 500px) {
   .swipe {
     display: none;
@@ -679,10 +660,8 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 
 .modalBg {
   position: fixed;
-  top: 15vh;
-  left: 5vw;
-  height: 80vh;
-  width: 90vw;
+  height: 100vh;
+  width: 100vw;
   background: rgba(0, 0, 0, 0.5);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -702,18 +681,22 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 
 .modal {
   background: #000;
-  -webkit-box-shadow: 0px 0px 16px 10px #36970F;
-          box-shadow: 0px 0px 16px 10px #36970F;
-  padding: 1vh;
   text-shadow: none;
-  height: 100%;
-  width: 100%;
+  background: orange;
+  padding: 1vh;
+  height: 100vh;
+  width: 100vw;
+  margin: auto;
 }
 
 @media (min-width: 720px) {
   .modal {
+    width: auto;
+    height: auto;
     min-width: 50vw;
     min-height: 60vh;
+    -webkit-box-shadow: 0px 0px 16px 10px #36970F;
+            box-shadow: 0px 0px 16px 10px #36970F;
   }
 }
 
@@ -769,16 +752,20 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 }
 
 .modal-close {
-  text-align: right;
   color: #36970F;
-}
-
-.modal-close span {
+  line-height: 1;
+  padding: 2vh;
+  font-size: larger;
+  border: none;
   cursor: pointer;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
 }
 
-.modal-close:focus {
-  outline: none;
+.modal-close:hover {
+  color: #205909;
 }
 
 .booking {
@@ -808,39 +795,14 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 }
 
 .map {
-  padding: 1vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  position: relative;
-  background: #000;
-  min-width: 50vw;
-  min-height: 60vh;
-}
-
-.map a {
-  text-decoration: none;
-  color: #36970F;
+  height: 100%;
+  width: 100%;
+  max-height: 80vh;
 }
 
 .modal-active {
   opacity: 1;
   pointer-events: all;
-}
-
-.map div iframe {
-  min-width: 50vw;
-  min-height: 60vh;
 }
 
 /* 320, 720, 1020 */

@@ -1,3 +1,5 @@
+import { green, darkGreen } from './styles';
+
 // location carousel 
 export const locationCarousel = () => {
     const locationItems = document.querySelectorAll(".location-item");
@@ -5,12 +7,14 @@ export const locationCarousel = () => {
 
     const changeLocation = (item, index) => {
     item.addEventListener('click', () => {
-    locationDots.forEach( dot => dot.style.background = "#36970F");
+    //remove previous
+    locationDots.forEach( dot => dot.style.background = green);
     locationItems.forEach (item => {
         item.style.opacity = "0"; 
         item.style.pointerEvents = "none";
     });
-    locationDots[index].style.background = "#205909";
+    //add new
+    locationDots[index].style.background = darkGreen;
     locationItems[index].style.opacity = "1";
     locationItems[index].style.pointerEvents = "auto";
     })};

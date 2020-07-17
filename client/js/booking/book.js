@@ -1,9 +1,8 @@
-import { bookForm } from './bookForm'
-import { submitBooking } from './sendBooking';
+import { prepareForm } from './prepareForm';
+import { submitBooking } from './submitBooking';
 
 //preparing form and form Buttons
-bookForm();
-//send booking
-document.querySelector('#bookForm').addEventListener('submit', submitBooking('POST', './api/guest/booking'))
+prepareForm();
 
-
+//create booking
+document.querySelector('#bookForm').onsubmit = event => submitBooking(event, 'POST', './api/guest/booking')

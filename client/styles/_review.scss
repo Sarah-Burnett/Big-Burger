@@ -11,17 +11,8 @@
     h2 {
         height: 10vh;
     }
-    .review-dot {
-        height: 15px;
-        width: 15px;
-        margin: 0 2px;
-        background-color: $green;
-        &:nth-child(1) {background:$darkgreen};
-        border-radius: 50%;
-        display: inline-block;
-        transition: background-color 0.3s ease;
-        cursor: pointer;
-    }
+ 
+    //dot in index
    
     .review-container {
         height: 60vh;

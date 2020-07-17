@@ -34,7 +34,8 @@ const selectBtns = () => {
     timeBtns.forEach(btn => btn.addEventListener('click', () => selectBtn("#time", btn.dataset.value)));
   }
 
-export const bookForm = () => {
+
+export const prepareForm = () => {
     availableDates();
     //document.querySelector('#date').addEventListener('onchange', availableTimes(event)) ;
     selectBtns();

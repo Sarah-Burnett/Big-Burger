@@ -31,7 +31,7 @@
                 background: $green;
                 cursor: pointer;
                 &:hover {
-                    background: $darkgreen;
+                    background: $darkGreen;
                 }
             }
             .contact {
@@ -45,17 +45,7 @@
             }
         }
     } 
-    .location-dot {
-        height: 15px;
-        width: 15px;
-        margin: 0 2px;
-        background-color: $green;
-        &:nth-child(1) {background-color:$darkgreen};
-        border-radius: 50%;
-        display: inline-block;
-        transition: background-color 0.3s ease;
-        cursor: pointer;
-    }
+    //dot in index
 }
 
 // icons 

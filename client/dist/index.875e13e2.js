@@ -126,14 +126,13 @@ Object.defineProperty(exports, "__esModule", {
 exports.navBar = void 0;
 
 var navBar = function navBar() {
-  var nav = document.querySelector("nav");
-  var burger = document.querySelector(".burger"); // mob nav bar
+  var nav = document.querySelector("nav"); // mob nav bar
 
   var toggleNav = function toggleNav() {
-    nav.classList.toggle("nav-active");
+    return nav.classList.toggle("nav-active");
   };
 
-  burger.addEventListener('click', toggleNav); // fixed on scroll
+  document.querySelector(".burger").addEventListener('click', toggleNav); // fixed on scroll
 
   window.onscroll = function () {
     if (window.pageYOffset >= 10) {
@@ -274,7 +273,20 @@ var menuContents = function menuContents() {
 
 
 exports.menuContents = menuContents;
-},{"/menu.json":"menu.json"}],"js/index/review.js":[function(require,module,exports) {
+},{"/menu.json":"menu.json"}],"js/index/styles.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.darkGreen = exports.green = exports.white = void 0;
+var white = '#F5F5F5';
+exports.white = white;
+var green = '#36970F';
+exports.green = green;
+var darkGreen = '#205909';
+exports.darkGreen = darkGreen;
+},{}],"js/index/review.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -282,57 +294,60 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.reviewCarousel = void 0;
 
+var _styles = require("./styles");
+
 var reviewCarousel = function reviewCarousel() {
   var reviewCounter = 0;
   var reviewItems = document.querySelectorAll(".review-item");
   var reviewDots = document.querySelectorAll(".review-dot");
 
-  var autoReview = function autoReview() {
+  var changeReview = function changeReview(index) {
+    //remove previous
     reviewDots.forEach(function (dot) {
-      dot.style.background = "#36970F";
+      return dot.style.background = _styles.green;
     });
-    reviewItems.forEach(function (review) {
-      review.style.opacity = "0";
-    });
-    reviewDots[reviewCounter].style.background = "#205909";
-    reviewItems[reviewCounter].style.opacity = "1";
+    reviewItems.forEach(function (item) {
+      return item.style.opacity = "0";
+    }); // add new
+
+    reviewDots[index].style.background = _styles.darkGreen;
+    reviewItems[index].style.opacity = "1";
+  }; //auto change review
+
+
+  var autoReview = function autoReview() {
+    changeReview(reviewCounter);
     if (reviewCounter === reviewItems.length - 1) return reviewCounter = 0;
     reviewCounter++;
   };
 
   var reviewInterval = function reviewInterval() {
     return setInterval(autoReview, 3000);
-  };
+  }; //manual change review
 
-  reviewInterval();
 
   var clickReview = function clickReview(item, index) {
     clearInterval(reviewInterval);
     item.addEventListener('click', function () {
-      reviewDots.forEach(function (dot) {
-        return dot.style.background = "#36970F";
-      });
-      reviewItems.forEach(function (item) {
-        return item.style.opacity = "0";
-      });
-      reviewDots[index].style.background = "#205909";
-      reviewItems[index].style.opacity = "1";
-      reviewCounter = index;
+      changeReview(index);
       reviewInterval();
     });
   };
 
+  reviewInterval();
   reviewDots.forEach(clickReview);
 };
 
 exports.reviewCarousel = reviewCarousel;
-},{}],"js/index/location.js":[function(require,module,exports) {
+},{"./styles":"js/index/styles.js"}],"js/index/location.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.locationCarousel = void 0;
+
+var _styles = require("./styles");
 
 // location carousel 
 var locationCarousel = function locationCarousel() {
@@ -341,14 +356,16 @@ var locationCarousel = function locationCarousel() {
 
   var changeLocation = function changeLocation(item, index) {
     item.addEventListener('click', function () {
+      //remove previous
       locationDots.forEach(function (dot) {
-        return dot.style.background = "#36970F";
+        return dot.style.background = _styles.green;
       });
       locationItems.forEach(function (item) {
         item.style.opacity = "0";
         item.style.pointerEvents = "none";
-      });
-      locationDots[index].style.background = "#205909";
+      }); //add new
+
+      locationDots[index].style.background = _styles.darkGreen;
       locationItems[index].style.opacity = "1";
       locationItems[index].style.pointerEvents = "auto";
     });
@@ -358,26 +375,32 @@ var locationCarousel = function locationCarousel() {
 };
 
 exports.locationCarousel = locationCarousel;
-},{}],"js/index/modal.js":[function(require,module,exports) {
+},{"./styles":"js/index/styles.js"}],"js/index/modal.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.toggleModal = void 0;
+exports.toggleModal = exports.showModal = exports.hideModal = void 0;
+
+var hideModal = function hideModal() {
+  if (document.querySelector(".modal-active")) {
+    document.querySelector(".modal-active").classList.remove("modal-active");
+  }
+};
+
+exports.hideModal = hideModal;
+
+var showModal = function showModal(modal) {
+  hideModal();
+  document.querySelector("nav").classList.add("nav-fixed");
+  document.querySelector(modal).classList.add("modal-active");
+};
+
+exports.showModal = showModal;
 
 var toggleModal = function toggleModal() {
-  var closes = document.querySelectorAll(".modal-close span");
-
-  var showModal = function showModal(modal) {
-    if (document.querySelector(".modal-active")) document.querySelector("modal-active").classList.remove("modal-active");
-    document.querySelector(modal).classList.add("modal-active");
-  };
-
-  var hideModal = function hideModal() {
-    document.querySelector(".modal-active").classList.remove("modal-active");
-  };
-
+  var closes = document.querySelectorAll(".modal-close");
   document.querySelector(".glensgaich-btn").addEventListener('click', function () {
     return showModal(".glensgaich-map");
   });
@@ -442,7 +465,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62917" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50464" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,9 +1,9 @@
 .modalBg {
     position: fixed;
-    top: 15vh; 
-    left: 5vw;
-    height: 80vh;
-    width: 90vw;
+    height: 90vh;
+    width: 100vw;
+    top: 10vh;
+    left: 0;
     background: rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
@@ -12,19 +12,20 @@
     opacity: 0;
     transition: opacity 0.6s ease;
     pointer-events: none;
+    @include media($desktop){
+        top: 0;
+        height: 100vh;
+    }
 }
 
 .modal {
+    position: relative;
     background: #000;
-    box-shadow: 0px 0px 16px 10px $green;
-    padding: 1vh;
     text-shadow: none;
-    height: 100%;
-    width: 100%;
-    @include media($desktop) {
-        min-width: 50vw;
-        min-height: 60vh;
-    }
+    height: 92vh;
+    width: 100vw;
+    margin: auto;
+    
     button {
         margin: 1em;
         padding: 1em;
@@ -34,27 +35,43 @@
         @include fontSize;
         cursor: pointer;
         &:hover {
-            background: $darkgreen;
+            background: $darkGreen;
         }
         width: 90%;
         @include media($desktop){
-            width: auto;
-            min-width: 10vw;
+            
         }
     }
     input {
         width: 90%;
     }
+    @include media($desktop){
+        width: 60vw;
+        height: 60vh;
+        box-shadow: 0px 0px 16px 10px $green;
+        button {
+            width: auto;
+            min-width: 10vw;
+        }
+        input {
+            width: 55vw;
+        }
+    }
 }
 
 .modal-close {
-    text-align: right;
     color: $green;
-    span {
-        cursor: pointer;
-    }
-    &:focus {
-        outline: none;
+    line-height: 1;
+    padding: 2vh;
+    font-size: larger;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    &:hover {
+        color: $darkGreen;
     }
 }
 
@@ -75,29 +92,17 @@
 }
 
 .map {
-    padding: 1vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    position: relative;
-    background: #000;
-    a {
-        text-decoration: none;
-        color: $green;
+    height: 100%;
+    width: 100%;
+    max-height: 92vh;
+    @include media($desktop){
+        height: 60vh;
     }
-    min-width: 50vw;
-    min-height: 60vh;
 }
 
 .modal-active {
     opacity: 1;
     pointer-events: all;
-}
-
-.map div iframe {
-    min-width: 50vw;
-    min-height: 60vh;
 }
 
 
