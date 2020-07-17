@@ -8,6 +8,10 @@ submitBooking.js
 save form contents session storage and then find form from storage
 need to handle no booking found (findBooking.js)
 
+font awesome
+location dots - alignment
+lazy load imagess
+
 SERVER
 check validate is actually validating (guest.js)
 check post/put for existing booking (guest.js)
