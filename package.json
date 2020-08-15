@@ -28,5 +28,8 @@
     "mongoose": "^5.9.7",
     "nodemon": "^2.0.2",
     "pug": "^2.0.4"
+  },
+  "devDependencies": {
+    "jest": "^26.4.0"
   }
 }
