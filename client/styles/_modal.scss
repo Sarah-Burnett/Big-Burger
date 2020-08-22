@@ -25,7 +25,6 @@
     height: 92vh;
     width: 100vw;
     margin: auto;
-    
     button {
         margin: 1em;
         padding: 1em;
@@ -38,9 +37,7 @@
             background: $darkGreen;
         }
         width: 90%;
-        @include media($desktop){
-            
-        }
+        @include borderRadius;
     }
     input {
         width: 90%;
@@ -48,7 +45,9 @@
     @include media($desktop){
         width: 60vw;
         height: 60vh;
-        box-shadow: 0px 0px 16px 10px $green;
+        border: 1px solid $green;
+        @include borderRadius;
+        // box-shadow: 0px 0px 16px 10px $green;
         button {
             width: auto;
             min-width: 10vw;

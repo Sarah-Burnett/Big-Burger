@@ -21,9 +21,10 @@ const bookingValidationRules = () => {
 }
 
 const validate = (req, res, next) => {
+    console.log(req.body);
     const errors = validationResult(req);
-    if (errors.isEmpty) next();
-    else res.status(400).json(errors)
+    if (errors.isEmpty()) next();
+    else return res.status(400).json(errors)
 }
 
 const checkAvailability = (req, res, next) => {

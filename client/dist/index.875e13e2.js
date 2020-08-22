@@ -392,6 +392,7 @@ var hideModal = function hideModal() {
 exports.hideModal = hideModal;
 
 var showModal = function showModal(modal) {
+  console.log(modal);
   hideModal();
   document.querySelector("nav").classList.add("nav-fixed");
   document.querySelector(modal).classList.add("modal-active");
@@ -465,7 +466,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53595" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57090" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

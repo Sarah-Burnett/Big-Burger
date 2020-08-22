@@ -5,6 +5,7 @@ export const hideModal = () => {
 }
 
 export const showModal = (modal) => {
+    console.log(modal);
     hideModal();
     document.querySelector("nav").classList.add("nav-fixed");
     document.querySelector(modal).classList.add("modal-active");
