@@ -15,6 +15,7 @@ export const validateBooking = () => {
     inputs.forEach( (input, index) => {
       if (!input.validity.valid) {
         error = true; 
+        console.log(error);
         errorBoxes[index].classList.add('errorActive');
         inputs[index].classList.add('inputInvalid');
         inputs[index].scrollIntoView();
@@ -22,8 +23,5 @@ export const validateBooking = () => {
       }
     })
     return error;
-}
-
-
-  
+}  
   

@@ -44,4 +44,3 @@ export const submitBooking = (event, method, url) => {
 }
 
 
-
