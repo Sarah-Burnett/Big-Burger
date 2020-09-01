@@ -13,17 +13,17 @@ const getModalParams = (type, payload) => {
 	switch (type) {
 		case SHOW_BOOKED:
 			return {
-				modalSelector: ".bookSuccess",
+				modalSelector: "#bookSuccess",
 				HTMLSelector: "#_id",
 				newHTML: `<a href="booking.html?${payload._id}">${payload._id}</a>`,
 			};
 		case SHOW_FAILED:
 			return {
-				modalSelector: ".bookFail",
+				modalSelector: "#bookFail",
 			};
 		case SHOW_FULL:
 			return {
-				modalSelector: ".bookFull",
+				modalSelector: "#bookFull",
 				HTMLSelector: ".bookingDetails",
 				newHTML:
 					"<div>" +
@@ -33,7 +33,7 @@ const getModalParams = (type, payload) => {
 			};
 		case SHOW_CANCELLED:
 			return {
-				modalSelector: ".bookDeleted"
+				modalSelector: "#bookDeleted"
 			}
 	}
 };

@@ -1,6 +1,6 @@
 import { setAvailableDates } from "./utilities/availableDates";
 import { setAvailableTimes } from "./utilities/availableTimes";
-import { handleSelectBtns } from "./utilities/selectBtns";
+import { changeInputValue } from "./utilities/utilities";
 import { handleSubmit } from "./utilities/submitBooking";
 import {POST_BOOKING} from "./utilities/types";
 import { autoFillForm } from "./utilities/utilities";
@@ -13,7 +13,10 @@ document.querySelector("#date").addEventListener("onchange", (event) => {
 		setAvailableTimes(day);
 	}
 });
-handleSelectBtns();
+// form dropdown buttons
+document.querySelector(".dropdownButton").forEach((btn) => {
+	changeInputValue(btn.dataset.input, btn.dataset.value);
+}); 
 
 //fill from session storage
 if (sessionStorage.booking) {

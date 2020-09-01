@@ -17,3 +17,7 @@ export const autoFillForm = (data) => {
 	});
 	if (document.querySelector(".modal-active")) hideModal();
 };
+
+const changeInputValue = (input, value) =>
+	(document.querySelector(input).value = value);
+

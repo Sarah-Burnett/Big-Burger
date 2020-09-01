@@ -21,3 +21,4 @@ export const setAvailableTimes = (day) => {
 	timeInput.min = hours[0];
 	timeInput.max = hours[1];
 };
+

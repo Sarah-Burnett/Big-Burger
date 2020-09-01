@@ -1,0 +1,111 @@
+form( 
+    name="booking"
+    novalidate
+    )
+    .row.name
+        .label
+            label(for="name")
+                h3 Name
+        .field
+            input#name(name="name" required)
+            p.error Please enter your name
+    .row.email
+        .label
+            label(for="email")
+            h3 Email
+        .field  
+            input#email(
+                type="email"
+                name="email" 
+                required)
+            p.error Please enter your email
+    .row.restaurant
+        .label
+            label(for="restaurant") 
+                h3 Restaurant
+        .field.dropdown
+            input#restaurant(
+                name="restaurant"
+                value="Glensgaich"
+                pattern="Tanygirisau||Glensgaich"
+                readonly
+                required
+                )
+            .dropdownContent
+                each val in ["Glensgaich", "Tanygirisau"]
+                button.dropdownBtn(
+                    type="button"
+                    data-input="#restaurant"
+					data-value=val 
+                )= val
+            p.error Please select a restaurant
+    .row.date
+        .label
+            label(for="date") 
+                h3 Date of Booking
+        .field
+            input#date(
+                type="date" 
+                name="date" 
+                min="2020-04-01"
+				max="2020-04-30"
+			    required
+                )    
+            p.error
+                Please select a date (dd/mm/yy) in the next two weeks
+    .row.time
+        .label
+            label(for="time") 
+                h3 Time of Booking
+        .field.dropdown
+            input#time(
+				name="time"
+				value="17:00"
+				pattern="^[0-2][0-9]:[03][0]$"
+                readonly
+                required
+            )
+            .dropdownContent
+                //- need to append buttons using js - type="button" class="dropdownBtn" data-input="#time" data-value = {{}}
+            p.error Please select the time you would like to book
+    .row.party
+        .label
+            label(for="party") 
+                h3 Number of guests
+        .field
+            input#party(
+                type="number"
+                name="party"
+                min="2"
+                max="8"
+                value="2"
+                readonly
+                required
+            )
+            .dropdownContent
+                each val in [2, 3, 4, 5, 6, 7, 8]
+                    button.dropdownBtn(
+                        type="button"
+                        data-input="#party"
+                        data-value=val
+                    )= val
+            p.error Please select the number of people between 2-8
+    .message
+        label(for="message")
+            h3 Option to include a message
+        textarea#message(
+            name="message"
+            placeholder="Any dietary/allergy requirements or special occasions please let us know here"
+        )
+    .buttons
+        if booking 
+            button#editBtn(type="button")
+                i.fas.fa-edit Edit
+            button#deleteBtn(type="button")
+                i.fas.fa-trash Delete 
+            button#updateBtn Update
+        else
+            button#bookBtn Send
+
+
+

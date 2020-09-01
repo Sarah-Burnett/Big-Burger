@@ -4,7 +4,7 @@ import {
 } from "./utilities/findBooking";
 import { setAvailableDates } from "./utilities/availableDates";
 import { setAvailableTimes } from "./utilities/availableTimes";
-import { handleSelectBtns } from "./utilities/selectBtns";
+import { changeInputValue } from "./utilities/utilities";
 import { editForm } from "./utilities/editForm";
 import { handleSubmit } from "./utilities/submitBooking";
 import { fetch } from "./utilities/fetch";
@@ -19,7 +19,10 @@ document.querySelector("#date").addEventListener("onchange", (event) => {
 		setAvailableTimes(day);
 	}
 });
-handleSelectBtns();
+// form dropdown buttons
+document.querySelector(".dropdownButton").forEach((btn) => {
+	changeInputValue(btn.dataset.input, btn.dataset.value);
+}); 
 
 //edit form
 document.querySelector("#editBtn").onclick = (event) => editForm(event);

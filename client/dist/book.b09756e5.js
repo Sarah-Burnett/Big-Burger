@@ -186,78 +186,6 @@ var setAvailableTimes = function setAvailableTimes(day) {
 };
 
 exports.setAvailableTimes = setAvailableTimes;
-},{}],"js/booking/utilities/selectBtns.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.handleSelectBtns = void 0;
-
-var handleSelectBtns = function handleSelectBtns() {
-  var selectBtn = function selectBtn(input, value) {
-    return document.querySelector(input).value = value;
-  };
-
-  var restaurantBtns = document.querySelectorAll(".restaurant .dropdownContent button");
-  var partyBtns = document.querySelectorAll(".party .dropdownContent button");
-  var timeBtns = document.querySelectorAll(".time .dropdownContent button");
-  restaurantBtns.forEach(function (btn) {
-    return btn.addEventListener('click', function () {
-      return selectBtn("#restaurant", btn.dataset.value);
-    });
-  });
-  partyBtns.forEach(function (btn) {
-    return btn.addEventListener('click', function () {
-      return selectBtn("#party", btn.dataset.value);
-    });
-  });
-  timeBtns.forEach(function (btn) {
-    return btn.addEventListener('click', function () {
-      return selectBtn("#time", btn.dataset.value);
-    });
-  });
-};
-
-exports.handleSelectBtns = handleSelectBtns;
-},{}],"js/booking/utilities/types.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DELETE_BOOKING = exports.PUT_BOOKING = exports.POST_BOOKING = exports.GET_BOOKING = exports.SHOW_CANCELLED = exports.SHOW_FULL = exports.SHOW_FAILED = exports.SHOW_MODIFIED = exports.SHOW_BOOKED = void 0;
-var SHOW_BOOKED = "SHOW_BOOKED";
-exports.SHOW_BOOKED = SHOW_BOOKED;
-var SHOW_MODIFIED = "SHOW_MODIFIED";
-exports.SHOW_MODIFIED = SHOW_MODIFIED;
-var SHOW_FAILED = "SHOW_FAILED";
-exports.SHOW_FAILED = SHOW_FAILED;
-var SHOW_FULL = "SHOW_FULL";
-exports.SHOW_FULL = SHOW_FULL;
-var SHOW_CANCELLED = "SHOW_CANCELLED";
-exports.SHOW_CANCELLED = SHOW_CANCELLED;
-var GET_BOOKING = "GET_BOOKING";
-exports.GET_BOOKING = GET_BOOKING;
-var POST_BOOKING = "POST_BOOKING";
-exports.POST_BOOKING = POST_BOOKING;
-var PUT_BOOKING = "PUT_BOOKING";
-exports.PUT_BOOKING = PUT_BOOKING;
-var DELETE_BOOKING = "DELETE_BOOKING";
-exports.DELETE_BOOKING = DELETE_BOOKING;
-},{}],"js/booking/utilities/storage.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.addSessionStorage = void 0;
-
-var addSessionStorage = function addSessionStorage(key, value) {
-  sessionStorage.setItem(key, value);
-};
-
-exports.addSessionStorage = addSessionStorage;
 },{}],"js/index/modal.js":[function(require,module,exports) {
 "use strict";
 
@@ -330,7 +258,49 @@ var autoFillForm = function autoFillForm(data) {
 };
 
 exports.autoFillForm = autoFillForm;
-},{"../../index/modal":"js/index/modal.js"}],"js/booking/utilities/handleModal.js":[function(require,module,exports) {
+
+var changeInputValue = function changeInputValue(input, value) {
+  return document.querySelector(input).value = value;
+};
+},{"../../index/modal":"js/index/modal.js"}],"js/booking/utilities/types.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DELETE_BOOKING = exports.PUT_BOOKING = exports.POST_BOOKING = exports.GET_BOOKING = exports.SHOW_CANCELLED = exports.SHOW_FULL = exports.SHOW_FAILED = exports.SHOW_MODIFIED = exports.SHOW_BOOKED = void 0;
+var SHOW_BOOKED = "SHOW_BOOKED";
+exports.SHOW_BOOKED = SHOW_BOOKED;
+var SHOW_MODIFIED = "SHOW_MODIFIED";
+exports.SHOW_MODIFIED = SHOW_MODIFIED;
+var SHOW_FAILED = "SHOW_FAILED";
+exports.SHOW_FAILED = SHOW_FAILED;
+var SHOW_FULL = "SHOW_FULL";
+exports.SHOW_FULL = SHOW_FULL;
+var SHOW_CANCELLED = "SHOW_CANCELLED";
+exports.SHOW_CANCELLED = SHOW_CANCELLED;
+var GET_BOOKING = "GET_BOOKING";
+exports.GET_BOOKING = GET_BOOKING;
+var POST_BOOKING = "POST_BOOKING";
+exports.POST_BOOKING = POST_BOOKING;
+var PUT_BOOKING = "PUT_BOOKING";
+exports.PUT_BOOKING = PUT_BOOKING;
+var DELETE_BOOKING = "DELETE_BOOKING";
+exports.DELETE_BOOKING = DELETE_BOOKING;
+},{}],"js/booking/utilities/storage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addSessionStorage = void 0;
+
+var addSessionStorage = function addSessionStorage(key, value) {
+  sessionStorage.setItem(key, value);
+};
+
+exports.addSessionStorage = addSessionStorage;
+},{}],"js/booking/utilities/handleModal.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -348,26 +318,26 @@ var getModalParams = function getModalParams(type, payload) {
   switch (type) {
     case _types.SHOW_BOOKED:
       return {
-        modalSelector: ".bookSuccess",
+        modalSelector: "#bookSuccess",
         HTMLSelector: "#_id",
         newHTML: "<a href=\"booking.html?".concat(payload._id, "\">").concat(payload._id, "</a>")
       };
 
     case _types.SHOW_FAILED:
       return {
-        modalSelector: ".bookFail"
+        modalSelector: "#bookFail"
       };
 
     case _types.SHOW_FULL:
       return {
-        modalSelector: ".bookFull",
+        modalSelector: "#bookFull",
         HTMLSelector: ".bookingDetails",
         newHTML: "<div>" + "<p>Date: <span>".concat(payload.date, "</span></p>") + "<p>Time: <span>".concat(payload.time, "</span></p>") + "</div>"
       };
 
     case _types.SHOW_CANCELLED:
       return {
-        modalSelector: ".bookDeleted"
+        modalSelector: "#bookDeleted"
       };
   }
 };
@@ -2329,13 +2299,11 @@ var _availableDates = require("./utilities/availableDates");
 
 var _availableTimes = require("./utilities/availableTimes");
 
-var _selectBtns = require("./utilities/selectBtns");
+var _utilities = require("./utilities/utilities");
 
 var _submitBooking = require("./utilities/submitBooking");
 
 var _types = require("./utilities/types");
-
-var _utilities = require("./utilities/utilities");
 
 //preparing form and form Buttons
 (0, _availableDates.setAvailableDates)(Date.now());
@@ -2344,8 +2312,11 @@ document.querySelector("#date").addEventListener("onchange", function (event) {
     var day = getDayFromDate;
     (0, _availableTimes.setAvailableTimes)(day);
   }
-});
-(0, _selectBtns.handleSelectBtns)(); //fill from session storage
+}); // form dropdown buttons
+
+document.querySelector(".dropdownButton").forEach(function (btn) {
+  (0, _utilities.changeInputValue)(btn.dataset.input, btn.dataset.value);
+}); //fill from session storage
 
 if (sessionStorage.booking) {
   (0, _utilities.autoFillForm)(JSON.parse(sessionStorage.booking));
@@ -2357,7 +2328,7 @@ var bookBtn = ".bookBtn";
 document.querySelector(".postBookForm").onsubmit = function (e) {
   return (0, _submitBooking.handleSubmit)(e, _types.POST_BOOKING, bookBtn);
 };
-},{"./utilities/availableDates":"js/booking/utilities/availableDates.js","./utilities/availableTimes":"js/booking/utilities/availableTimes.js","./utilities/selectBtns":"js/booking/utilities/selectBtns.js","./utilities/submitBooking":"js/booking/utilities/submitBooking.js","./utilities/types":"js/booking/utilities/types.js","./utilities/utilities":"js/booking/utilities/utilities.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./utilities/availableDates":"js/booking/utilities/availableDates.js","./utilities/availableTimes":"js/booking/utilities/availableTimes.js","./utilities/utilities":"js/booking/utilities/utilities.js","./utilities/submitBooking":"js/booking/utilities/submitBooking.js","./utilities/types":"js/booking/utilities/types.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -2385,7 +2356,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57090" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53385" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
