@@ -19,15 +19,15 @@
 				<form id="findForm">
 					<label for="id"><h2>Please enter your booking reference</h2></label>
 					<input type="text" name="id" id="id" required="">
+					<p class="error idError">Please enter a valid booking reference</p>
 					<button id="findBtn">Find</button>
-					<p class="error idError"></p>
 				</form>
 			</div>
 		</div>
 		<div id="bookingForm">
 			<h2>Book a table</h2>
 			Place your booking for the next fortnight using the form below
-			<form name="booking" method="POST" action="/api/guest/booking" id="bookForm" class="putBookForm formDisabled" novalidate="">
+			<form name="booking" method="POST" action="/api/booking" id="bookForm" class="putBookForm formDisabled" novalidate="">
 				<div class="row name">
 					<div class="label">
 						<label for="name"><h3>Name</h3></label>
@@ -53,10 +53,10 @@
 					<div class="field dropdown">
 						<input readonly="" name="restaurant" id="restaurant" value="Glensgaich" pattern="Tanygirisau||Glensgaich" required="">
 						<div class="dropdownContent">
-							<button type="button" class="valueBtn restaurantBtn" data-input="#restaurant" data-value="Glensgaich">
+							<button type="button" class="dropdownBtn" data-input="#restaurant" data-value="Glensgaich">
 								Glensgaich
 							</button>
-							<button type="button" class="valueBtn restaurantBtn" data-input="#restaurant" data-value="Tanygirisau">
+							<button type="button" class="dropdownBtn" data-input="#restaurant" data-value="Tanygirisau">
 								Tanygirisau
 							</button>
 						</div>
@@ -81,61 +81,61 @@
 					<div class="field dropdown">
 						<input readonly="" id="time" name="time" value="17:00" pattern="^[0-2][0-9]:[03][0]$" required="">
 						<div class="dropdownContent">
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="12:00" data-day="wkend">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="12:00" data-day="wkend">
 								12:00
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="12:30" data-day="wkend">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="12:30" data-day="wkend">
 								12:30
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="13:00" data-day="wkend">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="13:00" data-day="wkend">
 								13:00
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="13:30" data-day="wkend">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="13:30" data-day="wkend">
 								13:30
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="14:00" data-day="wkend">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="14:00" data-day="wkend">
 								14:00
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="14:30" data-day="wkend">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="14:30" data-day="wkend">
 								14:30
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="15:00" data-day="wkend">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="15:00" data-day="wkend">
 								15:00
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="15:30" data-day="wkend">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="15:30" data-day="wkend">
 								15:30
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="16:00" data-day="wkend">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="16:00" data-day="wkend">
 								16:00
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="16:30" data-day="wkend">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="16:30" data-day="wkend">
 								16:30
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="17:00">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="17:00">
 								17:00
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="17:30">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="17:30">
 								17:30
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="18:00">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="18:00">
 								18:00
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="18:30">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="18:30">
 								18:30
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="19:00">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="19:00">
 								19:00
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="19:30">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="19:30">
 								19:00
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="20:00">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="20:00">
 								20:00
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="20:30" data-day="nosun">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="20:30" data-day="nosun">
 								20:30
 							</button>
-							<button type="button" class="valueBtn timeBtn" data-input="#time" data-value="21:00" data-day="nosun">
+							<button type="button" class="dropdownBtn" data-input="#time" data-value="21:00" data-day="nosun">
 								21:00
 							</button>
 						</div>
@@ -149,25 +149,25 @@
 					<div class="field dropdown">
 						<input readonly="" type="number" id="party" name="party" min="2" max="8" value="2" required="">
 						<div class="dropdownContent">
-							<button type="button" class="valueBtn partyBtn" data-input="#party" data-value="2">
+							<button type="button" class="dropdownBtn" data-input="#party" data-value="2">
 								2
 							</button>
-							<button type="button" class="valueBtn partyBtn" data-input="#party" data-value="3">
+							<button type="button" class="dropdownBtn" data-input="#party" data-value="3">
 								3
 							</button>
-							<button type="button" class="valueBtn partyBtn" data-input="#party" data-value="4">
+							<button type="button" class="dropdownBtn" data-input="#party" data-value="4">
 								4
 							</button>
-							<button type="button" class="valueBtn partyBtn" data-input="#party" data-value="5">
+							<button type="button" class="dropdownBtn" data-input="#party" data-value="5">
 								5
 							</button>
-							<button type="button" class="valueBtn partyBtn" data-input="#party" data-value="6">
+							<button type="button" class="dropdownBtn" data-input="#party" data-value="6">
 								6
 							</button>
-							<button type="button" class="valueBtn partyBtn" data-input="#party" data-value="7">
+							<button type="button" class="dropdownBtn" data-input="#party" data-value="7">
 								7
 							</button>
-							<button type="button" class="valueBtn partyBtn" data-input="#party" data-value="8">
+							<button type="button" class="dropdownBtn" data-input="#party" data-value="8">
 								8
 							</button>
 						</div>
@@ -218,6 +218,6 @@
 				<p>We hope to see you soon</p>
 			</div>
 		</div>
-		<script src="/booking.a62b7ad2.js"></script>
+		<script src="/booking.6c777bf2.js"></script>
 	</body>
 </html>

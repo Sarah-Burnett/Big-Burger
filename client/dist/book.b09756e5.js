@@ -231,7 +231,7 @@ exports.toggleModal = toggleModal;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.autoFillForm = exports.disableButton = exports.setInnerHTML = void 0;
+exports.changeInputValue = exports.autoFillForm = exports.disableButton = exports.setInnerHTML = void 0;
 
 var _modal = require("../../index/modal");
 
@@ -260,8 +260,10 @@ var autoFillForm = function autoFillForm(data) {
 exports.autoFillForm = autoFillForm;
 
 var changeInputValue = function changeInputValue(input, value) {
-  return document.querySelector(input).value = value;
+  document.querySelector(input).value = value;
 };
+
+exports.changeInputValue = changeInputValue;
 },{"../../index/modal":"js/index/modal.js"}],"js/booking/utilities/types.js":[function(require,module,exports) {
 "use strict";
 
@@ -2142,7 +2144,7 @@ var getFetchParams = function getFetchParams(type, params) {
     case _types.POST_BOOKING:
       return {
         method: "POST",
-        url: "./api/guest/booking",
+        url: "./api//book",
         resolved: function resolved(res) {
           (0, _handleModal.handleModal)(_types.SHOW_BOOKED, res.data);
         },
@@ -2155,7 +2157,7 @@ var getFetchParams = function getFetchParams(type, params) {
     case _types.GET_BOOKING:
       return {
         method: "GET",
-        url: "/api/guest/booking/".concat(params.id),
+        url: "/api/booking/".concat(params.id),
         resolved: function resolved(res) {
           (0, _utilities.autoFillForm)(res.data);
         },
@@ -2166,7 +2168,7 @@ var getFetchParams = function getFetchParams(type, params) {
     case _types.PUT_BOOKING:
       return {
         method: "PUT",
-        url: "./api/guest/booking/".concat(document.querySelector('#id').value),
+        url: "./api/booking/".concat(document.querySelector('#id').value),
         resolved: function resolved(res) {
           (0, _handleModal.handleModal)(_types.SHOW_BOOKED, res.data);
         },
@@ -2179,7 +2181,7 @@ var getFetchParams = function getFetchParams(type, params) {
     case _types.DELETE_BOOKING:
       return {
         method: "DELETE",
-        url: "./api/guest/booking/".concat(params.id),
+        url: "./api/booking/".concat(params.id),
         resolved: function resolved() {
           (0, _handleModal.handleModal)(_types.SHOW_CANCELLED);
         },
@@ -2314,8 +2316,10 @@ document.querySelector("#date").addEventListener("onchange", function (event) {
   }
 }); // form dropdown buttons
 
-document.querySelector(".dropdownButton").forEach(function (btn) {
-  (0, _utilities.changeInputValue)(btn.dataset.input, btn.dataset.value);
+document.querySelectorAll(".dropdownBtn").forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    (0, _utilities.changeInputValue)(btn.dataset.input, btn.dataset.value);
+  });
 }); //fill from session storage
 
 if (sessionStorage.booking) {
@@ -2356,7 +2360,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59124" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49758" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

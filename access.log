@@ -1,0 +1,6 @@
+::1 - - [07/Sep/2020:12:30:39 +0000] "PUT /api/booking/5f5627c0aa7085274025c286 HTTP/1.1" 200 169 "http://localhost:3000/booking.html?5f5627c0aa7085274025c286" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36"
+::1 - - [07/Sep/2020:12:31:01 +0000] "POST /api/book HTTP/1.1" 200 169 "-" "PostmanRuntime/7.26.3"
+::1 - - [07/Sep/2020:12:31:07 +0000] "PUT /api/book HTTP/1.1" 404 147 "-" "PostmanRuntime/7.26.3"
+::1 - - [07/Sep/2020:12:31:14 +0000] "PUT /api/booking HTTP/1.1" 404 150 "-" "PostmanRuntime/7.26.3"
+::1 - - [07/Sep/2020:12:31:44 +0000] "POST /api/book HTTP/1.1" 200 169 "-" "PostmanRuntime/7.26.3"
+::1 - - [07/Sep/2020:12:31:57 +0000] "PUT /api/booking HTTP/1.1" 404 150 "-" "PostmanRuntime/7.26.3"

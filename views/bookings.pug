@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Bookings
+        link(rel="icon", href="./favicon.png")
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Slabo+27px&display=swap")
+        link(rel="stylesheet", type="text/css", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", crossorigin="anonymous")
+        link(rel="stylesheet", type="text/css", href="./bookings.css")
+    body
+        nav.row 
+            img(src="./burger-logo-smaller.jpg", alt="BigBurger" class="mx-auto")
+        if bookings.length
+            .table-responsive
+                table.table
+                    thead  
+                        tr
+                            th(scope='col') Reference
+                            th(scope='col') Name
+                            th(scope='col') Email
+                            th(scope='col') Restaurant
+                            th(scope='col') Date
+                            th(scope='col') Time
+                            th(scope='col') Party
+                            th(scope='col') Message
+                    tbody
+                    each booking in bookings
+                        tr
+                            td=booking._id
+                            td=booking.name
+                            td=booking.email
+                            td=booking.restaurant
+                            td=booking.date
+                            td=booking.time
+                            td=booking.party
+                            td=booking.message 
+        else 
+            p No bookings yet

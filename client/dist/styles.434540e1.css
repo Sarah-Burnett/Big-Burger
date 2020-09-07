@@ -60,6 +60,10 @@ body {
   background-color: #205909;
 }
 
+a {
+  cursor: pointer;
+}
+
 nav {
   width: 100vw;
   height: 10vh;

@@ -1,6 +1,9 @@
 const express = require("express");
+const fs = require("fs");
 const path = require("path");
 const mongoose = require("mongoose");
+const morgan = require("morgan");
+const Booking = require("./models/Booking");
 require("dotenv").config();
 
 const app = express();
@@ -21,6 +24,12 @@ app.use(express.json());
 app.use(express.static(__dirname + "/views"));
 app.set("views", path.join(__dirname, "views/"));
 app.set("view engine", "pug");
+
+//logging
+var accessLogStream = fs.createWriteStream(path.join(__dirname, "access.log"), {
+	flags: "a",
+});
+app.use(morgan("combined", { stream: accessLogStream }));
 
 // serve client files
 app.use(express.static("client/dist", { extensions: ["html"] }));
