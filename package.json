@@ -1,10 +1,10 @@
 {
-	"name": "static-burger",
+	"name": "big-burger",
 	"version": "1.0.0",
-	"description": "burger restaurant",
+	"description": "Big-Burger restaurant",
 	"main": "index.js",
 	"scripts": {
-		"start": "nodemon server.js",
+		"start": "node server.js",
 		"server": "nodemon server.js",
 		"client-install": "cd client && npm install",
 		"client": "npm start --prefix client",
@@ -13,14 +13,13 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Sarah-Burnett/staticburger.git"
+		"url": "https://github.com/sarahkvburnett/big-burger.git"
 	},
 	"author": "",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/Sarah-Burnett/staticburger/issues"
+		"url": "https://github.com/sarahkvburnett/big-burger/issues"
 	},
-	"homepage": "https://github.com/Sarah-Burnett/staticburger#readme",
 	"dependencies": {
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
