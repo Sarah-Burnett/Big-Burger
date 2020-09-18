@@ -32,12 +32,13 @@
   margin: 1em;
   padding: 1em;
   border-style: none;
-  background: #36970F;
+  background: #36970f;
   font-family: "Slabo 27px", serif;
   font-size: 14px;
   line-height: 1.2;
   cursor: pointer;
   width: 90%;
+  border-radius: 1px;
 }
 @media (min-width: 600px) {
   .modal button {
@@ -69,7 +70,8 @@
   .modal {
     width: 60vw;
     height: 60vh;
-    box-shadow: 0px 0px 16px 10px #36970F;
+    border: 1px solid #36970f;
+    border-radius: 1px;
   }
   .modal button {
     width: auto;
@@ -81,7 +83,7 @@
 }
 
 .modal-close {
-  color: #36970F;
+  color: #36970f;
   line-height: 1;
   padding: 2vh;
   font-size: larger;
@@ -109,7 +111,7 @@
 }
 .booking a {
   text-decoration: none;
-  color: #36970F;
+  color: #36970f;
 }
 
 .map {
@@ -146,7 +148,7 @@ body {
   height: 90vh;
   margin-top: 10vh;
   width: 100vw;
-  color: #F5F5F5;
+  color: #f5f5f5;
   font-family: "Slabo 27px", serif;
   font-size: 14px;
   line-height: 1.2;
@@ -199,7 +201,7 @@ nav img {
 }
 nav #backBtn {
   text-shadow: 1px 1px 2px black;
-  color: #F5F5F5;
+  color: #f5f5f5;
   text-decoration: none;
   font-size: larger;
 }
@@ -292,7 +294,7 @@ form input, form textarea {
   text-align: center;
   height: 8vh;
   padding: 2vw;
-  background: #F5F5F5;
+  background: #f5f5f5;
 }
 @media (min-width: 720px) {
   form input, form textarea {
@@ -341,7 +343,7 @@ form textarea {
   min-height: 25vh;
   resize: vertical;
   text-align: center;
-  background: #F5F5F5;
+  background: #f5f5f5;
   color: black;
 }
 
@@ -351,7 +353,7 @@ form textarea {
 
 .dropdownContent {
   position: absolute;
-  background: #F5F5F5;
+  background: #f5f5f5;
   top: 8vh;
   left: 0;
   height: 0;
@@ -366,7 +368,7 @@ form textarea {
   height: 10vh;
   line-height: 10vh;
   border-style: none;
-  background: #36970F;
+  background: #36970f;
   font-family: "Slabo 27px", serif;
   font-size: 14px;
   line-height: 1.2;
@@ -445,7 +447,7 @@ form textarea {
   height: 10vh;
   line-height: 10vh;
   border-style: none;
-  background: #36970F;
+  background: #36970f;
   font-family: "Slabo 27px", serif;
   font-size: 14px;
   line-height: 1.2;

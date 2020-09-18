@@ -12,11 +12,7 @@ html {
 
 body{
     font-family: 'Slabo 27px', serif;
-    font-size: 14px; 
-    @media (min-width: 600px) {font-size: 16px};
-    @media (min-width: 900px) {font-size: 18px};
-    @media (min-width: 1200px) {font-size: 20px};
-    @media (min-width: 1800px) {font-size: 22px};
+    @include fontSize;
     background: #000;
     color: $white;
     line-height: 2;
@@ -41,6 +37,10 @@ body{
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+a {
     cursor: pointer;
 }
 
