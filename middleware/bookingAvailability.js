@@ -12,7 +12,6 @@ const checkAvailability = (req, res, next) => {
 				(sum, booking) => partySum(sum, parseInt(booking.party)),
 				0
 			);
-			console.log(partyTotal);
 			if (
 				partyTotal + parseInt(req.body.party) >=
 				process.env.TOTALBOOKINGSIZE

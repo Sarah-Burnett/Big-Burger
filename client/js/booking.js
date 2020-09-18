@@ -37,6 +37,5 @@ document.querySelector("#findBtn").onclick = (e) => findBookingfromForm(e);
 document.querySelector("#deleteBtn").onclick = () =>
 	fetch(DELETE_BOOKING, { id: document.querySelector("#id").value });
 //update booking
-const bookBtn = ".bookBtn";
 document.querySelector(".putBookForm").onsubmit = (e) =>
-	handleSubmit(e, PUT_BOOKING, bookBtn);
+	handleSubmit(e, PUT_BOOKING, ".bookBtn");

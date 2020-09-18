@@ -21,7 +21,7 @@ export const handleSubmit = (e, type, button) => {
 	addSessionStorage("booking", JSON.stringify(params));
 	const err = validateBooking();
 	if (!err) {
-		disableButton(button);
+		document.querySelector(button).disabled = true;
 		fetch(type, params);
 	}
 };

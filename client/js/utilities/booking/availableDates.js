@@ -5,8 +5,8 @@ export const getAvailableDates = (today) => {
 };
 
 export const setAvailableDates = (today) => {
-	const dateInput = document.querySelector("#date");
 	const { minDate, maxDate } = getAvailableDates(today);
+	const dateInput = document.querySelector("#date");
 	dateInput.min = minDate.toISOString().split("T")[0];
 	dateInput.max = maxDate.toISOString().split("T")[0];
 };
