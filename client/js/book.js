@@ -1,5 +1,4 @@
 import { setAvailableDates } from "./utilities/booking/availableDates";
-import { setAvailableTimes } from "./utilities/booking/availableTimes";
 import { changeInputValue } from "./utilities/dom/changeInputValue";
 import { handleSubmit } from "./utilities/booking/submitBooking";
 import { POST_BOOKING } from "./utilities/booking/types";

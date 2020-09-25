@@ -1,117 +1,125 @@
 nav {
-    width: 100vw;
-    height: 10vh;
-    background: black;
-    display: flex;
-    justify-content: space-between;
-    scroll-snap-align: start;
-    align-items: center;
-    text-decoration: none;
-    list-style: none;
-    transition: height 1s ease-in-out;
-    box-shadow: 3px;
-    z-index: 97;
-    img {
-        z-index: 98;
-    }
-    .burger {
-        cursor: pointer;
-        padding: 1vw;
-        .line1, .line2, .line3 {
-            width: 35px;
-            height: 5px;
-            background-color: $white;
-            margin: 6px 0;
-            transition: 0.4s;
-          }
-        } 
-    }
-    .nav-links {
-        position: absolute;
-        top: 10vh;        
-        width: 100vw;
-        background: black;
-        color: $white;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        height: 0vh; 
-        transition: height .5s ease-in-out;
-        pointer-events: none;
-        a {
-            opacity: 0;
-            text-decoration: none;
-            color: $white;   
-            &:hover, &:active {
-                color: $green;
-            }
-        }
-        #bookBtn {
-            font-size: larger;
-        }
-    }
-    .nav-scroll {
-        .nav-links a {
-            text-decoration: underline $green solid;
-        }
-    }
-   .nav-active {
-       .nav-links {
-           pointer-events: auto;
-           padding-bottom: 1em;
-            height: 40vh !important;
-            a {
-                opacity: 1 !important;
-            }
-        }
-        .line1{
-            transform: rotate(-45deg) translate(-9px, 6px);
-        }
-        .line2{
-            opacity: 0;
-        }
-        .line3{
-            transform: rotate(45deg) translate(-8px, -8px);
-        }
-    }
-    .nav-fixed {
-        height: 10vh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        .nav-links{
-            top: 10vh;
-        }
-    }
+	width: 100vw;
+	height: 10vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: black;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	scroll-snap-align: start;
+	text-decoration: none;
+	list-style: none;
+	transition: height 0.5s ease-in-out;
+	box-shadow: 3px;
+	z-index: 97;
+	img {
+		z-index: 98;
+		height: 10vh;
+	}
+	.burger {
+		cursor: pointer;
+		padding: 1vw;
+		.line1,
+		.line2,
+		.line3 {
+			width: 35px;
+			height: 5px;
+			background-color: $white;
+			margin: 6px 0;
+			transition: 0.4s;
+		}
+	}
+}
+.nav-links {
+	position: absolute;
+	top: 10vh;
+	left: 100vw;
+	width: 100vw;
+	z-index: -1;
+	background: black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	height: 90vh;
+	transition: all 0.5s ease-in-out;
+	pointer-events: none;
+	a {
+		text-decoration: none;
+		color: $white;
+		opacity: 0;
+		transition: color 0.3s ease-in-out;
+		font-size: larger;
+		&:hover,
+		&:active {
+			color: $green;
+		}
+	}
+	a:last-child {
+		font-size: x-large !important;
+	}
+	#bookBtn {
+		font-size: larger;
+	}
+}
+.nav-scroll {
+	.nav-links a {
+		text-decoration: underline $green solid;
+	}
+}
+.nav-active {
+	.nav-links {
+		transform: translateX(-100vw);
+		pointer-events: auto;
+		padding-bottom: 1em;
+		z-index: 100;
+		a {
+			opacity: 1;
+		}
+	}
+	.line1 {
+		transform: rotate(-45deg) translate(-9px, 6px);
+	}
+	.line2 {
+		opacity: 0;
+	}
+	.line3 {
+		transform: rotate(45deg) translate(-8px, -8px);
+	}
+}
+.nav-fixed {
+	height: 10vh;
+}
 
 @include media($desktop) {
-    nav {
-        display: flex;
-        flex-direction: row;
-        align-items: space-between;
-        justify-content: space-between;
-        height: 15vh;
-        img {
-            z-index: 99;
-            height: 10vh;
-        }
-        .nav-links {
-            pointer-events: auto;
-            position: static;
-            flex-direction: row;
-            align-items: center;
-            justify-content: flex-end; 
-            a {
-                opacity: 1;
-                width: 15vw;
-            }
-        }
-    }
+	nav {
+		display: flex;
+		flex-direction: row;
+		align-items: space-between;
+		justify-content: space-between;
+		height: 15vh;
+		img {
+			z-index: 99;
+			height: 10vh;
+		}
+		.nav-links {
+			pointer-events: auto;
+			position: static;
+			height: auto;
+			flex-direction: row;
+			align-items: center;
+			justify-content: flex-end;
+			a {
+				opacity: 1;
+				width: 15vw;
+				font-size: inherit;
+			}
+		}
+	}
 
-    .burger {
-        display: none;
-    }
-    
-    
+	.burger {
+		display: none;
+	}
 }

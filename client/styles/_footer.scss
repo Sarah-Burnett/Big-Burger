@@ -1,46 +1,54 @@
 #footer {
-    margin-top: 5vh;
-    scroll-snap-align: center;
-    width: 100vw;
-    padding: 1vh 1vw;
-    li {
-        line-height: 3;
-        list-style: none;
-        a {
-            text-decoration: none;
-            color: $white;
-            &:hover {
-                color: $green;
-            }
-        }
-       
-        img {
-            cursor: pointer;
-            width: 45px;
-            &:hover {
-                opacity: 0.7;
-            }
-            display: block;
-        }
+	margin-top: 5vh;
+	scroll-snap-align: center;
+	width: 100vw;
+	padding: 1vh 1vw;
+	li {
+		line-height: 3;
+		list-style: none;
+		a {
+			text-decoration: none;
+			color: $white;
+			&:hover {
+				color: $green;
+			}
+		}
+	}
+	img {
+		max-width: 100%;
+		padding: 1vh 0;
+		margin: auto;
+	}
+	@include media($desktop) {
+		text-align: left;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-gap: 3vw;
+		font-size: smaller;
+		li {
+			line-height: inherit;
+		}
+	}
+}
+
+#connect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+	a {
+		cursor: pointer;
+		color: blue;
+		font-size: 30px;
+        text-align: center;
+        margin: 0 2vw 0 0;
+		&:hover {
+			color: $green;
+		}
+		line-height: 2;
     }
-    img {
-        max-width: 100%;
-        padding: 1vh 0;
-        margin: auto;
-    }
-    @include media($desktop){
-        text-align: left;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 3vw;
-        font-size: smaller;
-        li {
-            line-height: inherit;
-            img {
-                display: inline;
-                margin-right: 5px;
-            }
-        }
+    @media(min-width: $desktop){
+       flex-direction: row;
     }
 }
 

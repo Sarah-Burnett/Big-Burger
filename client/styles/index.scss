@@ -1,47 +1,49 @@
-@import './variables';
+@import "./variables";
 
 * {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
-body{
-    font-family: 'Slabo 27px', serif;
-    @include fontSize;
-    background: #000;
-    color: $white;
-    line-height: 2;
-    text-shadow: 1px 1px 2px black;
-    text-align: center;
-    overflow-x: hidden;
-    padding: 1vh;
+body {
+	font-family: "Source Sans Pro", sans-serif;
+	@include fontSize;
+	background: #000;
+	color: $white;
+	line-height: 2;
+	text-shadow: 1px 1px 2px black;
+	text-align: center;
+	overflow-x: hidden;
+	padding: 1vh;
 }
 
 :focus {
-    outline: none;
-    border: 1px solid $darkGreen;
+	outline: none;
+	border: 1px solid $darkGreen;
 }
 
 //review and carousel dots
 .dot {
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: $green;
-    &:nth-child(1) {background-color:$darkGreen};
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: $green;
+	&:nth-child(1) {
+		background-color: $darkGreen;
+	}
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.3s ease;
+	cursor: pointer;
 }
 
 a {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 @import "navbar";
@@ -54,4 +56,3 @@ a {
 @import "modal";
 
 /* 320, 720, 1020 */
-

@@ -3,7 +3,6 @@ import {
 	findBookingfromForm,
 } from "./utilities/booking/findBooking";
 import { setAvailableDates } from "./utilities/booking/availableDates";
-import { setAvailableTimes } from "./utilities/booking/availableTimes";
 import { changeInputValue } from "./utilities/dom/changeInputValue";
 import { editForm } from "./utilities/booking/editForm";
 import { handleSubmit } from "./utilities/booking/submitBooking";

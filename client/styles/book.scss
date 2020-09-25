@@ -23,7 +23,7 @@
         line-height: 10vh;
         border-style: none;
         background: $green;
-        font-family: 'Slabo 27px', serif;
+        font-family: 'Source Sans Pro', sans-serif;
         @include fontSize;
         cursor: pointer;
         width: 100%;
@@ -52,7 +52,7 @@ body{
     margin-top: 10vh;
     width: 100vw;
     color: $white;
-    font-family: 'Slabo 27px', serif;
+    font-family: 'Source Sans Pro', sans-serif;
     @include fontSize;
     line-height: 2;
     text-align: center;
@@ -136,7 +136,7 @@ form {
     input {
         display: block;
         width: 100%;
-        font-family: 'Slabo 27px';
+        font-family: 'Source Sans Pro', sans-serif;
         font-size: larger;
         text-align: center;
         height: 8vh;

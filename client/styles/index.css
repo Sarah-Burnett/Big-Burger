@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
 * {
   margin: 0px;
   padding: 0px;
@@ -10,7 +11,7 @@ html {
 }
 
 body {
-  font-family: 'Slabo 27px', serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 14px;
   line-height: 1.2;
   background: #000;
@@ -67,9 +68,16 @@ body {
   background-color: #205909;
 }
 
+a {
+  cursor: pointer;
+}
+
 nav {
   width: 100vw;
   height: 10vh;
+  position: fixed;
+  top: 0;
+  left: 0;
   background: black;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -77,14 +85,14 @@ nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  scroll-snap-align: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  scroll-snap-align: start;
   text-decoration: none;
   list-style: none;
-  -webkit-transition: height 1s ease-in-out;
-  transition: height 1s ease-in-out;
+  -webkit-transition: height 0.5s ease-in-out;
+  transition: height 0.5s ease-in-out;
   -webkit-box-shadow: 3px;
           box-shadow: 3px;
   z-index: 97;
@@ -92,6 +100,7 @@ nav {
 
 nav img {
   z-index: 98;
+  height: 10vh;
 }
 
 nav .burger {
@@ -99,7 +108,9 @@ nav .burger {
   padding: 1vw;
 }
 
-nav .burger .line1, nav .burger .line2, nav .burger .line3 {
+nav .burger .line1,
+nav .burger .line2,
+nav .burger .line3 {
   width: 35px;
   height: 5px;
   background-color: #f5f5f5;
@@ -111,9 +122,10 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 .nav-links {
   position: absolute;
   top: 10vh;
+  left: 100vw;
   width: 100vw;
+  z-index: -1;
   background: black;
-  color: #f5f5f5;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -124,23 +136,30 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  height: 0vh;
-  -webkit-transition: height .5s ease-in-out;
-  transition: height .5s ease-in-out;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  height: 90vh;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   pointer-events: none;
 }
 
 .nav-links a {
-  opacity: 0;
   text-decoration: none;
   color: #f5f5f5;
+  opacity: 0;
+  -webkit-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+  font-size: larger;
 }
 
 .nav-links a:hover, .nav-links a:active {
   color: #36970f;
+}
+
+.nav-links a:last-child {
+  font-size: x-large !important;
 }
 
 .nav-links #bookBtn {
@@ -153,13 +172,15 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 }
 
 .nav-active .nav-links {
+  -webkit-transform: translateX(-100vw);
+          transform: translateX(-100vw);
   pointer-events: auto;
   padding-bottom: 1em;
-  height: 40vh !important;
+  z-index: 100;
 }
 
 .nav-active .nav-links a {
-  opacity: 1 !important;
+  opacity: 1;
 }
 
 .nav-active .line1 {
@@ -178,13 +199,6 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 
 .nav-fixed {
   height: 10vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-.nav-fixed .nav-links {
-  top: 10vh;
 }
 
 @media (min-width: 720px) {
@@ -211,6 +225,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   nav .nav-links {
     pointer-events: auto;
     position: static;
+    height: auto;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -225,6 +240,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   nav .nav-links a {
     opacity: 1;
     width: 15vw;
+    font-size: inherit;
   }
   .burger {
     display: none;
@@ -232,7 +248,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 }
 
 #home-title, #menu-title, #reviews {
-  height: 90vh;
+  height: 100vh;
   background-image: url(/images/burger-mob.jpg);
   background-repeat: no-repeat no-repeat;
   background-size: cover;
@@ -371,6 +387,10 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   color: #205909;
 }
 
+#menu-title .arrow span {
+  display: none;
+}
+
 #menu-content {
   height: auto;
   min-height: 90vh;
@@ -404,7 +424,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 }
 
 #menu-content .menu-nav button {
-  font-family: 'Slabo 27px', serif;
+  font-family: 'Source Sans Pro', sans-serif;
   height: 15vh;
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -576,7 +596,7 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
 }
 
 #location .location-container .location-item button {
-  font-family: 'Slabo 27px';
+  font-family: 'Source Sans Pro', sans-serif;
   margin: 1vh;
   padding: 1em;
   border-style: none;
@@ -624,16 +644,6 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   color: #36970f;
 }
 
-#footer li img {
-  cursor: pointer;
-  width: 45px;
-  display: block;
-}
-
-#footer li img:hover {
-  opacity: 0.7;
-}
-
 #footer img {
   max-width: 100%;
   padding: 1vh 0;
@@ -653,9 +663,43 @@ nav .burger .line1, nav .burger .line2, nav .burger .line3 {
   #footer li {
     line-height: inherit;
   }
-  #footer li img {
-    display: inline;
-    margin-right: 5px;
+}
+
+#connect {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+#connect a {
+  cursor: pointer;
+  color: blue;
+  font-size: 30px;
+  text-align: center;
+  margin: 0 2vw 0 0;
+  line-height: 2;
+}
+
+#connect a:hover {
+  color: #36970f;
+}
+
+@media (min-width: 720px) {
+  #connect {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
 }
 
