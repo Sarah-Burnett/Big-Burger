@@ -1,6 +1,5 @@
 import { fetch } from "./fetch";
 import { validateBooking } from "./validateBooking";
-import { disableButton } from "../dom/disableButton";
 import { addSessionStorage } from "../storage/addSessionStorage";
 
 export const setParams = () => {

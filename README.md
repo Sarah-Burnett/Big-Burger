@@ -8,6 +8,7 @@ Three responsive pages to site:
 - Booking - view booking from form/query string booking id which can be edited/deleted 
 
 ## To do
+- Date dropdown - need to add to /booking and also there is bug with the finding id
 - Testing
 - Restaurant site to view and analyse bookings - routes and pug template started although need auth and filtering...
 - Email to confirm booking
