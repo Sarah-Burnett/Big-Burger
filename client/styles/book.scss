@@ -141,6 +141,7 @@ form {
         text-align: center;
         height: 8vh;
         padding: 2vw;
+        border: none;
         @include media ($desktop) {
             padding: 1vw;
         }
@@ -184,7 +185,7 @@ form {
 }
 .dropdownContent {
     position: absolute;
-    background: $white;
+    background: $green;
     top: 8vh;
     left: 0;
     height: 0;
@@ -192,11 +193,10 @@ form {
     z-index: 99;
     pointer-events: none;
     transition: height 1s ease-in-out;
-    border: 2px solid grey;
     overflow-y: hidden;
     @include button;
     button {
-        border: 1px solid grey;
+        border: .5px solid $darkGreen;
         display: block;
     }
     @include media($desktop){

@@ -25,7 +25,6 @@ document.querySelectorAll(".dropdownBtn").forEach((btn) => {
 });
 
 //edit form
-
 document.querySelector("#editBtn").onclick = (event) => editForm(event);
 
 //booking CRUD

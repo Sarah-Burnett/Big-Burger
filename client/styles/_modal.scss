@@ -1,108 +1,105 @@
 .modalBg {
-    position: fixed;
-    height: 90vh;
-    width: 100vw;
-    top: 10vh;
-    left: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 99;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    pointer-events: none;
-    @include media($desktop){
-        top: 0;
-        height: 100vh;
-    }
+	position: fixed;
+	height: 90vh;
+	width: 100vw;
+	top: 10vh;
+	left: 0;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 99;
+	opacity: 0;
+	transition: opacity 0.6s ease;
+	pointer-events: none;
+	@include media($desktop) {
+		top: 0;
+		height: 100vh;
+	}
 }
 
 .modal {
-    position: relative;
-    background: #000;
-    text-shadow: none;
-    height: 92vh;
-    width: 100vw;
-    margin: auto;
-    button {
-        margin: 1em;
-        padding: 1em;
-        border-style: none;
-        background: $green;
-        font-family: 'Slabo 27px', serif;
-        @include fontSize;
-        cursor: pointer;
-        &:hover {
-            background: $darkGreen;
-        }
-        width: 90%;
-        @include borderRadius;
-    }
-    input {
-        width: 90%;
-    }
-    @include media($desktop){
-        width: 60vw;
-        height: 60vh;
-        border: 1px solid $green;
-        @include borderRadius;
-        // box-shadow: 0px 0px 16px 10px $green;
-        button {
-            width: auto;
-            min-width: 10vw;
-        }
-        input {
-            width: 55vw;
-        }
-    }
+	position: relative;
+	background: #000;
+	text-shadow: none;
+	height: 92vh;
+	width: 100vw;
+	margin: auto;
+	button {
+		margin: 1em;
+		padding: 1em;
+		border-style: none;
+		background: $green;
+		font-family: "Source Sans Pro", sans-serif;
+		@include fontSize;
+		cursor: pointer;
+		&:hover {
+			background: $darkGreen;
+		}
+		width: 90%;
+		@include borderRadius;
+	}
+	input {
+		width: 90%;
+	}
+	@include media($desktop) {
+		width: 60vw;
+		height: 60vh;
+		border: 1px solid $green;
+		@include borderRadius;
+		// box-shadow: 0px 0px 16px 10px $green;
+		button {
+			width: auto;
+			min-width: 10vw;
+		}
+		input {
+			width: 55vw;
+		}
+	}
 }
 
 .modal-close {
-    color: $green;
-    line-height: 1;
-    padding: 2vh;
-    font-size: larger;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    z-index: 100;
-    top: 0;
-    right: 0;
-    &:hover {
-        color: $darkGreen;
-    }
+	color: $green;
+	line-height: 1;
+	padding: 2vh;
+	font-size: larger;
+	border: none;
+	cursor: pointer;
+	position: absolute;
+	z-index: 100;
+	top: 0;
+	right: 0;
+	&:hover {
+		color: $darkGreen;
+	}
 }
 
 .booking {
-    padding: 1vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    position: relative;
-    background: #000;
-    a {
-        text-decoration: none;
-        color: $green;
-    }
-    min-width: 50vw;
-    min-height: 60vh;
+	padding: 1vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	position: relative;
+	background: #000;
+	a {
+		text-decoration: none;
+		color: $green;
+	}
+	min-width: 50vw;
+	min-height: 60vh;
 }
 
 .map {
-    height: 100%;
-    width: 100%;
-    max-height: 92vh;
-    @include media($desktop){
-        height: 60vh;
-    }
+	height: 100%;
+	width: 100%;
+	max-height: 92vh;
+	@include media($desktop) {
+		height: 60vh;
+	}
 }
 
 .modal-active {
-    opacity: 1;
-    pointer-events: all;
+	opacity: 1;
+	pointer-events: all;
 }
-
-
-
