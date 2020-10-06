@@ -362,7 +362,7 @@ form textarea {
   opacity: 0;
   z-index: 99;
   pointer-events: none;
-  transition: height 1s ease-in-out;
+  transition: all 1s ease-in-out;
   overflow-y: hidden;
 }
 .dropdownContent button, .dropdownContent input[type=submit], .dropdownContent form textarea[type=submit], form .dropdownContent textarea[type=submit] {
@@ -413,7 +413,7 @@ form textarea {
   }
 }
 
-.dropdown:hover .dropdownContent {
+.dropdown:focus-within .dropdownContent {
   height: auto;
   max-height: 40vh;
   overflow-y: auto;
@@ -422,7 +422,7 @@ form textarea {
   transition: height 1s ease-in-out;
   pointer-events: all;
 }
-.dropdown:hover .dropdownContent::-webkit-scrollbar {
+.dropdown:focus-within .dropdownContent::-webkit-scrollbar {
   display: none;
 }
 

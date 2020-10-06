@@ -192,7 +192,7 @@ form {
     opacity: 0;
     z-index: 99;
     pointer-events: none;
-    transition: height 1s ease-in-out;
+    transition: all 1s ease-in-out;
     overflow-y: hidden;
     @include button;
     button {
@@ -208,7 +208,7 @@ form {
     }
 }
 
-.dropdown:hover {
+.dropdown:focus-within {
     .dropdownContent {
         height: auto;
         max-height: 40vh;

@@ -5095,17 +5095,16 @@ exports.getAvailableDates = getAvailableDates;
 var setAvailableDates = function setAvailableDates(today) {
   var dates = getAvailableDates(today);
   var dropdownContainer = document.querySelector('[data-dropdown="date"]');
-  console.log(dropdownContainer);
   dates.forEach(function (date) {
     var newButton = document.createElement("button");
-    newButton.innerText = (0, _format.default)(date, "eee eo MMM");
+    newButton.innerText = (0, _format.default)(date, "eee do MMM");
     newButton.classList.add("dropdownBtn");
     newButton.dataset.input = "#date";
-    newButton.dataset.value = (0, _format.default)(date, 'ee/MM/yyyy');
+    newButton.dataset.value = (0, _format.default)(date, "dd/MM/yyyy");
     newButton.type = "button";
     dropdownContainer.append(newButton);
   });
-  console.log(dropdownContainer);
+  document.querySelector("#date").value = (0, _format.default)(dates[0], "dd/MM/yyyy");
 };
 
 exports.setAvailableDates = setAvailableDates;
@@ -5280,7 +5279,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53169" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65489" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
