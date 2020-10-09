@@ -1,27 +1,14 @@
 import { setAvailableDates } from "./utilities/booking/availableDates";
-import { changeInputValue } from "./utilities/dom/changeInputValue";
 import { handleSubmit } from "./utilities/booking/submitBooking";
 import { POST_BOOKING } from "./utilities/booking/types";
 import { autoFillForm } from "./utilities/booking/autofillForm";
-import { getAvailableTimes } from "./utilities/booking/availableTimes";
-
-let restaurant = "Glensgaich";
-
+import { setAvailableParty } from "./utilities/booking/availableParty";
+import { changeFormValue } from "./utilities/booking/changeFormValue";
+import { forEach } from "./utilities/dom/forEach";
 //preparing form and form Buttons
 setAvailableDates(Date.now());
-
-// form dropdown buttons
-document.querySelectorAll(".dropdownBtn").forEach((btn) => {
-	btn.addEventListener("click", (event) => {
-		changeInputValue(btn.dataset.input, btn.dataset.value);
-		document.activeElement.blur();
-		if (btn.dataset.input === "#restaurant") restaurant = btn.dataset.value;
-		if (btn.dataset.input === "#date") {
-			console.log(btn.dataset.value);
-			getAvailableTimes(new Date(btn.dataset.value), restaurant);
-		}
-	});
-});
+setAvailableParty();
+forEach(".dropdownBtn", changeFormValue);
 
 //fill from session storage
 if (sessionStorage.booking) {
@@ -29,6 +16,5 @@ if (sessionStorage.booking) {
 }
 
 // create booking /book
-const bookBtn = ".bookBtn";
 document.querySelector(".postBookForm").onsubmit = (e) =>
-	handleSubmit(e, POST_BOOKING, bookBtn);
+	handleSubmit(e, POST_BOOKING, ".bookBtn");

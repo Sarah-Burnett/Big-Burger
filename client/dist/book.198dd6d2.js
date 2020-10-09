@@ -2949,7 +2949,29 @@ function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
 function cleanEscapedString(input) {
   return input.match(escapedStringRegExp)[1].replace(doubleQuoteRegExp, "'");
 }
-},{"../isValid/index.js":"node_modules/date-fns/esm/isValid/index.js","../locale/en-US/index.js":"node_modules/date-fns/esm/locale/en-US/index.js","../subMilliseconds/index.js":"node_modules/date-fns/esm/subMilliseconds/index.js","../toDate/index.js":"node_modules/date-fns/esm/toDate/index.js","../_lib/format/formatters/index.js":"node_modules/date-fns/esm/_lib/format/formatters/index.js","../_lib/format/longFormatters/index.js":"node_modules/date-fns/esm/_lib/format/longFormatters/index.js","../_lib/getTimezoneOffsetInMilliseconds/index.js":"node_modules/date-fns/esm/_lib/getTimezoneOffsetInMilliseconds/index.js","../_lib/protectedTokens/index.js":"node_modules/date-fns/esm/_lib/protectedTokens/index.js","../_lib/toInteger/index.js":"node_modules/date-fns/esm/_lib/toInteger/index.js","../_lib/requiredArgs/index.js":"node_modules/date-fns/esm/_lib/requiredArgs/index.js"}],"js/utilities/booking/availableDates.js":[function(require,module,exports) {
+},{"../isValid/index.js":"node_modules/date-fns/esm/isValid/index.js","../locale/en-US/index.js":"node_modules/date-fns/esm/locale/en-US/index.js","../subMilliseconds/index.js":"node_modules/date-fns/esm/subMilliseconds/index.js","../toDate/index.js":"node_modules/date-fns/esm/toDate/index.js","../_lib/format/formatters/index.js":"node_modules/date-fns/esm/_lib/format/formatters/index.js","../_lib/format/longFormatters/index.js":"node_modules/date-fns/esm/_lib/format/longFormatters/index.js","../_lib/getTimezoneOffsetInMilliseconds/index.js":"node_modules/date-fns/esm/_lib/getTimezoneOffsetInMilliseconds/index.js","../_lib/protectedTokens/index.js":"node_modules/date-fns/esm/_lib/protectedTokens/index.js","../_lib/toInteger/index.js":"node_modules/date-fns/esm/_lib/toInteger/index.js","../_lib/requiredArgs/index.js":"node_modules/date-fns/esm/_lib/requiredArgs/index.js"}],"js/utilities/dom/createButton.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createDropdownButton = exports.createButton = void 0;
+
+var createButton = function createButton(className) {
+  var newButton = document.createElement("button");
+  newButton.classList.add(className);
+  newButton.type = "button";
+  return newButton;
+};
+
+exports.createButton = createButton;
+
+var createDropdownButton = function createDropdownButton() {
+  return createButton("dropdownBtn");
+};
+
+exports.createDropdownButton = createDropdownButton;
+},{}],"js/utilities/booking/availableDates.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2961,7 +2983,17 @@ var _addDays = _interopRequireDefault(require("date-fns/addDays"));
 
 var _format = _interopRequireDefault(require("date-fns/format"));
 
+var _createButton = require("../dom/createButton");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 var getAvailableDates = function getAvailableDates(today) {
   var current = today;
@@ -2980,33 +3012,29 @@ exports.getAvailableDates = getAvailableDates;
 var setAvailableDates = function setAvailableDates(today) {
   var dates = getAvailableDates(today);
   var dropdownContainer = document.querySelector('[data-dropdown="date"]');
-  dates.forEach(function (date) {
-    var newButton = document.createElement("button");
-    newButton.innerText = (0, _format.default)(date, "eee do MMM");
-    newButton.classList.add("dropdownBtn");
-    newButton.dataset.input = "#date";
-    newButton.dataset.value = (0, _format.default)(date, "dd/MM/yyyy");
-    newButton.type = "button";
-    dropdownContainer.append(newButton);
-  });
-  document.querySelector("#date").value = (0, _format.default)(dates[0], "dd/MM/yyyy");
+
+  var _iterator = _createForOfIteratorHelper(dates),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var date = _step.value;
+      var newButton = (0, _createButton.createDropdownButton)();
+      newButton.innerText = (0, _format.default)(date, "eee do MMM");
+      newButton.dataset.input = "#date";
+      newButton.dataset.value = (0, _format.default)(date, "dd/MM/yyyy");
+      dropdownContainer.append(newButton);
+      console.log(_typeof(date), _typeof(newButton.dataset.value));
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
 };
 
 exports.setAvailableDates = setAvailableDates;
-},{"date-fns/addDays":"node_modules/date-fns/esm/addDays/index.js","date-fns/format":"node_modules/date-fns/esm/format/index.js"}],"js/utilities/dom/changeInputValue.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.changeInputValue = void 0;
-
-var changeInputValue = function changeInputValue(input, value) {
-  document.querySelector(input).value = value;
-};
-
-exports.changeInputValue = changeInputValue;
-},{}],"node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
+},{"date-fns/addDays":"node_modules/date-fns/esm/addDays/index.js","date-fns/format":"node_modules/date-fns/esm/format/index.js","../dom/createButton":"js/utilities/dom/createButton.js"}],"node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = function bind(fn, thisArg) {
@@ -4923,216 +4951,7 @@ var handleModal = function handleModal(type, payload) {
 };
 
 exports.handleModal = handleModal;
-},{"./types":"js/utilities/booking/types.js","../dom/toggleModal":"js/utilities/dom/toggleModal.js","../dom/setInnerHTML":"js/utilities/dom/setInnerHTML.js"}],"js/utilities/booking/autofillForm.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.autoFillForm = void 0;
-
-var _toggleModal = require("../dom/toggleModal");
-
-var autoFillForm = function autoFillForm(data) {
-  var inputs = document.querySelectorAll("input");
-  inputs.forEach(function (input) {
-    if (input.name !== "id") input.value = data[input.name];
-  });
-  if (document.querySelector(".modal-active")) (0, _toggleModal.hideModal)();
-};
-
-exports.autoFillForm = autoFillForm;
-},{"../dom/toggleModal":"js/utilities/dom/toggleModal.js"}],"js/utilities/booking/validateBooking.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.validateBooking = exports.removeError = exports.showError = void 0;
-
-var _toggleClassList = require("../dom/toggleClassList");
-
-var inputs = document.querySelectorAll('input');
-var errorBoxes = document.querySelectorAll('.error');
-
-var showError = function showError(index) {
-  (0, _toggleClassList.addClassList)(errorBoxes[index], "errorActive");
-  (0, _toggleClassList.addClassList)(inputs[index], "inputInvalid");
-  inputs[index].scrollIntoView();
-};
-
-exports.showError = showError;
-
-var removeError = function removeError(index) {
-  inputs[index].oninput = function () {
-    if (inputs[index].validity.valid) {
-      (0, _toggleClassList.removeClassList)(inputs[index], 'inputInvalid');
-      (0, _toggleClassList.removeClassList)(errorBoxes[index], 'errorActive');
-    }
-  };
-};
-
-exports.removeError = removeError;
-
-var validateBooking = function validateBooking() {
-  var error = false;
-  inputs.forEach(function (input, index) {
-    if (!input.validity.valid) {
-      error = true;
-      showError(index);
-      removeError(index);
-    }
-  });
-  return error;
-};
-
-exports.validateBooking = validateBooking;
-},{"../dom/toggleClassList":"js/utilities/dom/toggleClassList.js"}],"js/utilities/booking/fetch.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.fetch = void 0;
-
-var _axios = _interopRequireDefault(require("axios"));
-
-var _types = require("./types");
-
-var _addSessionStorage = require("../storage/addSessionStorage");
-
-var _handleModal = require("./handleModal");
-
-var _autofillForm = require("./autofillForm");
-
-var _validateBooking = require("./validateBooking");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var getFetchParams = function getFetchParams(type, params) {
-  switch (type) {
-    case _types.POST_BOOKING:
-      return {
-        method: "POST",
-        url: "./api/book",
-        resolved: function resolved(res) {
-          (0, _handleModal.handleModal)(_types.SHOW_BOOKED, res.data);
-        },
-        rejected: function rejected(err) {
-          (0, _addSessionStorage.addSessionStorage)("booking", JSON.stringify(params));
-          err.response.status === 409 ? (0, _handleModal.handleModal)(_types.SHOW_FULL, err.response.data) : (0, _handleModal.handleModal)(_types.SHOW_FAILED);
-        }
-      };
-
-    case _types.GET_BOOKING:
-      return {
-        method: "GET",
-        url: "/api/booking/".concat(params.id),
-        resolved: function resolved(res) {
-          res.data ? (0, _autofillForm.autoFillForm)(res.data) : (0, _validateBooking.showError)(0);
-        },
-        rejected: function rejected() {
-          (0, _validateBooking.showError)(0);
-        }
-      };
-
-    case _types.PUT_BOOKING:
-      return {
-        method: "PUT",
-        url: "./api/booking/".concat(document.querySelector('#id').value),
-        resolved: function resolved(res) {
-          (0, _handleModal.handleModal)(_types.SHOW_BOOKED, res.data);
-        },
-        rejected: function rejected(err) {
-          (0, _addSessionStorage.addSessionStorage)("booking", JSON.stringify(params));
-          err.response.status === 409 ? (0, _handleModal.handleModal)(_types.SHOW_FULL, err.response.data) : (0, _handleModal.handleModal)(_types.SHOW_FAILED);
-        }
-      };
-
-    case _types.DELETE_BOOKING:
-      return {
-        method: "DELETE",
-        url: "./api/booking/".concat(params.id),
-        resolved: function resolved() {
-          (0, _handleModal.handleModal)(_types.SHOW_CANCELLED);
-        },
-        rejected: function rejected() {
-          (0, _handleModal.handleModal)(_types.SHOW_FAILED);
-        }
-      };
-  }
-};
-
-var fetch = function fetch(type, params) {
-  var _getFetchParams = getFetchParams(type, params),
-      method = _getFetchParams.method,
-      url = _getFetchParams.url,
-      resolved = _getFetchParams.resolved,
-      rejected = _getFetchParams.rejected;
-
-  (0, _axios.default)({
-    method: method,
-    url: url,
-    data: params
-  }).then(function (res) {
-    return resolved(res);
-  }).catch(function (err) {
-    return rejected(err);
-  });
-};
-
-exports.fetch = fetch;
-},{"axios":"node_modules/axios/index.js","./types":"js/utilities/booking/types.js","../storage/addSessionStorage":"js/utilities/storage/addSessionStorage.js","./handleModal":"js/utilities/booking/handleModal.js","./autofillForm":"js/utilities/booking/autofillForm.js","./validateBooking":"js/utilities/booking/validateBooking.js"}],"js/utilities/booking/submitBooking.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.handleSubmit = exports.setParams = void 0;
-
-var _fetch = require("./fetch");
-
-var _validateBooking = require("./validateBooking");
-
-var _addSessionStorage = require("../storage/addSessionStorage");
-
-var setParams = function setParams() {
-  var form = document.querySelector("#bookForm");
-  var name = form.elements["name"].value;
-  var email = form.elements["email"].value;
-  var restaurant = form.elements["restaurant"].value;
-  var date = new Date(form.elements["date"].value);
-  var time = form.elements["time"].value;
-  var party = form.elements["party"].value;
-  var message = form.elements["message"].value;
-  return {
-    name: name,
-    email: email,
-    restaurant: restaurant,
-    date: date,
-    time: time,
-    party: party,
-    message: message
-  };
-};
-
-exports.setParams = setParams;
-
-var handleSubmit = function handleSubmit(e, type, button) {
-  e.preventDefault();
-  var params = setParams();
-  console.log(params);
-  (0, _addSessionStorage.addSessionStorage)("booking", JSON.stringify(params));
-  var err = (0, _validateBooking.validateBooking)();
-
-  if (!err) {
-    document.querySelector(button).disabled = true;
-    (0, _fetch.fetch)(type, params);
-  }
-};
-
-exports.handleSubmit = handleSubmit;
-},{"./fetch":"js/utilities/booking/fetch.js","./validateBooking":"js/utilities/booking/validateBooking.js","../storage/addSessionStorage":"js/utilities/storage/addSessionStorage.js"}],"node_modules/date-fns/esm/addMonths/index.js":[function(require,module,exports) {
+},{"./types":"js/utilities/booking/types.js","../dom/toggleModal":"js/utilities/dom/toggleModal.js","../dom/setInnerHTML":"js/utilities/dom/setInnerHTML.js"}],"node_modules/date-fns/esm/addMonths/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20469,7 +20288,319 @@ Object.keys(_index197).forEach(function (key) {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./add/index.js":"node_modules/date-fns/esm/add/index.js","./addBusinessDays/index.js":"node_modules/date-fns/esm/addBusinessDays/index.js","./addDays/index.js":"node_modules/date-fns/esm/addDays/index.js","./addHours/index.js":"node_modules/date-fns/esm/addHours/index.js","./addISOWeekYears/index.js":"node_modules/date-fns/esm/addISOWeekYears/index.js","./addMilliseconds/index.js":"node_modules/date-fns/esm/addMilliseconds/index.js","./addMinutes/index.js":"node_modules/date-fns/esm/addMinutes/index.js","./addMonths/index.js":"node_modules/date-fns/esm/addMonths/index.js","./addQuarters/index.js":"node_modules/date-fns/esm/addQuarters/index.js","./addSeconds/index.js":"node_modules/date-fns/esm/addSeconds/index.js","./addWeeks/index.js":"node_modules/date-fns/esm/addWeeks/index.js","./addYears/index.js":"node_modules/date-fns/esm/addYears/index.js","./areIntervalsOverlapping/index.js":"node_modules/date-fns/esm/areIntervalsOverlapping/index.js","./closestIndexTo/index.js":"node_modules/date-fns/esm/closestIndexTo/index.js","./closestTo/index.js":"node_modules/date-fns/esm/closestTo/index.js","./compareAsc/index.js":"node_modules/date-fns/esm/compareAsc/index.js","./compareDesc/index.js":"node_modules/date-fns/esm/compareDesc/index.js","./differenceInBusinessDays/index.js":"node_modules/date-fns/esm/differenceInBusinessDays/index.js","./differenceInCalendarDays/index.js":"node_modules/date-fns/esm/differenceInCalendarDays/index.js","./differenceInCalendarISOWeekYears/index.js":"node_modules/date-fns/esm/differenceInCalendarISOWeekYears/index.js","./differenceInCalendarISOWeeks/index.js":"node_modules/date-fns/esm/differenceInCalendarISOWeeks/index.js","./differenceInCalendarMonths/index.js":"node_modules/date-fns/esm/differenceInCalendarMonths/index.js","./differenceInCalendarQuarters/index.js":"node_modules/date-fns/esm/differenceInCalendarQuarters/index.js","./differenceInCalendarWeeks/index.js":"node_modules/date-fns/esm/differenceInCalendarWeeks/index.js","./differenceInCalendarYears/index.js":"node_modules/date-fns/esm/differenceInCalendarYears/index.js","./differenceInDays/index.js":"node_modules/date-fns/esm/differenceInDays/index.js","./differenceInHours/index.js":"node_modules/date-fns/esm/differenceInHours/index.js","./differenceInISOWeekYears/index.js":"node_modules/date-fns/esm/differenceInISOWeekYears/index.js","./differenceInMilliseconds/index.js":"node_modules/date-fns/esm/differenceInMilliseconds/index.js","./differenceInMinutes/index.js":"node_modules/date-fns/esm/differenceInMinutes/index.js","./differenceInMonths/index.js":"node_modules/date-fns/esm/differenceInMonths/index.js","./differenceInQuarters/index.js":"node_modules/date-fns/esm/differenceInQuarters/index.js","./differenceInSeconds/index.js":"node_modules/date-fns/esm/differenceInSeconds/index.js","./differenceInWeeks/index.js":"node_modules/date-fns/esm/differenceInWeeks/index.js","./differenceInYears/index.js":"node_modules/date-fns/esm/differenceInYears/index.js","./eachDayOfInterval/index.js":"node_modules/date-fns/esm/eachDayOfInterval/index.js","./eachHourOfInterval/index.js":"node_modules/date-fns/esm/eachHourOfInterval/index.js","./eachMonthOfInterval/index.js":"node_modules/date-fns/esm/eachMonthOfInterval/index.js","./eachQuarterOfInterval/index.js":"node_modules/date-fns/esm/eachQuarterOfInterval/index.js","./eachWeekOfInterval/index.js":"node_modules/date-fns/esm/eachWeekOfInterval/index.js","./eachWeekendOfInterval/index.js":"node_modules/date-fns/esm/eachWeekendOfInterval/index.js","./eachWeekendOfMonth/index.js":"node_modules/date-fns/esm/eachWeekendOfMonth/index.js","./eachWeekendOfYear/index.js":"node_modules/date-fns/esm/eachWeekendOfYear/index.js","./eachYearOfInterval/index.js":"node_modules/date-fns/esm/eachYearOfInterval/index.js","./endOfDay/index.js":"node_modules/date-fns/esm/endOfDay/index.js","./endOfDecade/index.js":"node_modules/date-fns/esm/endOfDecade/index.js","./endOfHour/index.js":"node_modules/date-fns/esm/endOfHour/index.js","./endOfISOWeek/index.js":"node_modules/date-fns/esm/endOfISOWeek/index.js","./endOfISOWeekYear/index.js":"node_modules/date-fns/esm/endOfISOWeekYear/index.js","./endOfMinute/index.js":"node_modules/date-fns/esm/endOfMinute/index.js","./endOfMonth/index.js":"node_modules/date-fns/esm/endOfMonth/index.js","./endOfQuarter/index.js":"node_modules/date-fns/esm/endOfQuarter/index.js","./endOfSecond/index.js":"node_modules/date-fns/esm/endOfSecond/index.js","./endOfToday/index.js":"node_modules/date-fns/esm/endOfToday/index.js","./endOfTomorrow/index.js":"node_modules/date-fns/esm/endOfTomorrow/index.js","./endOfWeek/index.js":"node_modules/date-fns/esm/endOfWeek/index.js","./endOfYear/index.js":"node_modules/date-fns/esm/endOfYear/index.js","./endOfYesterday/index.js":"node_modules/date-fns/esm/endOfYesterday/index.js","./format/index.js":"node_modules/date-fns/esm/format/index.js","./formatDistance/index.js":"node_modules/date-fns/esm/formatDistance/index.js","./formatDistanceStrict/index.js":"node_modules/date-fns/esm/formatDistanceStrict/index.js","./formatDistanceToNow/index.js":"node_modules/date-fns/esm/formatDistanceToNow/index.js","./formatDistanceToNowStrict/index.js":"node_modules/date-fns/esm/formatDistanceToNowStrict/index.js","./formatDuration/index.js":"node_modules/date-fns/esm/formatDuration/index.js","./formatISO/index.js":"node_modules/date-fns/esm/formatISO/index.js","./formatISO9075/index.js":"node_modules/date-fns/esm/formatISO9075/index.js","./formatISODuration/index.js":"node_modules/date-fns/esm/formatISODuration/index.js","./formatRFC3339/index.js":"node_modules/date-fns/esm/formatRFC3339/index.js","./formatRFC7231/index.js":"node_modules/date-fns/esm/formatRFC7231/index.js","./formatRelative/index.js":"node_modules/date-fns/esm/formatRelative/index.js","./fromUnixTime/index.js":"node_modules/date-fns/esm/fromUnixTime/index.js","./getDate/index.js":"node_modules/date-fns/esm/getDate/index.js","./getDay/index.js":"node_modules/date-fns/esm/getDay/index.js","./getDayOfYear/index.js":"node_modules/date-fns/esm/getDayOfYear/index.js","./getDaysInMonth/index.js":"node_modules/date-fns/esm/getDaysInMonth/index.js","./getDaysInYear/index.js":"node_modules/date-fns/esm/getDaysInYear/index.js","./getDecade/index.js":"node_modules/date-fns/esm/getDecade/index.js","./getHours/index.js":"node_modules/date-fns/esm/getHours/index.js","./getISODay/index.js":"node_modules/date-fns/esm/getISODay/index.js","./getISOWeek/index.js":"node_modules/date-fns/esm/getISOWeek/index.js","./getISOWeekYear/index.js":"node_modules/date-fns/esm/getISOWeekYear/index.js","./getISOWeeksInYear/index.js":"node_modules/date-fns/esm/getISOWeeksInYear/index.js","./getMilliseconds/index.js":"node_modules/date-fns/esm/getMilliseconds/index.js","./getMinutes/index.js":"node_modules/date-fns/esm/getMinutes/index.js","./getMonth/index.js":"node_modules/date-fns/esm/getMonth/index.js","./getOverlappingDaysInIntervals/index.js":"node_modules/date-fns/esm/getOverlappingDaysInIntervals/index.js","./getQuarter/index.js":"node_modules/date-fns/esm/getQuarter/index.js","./getSeconds/index.js":"node_modules/date-fns/esm/getSeconds/index.js","./getTime/index.js":"node_modules/date-fns/esm/getTime/index.js","./getUnixTime/index.js":"node_modules/date-fns/esm/getUnixTime/index.js","./getWeek/index.js":"node_modules/date-fns/esm/getWeek/index.js","./getWeekOfMonth/index.js":"node_modules/date-fns/esm/getWeekOfMonth/index.js","./getWeekYear/index.js":"node_modules/date-fns/esm/getWeekYear/index.js","./getWeeksInMonth/index.js":"node_modules/date-fns/esm/getWeeksInMonth/index.js","./getYear/index.js":"node_modules/date-fns/esm/getYear/index.js","./intervalToDuration/index.js":"node_modules/date-fns/esm/intervalToDuration/index.js","./isAfter/index.js":"node_modules/date-fns/esm/isAfter/index.js","./isBefore/index.js":"node_modules/date-fns/esm/isBefore/index.js","./isDate/index.js":"node_modules/date-fns/esm/isDate/index.js","./isEqual/index.js":"node_modules/date-fns/esm/isEqual/index.js","./isExists/index.js":"node_modules/date-fns/esm/isExists/index.js","./isFirstDayOfMonth/index.js":"node_modules/date-fns/esm/isFirstDayOfMonth/index.js","./isFriday/index.js":"node_modules/date-fns/esm/isFriday/index.js","./isFuture/index.js":"node_modules/date-fns/esm/isFuture/index.js","./isLastDayOfMonth/index.js":"node_modules/date-fns/esm/isLastDayOfMonth/index.js","./isLeapYear/index.js":"node_modules/date-fns/esm/isLeapYear/index.js","./isMatch/index.js":"node_modules/date-fns/esm/isMatch/index.js","./isMonday/index.js":"node_modules/date-fns/esm/isMonday/index.js","./isPast/index.js":"node_modules/date-fns/esm/isPast/index.js","./isSameDay/index.js":"node_modules/date-fns/esm/isSameDay/index.js","./isSameHour/index.js":"node_modules/date-fns/esm/isSameHour/index.js","./isSameISOWeek/index.js":"node_modules/date-fns/esm/isSameISOWeek/index.js","./isSameISOWeekYear/index.js":"node_modules/date-fns/esm/isSameISOWeekYear/index.js","./isSameMinute/index.js":"node_modules/date-fns/esm/isSameMinute/index.js","./isSameMonth/index.js":"node_modules/date-fns/esm/isSameMonth/index.js","./isSameQuarter/index.js":"node_modules/date-fns/esm/isSameQuarter/index.js","./isSameSecond/index.js":"node_modules/date-fns/esm/isSameSecond/index.js","./isSameWeek/index.js":"node_modules/date-fns/esm/isSameWeek/index.js","./isSameYear/index.js":"node_modules/date-fns/esm/isSameYear/index.js","./isSaturday/index.js":"node_modules/date-fns/esm/isSaturday/index.js","./isSunday/index.js":"node_modules/date-fns/esm/isSunday/index.js","./isThisHour/index.js":"node_modules/date-fns/esm/isThisHour/index.js","./isThisISOWeek/index.js":"node_modules/date-fns/esm/isThisISOWeek/index.js","./isThisMinute/index.js":"node_modules/date-fns/esm/isThisMinute/index.js","./isThisMonth/index.js":"node_modules/date-fns/esm/isThisMonth/index.js","./isThisQuarter/index.js":"node_modules/date-fns/esm/isThisQuarter/index.js","./isThisSecond/index.js":"node_modules/date-fns/esm/isThisSecond/index.js","./isThisWeek/index.js":"node_modules/date-fns/esm/isThisWeek/index.js","./isThisYear/index.js":"node_modules/date-fns/esm/isThisYear/index.js","./isThursday/index.js":"node_modules/date-fns/esm/isThursday/index.js","./isToday/index.js":"node_modules/date-fns/esm/isToday/index.js","./isTomorrow/index.js":"node_modules/date-fns/esm/isTomorrow/index.js","./isTuesday/index.js":"node_modules/date-fns/esm/isTuesday/index.js","./isValid/index.js":"node_modules/date-fns/esm/isValid/index.js","./isWednesday/index.js":"node_modules/date-fns/esm/isWednesday/index.js","./isWeekend/index.js":"node_modules/date-fns/esm/isWeekend/index.js","./isWithinInterval/index.js":"node_modules/date-fns/esm/isWithinInterval/index.js","./isYesterday/index.js":"node_modules/date-fns/esm/isYesterday/index.js","./lastDayOfDecade/index.js":"node_modules/date-fns/esm/lastDayOfDecade/index.js","./lastDayOfISOWeek/index.js":"node_modules/date-fns/esm/lastDayOfISOWeek/index.js","./lastDayOfISOWeekYear/index.js":"node_modules/date-fns/esm/lastDayOfISOWeekYear/index.js","./lastDayOfMonth/index.js":"node_modules/date-fns/esm/lastDayOfMonth/index.js","./lastDayOfQuarter/index.js":"node_modules/date-fns/esm/lastDayOfQuarter/index.js","./lastDayOfWeek/index.js":"node_modules/date-fns/esm/lastDayOfWeek/index.js","./lastDayOfYear/index.js":"node_modules/date-fns/esm/lastDayOfYear/index.js","./lightFormat/index.js":"node_modules/date-fns/esm/lightFormat/index.js","./max/index.js":"node_modules/date-fns/esm/max/index.js","./min/index.js":"node_modules/date-fns/esm/min/index.js","./parse/index.js":"node_modules/date-fns/esm/parse/index.js","./parseISO/index.js":"node_modules/date-fns/esm/parseISO/index.js","./parseJSON/index.js":"node_modules/date-fns/esm/parseJSON/index.js","./roundToNearestMinutes/index.js":"node_modules/date-fns/esm/roundToNearestMinutes/index.js","./set/index.js":"node_modules/date-fns/esm/set/index.js","./setDate/index.js":"node_modules/date-fns/esm/setDate/index.js","./setDay/index.js":"node_modules/date-fns/esm/setDay/index.js","./setDayOfYear/index.js":"node_modules/date-fns/esm/setDayOfYear/index.js","./setHours/index.js":"node_modules/date-fns/esm/setHours/index.js","./setISODay/index.js":"node_modules/date-fns/esm/setISODay/index.js","./setISOWeek/index.js":"node_modules/date-fns/esm/setISOWeek/index.js","./setISOWeekYear/index.js":"node_modules/date-fns/esm/setISOWeekYear/index.js","./setMilliseconds/index.js":"node_modules/date-fns/esm/setMilliseconds/index.js","./setMinutes/index.js":"node_modules/date-fns/esm/setMinutes/index.js","./setMonth/index.js":"node_modules/date-fns/esm/setMonth/index.js","./setQuarter/index.js":"node_modules/date-fns/esm/setQuarter/index.js","./setSeconds/index.js":"node_modules/date-fns/esm/setSeconds/index.js","./setWeek/index.js":"node_modules/date-fns/esm/setWeek/index.js","./setWeekYear/index.js":"node_modules/date-fns/esm/setWeekYear/index.js","./setYear/index.js":"node_modules/date-fns/esm/setYear/index.js","./startOfDay/index.js":"node_modules/date-fns/esm/startOfDay/index.js","./startOfDecade/index.js":"node_modules/date-fns/esm/startOfDecade/index.js","./startOfHour/index.js":"node_modules/date-fns/esm/startOfHour/index.js","./startOfISOWeek/index.js":"node_modules/date-fns/esm/startOfISOWeek/index.js","./startOfISOWeekYear/index.js":"node_modules/date-fns/esm/startOfISOWeekYear/index.js","./startOfMinute/index.js":"node_modules/date-fns/esm/startOfMinute/index.js","./startOfMonth/index.js":"node_modules/date-fns/esm/startOfMonth/index.js","./startOfQuarter/index.js":"node_modules/date-fns/esm/startOfQuarter/index.js","./startOfSecond/index.js":"node_modules/date-fns/esm/startOfSecond/index.js","./startOfToday/index.js":"node_modules/date-fns/esm/startOfToday/index.js","./startOfTomorrow/index.js":"node_modules/date-fns/esm/startOfTomorrow/index.js","./startOfWeek/index.js":"node_modules/date-fns/esm/startOfWeek/index.js","./startOfWeekYear/index.js":"node_modules/date-fns/esm/startOfWeekYear/index.js","./startOfYear/index.js":"node_modules/date-fns/esm/startOfYear/index.js","./startOfYesterday/index.js":"node_modules/date-fns/esm/startOfYesterday/index.js","./sub/index.js":"node_modules/date-fns/esm/sub/index.js","./subBusinessDays/index.js":"node_modules/date-fns/esm/subBusinessDays/index.js","./subDays/index.js":"node_modules/date-fns/esm/subDays/index.js","./subHours/index.js":"node_modules/date-fns/esm/subHours/index.js","./subISOWeekYears/index.js":"node_modules/date-fns/esm/subISOWeekYears/index.js","./subMilliseconds/index.js":"node_modules/date-fns/esm/subMilliseconds/index.js","./subMinutes/index.js":"node_modules/date-fns/esm/subMinutes/index.js","./subMonths/index.js":"node_modules/date-fns/esm/subMonths/index.js","./subQuarters/index.js":"node_modules/date-fns/esm/subQuarters/index.js","./subSeconds/index.js":"node_modules/date-fns/esm/subSeconds/index.js","./subWeeks/index.js":"node_modules/date-fns/esm/subWeeks/index.js","./subYears/index.js":"node_modules/date-fns/esm/subYears/index.js","./toDate/index.js":"node_modules/date-fns/esm/toDate/index.js","./constants/index.js":"node_modules/date-fns/esm/constants/index.js"}],"js/utilities/booking/availableTimes.js":[function(require,module,exports) {
+},{"./add/index.js":"node_modules/date-fns/esm/add/index.js","./addBusinessDays/index.js":"node_modules/date-fns/esm/addBusinessDays/index.js","./addDays/index.js":"node_modules/date-fns/esm/addDays/index.js","./addHours/index.js":"node_modules/date-fns/esm/addHours/index.js","./addISOWeekYears/index.js":"node_modules/date-fns/esm/addISOWeekYears/index.js","./addMilliseconds/index.js":"node_modules/date-fns/esm/addMilliseconds/index.js","./addMinutes/index.js":"node_modules/date-fns/esm/addMinutes/index.js","./addMonths/index.js":"node_modules/date-fns/esm/addMonths/index.js","./addQuarters/index.js":"node_modules/date-fns/esm/addQuarters/index.js","./addSeconds/index.js":"node_modules/date-fns/esm/addSeconds/index.js","./addWeeks/index.js":"node_modules/date-fns/esm/addWeeks/index.js","./addYears/index.js":"node_modules/date-fns/esm/addYears/index.js","./areIntervalsOverlapping/index.js":"node_modules/date-fns/esm/areIntervalsOverlapping/index.js","./closestIndexTo/index.js":"node_modules/date-fns/esm/closestIndexTo/index.js","./closestTo/index.js":"node_modules/date-fns/esm/closestTo/index.js","./compareAsc/index.js":"node_modules/date-fns/esm/compareAsc/index.js","./compareDesc/index.js":"node_modules/date-fns/esm/compareDesc/index.js","./differenceInBusinessDays/index.js":"node_modules/date-fns/esm/differenceInBusinessDays/index.js","./differenceInCalendarDays/index.js":"node_modules/date-fns/esm/differenceInCalendarDays/index.js","./differenceInCalendarISOWeekYears/index.js":"node_modules/date-fns/esm/differenceInCalendarISOWeekYears/index.js","./differenceInCalendarISOWeeks/index.js":"node_modules/date-fns/esm/differenceInCalendarISOWeeks/index.js","./differenceInCalendarMonths/index.js":"node_modules/date-fns/esm/differenceInCalendarMonths/index.js","./differenceInCalendarQuarters/index.js":"node_modules/date-fns/esm/differenceInCalendarQuarters/index.js","./differenceInCalendarWeeks/index.js":"node_modules/date-fns/esm/differenceInCalendarWeeks/index.js","./differenceInCalendarYears/index.js":"node_modules/date-fns/esm/differenceInCalendarYears/index.js","./differenceInDays/index.js":"node_modules/date-fns/esm/differenceInDays/index.js","./differenceInHours/index.js":"node_modules/date-fns/esm/differenceInHours/index.js","./differenceInISOWeekYears/index.js":"node_modules/date-fns/esm/differenceInISOWeekYears/index.js","./differenceInMilliseconds/index.js":"node_modules/date-fns/esm/differenceInMilliseconds/index.js","./differenceInMinutes/index.js":"node_modules/date-fns/esm/differenceInMinutes/index.js","./differenceInMonths/index.js":"node_modules/date-fns/esm/differenceInMonths/index.js","./differenceInQuarters/index.js":"node_modules/date-fns/esm/differenceInQuarters/index.js","./differenceInSeconds/index.js":"node_modules/date-fns/esm/differenceInSeconds/index.js","./differenceInWeeks/index.js":"node_modules/date-fns/esm/differenceInWeeks/index.js","./differenceInYears/index.js":"node_modules/date-fns/esm/differenceInYears/index.js","./eachDayOfInterval/index.js":"node_modules/date-fns/esm/eachDayOfInterval/index.js","./eachHourOfInterval/index.js":"node_modules/date-fns/esm/eachHourOfInterval/index.js","./eachMonthOfInterval/index.js":"node_modules/date-fns/esm/eachMonthOfInterval/index.js","./eachQuarterOfInterval/index.js":"node_modules/date-fns/esm/eachQuarterOfInterval/index.js","./eachWeekOfInterval/index.js":"node_modules/date-fns/esm/eachWeekOfInterval/index.js","./eachWeekendOfInterval/index.js":"node_modules/date-fns/esm/eachWeekendOfInterval/index.js","./eachWeekendOfMonth/index.js":"node_modules/date-fns/esm/eachWeekendOfMonth/index.js","./eachWeekendOfYear/index.js":"node_modules/date-fns/esm/eachWeekendOfYear/index.js","./eachYearOfInterval/index.js":"node_modules/date-fns/esm/eachYearOfInterval/index.js","./endOfDay/index.js":"node_modules/date-fns/esm/endOfDay/index.js","./endOfDecade/index.js":"node_modules/date-fns/esm/endOfDecade/index.js","./endOfHour/index.js":"node_modules/date-fns/esm/endOfHour/index.js","./endOfISOWeek/index.js":"node_modules/date-fns/esm/endOfISOWeek/index.js","./endOfISOWeekYear/index.js":"node_modules/date-fns/esm/endOfISOWeekYear/index.js","./endOfMinute/index.js":"node_modules/date-fns/esm/endOfMinute/index.js","./endOfMonth/index.js":"node_modules/date-fns/esm/endOfMonth/index.js","./endOfQuarter/index.js":"node_modules/date-fns/esm/endOfQuarter/index.js","./endOfSecond/index.js":"node_modules/date-fns/esm/endOfSecond/index.js","./endOfToday/index.js":"node_modules/date-fns/esm/endOfToday/index.js","./endOfTomorrow/index.js":"node_modules/date-fns/esm/endOfTomorrow/index.js","./endOfWeek/index.js":"node_modules/date-fns/esm/endOfWeek/index.js","./endOfYear/index.js":"node_modules/date-fns/esm/endOfYear/index.js","./endOfYesterday/index.js":"node_modules/date-fns/esm/endOfYesterday/index.js","./format/index.js":"node_modules/date-fns/esm/format/index.js","./formatDistance/index.js":"node_modules/date-fns/esm/formatDistance/index.js","./formatDistanceStrict/index.js":"node_modules/date-fns/esm/formatDistanceStrict/index.js","./formatDistanceToNow/index.js":"node_modules/date-fns/esm/formatDistanceToNow/index.js","./formatDistanceToNowStrict/index.js":"node_modules/date-fns/esm/formatDistanceToNowStrict/index.js","./formatDuration/index.js":"node_modules/date-fns/esm/formatDuration/index.js","./formatISO/index.js":"node_modules/date-fns/esm/formatISO/index.js","./formatISO9075/index.js":"node_modules/date-fns/esm/formatISO9075/index.js","./formatISODuration/index.js":"node_modules/date-fns/esm/formatISODuration/index.js","./formatRFC3339/index.js":"node_modules/date-fns/esm/formatRFC3339/index.js","./formatRFC7231/index.js":"node_modules/date-fns/esm/formatRFC7231/index.js","./formatRelative/index.js":"node_modules/date-fns/esm/formatRelative/index.js","./fromUnixTime/index.js":"node_modules/date-fns/esm/fromUnixTime/index.js","./getDate/index.js":"node_modules/date-fns/esm/getDate/index.js","./getDay/index.js":"node_modules/date-fns/esm/getDay/index.js","./getDayOfYear/index.js":"node_modules/date-fns/esm/getDayOfYear/index.js","./getDaysInMonth/index.js":"node_modules/date-fns/esm/getDaysInMonth/index.js","./getDaysInYear/index.js":"node_modules/date-fns/esm/getDaysInYear/index.js","./getDecade/index.js":"node_modules/date-fns/esm/getDecade/index.js","./getHours/index.js":"node_modules/date-fns/esm/getHours/index.js","./getISODay/index.js":"node_modules/date-fns/esm/getISODay/index.js","./getISOWeek/index.js":"node_modules/date-fns/esm/getISOWeek/index.js","./getISOWeekYear/index.js":"node_modules/date-fns/esm/getISOWeekYear/index.js","./getISOWeeksInYear/index.js":"node_modules/date-fns/esm/getISOWeeksInYear/index.js","./getMilliseconds/index.js":"node_modules/date-fns/esm/getMilliseconds/index.js","./getMinutes/index.js":"node_modules/date-fns/esm/getMinutes/index.js","./getMonth/index.js":"node_modules/date-fns/esm/getMonth/index.js","./getOverlappingDaysInIntervals/index.js":"node_modules/date-fns/esm/getOverlappingDaysInIntervals/index.js","./getQuarter/index.js":"node_modules/date-fns/esm/getQuarter/index.js","./getSeconds/index.js":"node_modules/date-fns/esm/getSeconds/index.js","./getTime/index.js":"node_modules/date-fns/esm/getTime/index.js","./getUnixTime/index.js":"node_modules/date-fns/esm/getUnixTime/index.js","./getWeek/index.js":"node_modules/date-fns/esm/getWeek/index.js","./getWeekOfMonth/index.js":"node_modules/date-fns/esm/getWeekOfMonth/index.js","./getWeekYear/index.js":"node_modules/date-fns/esm/getWeekYear/index.js","./getWeeksInMonth/index.js":"node_modules/date-fns/esm/getWeeksInMonth/index.js","./getYear/index.js":"node_modules/date-fns/esm/getYear/index.js","./intervalToDuration/index.js":"node_modules/date-fns/esm/intervalToDuration/index.js","./isAfter/index.js":"node_modules/date-fns/esm/isAfter/index.js","./isBefore/index.js":"node_modules/date-fns/esm/isBefore/index.js","./isDate/index.js":"node_modules/date-fns/esm/isDate/index.js","./isEqual/index.js":"node_modules/date-fns/esm/isEqual/index.js","./isExists/index.js":"node_modules/date-fns/esm/isExists/index.js","./isFirstDayOfMonth/index.js":"node_modules/date-fns/esm/isFirstDayOfMonth/index.js","./isFriday/index.js":"node_modules/date-fns/esm/isFriday/index.js","./isFuture/index.js":"node_modules/date-fns/esm/isFuture/index.js","./isLastDayOfMonth/index.js":"node_modules/date-fns/esm/isLastDayOfMonth/index.js","./isLeapYear/index.js":"node_modules/date-fns/esm/isLeapYear/index.js","./isMatch/index.js":"node_modules/date-fns/esm/isMatch/index.js","./isMonday/index.js":"node_modules/date-fns/esm/isMonday/index.js","./isPast/index.js":"node_modules/date-fns/esm/isPast/index.js","./isSameDay/index.js":"node_modules/date-fns/esm/isSameDay/index.js","./isSameHour/index.js":"node_modules/date-fns/esm/isSameHour/index.js","./isSameISOWeek/index.js":"node_modules/date-fns/esm/isSameISOWeek/index.js","./isSameISOWeekYear/index.js":"node_modules/date-fns/esm/isSameISOWeekYear/index.js","./isSameMinute/index.js":"node_modules/date-fns/esm/isSameMinute/index.js","./isSameMonth/index.js":"node_modules/date-fns/esm/isSameMonth/index.js","./isSameQuarter/index.js":"node_modules/date-fns/esm/isSameQuarter/index.js","./isSameSecond/index.js":"node_modules/date-fns/esm/isSameSecond/index.js","./isSameWeek/index.js":"node_modules/date-fns/esm/isSameWeek/index.js","./isSameYear/index.js":"node_modules/date-fns/esm/isSameYear/index.js","./isSaturday/index.js":"node_modules/date-fns/esm/isSaturday/index.js","./isSunday/index.js":"node_modules/date-fns/esm/isSunday/index.js","./isThisHour/index.js":"node_modules/date-fns/esm/isThisHour/index.js","./isThisISOWeek/index.js":"node_modules/date-fns/esm/isThisISOWeek/index.js","./isThisMinute/index.js":"node_modules/date-fns/esm/isThisMinute/index.js","./isThisMonth/index.js":"node_modules/date-fns/esm/isThisMonth/index.js","./isThisQuarter/index.js":"node_modules/date-fns/esm/isThisQuarter/index.js","./isThisSecond/index.js":"node_modules/date-fns/esm/isThisSecond/index.js","./isThisWeek/index.js":"node_modules/date-fns/esm/isThisWeek/index.js","./isThisYear/index.js":"node_modules/date-fns/esm/isThisYear/index.js","./isThursday/index.js":"node_modules/date-fns/esm/isThursday/index.js","./isToday/index.js":"node_modules/date-fns/esm/isToday/index.js","./isTomorrow/index.js":"node_modules/date-fns/esm/isTomorrow/index.js","./isTuesday/index.js":"node_modules/date-fns/esm/isTuesday/index.js","./isValid/index.js":"node_modules/date-fns/esm/isValid/index.js","./isWednesday/index.js":"node_modules/date-fns/esm/isWednesday/index.js","./isWeekend/index.js":"node_modules/date-fns/esm/isWeekend/index.js","./isWithinInterval/index.js":"node_modules/date-fns/esm/isWithinInterval/index.js","./isYesterday/index.js":"node_modules/date-fns/esm/isYesterday/index.js","./lastDayOfDecade/index.js":"node_modules/date-fns/esm/lastDayOfDecade/index.js","./lastDayOfISOWeek/index.js":"node_modules/date-fns/esm/lastDayOfISOWeek/index.js","./lastDayOfISOWeekYear/index.js":"node_modules/date-fns/esm/lastDayOfISOWeekYear/index.js","./lastDayOfMonth/index.js":"node_modules/date-fns/esm/lastDayOfMonth/index.js","./lastDayOfQuarter/index.js":"node_modules/date-fns/esm/lastDayOfQuarter/index.js","./lastDayOfWeek/index.js":"node_modules/date-fns/esm/lastDayOfWeek/index.js","./lastDayOfYear/index.js":"node_modules/date-fns/esm/lastDayOfYear/index.js","./lightFormat/index.js":"node_modules/date-fns/esm/lightFormat/index.js","./max/index.js":"node_modules/date-fns/esm/max/index.js","./min/index.js":"node_modules/date-fns/esm/min/index.js","./parse/index.js":"node_modules/date-fns/esm/parse/index.js","./parseISO/index.js":"node_modules/date-fns/esm/parseISO/index.js","./parseJSON/index.js":"node_modules/date-fns/esm/parseJSON/index.js","./roundToNearestMinutes/index.js":"node_modules/date-fns/esm/roundToNearestMinutes/index.js","./set/index.js":"node_modules/date-fns/esm/set/index.js","./setDate/index.js":"node_modules/date-fns/esm/setDate/index.js","./setDay/index.js":"node_modules/date-fns/esm/setDay/index.js","./setDayOfYear/index.js":"node_modules/date-fns/esm/setDayOfYear/index.js","./setHours/index.js":"node_modules/date-fns/esm/setHours/index.js","./setISODay/index.js":"node_modules/date-fns/esm/setISODay/index.js","./setISOWeek/index.js":"node_modules/date-fns/esm/setISOWeek/index.js","./setISOWeekYear/index.js":"node_modules/date-fns/esm/setISOWeekYear/index.js","./setMilliseconds/index.js":"node_modules/date-fns/esm/setMilliseconds/index.js","./setMinutes/index.js":"node_modules/date-fns/esm/setMinutes/index.js","./setMonth/index.js":"node_modules/date-fns/esm/setMonth/index.js","./setQuarter/index.js":"node_modules/date-fns/esm/setQuarter/index.js","./setSeconds/index.js":"node_modules/date-fns/esm/setSeconds/index.js","./setWeek/index.js":"node_modules/date-fns/esm/setWeek/index.js","./setWeekYear/index.js":"node_modules/date-fns/esm/setWeekYear/index.js","./setYear/index.js":"node_modules/date-fns/esm/setYear/index.js","./startOfDay/index.js":"node_modules/date-fns/esm/startOfDay/index.js","./startOfDecade/index.js":"node_modules/date-fns/esm/startOfDecade/index.js","./startOfHour/index.js":"node_modules/date-fns/esm/startOfHour/index.js","./startOfISOWeek/index.js":"node_modules/date-fns/esm/startOfISOWeek/index.js","./startOfISOWeekYear/index.js":"node_modules/date-fns/esm/startOfISOWeekYear/index.js","./startOfMinute/index.js":"node_modules/date-fns/esm/startOfMinute/index.js","./startOfMonth/index.js":"node_modules/date-fns/esm/startOfMonth/index.js","./startOfQuarter/index.js":"node_modules/date-fns/esm/startOfQuarter/index.js","./startOfSecond/index.js":"node_modules/date-fns/esm/startOfSecond/index.js","./startOfToday/index.js":"node_modules/date-fns/esm/startOfToday/index.js","./startOfTomorrow/index.js":"node_modules/date-fns/esm/startOfTomorrow/index.js","./startOfWeek/index.js":"node_modules/date-fns/esm/startOfWeek/index.js","./startOfWeekYear/index.js":"node_modules/date-fns/esm/startOfWeekYear/index.js","./startOfYear/index.js":"node_modules/date-fns/esm/startOfYear/index.js","./startOfYesterday/index.js":"node_modules/date-fns/esm/startOfYesterday/index.js","./sub/index.js":"node_modules/date-fns/esm/sub/index.js","./subBusinessDays/index.js":"node_modules/date-fns/esm/subBusinessDays/index.js","./subDays/index.js":"node_modules/date-fns/esm/subDays/index.js","./subHours/index.js":"node_modules/date-fns/esm/subHours/index.js","./subISOWeekYears/index.js":"node_modules/date-fns/esm/subISOWeekYears/index.js","./subMilliseconds/index.js":"node_modules/date-fns/esm/subMilliseconds/index.js","./subMinutes/index.js":"node_modules/date-fns/esm/subMinutes/index.js","./subMonths/index.js":"node_modules/date-fns/esm/subMonths/index.js","./subQuarters/index.js":"node_modules/date-fns/esm/subQuarters/index.js","./subSeconds/index.js":"node_modules/date-fns/esm/subSeconds/index.js","./subWeeks/index.js":"node_modules/date-fns/esm/subWeeks/index.js","./subYears/index.js":"node_modules/date-fns/esm/subYears/index.js","./toDate/index.js":"node_modules/date-fns/esm/toDate/index.js","./constants/index.js":"node_modules/date-fns/esm/constants/index.js"}],"js/utilities/booking/autofillForm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.autoFillForm = void 0;
+
+var _dateFns = require("date-fns");
+
+var _toggleModal = require("../dom/toggleModal");
+
+var autoFillForm = function autoFillForm(data) {
+  console.log(data);
+  var inputs = document.querySelectorAll("input");
+  if (typeof data.date !== "string") data.date = (0, _dateFns.format)(date, "dd/MM/yyyy");
+  inputs.forEach(function (input) {
+    if (input.name !== "id") input.value = data[input.name];
+  });
+  if (document.querySelector(".modal-active")) (0, _toggleModal.hideModal)();
+};
+
+exports.autoFillForm = autoFillForm;
+},{"date-fns":"node_modules/date-fns/esm/index.js","../dom/toggleModal":"js/utilities/dom/toggleModal.js"}],"js/utilities/booking/validateBooking.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.validateBooking = exports.removeError = exports.showError = void 0;
+
+var _toggleClassList = require("../dom/toggleClassList");
+
+var inputs = document.querySelectorAll('input');
+var errorBoxes = document.querySelectorAll('.error');
+
+var showError = function showError(index) {
+  (0, _toggleClassList.addClassList)(errorBoxes[index], "errorActive");
+  (0, _toggleClassList.addClassList)(inputs[index], "inputInvalid");
+  inputs[index].scrollIntoView();
+};
+
+exports.showError = showError;
+
+var removeError = function removeError(index) {
+  inputs[index].oninput = function () {
+    if (inputs[index].validity.valid) {
+      (0, _toggleClassList.removeClassList)(inputs[index], 'inputInvalid');
+      (0, _toggleClassList.removeClassList)(errorBoxes[index], 'errorActive');
+    }
+  };
+};
+
+exports.removeError = removeError;
+
+var validateBooking = function validateBooking() {
+  var error = false;
+  inputs.forEach(function (input, index) {
+    if (!input.validity.valid) {
+      error = true;
+      showError(index);
+      removeError(index);
+    }
+  });
+  return error;
+};
+
+exports.validateBooking = validateBooking;
+},{"../dom/toggleClassList":"js/utilities/dom/toggleClassList.js"}],"js/utilities/booking/fetch.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetch = void 0;
+
+var _axios = _interopRequireDefault(require("axios"));
+
+var _types = require("./types");
+
+var _addSessionStorage = require("../storage/addSessionStorage");
+
+var _handleModal = require("./handleModal");
+
+var _autofillForm = require("./autofillForm");
+
+var _validateBooking = require("./validateBooking");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var getFetchParams = function getFetchParams(type, params) {
+  switch (type) {
+    case _types.POST_BOOKING:
+      return {
+        method: "POST",
+        url: "./api/book",
+        resolved: function resolved(res) {
+          (0, _handleModal.handleModal)(_types.SHOW_BOOKED, res.data);
+        },
+        rejected: function rejected(err) {
+          (0, _addSessionStorage.addSessionStorage)("booking", JSON.stringify(params));
+          err.response.status === 409 ? (0, _handleModal.handleModal)(_types.SHOW_FULL, err.response.data) : (0, _handleModal.handleModal)(_types.SHOW_FAILED);
+        }
+      };
+
+    case _types.GET_BOOKING:
+      return {
+        method: "GET",
+        url: "/api/booking/".concat(params.id),
+        resolved: function resolved(res) {
+          res.data ? (0, _autofillForm.autoFillForm)(res.data) : (0, _validateBooking.showError)(0);
+        },
+        rejected: function rejected() {
+          (0, _validateBooking.showError)(0);
+        }
+      };
+
+    case _types.PUT_BOOKING:
+      return {
+        method: "PUT",
+        url: "./api/booking/".concat(document.querySelector('#id').value),
+        resolved: function resolved(res) {
+          (0, _handleModal.handleModal)(_types.SHOW_BOOKED, res.data);
+        },
+        rejected: function rejected(err) {
+          (0, _addSessionStorage.addSessionStorage)("booking", JSON.stringify(params));
+          err.response.status === 409 ? (0, _handleModal.handleModal)(_types.SHOW_FULL, err.response.data) : (0, _handleModal.handleModal)(_types.SHOW_FAILED);
+        }
+      };
+
+    case _types.DELETE_BOOKING:
+      return {
+        method: "DELETE",
+        url: "./api/booking/".concat(params.id),
+        resolved: function resolved() {
+          (0, _handleModal.handleModal)(_types.SHOW_CANCELLED);
+        },
+        rejected: function rejected() {
+          (0, _handleModal.handleModal)(_types.SHOW_FAILED);
+        }
+      };
+  }
+};
+
+var fetch = function fetch(type, params) {
+  var _getFetchParams = getFetchParams(type, params),
+      method = _getFetchParams.method,
+      url = _getFetchParams.url,
+      resolved = _getFetchParams.resolved,
+      rejected = _getFetchParams.rejected;
+
+  (0, _axios.default)({
+    method: method,
+    url: url,
+    data: params
+  }).then(function (res) {
+    return resolved(res);
+  }).catch(function (err) {
+    return rejected(err);
+  });
+};
+
+exports.fetch = fetch;
+},{"axios":"node_modules/axios/index.js","./types":"js/utilities/booking/types.js","../storage/addSessionStorage":"js/utilities/storage/addSessionStorage.js","./handleModal":"js/utilities/booking/handleModal.js","./autofillForm":"js/utilities/booking/autofillForm.js","./validateBooking":"js/utilities/booking/validateBooking.js"}],"js/utilities/booking/submitBooking.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.handleSubmit = exports.setParams = void 0;
+
+var _fetch = require("./fetch");
+
+var _validateBooking = require("./validateBooking");
+
+var _addSessionStorage = require("../storage/addSessionStorage");
+
+var setParams = function setParams() {
+  var form = document.querySelector("#bookForm");
+  var name = form.elements["name"].value;
+  var email = form.elements["email"].value;
+  var restaurant = form.elements["restaurant"].value;
+  var date = new Date(form.elements["date"].value);
+  var time = form.elements["time"].value;
+  var party = form.elements["party"].value;
+  var message = form.elements["message"].value;
+  return {
+    name: name,
+    email: email,
+    restaurant: restaurant,
+    date: date,
+    time: time,
+    party: party,
+    message: message
+  };
+};
+
+exports.setParams = setParams;
+
+var handleSubmit = function handleSubmit(e, type, button) {
+  e.preventDefault();
+  var params = setParams();
+  console.log(params);
+  (0, _addSessionStorage.addSessionStorage)("booking", JSON.stringify(params));
+  var err = (0, _validateBooking.validateBooking)();
+
+  if (!err) {
+    document.querySelector(button).disabled = true;
+    (0, _fetch.fetch)(type, params);
+  }
+};
+
+exports.handleSubmit = handleSubmit;
+},{"./fetch":"js/utilities/booking/fetch.js","./validateBooking":"js/utilities/booking/validateBooking.js","../storage/addSessionStorage":"js/utilities/storage/addSessionStorage.js"}],"js/utilities/booking/availableParty.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setAvailableParty = void 0;
+
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+var _require = require("../dom/createButton"),
+    createDropdownButton = _require.createDropdownButton;
+
+var getAvailableParty = function getAvailableParty(restaurant, date, time) {
+  //TODO:query db for availability
+  return [2, 3, 4, 5, 6, 7, 8];
+};
+
+var setAvailableParty = function setAvailableParty(restaurant, date, time) {
+  var sizes = getAvailableParty(restaurant, date, time);
+  var dropdownContainer = document.querySelector('[data-dropdown="party"]');
+
+  var _iterator = _createForOfIteratorHelper(sizes),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var size = _step.value;
+      var newButton = createDropdownButton();
+      newButton.innerText = size;
+      newButton.dataset.input = "#party";
+      newButton.dataset.value = size;
+      dropdownContainer.append(newButton);
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+};
+
+exports.setAvailableParty = setAvailableParty;
+},{"../dom/createButton":"js/utilities/dom/createButton.js"}],"js/utilities/dom/addEventListener.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addEventListener = void 0;
+
+var addEventListener = function addEventListener(node, cb) {
+  var event = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "click";
+  typeof node === "string" ? document.querySelector(node).addEventListener(event, function () {
+    return cb(node);
+  }) : node.addEventListener(event, function () {
+    return cb(node);
+  });
+};
+
+exports.addEventListener = addEventListener;
+},{}],"js/utilities/dom/forEach.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.forEach = void 0;
+
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+var forEach = function forEach(nodeList, cb) {
+  var nodes = nodeList;
+  if (typeof nodeList === "string") nodes = document.querySelectorAll(nodes);
+  console.log(nodes);
+
+  var _iterator = _createForOfIteratorHelper(nodes),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var node = _step.value;
+      cb(node);
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+};
+
+exports.forEach = forEach;
+},{}],"js/utilities/booking/availableTimes.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20481,7 +20612,15 @@ var _dateFns = require("date-fns");
 
 var _format = _interopRequireDefault(require("date-fns/format"));
 
+var _createButton = require("../dom/createButton");
+
+var _forEach = require("../dom/forEach");
+
+var _changeFormValue = require("./changeFormValue");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -20535,22 +20674,35 @@ var getAvailableTimes = function getAvailableTimes(date, restaurant) {
   }
 
   console.log(day, times);
+  return times;
 };
 
 exports.getAvailableTimes = getAvailableTimes;
 
-var setAvailableTimes = function setAvailableTimes() {
-  var dropdownContainer = document.querySelector('[data-dropdown="date"]');
-  dates.forEach(function (date) {
-    var newButton = document.createElement("button");
-    newButton.innerText = (0, _format.default)(date, "eee eo MMM");
-    newButton.classList.add("dropdownBtn");
-    newButton.dataset.input = "#date";
-    newButton.dataset.value = (0, _format.default)(date, "ee/MM/yyyy");
-    newButton.type = "button";
-    dropdownContainer.append(newButton);
-  });
-  console.log(dropdownContainer);
+var setAvailableTimes = function setAvailableTimes(date, restaurant) {
+  var times = getAvailableTimes(date, restaurant);
+  var dropdownContainer = document.querySelector('[data-dropdown="time"]');
+  dropdownContainer.innerText = "";
+
+  var _iterator = _createForOfIteratorHelper(times),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var time = _step.value;
+      var newButton = (0, _createButton.createDropdownButton)();
+      newButton.innerText = time;
+      newButton.dataset.input = "#time";
+      newButton.dataset.value = time;
+      dropdownContainer.append(newButton);
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+
+  (0, _forEach.forEach)('[data-dropdown="time"] button', _changeFormValue.changeFormValue);
 }; // <button
 // 				type="button"
 // 				class="dropdownBtn"
@@ -20563,12 +20715,38 @@ var setAvailableTimes = function setAvailableTimes() {
 
 
 exports.setAvailableTimes = setAvailableTimes;
-},{"date-fns":"node_modules/date-fns/esm/index.js","date-fns/format":"node_modules/date-fns/esm/format/index.js"}],"js/book.js":[function(require,module,exports) {
+},{"date-fns":"node_modules/date-fns/esm/index.js","date-fns/format":"node_modules/date-fns/esm/format/index.js","../dom/createButton":"js/utilities/dom/createButton.js","../dom/forEach":"js/utilities/dom/forEach.js","./changeFormValue":"js/utilities/booking/changeFormValue.js"}],"js/utilities/booking/changeFormValue.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.changeFormValue = void 0;
+
+var _addEventListener = require("../dom/addEventListener");
+
+var _availableTimes = require("./availableTimes");
+
+var restaurant = "Glensgaich";
+
+var changeFormValue = function changeFormValue(btn) {
+  (0, _addEventListener.addEventListener)(btn, function () {
+    console.log(btn);
+    document.querySelector(btn.dataset.input).value = btn.dataset.value;
+    document.activeElement.blur();
+    if (btn.dataset.input === "#restaurant") restaurant = btn.dataset.value;
+
+    if (btn.dataset.input === "#date") {
+      (0, _availableTimes.setAvailableTimes)(new Date(btn.dataset.value), restaurant);
+    }
+  });
+};
+
+exports.changeFormValue = changeFormValue;
+},{"../dom/addEventListener":"js/utilities/dom/addEventListener.js","./availableTimes":"js/utilities/booking/availableTimes.js"}],"js/book.js":[function(require,module,exports) {
 "use strict";
 
 var _availableDates = require("./utilities/booking/availableDates");
-
-var _changeInputValue = require("./utilities/dom/changeInputValue");
 
 var _submitBooking = require("./utilities/booking/submitBooking");
 
@@ -20576,36 +20754,26 @@ var _types = require("./utilities/booking/types");
 
 var _autofillForm = require("./utilities/booking/autofillForm");
 
-var _availableTimes = require("./utilities/booking/availableTimes");
+var _availableParty = require("./utilities/booking/availableParty");
 
-var restaurant = "Glensgaich"; //preparing form and form Buttons
+var _changeFormValue = require("./utilities/booking/changeFormValue");
 
-(0, _availableDates.setAvailableDates)(Date.now()); // form dropdown buttons
+var _forEach = require("./utilities/dom/forEach");
 
-document.querySelectorAll(".dropdownBtn").forEach(function (btn) {
-  btn.addEventListener("click", function (event) {
-    (0, _changeInputValue.changeInputValue)(btn.dataset.input, btn.dataset.value);
-    document.activeElement.blur();
-    if (btn.dataset.input === "#restaurant") restaurant = btn.dataset.value;
-
-    if (btn.dataset.input === "#date") {
-      console.log(btn.dataset.value);
-      (0, _availableTimes.getAvailableTimes)(new Date(btn.dataset.value), restaurant);
-    }
-  });
-}); //fill from session storage
+//preparing form and form Buttons
+(0, _availableDates.setAvailableDates)(Date.now());
+(0, _availableParty.setAvailableParty)();
+(0, _forEach.forEach)(".dropdownBtn", _changeFormValue.changeFormValue); //fill from session storage
 
 if (sessionStorage.booking) {
   (0, _autofillForm.autoFillForm)(JSON.parse(sessionStorage.booking));
 } // create booking /book
 
 
-var bookBtn = ".bookBtn";
-
 document.querySelector(".postBookForm").onsubmit = function (e) {
-  return (0, _submitBooking.handleSubmit)(e, _types.POST_BOOKING, bookBtn);
+  return (0, _submitBooking.handleSubmit)(e, _types.POST_BOOKING, ".bookBtn");
 };
-},{"./utilities/booking/availableDates":"js/utilities/booking/availableDates.js","./utilities/dom/changeInputValue":"js/utilities/dom/changeInputValue.js","./utilities/booking/submitBooking":"js/utilities/booking/submitBooking.js","./utilities/booking/types":"js/utilities/booking/types.js","./utilities/booking/autofillForm":"js/utilities/booking/autofillForm.js","./utilities/booking/availableTimes":"js/utilities/booking/availableTimes.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./utilities/booking/availableDates":"js/utilities/booking/availableDates.js","./utilities/booking/submitBooking":"js/utilities/booking/submitBooking.js","./utilities/booking/types":"js/utilities/booking/types.js","./utilities/booking/autofillForm":"js/utilities/booking/autofillForm.js","./utilities/booking/availableParty":"js/utilities/booking/availableParty.js","./utilities/booking/changeFormValue":"js/utilities/booking/changeFormValue.js","./utilities/dom/forEach":"js/utilities/dom/forEach.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -20633,7 +20801,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65489" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56859" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

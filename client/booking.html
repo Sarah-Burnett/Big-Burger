@@ -9,6 +9,7 @@
 		/>
 		<link rel="stylesheet" href="styles/book.scss" />
 		<link rel="icon" href="./images/favicon.png" />
+		<script src="js/booking.js" defer></script>
 		<title>Booking Form</title>
 	</head>
 	<body>
@@ -93,17 +94,17 @@
 					<div class="label">
 						<label for="date"><h3>Date of Booking</h3></label>
 					</div>
-					<div class="field">
+					<div class="field dropdown">
 						<input
-							type="date"
 							id="date"
 							name="date"
-							min="2020-04-01"
-							max="2020-04-30"
+							placeholder="dd/mm/yyyy"
 							required
+							readonly
 						/>
+						<div class="dropdownContent" data-dropdown="date"></div>
 						<p class="error">
-							Please select a date (dd/mm/yy) in the next two weeks
+							Please select a date (dd/mm/yyyy) in the next two weeks
 						</p>
 					</div>
 				</div>
@@ -116,176 +117,11 @@
 							readonly
 							id="time"
 							name="time"
-							value="17:00"
 							pattern="^[0-2][0-9]:[03][0]$"
 							required
+							placeholder="hh:mm"
 						/>
-						<div class="dropdownContent">
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="12:00"
-								data-day="wkend"
-							>
-								12:00
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="12:30"
-								data-day="wkend"
-							>
-								12:30
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="13:00"
-								data-day="wkend"
-							>
-								13:00
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="13:30"
-								data-day="wkend"
-							>
-								13:30
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="14:00"
-								data-day="wkend"
-							>
-								14:00
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="14:30"
-								data-day="wkend"
-							>
-								14:30
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="15:00"
-								data-day="wkend"
-							>
-								15:00
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="15:30"
-								data-day="wkend"
-							>
-								15:30
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="16:00"
-								data-day="wkend"
-							>
-								16:00
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="16:30"
-								data-day="wkend"
-							>
-								16:30
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="17:00"
-							>
-								17:00
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="17:30"
-							>
-								17:30
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="18:00"
-							>
-								18:00
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="18:30"
-							>
-								18:30
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="19:00"
-							>
-								19:00
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="19:30"
-							>
-								19:00
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="20:00"
-							>
-								20:00
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="20:30"
-								data-day="nosun"
-							>
-								20:30
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#time"
-								data-value="21:00"
-								data-day="nosun"
-							>
-								21:00
-							</button>
-						</div>
+						<div class="dropdownContent" data-dropdown="time"></div>
 						<p class="error">Please select the time you would like to book</p>
 					</div>
 				</div>
@@ -303,65 +139,9 @@
 							max="8"
 							value="2"
 							required
+							placeholder="2-8"
 						/>
-						<div class="dropdownContent">
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#party"
-								data-value="2"
-							>
-								2
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#party"
-								data-value="3"
-							>
-								3
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#party"
-								data-value="4"
-							>
-								4
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#party"
-								data-value="5"
-							>
-								5
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#party"
-								data-value="6"
-							>
-								6
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#party"
-								data-value="7"
-							>
-								7
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#party"
-								data-value="8"
-							>
-								8
-							</button>
-						</div>
+						<div class="dropdownContent" data-dropdown="party"></div>
 						<p class="error">Please select the number of people between 2-8</p>
 					</div>
 				</div>
@@ -413,6 +193,5 @@
 				<p>We hope to see you soon</p>
 			</div>
 		</div>
-		<script src="js/booking.js"></script>
 	</body>
 </html>

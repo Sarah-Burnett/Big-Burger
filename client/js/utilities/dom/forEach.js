@@ -1,5 +1,8 @@
 export const forEach = (nodeList, cb) => {
-	typeof nodeList === "string"
-		? document.querySelectorAll(nodeList).forEach((node) => cb(node))
-		: nodeList.forEach((node) => cb(node));
+	let nodes = nodeList;
+	if (typeof nodeList === "string") nodes = document.querySelectorAll(nodes);
+	console.log(nodes);
+	for (const node of nodes) {
+		cb(node);
+	}
 };

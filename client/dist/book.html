@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="/book.b09b7cea.css">
 		<link rel="icon" href="/favicon.8003f84c.png">
 		<title>Big-Burger Booking Form</title>
+		<script src="/book.198dd6d2.js" defer=""></script>
 	<script src="/book.b09b7cea.js"></script></head>
 	<body>
 		<nav data-scroll-header="" class="header">
@@ -57,7 +58,7 @@
 						<label for="date"><h3>Date of Booking</h3></label>
 					</div>
 					<div class="field dropdown">
-						<input id="date" name="date" required="" readonly="">
+						<input id="date" name="date" placeholder="dd/mm/yyyy" required="" readonly="">
 						<div class="dropdownContent" data-dropdown="date"></div>
 						<p class="error">
 							Please select a date (dd/mm/yyyy) in the next two weeks
@@ -68,9 +69,9 @@
 					<div class="label">
 						<label for="time"><h3>Time of Booking</h3></label>
 					</div>
-					<div class="field dropdown" data-dropdown="time">
-						<input readonly="" id="time" name="time" value="17:00" pattern="^[0-2][0-9]:[03][0]$" required="">
-						<div class="dropdownContent"></div>
+					<div class="field dropdown">
+						<input readonly="" id="time" name="time" pattern="^[0-2][0-9]:[03][0]$" required="" placeholder="hh:mm">
+						<div class="dropdownContent" data-dropdown="time"></div>
 						<p class="error">Please select the time you would like to book</p>
 					</div>
 				</div>
@@ -79,30 +80,8 @@
 						<label for="party"><h3>Booking party</h3></label>
 					</div>
 					<div class="field dropdown">
-						<input readonly="" type="number" id="party" name="party" min="2" max="8" value="2" required="">
-						<div class="dropdownContent">
-							<button type="button" class="dropdownBtn" data-input="#party" data-value="2">
-								2
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#party" data-value="3">
-								3
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#party" data-value="4">
-								4
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#party" data-value="5">
-								5
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#party" data-value="6">
-								6
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#party" data-value="7">
-								7
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#party" data-value="8">
-								8
-							</button>
-						</div>
+						<input readonly="" type="number" id="party" name="party" min="2" max="8" value="2" required="" placeholder="2-8">
+						<div class="dropdownContent" data-dropdown="party"></div>
 						<p class="error">Please select the number of people between 2-8</p>
 					</div>
 				</div>
@@ -138,6 +117,5 @@
 				<p>Please refresh to try again or give us a call</p>
 			</div>
 		</div>
-		<script src="/book.198dd6d2.js"></script>
 	</body>
 </html>
