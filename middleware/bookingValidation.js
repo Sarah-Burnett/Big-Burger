@@ -5,17 +5,24 @@ const bookingValidationRules = () => {
 		check("name")
 			.notEmpty()
 			.isLength({ min: 1 })
-			.withMessage("Please input your name"),
-		check("email").notEmpty().isEmail(),
+			.withMessage("Name of booker missing"),
+		check("email").notEmpty().isEmail().withMessage("Valid email missing"),
 		check("restaurant")
 			.notEmpty()
-			.matches(/'Tanygirisau'||'Glensgaich'/),
-		check("date").notEmpty().isISO8601(),
+			.matches(/'Tanygirisau'||'Glensgaich'/)
+			.withMessage("Restaurant missing"),
+		check("date").notEmpty().isISO8601().withMessage("Date of booking missing"),
+		check("day").notEmpty().isLength(8).withMessage("Day of booking missing"),
 		check("time")
 			.notEmpty()
 			.isLength(5)
-			.matches(/^[0-2][0-9]:[03][0]$/),
-		check("party").notEmpty().isNumeric().isLength(1),
+			.matches(/^[0-2][0-9]:[03][0]$/)
+			.withMessage("Time of booking missing"),
+		check("party")
+			.notEmpty()
+			.isNumeric()
+			.isLength(1)
+			.withMessage("Party size missing"),
 	];
 };
 
@@ -26,6 +33,6 @@ const validate = (req, res, next) => {
 };
 
 module.exports = {
-    bookingValidationRules,
-    validate
-}
+	bookingValidationRules,
+	validate,
+};

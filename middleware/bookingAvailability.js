@@ -4,7 +4,6 @@ const checkAvailability = (req, res, next) => {
 	Booking.find({
 		restaurant: req.body.restaurant,
 		date: req.body.date,
-		time: req.body.time,
 	})
 		.then((bookings) => {
 			const partySum = (total, num) => total + num;
@@ -18,7 +17,7 @@ const checkAvailability = (req, res, next) => {
 			) {
 				res.status(409).json({
 					msg: "Booking slot full",
-					date: req.body.date,
+					day: req.body.day,
 					time: req.body.time,
 				});
 			} else next();

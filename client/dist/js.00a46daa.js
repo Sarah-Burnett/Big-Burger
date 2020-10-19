@@ -391,7 +391,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 var forEach = function forEach(nodeList, cb) {
   var nodes = nodeList;
   if (typeof nodeList === "string") nodes = document.querySelectorAll(nodes);
-  console.log(nodes);
 
   var _iterator = _createForOfIteratorHelper(nodes),
       _step;
@@ -536,7 +535,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56859" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63616" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

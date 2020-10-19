@@ -27,7 +27,6 @@ const openingHours = {
 
 export const getAvailableTimes = (date, restaurant) => {
 	const times = [];
-	console.log(date, restaurant);
 	let day = format(date, "eee");
 	let [opening, closing] = openingHours[restaurant][day];
 	opening = date.setHours(opening.substr(0, 2), opening.substr(3));
@@ -37,7 +36,6 @@ export const getAvailableTimes = (date, restaurant) => {
 		times.push(format(current, "HH:mm"));
 		current = addMinutes(current, 30);
 	}
-	console.log(day, times);
 	return times;
 };
 

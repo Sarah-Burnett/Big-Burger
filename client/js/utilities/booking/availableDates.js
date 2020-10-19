@@ -14,13 +14,13 @@ export const getAvailableDates = (today) => {
 
 export const setAvailableDates = (today) => {
 	const dates = getAvailableDates(today);
-	const dropdownContainer = document.querySelector('[data-dropdown="date"]');
+	const dropdownContainer = document.querySelector('[data-dropdown="day"]');
 	for (const date of dates) {
 		const newButton = createDropdownButton();
 		newButton.innerText = format(date, "eee do MMM");
-		newButton.dataset.input = "#date";
+		newButton.dataset.input = "#day";
 		newButton.dataset.value = format(date, "dd/MM/yyyy");
+		newButton.dataset.date = date;
 		dropdownContainer.append(newButton);
-		console.log(typeof date, typeof newButton.dataset.value);
 	}
 };
