@@ -1,13 +1,17 @@
-const { createDropdownButton } = require("../dom/createButton");
+import { fetch } from "./fetch";
+import { GET_AVAILABILITY } from "./types";
+import { createDropdownButton } from "../dom/createButton";
 
-const getAvailableParty = (restaurant, date, time) => {
-	//TODO:query db for availability
-	return [2, 3, 4, 5, 6, 7, 8];
+export const getAvailableParty = (restaurant, date) => {
+	fetch(GET_AVAILABILITY, { restaurant, date });
 };
 
-export const setAvailableParty = (restaurant, date, time) => {
-	const sizes = getAvailableParty(restaurant, date, time);
+export const setAvailableParty = (sizes) => {
+	console.log(sizes);
 	const dropdownContainer = document.querySelector('[data-dropdown="party"]');
+	if (sizes.length === 0) {
+		dropdownContainer.innerText = "Booking full";
+	}
 	for (const size of sizes) {
 		const newButton = createDropdownButton();
 		newButton.innerText = size;

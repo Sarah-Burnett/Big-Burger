@@ -1,13 +1,7 @@
-import {
-	SHOW_BOOKED,
-	SHOW_FAILED,
-	SHOW_FULL,
-	SHOW_CANCELLED,
-} from "./types";
+import { SHOW_BOOKED, SHOW_FAILED, SHOW_FULL, SHOW_CANCELLED } from "./types";
 
 import { showModal } from "../dom/toggleModal";
-import { setInnerHTML } from '../dom/setInnerHTML';
-
+import { setInnerHTML } from "../dom/setInnerHTML";
 
 const getModalParams = (type, payload) => {
 	switch (type) {
@@ -24,22 +18,26 @@ const getModalParams = (type, payload) => {
 		case SHOW_FULL:
 			return {
 				modalSelector: ".bookFull",
-				HTMLSelector: ".bookingDetails",
+				HTMLSelector: ".bookingDate",
 				newHTML:
 					"<div>" +
-					`<p>Date: <span>${payload.date}</span></p>` +
+					`<p>Date: <span>${payload.day}</span></p>` +
 					`<p>Time: <span>${payload.time}</span></p>` +
 					"</div>",
 			};
 		case SHOW_CANCELLED:
 			return {
-				modalSelector: ".bookDeleted"
-			}
+				modalSelector: ".bookDeleted",
+			};
 	}
 };
 
 export const handleModal = (type, payload) => {
-	const { modalSelector, HTMLSelector, newHTML } = getModalParams(type, payload);
+	const { modalSelector, HTMLSelector, newHTML } = getModalParams(
+		type,
+		payload
+	);
+	console.log(modalSelector, HTMLSelector, newHTML);
 	if (HTMLSelector) setInnerHTML(HTMLSelector, newHTML);
 	showModal(modalSelector);
 };
