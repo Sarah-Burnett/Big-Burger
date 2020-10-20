@@ -86,6 +86,9 @@ const getFetchParams = (type, params) => {
 export const fetch = (type, params) => {
 	const { method, url, resolved, rejected } = getFetchParams(type, params);
 	axios({ method, url, data: params })
-		.then((res) => resolved(res))
+		.then((res) => {
+			console.log(res);
+			return resolved(res);
+		})
 		.catch((err) => rejected(err));
 };

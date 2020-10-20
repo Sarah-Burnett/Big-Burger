@@ -13,6 +13,12 @@ export const changeFormValue = (btn) => {
 				document.querySelector("#restaurant").value
 			);
 		}
+		if (btn.dataset.input === "#restaurant") {
+			setAvailableTimes(
+				new Date(document.querySelector("#day").dataset.date),
+				btn.dataset.value
+			);
+		}
 		if (btn.dataset.input === "#time") {
 			const date = setDate(
 				new Date(document.querySelector("#day").dataset.date),

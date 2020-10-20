@@ -20373,6 +20373,7 @@ exports.getAvailableParty = getAvailableParty;
 var setAvailableParty = function setAvailableParty(sizes) {
   console.log(sizes);
   var dropdownContainer = document.querySelector('[data-dropdown="party"]');
+  dropdownContainer.innerText = "";
 
   if (sizes.length === 0) {
     dropdownContainer.innerText = "Booking full";
@@ -20407,6 +20408,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.setDate = void 0;
 
 var setDate = function setDate(date, time) {
+  console.log(date);
   var mins = parseInt(time.substr(3, 5));
   var hrs = parseInt(time.substr(0, 2));
   date.setMinutes(mins, 0);
@@ -20439,6 +20441,10 @@ var changeFormValue = function changeFormValue(btn) {
     if (btn.dataset.input === "#day") {
       document.querySelector(btn.dataset.input).dataset.date = btn.dataset.date;
       (0, _availableTimes.setAvailableTimes)(new Date(btn.dataset.date), document.querySelector("#restaurant").value);
+    }
+
+    if (btn.dataset.input === "#restaurant") {
+      (0, _availableTimes.setAvailableTimes)(new Date(document.querySelector("#day").dataset.date), btn.dataset.value);
     }
 
     if (btn.dataset.input === "#time") {
@@ -20529,6 +20535,8 @@ var getAvailableTimes = function getAvailableTimes(date, restaurant) {
 exports.getAvailableTimes = getAvailableTimes;
 
 var setAvailableTimes = function setAvailableTimes(date, restaurant) {
+  console.log(date, restaurant);
+  if (!restaurant || !date) return;
   var times = getAvailableTimes(date, restaurant);
   var dropdownContainer = document.querySelector('[data-dropdown="time"]');
   dropdownContainer.innerText = "";
@@ -20605,8 +20613,10 @@ exports.validateBooking = exports.removeError = exports.showError = void 0;
 
 var _toggleClassList = require("../dom/toggleClassList");
 
-var inputs = document.querySelectorAll('input');
-var errorBoxes = document.querySelectorAll('.error');
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var inputs = document.querySelectorAll("input");
+var errorBoxes = document.querySelectorAll(".error");
 
 var showError = function showError(index) {
   (0, _toggleClassList.addClassList)(errorBoxes[index], "errorActive");
@@ -20619,8 +20629,8 @@ exports.showError = showError;
 var removeError = function removeError(index) {
   inputs[index].oninput = function () {
     if (inputs[index].validity.valid) {
-      (0, _toggleClassList.removeClassList)(inputs[index], 'inputInvalid');
-      (0, _toggleClassList.removeClassList)(errorBoxes[index], 'errorActive');
+      (0, _toggleClassList.removeClassList)(inputs[index], "inputInvalid");
+      (0, _toggleClassList.removeClassList)(errorBoxes[index], "errorActive");
     }
   };
 };
@@ -20630,6 +20640,8 @@ exports.removeError = removeError;
 var validateBooking = function validateBooking() {
   var error = false;
   inputs.forEach(function (input, index) {
+    console.log(input.name, input.validity.valid, _typeof(input.value));
+
     if (!input.validity.valid) {
       error = true;
       showError(index);
@@ -20742,6 +20754,7 @@ var fetch = function fetch(type, params) {
     url: url,
     data: params
   }).then(function (res) {
+    console.log(res);
     return resolved(res);
   }).catch(function (err) {
     return rejected(err);
@@ -20791,12 +20804,12 @@ exports.setParams = setParams;
 
 var handleSubmit = function handleSubmit(e, type, button) {
   e.preventDefault();
-  var params = setParams();
-  console.log(params);
-  (0, _addSessionStorage.addSessionStorage)("booking", JSON.stringify(params));
   var err = (0, _validateBooking.validateBooking)();
 
   if (!err) {
+    var params = setParams();
+    console.log(params);
+    (0, _addSessionStorage.addSessionStorage)("booking", JSON.stringify(params));
     document.querySelector(button).disabled = true;
     (0, _fetch.fetch)(type, params);
   }
@@ -20858,7 +20871,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63616" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64468" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -8,7 +8,10 @@ Three responsive pages to site:
 - Booking - view booking from form/query string booking id which can be edited/deleted 
 
 ## To do
-- Fix get time and put party as append to
+- GET future booking only
+- PUT changed booking only
+- GMT+1 issue 
+- Validation issue 
 - Testing
 - Restaurant site to view and analyse bookings - routes and pug template started although need auth and filtering...
 - Email to confirm booking

@@ -9,6 +9,7 @@ export const getAvailableParty = (restaurant, date) => {
 export const setAvailableParty = (sizes) => {
 	console.log(sizes);
 	const dropdownContainer = document.querySelector('[data-dropdown="party"]');
+	dropdownContainer.innerText = "";
 	if (sizes.length === 0) {
 		dropdownContainer.innerText = "Booking full";
 	}

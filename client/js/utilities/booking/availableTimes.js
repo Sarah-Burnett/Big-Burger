@@ -40,6 +40,8 @@ export const getAvailableTimes = (date, restaurant) => {
 };
 
 export const setAvailableTimes = (date, restaurant) => {
+	console.log(date, restaurant);
+	if (!restaurant || !date) return;
 	const times = getAvailableTimes(date, restaurant);
 	const dropdownContainer = document.querySelector('[data-dropdown="time"]');
 	dropdownContainer.innerText = "";
