@@ -1,6 +1,6 @@
 # Big-Burger restaurant
 
-> First dev project inspired by my new lack of ability to use the web without the desire to recreate something... <br> Front-end landing page and CRUD booking form with HTML/SASS/vanilla JS bundled with parcel. <br> NodeJS/express back-end to serve client and booking REST API with MongoDB/mongoose.
+> Front-end landing page and CRUD booking form with HTML/SASS/vanilla JS bundled with parcel. <br> NodeJS/express back-end to serve client and booking REST API with MongoDB/mongoose.
 
 Three responsive pages to site:
 - Index - images, menu,  reviews slider, locations sliders and map modal
