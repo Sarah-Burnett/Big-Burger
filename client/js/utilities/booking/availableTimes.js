@@ -4,7 +4,7 @@ import { createDropdownButton } from "../dom/createButton";
 import { forEach } from "../dom/forEach";
 import { changeFormValue } from "./changeFormValue";
 
-const openingHours = {
+export const openingHours = {
 	Glensgaich: {
 		Mon: ["17:00", "22:00"],
 		Tue: ["17:00", "22:00"],
@@ -53,6 +53,7 @@ export const setAvailableTimes = (date, restaurant) => {
 		dropdownContainer.append(newButton);
 	}
 	forEach('[data-dropdown="time"] button', changeFormValue);
+	return times;
 };
 
 // <button

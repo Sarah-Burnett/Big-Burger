@@ -5,3 +5,4 @@ export const forEach = (nodeList, cb) => {
 		cb(node);
 	}
 };
+

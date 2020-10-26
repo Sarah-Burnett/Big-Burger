@@ -3,6 +3,7 @@ import { setAvailableTimes } from "./availableTimes";
 import { getAvailableParty } from "./availableParty";
 import { setDate } from "./setDate";
 
+//typeof btn is node
 export const changeFormValue = (btn) => {
 	addEventListener(btn, () => {
 		document.querySelector(btn.dataset.input).value = btn.dataset.value;
