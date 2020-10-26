@@ -83,15 +83,13 @@
 					<div class="label">
 						<label for="date"><h3>Date of Booking</h3></label>
 					</div>
-					<div class="field">
+					<div class="field dropdown">
 						<input
-							type="date"
 							id="date"
 							name="date"
-							min="2020-04-01"
-							max="2020-04-30"
 							required
 						/>
+						<div class="dropdownContent" data-dropdown="date"></div>
 						<p class="error">
 							Please select a date (dd/mm/yy) in the next two weeks
 						</p>

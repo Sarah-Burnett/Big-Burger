@@ -17,6 +17,7 @@ export const setParams = () => {
 export const handleSubmit = (e, type, button) => {
 	e.preventDefault();
 	const params = setParams();
+	console.log(params);
 	addSessionStorage("booking", JSON.stringify(params));
 	const err = validateBooking();
 	if (!err) {

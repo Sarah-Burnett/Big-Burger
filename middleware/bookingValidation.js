@@ -10,7 +10,7 @@ const bookingValidationRules = () => {
 		check("restaurant")
 			.notEmpty()
 			.matches(/'Tanygirisau'||'Glensgaich'/),
-		check("date").notEmpty().isISO8601(),
+		check("date").notEmpty().isLength(10),
 		check("time")
 			.notEmpty()
 			.isLength(5)
