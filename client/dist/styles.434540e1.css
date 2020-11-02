@@ -11,7 +11,7 @@ html {
 
 body {
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.2;
   background: #000;
   color: #f5f5f5;
@@ -21,30 +21,15 @@ body {
   overflow-x: hidden;
   padding: 1vh;
 }
-@media (min-width: 600px) {
-  body {
-    font-size: 16px;
-  }
-}
-@media (min-width: 900px) {
-  body {
-    font-size: 18px;
-  }
-}
-@media (min-width: 1200px) {
-  body {
-    font-size: 20px;
-  }
-}
-@media (min-width: 1800px) {
-  body {
-    font-size: 22px;
-  }
-}
 
 :focus {
   outline: none;
   border: 1px solid #205909;
+}
+
+button {
+  font-size: 20px;
+  line-height: 1.2;
 }
 
 .dot {
@@ -159,7 +144,7 @@ nav .burger .line3 {
   height: 10vh;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   nav {
     display: flex;
     flex-direction: row;
@@ -201,14 +186,14 @@ nav .burger .line3 {
   justify-content: center;
   flex-direction: row;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   #home-title, #reviews, #menu-title {
     background-image: url(/burger-desktop.37203440.jpg);
   }
 }
 
 #about-page {
-  height: 90vh;
+  min-height: 90vh;
 }
 #about-page .about-image {
   display: none;
@@ -228,22 +213,28 @@ nav .burger .line3 {
   width: 100vw;
   padding: 2em;
 }
-
-@media only screen and (min-width: 720px) {
+@media only screen and (min-width: 500px) {
   #about-page {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+    flex-direction: column-reverse;
   }
   #about-page .about-image {
-    display: block;
-    width: 50vw;
-    height: 90vh;
     background-image: url(/waitress.91bd79d5.jpg);
     background-repeat: no-repeat no-repeat;
     background-size: cover;
     background-position: center;
+    display: block;
+    width: 100vw;
+    height: 50%;
+  }
+}
+@media only screen and (min-width: 900px) {
+  #about-page {
+    flex-direction: row;
+  }
+  #about-page .about-image {
+    width: 50vw;
+    height: 90vh;
   }
   #about-page .about-content {
     width: 50vw;
@@ -253,6 +244,7 @@ nav .burger .line3 {
     width: 40vw;
   }
 }
+
 #menu-title {
   flex-direction: column;
 }
@@ -282,8 +274,10 @@ nav .burger .line3 {
 }
 #menu-content .menu-nav {
   min-height: 25vh;
+  padding: 1vw;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 1vw;
   align-items: center;
   justify-content: space-around;
 }
@@ -301,12 +295,12 @@ nav .burger .line3 {
   font-family: "Source Sans Pro", sans-serif;
   height: 15vh;
   flex: 1;
-  margin: 1vw;
+  padding: 1vw;
   border-style: none;
   background: #36970f;
   cursor: pointer;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   #menu-content .menu-nav button {
     padding: 1em;
     margin: 0 1em;
@@ -320,15 +314,28 @@ nav .burger .line3 {
   transition: opacity 0.6s ease;
   padding: 1em;
   min-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 #menu-content .menu-container .menu-list {
   padding: 2vh 1vw;
+  width: 80%;
 }
-@media (min-width: 500px) {
+@media (min-width: 900px) {
   #menu-content .menu-container .menu-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
+    grid-gap: 40px;
+  }
+}
+#menu-content .menu-container .menu-item {
+  margin: 2vw 1vw;
+}
+@media (min-width: 900px) {
+  #menu-content .menu-container .menu-item {
+    margin: 0;
   }
 }
 
@@ -342,7 +349,7 @@ nav .burger .line3 {
   justify-content: center;
   flex-direction: column;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   #reviews {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url(/burger-desktop.37203440.jpg);
   }
@@ -394,10 +401,15 @@ nav .burger .line3 {
   width: 100vw;
   height: 65vh;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 #location .location-container .location-item {
   position: absolute;
   width: 100vw;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -427,6 +439,13 @@ nav .burger .line3 {
 #location .location-container .location-item .contact p:hover {
   color: #36970f;
 }
+#location .location-container .location-info {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
 
 @media (min-width: 500px) {
   .swipe {
@@ -455,7 +474,7 @@ nav .burger .line3 {
   padding: 1vh 0;
   margin: auto;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   #footer {
     text-align: left;
     display: grid;
@@ -485,7 +504,7 @@ nav .burger .line3 {
 #connect a:hover {
   color: #36970f;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   #connect {
     flex-direction: row;
   }
@@ -506,7 +525,7 @@ nav .burger .line3 {
   transition: opacity 0.6s ease;
   pointer-events: none;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   .modalBg {
     top: 0;
     height: 100vh;
@@ -527,31 +546,11 @@ nav .burger .line3 {
   border-style: none;
   background: #36970f;
   font-family: "Slabo 27px", serif;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.2;
   cursor: pointer;
   width: 90%;
   border-radius: 1px;
-}
-@media (min-width: 600px) {
-  .modal button {
-    font-size: 16px;
-  }
-}
-@media (min-width: 900px) {
-  .modal button {
-    font-size: 18px;
-  }
-}
-@media (min-width: 1200px) {
-  .modal button {
-    font-size: 20px;
-  }
-}
-@media (min-width: 1800px) {
-  .modal button {
-    font-size: 22px;
-  }
 }
 .modal button:hover {
   background: #205909;
@@ -559,7 +558,7 @@ nav .burger .line3 {
 .modal input {
   width: 90%;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   .modal {
     width: 60vw;
     height: 60vh;
@@ -612,7 +611,7 @@ nav .burger .line3 {
   width: 100%;
   max-height: 92vh;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   .map {
     height: 60vh;
   }

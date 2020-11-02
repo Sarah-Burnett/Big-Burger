@@ -27,6 +27,10 @@ body {
 	border: 1px solid $darkGreen;
 }
 
+button {
+	@include fontSize;
+}
+
 //review and carousel dots
 .dot {
 	height: 15px;

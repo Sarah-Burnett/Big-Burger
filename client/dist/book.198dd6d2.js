@@ -5176,7 +5176,6 @@ document.querySelector("#date").addEventListener("onchange", function (event) {
 document.querySelectorAll(".dropdownBtn").forEach(function (btn) {
   btn.addEventListener("click", function () {
     (0, _changeInputValue.changeInputValue)(btn.dataset.input, btn.dataset.value);
-    console.log(document.activeElement);
     document.activeElement.blur();
   });
 }); //fill from session storage
@@ -5219,7 +5218,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51009" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64707" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

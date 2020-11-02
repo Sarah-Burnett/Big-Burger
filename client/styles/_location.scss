@@ -13,9 +13,14 @@
         width: 100vw;
         height: 65vh;
         position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         .location-item {
             position: absolute;
             width: 100vw;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -43,6 +48,13 @@
                     color: $green;
                 }
             }
+        }
+        .location-info {
+             height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
         }
     } 
     //dot in index

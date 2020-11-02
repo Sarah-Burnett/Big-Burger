@@ -16,7 +16,6 @@ document.querySelector("#date").addEventListener("onchange", (event) => {
 document.querySelectorAll(".dropdownBtn").forEach((btn) => {
 	btn.addEventListener("click", () => {
 		changeInputValue(btn.dataset.input, btn.dataset.value);
-		console.log(document.activeElement);
 		document.activeElement.blur();
 	});
 });

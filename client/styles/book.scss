@@ -1,6 +1,8 @@
 @import "./variables";
 @import "./modal";
 
+$height: 65px;
+
 @mixin width {
 	width: 95vw;
 	.label,
@@ -25,8 +27,8 @@
 @mixin button {
 	button,
 	input[type="submit"] {
-		height: 10vh;
-		line-height: 10vh;
+		height: $height + 10px;
+		line-height: $height + 10px;
 		border-style: none;
 		background: $green;
 		font-family: "Source Sans Pro", sans-serif;
@@ -145,11 +147,11 @@ form {
 		font-family: "Source Sans Pro", sans-serif;
 		font-size: larger;
 		text-align: center;
-		height: 8vh;
-		padding: 2vw;
+		height: $height;
+		padding: 5px;
 		border: none;
 		@include media($desktop) {
-			padding: 1vw;
+			padding: 2px;
 		}
 		background: $white;
 	}
@@ -192,7 +194,7 @@ form {
 .dropdownContent {
 	position: absolute;
 	background: $white;
-	top: 8vh;
+	top: $height;
 	left: 0;
 	height: 0;
 	opacity: 0;
@@ -219,7 +221,7 @@ form {
 .dropdown:focus-within {
 	.dropdownContent {
 		height: auto;
-		max-height: 40vh;
+		max-height: ($height + 10) * 5;
 		overflow-y: auto;
 		&::-webkit-scrollbar {
 			display: none;

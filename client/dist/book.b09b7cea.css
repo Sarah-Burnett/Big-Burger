@@ -14,7 +14,7 @@
   transition: opacity 0.6s ease;
   pointer-events: none;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   .modalBg {
     top: 0;
     height: 100vh;
@@ -35,31 +35,11 @@
   border-style: none;
   background: #36970f;
   font-family: "Slabo 27px", serif;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.2;
   cursor: pointer;
   width: 90%;
   border-radius: 1px;
-}
-@media (min-width: 600px) {
-  .modal button {
-    font-size: 16px;
-  }
-}
-@media (min-width: 900px) {
-  .modal button {
-    font-size: 18px;
-  }
-}
-@media (min-width: 1200px) {
-  .modal button {
-    font-size: 20px;
-  }
-}
-@media (min-width: 1800px) {
-  .modal button {
-    font-size: 22px;
-  }
 }
 .modal button:hover {
   background: #205909;
@@ -67,7 +47,7 @@
 .modal input, .modal form textarea, form .modal textarea {
   width: 90%;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   .modal {
     width: 60vw;
     height: 60vh;
@@ -120,7 +100,7 @@
   width: 100%;
   max-height: 92vh;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   .map {
     height: 60vh;
   }
@@ -151,32 +131,12 @@ body {
   width: 100vw;
   color: #f5f5f5;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.2;
   line-height: 2;
   text-align: center;
   overflow-x: hidden;
   overflow-y: hidden;
-}
-@media (min-width: 600px) {
-  body {
-    font-size: 16px;
-  }
-}
-@media (min-width: 900px) {
-  body {
-    font-size: 18px;
-  }
-}
-@media (min-width: 1200px) {
-  body {
-    font-size: 20px;
-  }
-}
-@media (min-width: 1800px) {
-  body {
-    font-size: 22px;
-  }
 }
 
 :focus {
@@ -213,7 +173,7 @@ nav #backBtn:hover {
 #blank {
   height: 0;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   #blank {
     height: 10vh;
   }
@@ -246,7 +206,7 @@ form textarea,
 form .dropdownContent {
   width: 95vw;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   form {
     width: 70vw;
   }
@@ -271,7 +231,7 @@ form .row textarea,
 form .row .dropdownContent {
   width: 95vw;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   form .row {
     width: 70vw;
   }
@@ -285,7 +245,7 @@ form .row .dropdownContent {
     width: 50vw;
   }
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   form .row {
     display: flex;
     align-items: flex-start;
@@ -298,14 +258,14 @@ form input, form textarea {
   font-family: "Source Sans Pro", sans-serif;
   font-size: larger;
   text-align: center;
-  height: 8vh;
-  padding: 2vw;
+  height: 65px;
+  padding: 5px;
   border: none;
   background: #f5f5f5;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   form input, form textarea {
-    padding: 1vw;
+    padding: 2px;
   }
 }
 form .inputInvalid {
@@ -315,7 +275,7 @@ form .error {
   opacity: 0;
   color: red;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   form .error {
     text-align: left;
   }
@@ -333,7 +293,7 @@ form .message textarea,
 form .message .dropdownContent {
   width: 95vw;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   form .message {
     width: 70vw;
   }
@@ -347,7 +307,7 @@ form .message .dropdownContent {
     width: 50vw;
   }
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   form .message textarea {
     margin-top: 2vh;
     width: 70vw;
@@ -368,7 +328,7 @@ form textarea {
 .dropdownContent {
   position: absolute;
   background: #f5f5f5;
-  top: 8vh;
+  top: 65px;
   left: 0;
   height: 0;
   opacity: 0;
@@ -383,47 +343,15 @@ form textarea {
 .dropdownContent input[type=submit],
 .dropdownContent form textarea[type=submit],
 form .dropdownContent textarea[type=submit] {
-  height: 10vh;
-  line-height: 10vh;
+  height: 75px;
+  line-height: 75px;
   border-style: none;
   background: #36970f;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.2;
   cursor: pointer;
   width: 100%;
-}
-@media (min-width: 600px) {
-  .dropdownContent button,
-.dropdownContent input[type=submit],
-.dropdownContent form textarea[type=submit],
-form .dropdownContent textarea[type=submit] {
-    font-size: 16px;
-  }
-}
-@media (min-width: 900px) {
-  .dropdownContent button,
-.dropdownContent input[type=submit],
-.dropdownContent form textarea[type=submit],
-form .dropdownContent textarea[type=submit] {
-    font-size: 18px;
-  }
-}
-@media (min-width: 1200px) {
-  .dropdownContent button,
-.dropdownContent input[type=submit],
-.dropdownContent form textarea[type=submit],
-form .dropdownContent textarea[type=submit] {
-    font-size: 20px;
-  }
-}
-@media (min-width: 1800px) {
-  .dropdownContent button,
-.dropdownContent input[type=submit],
-.dropdownContent form textarea[type=submit],
-form .dropdownContent textarea[type=submit] {
-    font-size: 22px;
-  }
 }
 .dropdownContent button:hover,
 .dropdownContent input[type=submit]:hover,
@@ -435,7 +363,7 @@ form .dropdownContent textarea[type=submit]:hover {
   border: 1px solid #f5f5f5;
   display: block;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   .dropdownContent {
     display: flex;
     flex-wrap: wrap;
@@ -447,7 +375,7 @@ form .dropdownContent textarea[type=submit]:hover {
 
 .dropdown:focus-within .dropdownContent {
   height: auto;
-  max-height: 40vh;
+  max-height: 375px;
   overflow-y: auto;
   -ms-overflow-style: none;
   opacity: 1;
@@ -470,7 +398,7 @@ form .buttons textarea,
 .buttons .dropdownContent {
   width: 95vw;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   .buttons {
     width: 70vw;
   }
@@ -489,47 +417,15 @@ form .buttons textarea,
 .buttons input[type=submit],
 .buttons form textarea[type=submit],
 form .buttons textarea[type=submit] {
-  height: 10vh;
-  line-height: 10vh;
+  height: 75px;
+  line-height: 75px;
   border-style: none;
   background: #36970f;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.2;
   cursor: pointer;
   width: 100%;
-}
-@media (min-width: 600px) {
-  .buttons button,
-.buttons input[type=submit],
-.buttons form textarea[type=submit],
-form .buttons textarea[type=submit] {
-    font-size: 16px;
-  }
-}
-@media (min-width: 900px) {
-  .buttons button,
-.buttons input[type=submit],
-.buttons form textarea[type=submit],
-form .buttons textarea[type=submit] {
-    font-size: 18px;
-  }
-}
-@media (min-width: 1200px) {
-  .buttons button,
-.buttons input[type=submit],
-.buttons form textarea[type=submit],
-form .buttons textarea[type=submit] {
-    font-size: 20px;
-  }
-}
-@media (min-width: 1800px) {
-  .buttons button,
-.buttons input[type=submit],
-.buttons form textarea[type=submit],
-form .buttons textarea[type=submit] {
-    font-size: 22px;
-  }
 }
 .buttons button:hover,
 .buttons input[type=submit]:hover,
@@ -543,7 +439,7 @@ form .buttons textarea[type=submit]:hover {
 .buttons button {
   margin: 1vh 0;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   .buttons {
     display: grid;
     justify-content: center;
