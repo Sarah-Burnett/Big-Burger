@@ -52,11 +52,6 @@ html {
 }
 
 body {
-	background-image: url(/images/burger-bg.jpeg);
-	background-repeat: no-repeat no-repeat;
-	background-size: cover;
-	background-position: center;
-	height: 90vh;
 	margin-top: 10vh;
 	width: 100vw;
 	color: $white;
@@ -65,7 +60,6 @@ body {
 	line-height: 2;
 	text-align: center;
 	overflow-x: hidden;
-	overflow-y: hidden;
 }
 
 :focus {
@@ -99,6 +93,19 @@ nav {
 	}
 }
 
+#background {
+	background-image: url(/images/burger-bg.jpeg);
+	background-repeat: no-repeat no-repeat;
+	background-size: cover;
+	background-position: center;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	z-index: -99;
+}
+
 #blank {
 	height: 0;
 	@include media($desktop) {
@@ -109,21 +116,12 @@ nav {
 #bookingForm {
 	background: rgba(0, 0, 0, 0.7);
 	width: 100vw;
-	height: 90vh;
 	margin-top: 10vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
 	padding: 1em;
-	overflow-y: scroll;
-	// @include media($desktop) {
-	//     -ms-overflow-style: none;
-	//     &::-webkit-scrollbar {
-	//         width: 0;
-	//         height: 0;
-	//     }
-	// }
 }
 
 form {
