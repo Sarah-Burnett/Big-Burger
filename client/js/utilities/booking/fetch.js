@@ -10,7 +10,10 @@ import {
 	SHOW_FULL,
 	GET_AVAILABILITY,
 } from "./types";
-import { addSessionStorage } from "../storage/addSessionStorage";
+import {
+	addSessionStorage,
+	removeSessionStorage,
+} from "../storage/addSessionStorage";
 import { handleModal } from "./handleModal";
 import { autoFillForm } from "./autofillForm";
 import { showError } from "./validateBooking";
@@ -21,7 +24,11 @@ const getFetchParams = (type, params) => {
 		case GET_AVAILABILITY:
 			return {
 				method: "GET",
-				url: `./api/book/avail?restaurant=${params.restaurant}&date=${params.date}`,
+				url: `./api/book/avail
+				?restaurant=${params.restaurant}
+				&day=${params.day}
+				&time=${params.time}
+				&id=${params.id}`,
 				resolved: function (res) {
 					setAvailableParty(res.data.party);
 				},
@@ -35,6 +42,7 @@ const getFetchParams = (type, params) => {
 				method: "POST",
 				url: "./api/book",
 				resolved: function (res) {
+					removeSessionStorage("booking");
 					handleModal(SHOW_BOOKED, res.data);
 				},
 				rejected: function (err) {

@@ -248,7 +248,13 @@ form {
   flex-direction: column;
   align-items: center;
 }
-form .label, form .field, form input, form textarea, form .dropdownContent {
+form .label,
+form .field,
+form input,
+form textarea,
+form select,
+form .option,
+form .dropdownContent {
   width: 95vw;
 }
 @media (min-width: 720px) {
@@ -258,7 +264,12 @@ form .label, form .field, form input, form textarea, form .dropdownContent {
   form .label {
     width: 20vw;
   }
-  form .field, form input, form textarea, form .dropdownContent {
+  form .field,
+form input,
+form textarea,
+form select,
+form .option,
+form .dropdownContent {
     width: 50vw;
   }
 }
@@ -266,7 +277,13 @@ form .row {
   width: 95vw;
   margin: 3vh 0 1vh;
 }
-form .row .label, form .row .field, form .row input, form .row textarea, form .row .dropdownContent {
+form .row .label,
+form .row .field,
+form .row input,
+form .row textarea,
+form .row select,
+form .row .option,
+form .row .dropdownContent {
   width: 95vw;
 }
 @media (min-width: 720px) {
@@ -276,7 +293,12 @@ form .row .label, form .row .field, form .row input, form .row textarea, form .r
   form .row .label {
     width: 20vw;
   }
-  form .row .field, form .row input, form .row textarea, form .row .dropdownContent {
+  form .row .field,
+form .row input,
+form .row textarea,
+form .row select,
+form .row .option,
+form .row .dropdownContent {
     width: 50vw;
   }
 }
@@ -287,21 +309,29 @@ form .row .label, form .row .field, form .row input, form .row textarea, form .r
     margin: 2vh 0 1vw;
   }
 }
-form input, form textarea {
+form input, form textarea,
+form select {
   display: block;
   width: 100%;
   font-family: "Source Sans Pro", sans-serif;
   font-size: larger;
-  text-align: center;
-  height: 8vh;
+  text-align: left;
+  height: 10vh;
   padding: 2vw;
   border: none;
   background: #f5f5f5;
 }
 @media (min-width: 720px) {
-  form input, form textarea {
+  form input, form textarea,
+form select {
     padding: 1vw;
   }
+}
+form option {
+  padding: 2vw;
+}
+form option:hover {
+  background: #36970f;
 }
 form .inputInvalid {
   border: 2px solid red;
@@ -321,7 +351,13 @@ form .errorActive {
 form .message {
   width: 95vw;
 }
-form .message .label, form .message .field, form .message input, form .message textarea, form .message .dropdownContent {
+form .message .label,
+form .message .field,
+form .message input,
+form .message textarea,
+form .message select,
+form .message .option,
+form .message .dropdownContent {
   width: 95vw;
 }
 @media (min-width: 720px) {
@@ -331,7 +367,12 @@ form .message .label, form .message .field, form .message input, form .message t
   form .message .label {
     width: 20vw;
   }
-  form .message .field, form .message input, form .message textarea, form .message .dropdownContent {
+  form .message .field,
+form .message input,
+form .message textarea,
+form .message select,
+form .message .option,
+form .message .dropdownContent {
     width: 50vw;
   }
 }
@@ -344,93 +385,23 @@ form .message .label, form .message .field, form .message input, form .message t
 form textarea {
   min-height: 25vh;
   resize: vertical;
-  text-align: center;
   background: #f5f5f5;
   color: black;
-}
-
-.dropdown {
-  position: relative;
-}
-
-.dropdownContent {
-  position: absolute;
-  background: #36970f;
-  top: 8vh;
-  left: 0;
-  height: 0;
-  opacity: 0;
-  z-index: 99;
-  pointer-events: none;
-  transition: all 1s ease-in-out;
-  overflow-y: hidden;
-}
-.dropdownContent button, .dropdownContent input[type=submit], .dropdownContent form textarea[type=submit], form .dropdownContent textarea[type=submit] {
-  height: 10vh;
-  line-height: 10vh;
-  border-style: none;
-  background: #36970f;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 14px;
-  line-height: 1.2;
-  cursor: pointer;
-  width: 100%;
-}
-@media (min-width: 600px) {
-  .dropdownContent button, .dropdownContent input[type=submit], .dropdownContent form textarea[type=submit], form .dropdownContent textarea[type=submit] {
-    font-size: 16px;
-  }
-}
-@media (min-width: 900px) {
-  .dropdownContent button, .dropdownContent input[type=submit], .dropdownContent form textarea[type=submit], form .dropdownContent textarea[type=submit] {
-    font-size: 18px;
-  }
-}
-@media (min-width: 1200px) {
-  .dropdownContent button, .dropdownContent input[type=submit], .dropdownContent form textarea[type=submit], form .dropdownContent textarea[type=submit] {
-    font-size: 20px;
-  }
-}
-@media (min-width: 1800px) {
-  .dropdownContent button, .dropdownContent input[type=submit], .dropdownContent form textarea[type=submit], form .dropdownContent textarea[type=submit] {
-    font-size: 22px;
-  }
-}
-.dropdownContent button:hover, .dropdownContent input[type=submit]:hover, .dropdownContent form textarea[type=submit]:hover, form .dropdownContent textarea[type=submit]:hover {
-  background: #205909;
-}
-.dropdownContent button {
-  border: 0.5px solid #205909;
-  display: block;
-}
-@media (min-width: 720px) {
-  .dropdownContent {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .dropdownContent button {
-    width: 50%;
-  }
-}
-
-.dropdown:focus-within .dropdownContent {
-  height: auto;
-  max-height: 40vh;
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  opacity: 1;
-  transition: height 1s ease-in-out;
-  pointer-events: all;
-}
-.dropdown:focus-within .dropdownContent::-webkit-scrollbar {
-  display: none;
+  padding: 2vh;
 }
 
 .buttons {
   width: 95vw;
   margin: 5vh 0;
 }
-.buttons .label, .buttons .field, .buttons input, .buttons form textarea, form .buttons textarea, .buttons .dropdownContent {
+.buttons .label,
+.buttons .field,
+.buttons input,
+.buttons form textarea,
+form .buttons textarea,
+.buttons select,
+.buttons .option,
+.buttons .dropdownContent {
   width: 95vw;
 }
 @media (min-width: 720px) {
@@ -440,11 +411,20 @@ form textarea {
   .buttons .label {
     width: 20vw;
   }
-  .buttons .field, .buttons input, .buttons form textarea, form .buttons textarea, .buttons .dropdownContent {
+  .buttons .field,
+.buttons input,
+.buttons form textarea,
+form .buttons textarea,
+.buttons select,
+.buttons .option,
+.buttons .dropdownContent {
     width: 50vw;
   }
 }
-.buttons button, .buttons input[type=submit], .buttons form textarea[type=submit], form .buttons textarea[type=submit] {
+.buttons button,
+.buttons input[type=submit],
+.buttons form textarea[type=submit],
+form .buttons textarea[type=submit] {
   height: 10vh;
   line-height: 10vh;
   border-style: none;
@@ -456,27 +436,48 @@ form textarea {
   width: 100%;
 }
 @media (min-width: 600px) {
-  .buttons button, .buttons input[type=submit], .buttons form textarea[type=submit], form .buttons textarea[type=submit] {
+  .buttons button,
+.buttons input[type=submit],
+.buttons form textarea[type=submit],
+form .buttons textarea[type=submit] {
     font-size: 16px;
   }
 }
 @media (min-width: 900px) {
-  .buttons button, .buttons input[type=submit], .buttons form textarea[type=submit], form .buttons textarea[type=submit] {
+  .buttons button,
+.buttons input[type=submit],
+.buttons form textarea[type=submit],
+form .buttons textarea[type=submit] {
     font-size: 18px;
   }
 }
 @media (min-width: 1200px) {
-  .buttons button, .buttons input[type=submit], .buttons form textarea[type=submit], form .buttons textarea[type=submit] {
+  .buttons button,
+.buttons input[type=submit],
+.buttons form textarea[type=submit],
+form .buttons textarea[type=submit] {
     font-size: 20px;
   }
 }
 @media (min-width: 1800px) {
-  .buttons button, .buttons input[type=submit], .buttons form textarea[type=submit], form .buttons textarea[type=submit] {
+  .buttons button,
+.buttons input[type=submit],
+.buttons form textarea[type=submit],
+form .buttons textarea[type=submit] {
     font-size: 22px;
   }
 }
-.buttons button:hover, .buttons input[type=submit]:hover, .buttons form textarea[type=submit]:hover, form .buttons textarea[type=submit]:hover {
+.buttons button:hover,
+.buttons input[type=submit]:hover,
+.buttons form textarea[type=submit]:hover,
+form .buttons textarea[type=submit]:hover {
   background: #205909;
+}
+.buttons button:disabled:hover,
+.buttons input[type=submit]:disabled:hover,
+.buttons form textarea[type=submit]:disabled:hover,
+form .buttons textarea[type=submit]:disabled:hover {
+  background: #36970f;
 }
 .buttons #deleteBtn {
   background: red;
@@ -499,7 +500,8 @@ form textarea {
 .formEditable #updateBtn {
   display: block;
 }
-.formEditable #editBtn, .formEditable #deleteBtn {
+.formEditable #editBtn,
+.formEditable #deleteBtn {
   display: none;
 }
 
@@ -509,7 +511,8 @@ form textarea {
 .formDisabled #updateBtn {
   display: none;
 }
-.formDisabled #editBtn, .formDisabled #deleteBtn {
+.formDisabled #editBtn,
+.formDisabled #deleteBtn {
   pointer-events: all;
 }
 

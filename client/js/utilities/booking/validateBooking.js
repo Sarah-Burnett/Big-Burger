@@ -1,6 +1,7 @@
 import { addClassList, removeClassList } from "../dom/toggleClassList";
 
 const inputs = document.querySelectorAll("input");
+const selects = document.querySelectorAll("select");
 const errorBoxes = document.querySelectorAll(".error");
 
 export const showError = (index) => {
@@ -21,7 +22,6 @@ export const removeError = (index) => {
 export const validateBooking = () => {
 	let error = false;
 	inputs.forEach((input, index) => {
-		console.log(input.name, input.validity.valid, typeof input.value);
 		if (!input.validity.valid) {
 			error = true;
 			showError(index);

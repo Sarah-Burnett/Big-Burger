@@ -1,13 +1,13 @@
 const Booking = require("../models/Booking");
 
-const sumExistingParty = async (restaurant, date) => {
-	console.log("function args:");
-	console.log(restaurant, date);
-	const bookings = await Booking.find({
+const sumExistingParty = async (restaurant, date, id) => {
+	console.log({ restaurant, date });
+	let bookings = await Booking.find({
 		restaurant,
 		date,
 	});
-	console.log("db: " + bookings);
+	if (id) bookings = bookings.filter(({ _id }) => _id.toString() !== id);
+	console.log({ bookings });
 	const partySum = (total, num) => total + num;
 	const partyTotal = bookings.reduce(
 		(sum, booking) => partySum(sum, parseInt(booking.party)),

@@ -1,7 +1,7 @@
 import { fetch } from "./fetch";
 import { validateBooking } from "./validateBooking";
 import { addSessionStorage } from "../storage/addSessionStorage";
-import { setDate } from "./setDate";
+import { createDate } from "./createDate";
 
 export const setParams = () => {
 	const form = document.querySelector("#bookForm");
@@ -12,7 +12,7 @@ export const setParams = () => {
 	const time = form.elements["time"].value;
 	const party = form.elements["party"].value;
 	const message = form.elements["message"].value;
-	const date = setDate(new Date(form.elements["day"].dataset.date), time);
+	const date = createDate(day, time);
 	return { name, email, restaurant, day, date, time, party, message };
 };
 
@@ -20,6 +20,7 @@ export const handleSubmit = (e, type, button) => {
 	e.preventDefault();
 	const err = validateBooking();
 	if (!err) {
+		console.log(name.value);
 		const params = setParams();
 		console.log(params);
 		addSessionStorage("booking", JSON.stringify(params));

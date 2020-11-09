@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import {
 	getAvailableDates,
 	setAvailableDates,
@@ -30,13 +31,11 @@ test("array of dates in next fortnight", () => {
 });
 
 test("appends date buttons", () => {
-	document.body.innerHTML = '<div data-dropdown="day"/>';
+	document.body.innerHTML = '<input id="day"/><div data-dropdown="day"/>';
 	setAvailableDates(testDate);
 	const btns = document.querySelectorAll(".dropdownBtn");
 	expect(btns).toHaveLength(14);
 	btns.forEach((btn, index) => {
-		expect(new Date(btn.dataset.date)).toEqual(new Date(expectedDates[index]));
-		expect(btn.dataset.input).toBe("#day")
-		//TODO: add date regex here - need ss validation too
+		expect(btn.dataset.value).toBe(format(expectedDates[index], "dd/MM/yyyy"));
 	});
 });

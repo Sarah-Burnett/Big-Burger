@@ -50,32 +50,11 @@
 					<div class="label">
 						<label for="restaurant"><h3>Restaurant</h3></label>
 					</div>
-					<div class="field dropdown">
-						<input
-							readonly
-							name="restaurant"
-							id="restaurant"
-							pattern="Tanygirisau||Glensgaich"
-							required
-						/>
-						<div class="dropdownContent">
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#restaurant"
-								data-value="Glensgaich"
-							>
-								Glensgaich
-							</button>
-							<button
-								type="button"
-								class="dropdownBtn"
-								data-input="#restaurant"
-								data-value="Tanygirisau"
-							>
-								Tanygirisau
-							</button>
-						</div>
+					<div class="field">
+						<select readonly name="restaurant" id="restaurant" required>
+							<option value="Glensgaich">Glensgaich</option>
+							<option value="Tanygirisau">Tanygirisau</option>
+						</select>
 						<p class="error restaurantError">Please select a restaurant/p></p>
 					</div>
 				</div>
@@ -83,37 +62,23 @@
 					<div class="label">
 						<label for="day"><h3>Date of Booking</h3></label>
 					</div>
-					<div class="field dropdown">
-						<input
+					<div class="field">
+						<select
 							id="day"
 							name="day"
-							placeholder="dd/mm/yyyy"
 							required
-							readonly
-						/>
-						<div class="dropdownContent" data-dropdown="day">
-						</div>
-						<p class="error">
-							Please select a date
-						</p>
+						></select>
+						<p class="error">Please select a date</p>
 					</div>
 				</div>
 				<div class="row time">
 					<div class="label">
 						<label for="time"><h3>Time of Booking</h3></label>
 					</div>
-					<div class="field dropdown">
-						<input
-							readonly
-							id="time"
-							name="time"
-							pattern="^[0-2][0-9]:[03][0]$"
-							required
-							placeholder="hh:mm"
-						/>
-						<div class="dropdownContent" data-dropdown="time">
-							Please select a restaurant and date
-						</div>
+					<div class="field">
+						<select id="time" name="time" required>
+							<option disabled>Please select a restaurant and date</option>
+						</select>
 						<p class="error">Please select a time</p>
 					</div>
 				</div>
@@ -121,20 +86,10 @@
 					<div class="label">
 						<label for="party"><h3>Booking party</h3></label>
 					</div>
-					<div class="field dropdown">
-						<input
-							readonly
-							type="number"
-							id="party"
-							name="party"
-							min="2"
-							max="8"
-							required
-							placeholder="2-8"
-						/>
-						<div class="dropdownContent" data-dropdown="party">
-							Please select a time
-						</div>
+					<div class="field">
+						<select id="party" name="party" required>
+							<option disabled>Please select a time</option>
+						</select>
 						<p class="error">Please select the number of people</p>
 					</div>
 				</div>

@@ -6,6 +6,8 @@ const {
 } = require("../middleware/bookingValidation");
 const checkAvailability = require("../middleware/bookingAvailability");
 const sumExistingParty = require("../utils/sumExistingParty");
+const createDate = require("../utils/createDate");
+const { id } = require("date-fns/locale");
 
 //POST api/booking
 //Create single booking
@@ -30,12 +32,12 @@ router.post(
 //Check availability of date/time
 //Public
 router.get("/avail", async (req, res) => {
-	const date = new Date(req.query.date);
+	const date = createDate(req.query.day, req.query.time);
 	const partyTotal = await sumExistingParty(
 		req.query.restaurant,
-		date.toISOString()
+		date.toISOString(),
+		req.query.id,
 	);
-	console.log("total:" + partyTotal);
 	const diff = process.env.TOTALBOOKINGSIZE - partyTotal;
 	console.log(diff);
 	if (diff <= 1) {
@@ -49,7 +51,7 @@ router.get("/avail", async (req, res) => {
 		for (let i = diff; i >= 2; i--) {
 			if (i <= 8) party.unshift(i);
 		}
-		console.log(party);
+		console.log({ party });
 		return res.json({ party });
 	}
 });

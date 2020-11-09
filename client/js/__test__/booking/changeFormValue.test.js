@@ -1,27 +1,35 @@
 const { selectFields } = require("express-validator/src/select-fields");
-const { changeFormValue } = require("../../utilities/booking/changeFormValue");
+const { changeFormValue } = require("../../utilities/booking/changeInputValue");
+
+const inputs = `
+        <input id="email" value="email"/>
+        <input id="restaurant" value="Glensgaich"/>
+        <input id="day" value="20/12/2020"/>
+        <input id="time" value="17:00"/>
+        <input id="party" value="4"/>
+ `;
 
 test("clicking party button changes party input value", () => {
-	document.body.innerHTML = `
-        <input id="party"/>
-        <input id="email"/>
+	document.body.innerHTML =
+		inputs +
+		`
         <button 
             class="dropdownBtn" 
             data-input="#party"
             data-value="3"
         />
     `;
-	const btn = document.querySelector("button");
-	changeFormValue(btn);
+	console.log({ email, restaurant, day, time, party });
+    const btn = document.querySelector("button");
 	btn.click();
 	expect(document.querySelector("#party").value).toBe("3");
 	expect(document.querySelector("#email").value).not.toBe("3");
 });
 
 test("clicking time button changes time input value", () => {
-	document.body.innerHTML = `
-        <input id="time"/>
-        <input id="day" data-date=${new Date("2020-10-14")}/>
+	document.body.innerHTML =
+		inputs +
+		`
         <button 
             class="dropdownBtn" 
             data-input="#time"
@@ -36,14 +44,13 @@ test("clicking time button changes time input value", () => {
 });
 
 test("clicking day button changes day input value", () => {
-	document.body.innerHTML = `
-        <input id="day"/>
-        <input id="restaurant"/>
+	document.body.innerHTML =
+		inputs +
+		`
         <button 
             class="dropdownBtn" 
             data-input="#day"
             data-value="14/10/2020"
-            data-date=${new Date("2020-10-14")}
         />
     `;
 	const btn = document.querySelector("button");

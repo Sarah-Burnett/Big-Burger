@@ -7,16 +7,21 @@ import { fetch } from "./utilities/booking/fetch";
 import { DELETE_BOOKING, PUT_BOOKING } from "./utilities/booking/types";
 import { setAvailableDates } from "./utilities/booking/availableDates";
 import { handleSubmit } from "./utilities/booking/submitBooking";
-import { setAvailableParty } from "./utilities/booking/availableParty";
-import { changeFormValue } from "./utilities/booking/changeFormValue";
-import { forEach } from "./utilities/dom/forEach";
-//preparing form and form Buttons
+import {
+	getAvailableParty,
+	setAvailableParty,
+} from "./utilities/booking/availableParty";
+import { setAvailableTimes } from "./utilities/booking/availableTimes";
+
 setAvailableDates(Date.now());
+setAvailableTimes(day.value, restaurant.value);
 setAvailableParty();
-forEach(".dropdownBtn", changeFormValue);
 
 //edit form
-document.querySelector("#editBtn").onclick = (event) => editForm(event);
+document.querySelector("#editBtn").onclick = (event) => {
+	editForm(event);
+	getAvailableParty(restaurant.value, day.value, time.value, id.value);
+};
 
 //booking CRUD
 //get existing booking

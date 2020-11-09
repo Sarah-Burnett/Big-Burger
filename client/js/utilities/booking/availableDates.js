@@ -1,6 +1,8 @@
 import addDays from "date-fns/addDays";
 import format from "date-fns/format";
 import { createDropdownButton } from "../dom/createButton";
+import { forEach } from "../dom/forEach";
+import { clickEventChangesInputValue } from "./changeInputValue";
 
 export const getAvailableDates = (today) => {
 	let current = today;
@@ -14,13 +16,12 @@ export const getAvailableDates = (today) => {
 
 export const setAvailableDates = (today) => {
 	const dates = getAvailableDates(today);
-	const dropdownContainer = document.querySelector('[data-dropdown="day"]');
+	day.innerHTML = "";
 	for (const date of dates) {
-		const newButton = createDropdownButton();
-		newButton.innerText = format(date, "eee do MMM");
-		newButton.dataset.input = "#day";
-		newButton.dataset.value = format(date, "dd/MM/yyyy");
-		newButton.dataset.date = date;
-		dropdownContainer.append(newButton);
+		const option = document.createElement("option");
+		option.value = format(date, "dd/MM/yyyy");
+		option.innerHTML = format(date, "eee do MMM");
+		day.append(option);
 	}
+	day.value = format(dates[0], "dd/MM/yyyy");
 };

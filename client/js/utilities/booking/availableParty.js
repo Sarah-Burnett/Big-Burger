@@ -1,22 +1,24 @@
 import { fetch } from "./fetch";
 import { GET_AVAILABILITY } from "./types";
-import { createDropdownButton } from "../dom/createButton";
+import { changeInputValue } from "./changeInputValue";
+import { forEach } from "../dom/forEach";
 
-export const getAvailableParty = (restaurant, date) => {
-	return fetch(GET_AVAILABILITY, { restaurant, date });
+export const getAvailableParty = (restaurant, day, time, id = null) => {
+	return fetch(GET_AVAILABILITY, { restaurant, day, time, id });
 };
 
-export const setAvailableParty = (sizes) => {
-	const dropdownContainer = document.querySelector('[data-dropdown="party"]');
-	dropdownContainer.innerText = "";
-	if (sizes.length === 0) {
-		dropdownContainer.innerText = "Booking full";
+export const setAvailableParty = (availSizes = [2, 3, 4, 5, 6, 7, 8]) => {
+	const allSizes = [2, 3, 4, 5, 6, 7, 8];
+	party.innerText = "";
+	for (const size of allSizes) {
+		const option = document.createElement("option");
+		option.value = size;
+		option.innerHTML = size;
+		if (!availSizes.includes(size)) {
+			option.disabled = true;
+			option.innerHTML += "- Booking full";
+		}
+		party.append(option);
 	}
-	for (const size of sizes) {
-		const newButton = createDropdownButton();
-		newButton.innerText = size;
-		newButton.dataset.input = "#party";
-		newButton.dataset.value = size;
-		dropdownContainer.append(newButton);
-	}
+	forEach('[data-dropdown="party"] button', changeInputValue);
 };

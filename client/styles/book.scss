@@ -1,267 +1,252 @@
-@import './variables';
-@import './modal';
+@import "./variables";
+@import "./modal";
 
 @mixin width {
-    width: 95vw; 
-    .label, .field, input, .dropdownContent {
-        width: 95vw;
-    }
-    @include media($desktop) {
-        width: 70vw;
-        .label {
-            width: 20vw;
-        }
-        .field, input, .dropdownContent {
-            width: 50vw;
-        }
-    }
+	width: 95vw;
+	.label,
+	.field,
+	input,
+	select,
+	.option,
+	.dropdownContent {
+		width: 95vw;
+	}
+	@include media($desktop) {
+		width: 70vw;
+		.label {
+			width: 20vw;
+		}
+		.field,
+		input,
+		select,
+		.option,
+		.dropdownContent {
+			width: 50vw;
+		}
+	}
 }
 
 @mixin button {
-    button, input[type=submit] {
-        height: 10vh;
-        line-height: 10vh;
-        border-style: none;
-        background: $green;
-        font-family: 'Source Sans Pro', sans-serif;
-        @include fontSize;
-        cursor: pointer;
-        width: 100%;
-        &:hover {
-            background: $darkGreen;
-        }
-    }
+	button,
+	input[type="submit"] {
+		height: 10vh;
+		line-height: 10vh;
+		border-style: none;
+		background: $green;
+		font-family: "Source Sans Pro", sans-serif;
+		@include fontSize;
+		cursor: pointer;
+		width: 100%;
+		&:hover {
+			background: $darkGreen;
+		}
+		&:disabled {
+			&:hover {
+				background: $green;
+			}
+		}
+	}
 }
 
 * {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
-body{
-    background-image: url(/images/burger-bg.jpeg);
-    background-repeat: no-repeat no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 90vh;
-    margin-top: 10vh;
-    width: 100vw;
-    color: $white;
-    font-family: 'Source Sans Pro', sans-serif;
-    @include fontSize;
-    line-height: 2;
-    text-align: center;
-    overflow-x: hidden;
-    overflow-y: hidden;
+body {
+	background-image: url(/images/burger-bg.jpeg);
+	background-repeat: no-repeat no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 90vh;
+	margin-top: 10vh;
+	width: 100vw;
+	color: $white;
+	font-family: "Source Sans Pro", sans-serif;
+	@include fontSize;
+	line-height: 2;
+	text-align: center;
+	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
 :focus {
-    outline-color: $darkGreen;
+	outline-color: $darkGreen;
 }
 
 nav {
-    position: fixed;
-    z-index: 99;
-    top: 0;
-    right: 0;
-    background: #000;
-    width: 100vw;
-    padding: 0 2vw;
-    height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;    
-    img {
-        width: auto;
-        height: 10vh;
-    }
-    #backBtn {
-        text-shadow: 1px 1px 2px black;
-        color: $white;
-        text-decoration: none;
-        font-size: larger;
-        &:hover {
-            color: $darkGreen;
-        }
-    }
+	position: fixed;
+	z-index: 99;
+	top: 0;
+	right: 0;
+	background: #000;
+	width: 100vw;
+	padding: 0 2vw;
+	height: 10vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	img {
+		width: auto;
+		height: 10vh;
+	}
+	#backBtn {
+		text-shadow: 1px 1px 2px black;
+		color: $white;
+		text-decoration: none;
+		font-size: larger;
+		&:hover {
+			color: $darkGreen;
+		}
+	}
 }
 
 #blank {
-    height: 0;
-    @include media($desktop) {
-        height: 10vh;
-    }
+	height: 0;
+	@include media($desktop) {
+		height: 10vh;
+	}
 }
 
 #bookingForm {
-    background: rgba(0,0,0,0.7);
-    width: 100vw;
-    height: 90vh;
-    margin-top: 10vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1em;
-    overflow-y: scroll;
-    @include media($desktop) {
-        -ms-overflow-style: none; 
-        &::-webkit-scrollbar { 
-            width: 0;
-            height: 0;
-        }
-    }
+	background: rgba(0, 0, 0, 0.7);
+	width: 100vw;
+	height: 90vh;
+	margin-top: 10vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1em;
+	overflow-y: scroll;
+	@include media($desktop) {
+		-ms-overflow-style: none;
+		&::-webkit-scrollbar {
+			width: 0;
+			height: 0;
+		}
+	}
 }
 
 form {
-    margin-top: 3vh;
-    @include width;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .row {
-        @include width;
-        margin: 3vh 0 1vh;
-        @include media($desktop) {
-            display: flex;
-            align-items: flex-start;
-            margin: 2vh 0 1vw;
-        }
-    }
-    input {
-        display: block;
-        width: 100%;
-        font-family: 'Source Sans Pro', sans-serif;
-        font-size: larger;
-        text-align: center;
-        height: 8vh;
-        padding: 2vw;
-        border: none;
-        @include media ($desktop) {
-            padding: 1vw;
-        }
-        background: $white;
-    }
-    .inputInvalid {
-        border: 2px solid red;
-    }
-    .error {
-        opacity: 0;
-        color: red;
-        @include media ($desktop) {
-            text-align: left;
-        }
-    }
-    .errorActive{
-        opacity: 1;
-    }
-    .message {
-        @include width;
-        @include media($desktop){
-            textarea {
-                margin-top: 2vh;
-                width: 70vw;
-            }
-        }
-    }
-    textarea {
-        @extend input;
-        min-height: 25vh;
-        resize: vertical;
-        text-align: center;
-        background: $white;
-        color: black;
-    }
-}
-
-//dropdown
-.dropdown {
-    position: relative;
-}
-.dropdownContent {
-    position: absolute;
-    background: $green;
-    top: 8vh;
-    left: 0;
-    height: 0;
-    opacity: 0;
-    z-index: 99;
-    pointer-events: none;
-    transition: all 1s ease-in-out;
-    overflow-y: hidden;
-    @include button;
-    button {
-        border: .5px solid $darkGreen;
-        display: block;
-    }
-    @include media($desktop){
-        display: flex;
-        flex-wrap: wrap;
-        button {
-            width: 50%;
-        }
-    }
-}
-
-.dropdown:focus-within {
-    .dropdownContent {
-        height: auto;
-        max-height: 40vh;
-        overflow-y: auto;
-        &::-webkit-scrollbar {
-            display: none;
-          }
-        -ms-overflow-style: none;
-        opacity: 1;
-        transition: height 1s ease-in-out;
-        pointer-events: all;
-    }
+	margin-top: 3vh;
+	@include width;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	.row {
+		@include width;
+		margin: 3vh 0 1vh;
+		@include media($desktop) {
+			display: flex;
+			align-items: flex-start;
+			margin: 2vh 0 1vw;
+		}
+	}
+	input,
+	select {
+		display: block;
+		width: 100%;
+		font-family: "Source Sans Pro", sans-serif;
+		font-size: larger;
+		text-align: left;
+		height: 10vh;
+		padding: 2vw;
+		border: none;
+		@include media($desktop) {
+			padding: 1vw;
+		}
+		background: $white;
+	}
+	option {
+		padding: 2vw;
+		&:hover {
+			background: $green;
+		}
+	}
+	.inputInvalid {
+		border: 2px solid red;
+	}
+	.error {
+		opacity: 0;
+		color: red;
+		@include media($desktop) {
+			text-align: left;
+		}
+	}
+	.errorActive {
+		opacity: 1;
+	}
+	.message {
+		@include width;
+		@include media($desktop) {
+			textarea {
+				margin-top: 2vh;
+				width: 70vw;
+			}
+		}
+	}
+	textarea {
+		@extend input;
+		min-height: 25vh;
+		resize: vertical;
+		background: $white;
+		color: black;
+		padding: 2vh;
+	}
 }
 
 //booking
 
 .buttons {
-    @include width;
-    @include button;
-    #deleteBtn {
-        background: red;
-    }
-    button {
-        margin: 1vh 0;
-    }
-    margin: 5vh 0;
-    @include media($desktop){
-        display: grid;
-        justify-content: center;
-        grid-template-columns: repeat(auto-fit, 20vw);
-        grid-gap: 30vw;
-    }
+	@include width;
+	@include button;
+	#deleteBtn {
+		background: red;
+	}
+	button {
+		margin: 1vh 0;
+	}
+	margin: 5vh 0;
+	@include media($desktop) {
+		display: grid;
+		justify-content: center;
+		grid-template-columns: repeat(auto-fit, 20vw);
+		grid-gap: 30vw;
+	}
 }
 
-
 .formEditable {
-    #updateBtn {display: block};
-    #editBtn, #deleteBtn {display: none};
-    pointer-events: all;
+	#updateBtn {
+		display: block;
+	}
+	#editBtn,
+	#deleteBtn {
+		display: none;
+	}
+	pointer-events: all;
 }
 
 .formDisabled {
-    #updateBtn {display: none};
-    pointer-events: none;
-    #editBtn, #deleteBtn {
-        pointer-events: all;
-    }
+	#updateBtn {
+		display: none;
+	}
+	pointer-events: none;
+	#editBtn,
+	#deleteBtn {
+		pointer-events: all;
+	}
 }
 
 .bookingDate {
-    text-align: left;
-    span {
-        color: $darkGreen;
-        font-size: larger;
-    }
+	text-align: left;
+	span {
+		color: $darkGreen;
+		font-size: larger;
+	}
 }
