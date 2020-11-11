@@ -2210,7 +2210,7 @@ var setAvailableParty = function setAvailableParty() {
 
     if (!availSizes.includes(size)) {
       option.disabled = true;
-      option.innerHTML += "- Booking full";
+      option.innerHTML += " - Booking full";
     }
 
     party.append(option);

@@ -16,7 +16,7 @@ export const setAvailableParty = (availSizes = [2, 3, 4, 5, 6, 7, 8]) => {
 		option.innerHTML = size;
 		if (!availSizes.includes(size)) {
 			option.disabled = true;
-			option.innerHTML += "- Booking full";
+			option.innerHTML += " - Booking full";
 		}
 		party.append(option);
 	}

@@ -2,27 +2,13 @@ import { setAvailableDates } from "./utilities/booking/availableDates";
 import { handleSubmit } from "./utilities/booking/submitBooking";
 import { POST_BOOKING } from "./utilities/booking/types";
 import { autoFillForm } from "./utilities/booking/autofillForm";
-import {
-	changeInputValue,
-	clickEventChangesInputValue,
-} from "./utilities/booking/changeInputValue";
 import { setAvailableTimes } from "./utilities/booking/availableTimes";
 import { getAvailableParty } from "./utilities/booking/availableParty";
-import { forEach } from "./utilities/dom/forEach";
 
-//preparing form and form Buttons
+//preparing form and select options
 setAvailableDates(Date.now());
 setAvailableTimes(day.value, restaurant.value);
 getAvailableParty(restaurant.value, day.value, time.value);
-
-const hideLaterSelects = (select) => {
-	const selects = Array.from(document.querySelectorAll("select"));
-	const index = selects.indexOf(select);
-	for (let i = index + 1; i < selects.length; i++) {
-		console.log(index, i);
-		selects[index].value = "";
-	}
-};
 
 restaurant.onchange = () => {
 	if (day.value) setAvailableTimes(day.value, restaurant.value);
