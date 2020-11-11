@@ -434,52 +434,56 @@ new SmoothScroll('a[href*="#"]', {
   return (0, _updateMenu.updateMenu)(3);
 }); //review carousel
 
-var reviewCounter = 0;
-var reviewInterval;
-var reviewItems = document.querySelectorAll(".review-item");
-var reviewDots = document.querySelectorAll(".review-dot");
+{
+  var reviewCounter = 0;
+  var reviewInterval;
+  var reviewItems = document.querySelectorAll(".review-item");
+  var reviewDots = document.querySelectorAll(".review-dot");
 
-var updateReviewDot = function updateReviewDot(index) {
-  (0, _updateActiveDot.updateActiveDot)(reviewDots, reviewItems, index);
-}; //auto update review
+  var updateReviewDot = function updateReviewDot(index) {
+    (0, _updateActiveDot.updateActiveDot)(reviewDots, reviewItems, index);
+  }; //auto update review
 
 
-var autoUpdateReview = function autoUpdateReview() {
-  updateReviewDot(reviewCounter);
-  return reviewCounter < reviewItems.length - 1 ? reviewCounter++ : reviewCounter = 0;
-};
+  var autoUpdateReview = function autoUpdateReview() {
+    updateReviewDot(reviewCounter);
+    return reviewCounter < reviewItems.length - 1 ? reviewCounter++ : reviewCounter = 0;
+  };
 
-var setReviewInterval = function setReviewInterval() {
-  reviewInterval = setInterval(autoUpdateReview, 3000);
-};
+  var setReviewInterval = function setReviewInterval() {
+    reviewInterval = setInterval(autoUpdateReview, 3000);
+  };
 
-setReviewInterval(); //manually click to update review
+  setReviewInterval(); //manually click to update review
 
-var manualUpdateReview = function manualUpdateReview(index) {
-  clearInterval(reviewInterval);
-  updateReviewDot(index);
-  reviewCounter = index;
-  setReviewInterval();
-};
+  var manualUpdateReview = function manualUpdateReview(index) {
+    clearInterval(reviewInterval);
+    updateReviewDot(index);
+    reviewCounter = index;
+    setReviewInterval();
+  };
 
-reviewDots.forEach(function (dot, index) {
-  (0, _addEventListener.addEventListener)(dot, function () {
-    return manualUpdateReview(index);
+  reviewDots.forEach(function (dot, index) {
+    (0, _addEventListener.addEventListener)(dot, function () {
+      return manualUpdateReview(index);
+    });
   });
-}); //location carousel
+} //location carousel
 
-var locationItems = document.querySelectorAll(".location-item");
-var locationDots = document.querySelectorAll(".location-dot");
+{
+  var locationItems = document.querySelectorAll(".location-item");
+  var locationDots = document.querySelectorAll(".location-dot");
 
-var updateLocationDot = function updateLocationDot(index) {
-  (0, _updateActiveDot.updateActiveDot)(locationDots, locationItems, index);
-};
+  var updateLocationDot = function updateLocationDot(index) {
+    (0, _updateActiveDot.updateActiveDot)(locationDots, locationItems, index);
+  };
 
-locationDots.forEach(function (dot, index) {
-  (0, _addEventListener.addEventListener)(dot, function () {
-    return updateLocationDot(index);
+  locationDots.forEach(function (dot, index) {
+    (0, _addEventListener.addEventListener)(dot, function () {
+      return updateLocationDot(index);
+    });
   });
-}); //location modals
+} //location modals
 
 (0, _addEventListener.addEventListener)(".glensgaich-btn", function () {
   return (0, _toggleModal.showModal)(".glensgaich-map");
@@ -518,7 +522,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62069" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58798" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
