@@ -141,9 +141,8 @@ form textarea[type=submit] {
   line-height: 1.2;
   border-style: none;
   background: #36970f;
+  padding: 1em;
   cursor: pointer;
-  height: 10vh;
-  line-height: 10vh;
   border-style: none;
   width: 100%;
 }
@@ -201,7 +200,6 @@ nav #backBtn:hover {
 #bookingForm {
   background: rgba(0, 0, 0, 0.7);
   width: 100vw;
-  height: 90vh;
   margin-top: 10vh;
   display: flex;
   flex-direction: column;
