@@ -1,7 +1,6 @@
 # Big-Burger restaurant
 
 > Front-end: landing page and CRUD booking form (HTML/SASS/vanilla JS) <br> Back-end: Node.js/Express/MongoDB REST API for booking and to serve parcel bundled client
-> Front-end landing page and CRUD booking form with HTML/SASS/vanilla JS bundled with parcel. <br> NodeJS/express back-end to serve client and booking REST API with MongoDB/mongoose.
 
 Three responsive pages to site:
 - Index - includes menu, reviews and location sliders and map modal
