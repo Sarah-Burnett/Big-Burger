@@ -4894,7 +4894,6 @@ var handleModal = function handleModal(type, payload) {
       HTMLSelector = _getModalParams.HTMLSelector,
       newHTML = _getModalParams.newHTML;
 
-  console.log(modalSelector, HTMLSelector, newHTML);
   if (HTMLSelector) document.querySelector(HTMLSelector).innerHTML = newHTML;
   (0, _toggleModal.showModal)(modalSelector);
 };
@@ -4911,7 +4910,6 @@ exports.autoFillForm = void 0;
 var _toggleModal = require("../dom/toggleModal");
 
 var autoFillForm = function autoFillForm(data) {
-  console.log(data);
   document.querySelector("#name").value = data.name;
   document.querySelector("#email").value = data.email;
   document.querySelectorAll("select").forEach(function (select) {
@@ -4932,20 +4930,22 @@ exports.validateBooking = exports.removeError = exports.showError = void 0;
 var _toggleClassList = require("../dom/toggleClassList");
 
 var inputs = document.querySelectorAll("input");
+var selects = document.querySelectorAll("select");
 var errorBoxes = document.querySelectorAll(".error");
+var fields = Array.from(inputs).concat(Array.from(selects));
 
 var showError = function showError(index) {
   (0, _toggleClassList.addClassList)(errorBoxes[index], "errorActive");
-  (0, _toggleClassList.addClassList)(inputs[index], "inputInvalid");
-  inputs[index].scrollIntoView();
+  (0, _toggleClassList.addClassList)(fields[index], "inputInvalid");
+  fields[index].scrollIntoView();
 };
 
 exports.showError = showError;
 
 var removeError = function removeError(index) {
-  inputs[index].oninput = function () {
-    if (inputs[index].validity.valid) {
-      (0, _toggleClassList.removeClassList)(inputs[index], "inputInvalid");
+  fields[index].oninput = function () {
+    if (fields[index].validity.valid) {
+      (0, _toggleClassList.removeClassList)(fields[index], "inputInvalid");
       (0, _toggleClassList.removeClassList)(errorBoxes[index], "errorActive");
     }
   };
@@ -4955,7 +4955,7 @@ exports.removeError = removeError;
 
 var validateBooking = function validateBooking() {
   var error = false;
-  inputs.forEach(function (input, index) {
+  fields.forEach(function (input, index) {
     if (!input.validity.valid) {
       error = true;
       showError(index);
@@ -5043,7 +5043,6 @@ var getFetchParams = function getFetchParams(type, params) {
           (0, _availableParty.setAvailableParty)(res.data.party);
         },
         rejected: function rejected() {
-          console.log("failed to get availability");
           (0, _availableParty.setAvailableParty)([2, 3, 4, 5, 6, 7, 8]);
         }
       };
@@ -5057,7 +5056,6 @@ var getFetchParams = function getFetchParams(type, params) {
           (0, _handleModal.handleModal)(_types.SHOW_BOOKED, res.data);
         },
         rejected: function rejected(err) {
-          sessionStorage.addItem("booking", JSON.stringify(params));
           err.response.status === 409 ? (0, _handleModal.handleModal)(_types.SHOW_FULL, err.response.data) : (0, _handleModal.handleModal)(_types.SHOW_FAILED);
         }
       };
@@ -5082,7 +5080,6 @@ var getFetchParams = function getFetchParams(type, params) {
           (0, _handleModal.handleModal)(_types.SHOW_BOOKED, res.data);
         },
         rejected: function rejected(err) {
-          sessionStorage.addItem("booking", JSON.stringify(params));
           err.response.status === 409 ? (0, _handleModal.handleModal)(_types.SHOW_FULL, err.response.data) : (0, _handleModal.handleModal)(_types.SHOW_FAILED);
         }
       };
@@ -5113,7 +5110,6 @@ var fetch = function fetch(type, params) {
     url: url,
     data: params
   }).then(function (res) {
-    console.log(res);
     return resolved(res);
   }).catch(function (err) {
     return rejected(err);
@@ -5183,10 +5179,8 @@ var handleSubmit = function handleSubmit(e, type, button) {
   var err = (0, _validateBooking.validateBooking)();
 
   if (!err) {
-    console.log(name.value);
     var params = setParams();
-    console.log(params);
-    sessionStorage.addItem("booking", JSON.stringify(params));
+    sessionStorage.setItem("booking", JSON.stringify(params));
     document.querySelector(button).disabled = true;
     (0, _fetch.fetch)(type, params);
   }
@@ -20702,7 +20696,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51249" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53877" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

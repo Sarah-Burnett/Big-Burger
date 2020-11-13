@@ -29,7 +29,6 @@ const getFetchParams = (type, params) => {
 					setAvailableParty(res.data.party);
 				},
 				rejected: function () {
-					console.log("failed to get availability");
 					setAvailableParty([2, 3, 4, 5, 6, 7, 8]);
 				},
 			};
@@ -42,7 +41,6 @@ const getFetchParams = (type, params) => {
 					handleModal(SHOW_BOOKED, res.data);
 				},
 				rejected: function (err) {
-					sessionStorage.addItem("booking", JSON.stringify(params));
 					err.response.status === 409
 						? handleModal(SHOW_FULL, err.response.data)
 						: handleModal(SHOW_FAILED);
@@ -67,7 +65,6 @@ const getFetchParams = (type, params) => {
 					handleModal(SHOW_BOOKED, res.data);
 				},
 				rejected: function (err) {
-					sessionStorage.addItem("booking", JSON.stringify(params));
 					err.response.status === 409
 						? handleModal(SHOW_FULL, err.response.data)
 						: handleModal(SHOW_FAILED);
@@ -90,9 +87,6 @@ const getFetchParams = (type, params) => {
 export const fetch = (type, params) => {
 	const { method, url, resolved, rejected } = getFetchParams(type, params);
 	axios({ method, url, data: params })
-		.then((res) => {
-			console.log(res);
-			return resolved(res);
-		})
+		.then((res) => resolved(res))
 		.catch((err) => rejected(err));
 };

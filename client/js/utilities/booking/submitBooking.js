@@ -19,10 +19,8 @@ export const handleSubmit = (e, type, button) => {
 	e.preventDefault();
 	const err = validateBooking();
 	if (!err) {
-		console.log(name.value);
 		const params = setParams();
-		console.log(params);
-		sessionStorage.addItem("booking", JSON.stringify(params));
+		sessionStorage.setItem("booking", JSON.stringify(params));
 		document.querySelector(button).disabled = true;
 		fetch(type, params);
 	}

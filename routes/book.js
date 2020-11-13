@@ -7,7 +7,6 @@ const {
 const checkAvailability = require("../middleware/bookingAvailability");
 const sumExistingParty = require("../utils/sumExistingParty");
 const createDate = require("../utils/createDate");
-const { id } = require("date-fns/locale");
 
 //POST api/booking
 //Create single booking
@@ -36,24 +35,15 @@ router.get("/avail", async (req, res) => {
 	const partyTotal = await sumExistingParty(
 		req.query.restaurant,
 		date.toISOString(),
-		req.query.id,
+		req.query.id
 	);
 	const diff = process.env.TOTALBOOKINGSIZE - partyTotal;
-	console.log(diff);
-	if (diff <= 1) {
-		return res.status(409).json({
-			msg: "Booking slot full",
-			day: req.body.day,
-			time: req.body.time,
-		});
-	} else {
-		const party = [];
-		for (let i = diff; i >= 2; i--) {
-			if (i <= 8) party.unshift(i);
-		}
-		console.log({ party });
-		return res.json({ party });
+	const party = [];
+	for (let i = diff; i >= 2; i--) {
+		if (i <= 8) party.unshift(i);
 	}
+	console.log({ party });
+	return res.json({ party });
 });
 
 module.exports = router;

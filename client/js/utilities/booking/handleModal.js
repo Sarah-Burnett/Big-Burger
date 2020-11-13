@@ -35,7 +35,6 @@ export const handleModal = (type, payload) => {
 		type,
 		payload
 	);
-	console.log(modalSelector, HTMLSelector, newHTML);
 	if (HTMLSelector) document.querySelector(HTMLSelector).innerHTML = newHTML;
 	showModal(modalSelector);
 };

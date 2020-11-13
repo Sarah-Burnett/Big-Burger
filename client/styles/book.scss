@@ -26,28 +26,6 @@
 	}
 }
 
-@mixin button {
-	button,
-	input[type="submit"] {
-		height: 10vh;
-		line-height: 10vh;
-		border-style: none;
-		background: $green;
-		font-family: "Source Sans Pro", sans-serif;
-		@include fontSize;
-		cursor: pointer;
-		width: 100%;
-		&:hover {
-			background: $darkGreen;
-		}
-		&:disabled {
-			&:hover {
-				background: $green;
-			}
-		}
-	}
-}
-
 * {
 	margin: 0px;
 	padding: 0px;
@@ -77,6 +55,27 @@ body {
 
 :focus {
 	outline-color: $darkGreen;
+}
+
+button,
+input[type="submit"] {
+	font-family: "Source Sans Pro", sans-serif;
+	@include fontSize;
+	border-style: none;
+	background: $green;
+	cursor: pointer;
+	&:hover {
+		background: $darkGreen;
+	}
+	height: 10vh;
+	line-height: 10vh;
+	border-style: none;
+	width: 100%;
+	&:disabled {
+		&:hover {
+			background: $green;
+		}
+	}
 }
 
 nav {
@@ -205,7 +204,6 @@ form {
 
 .buttons {
 	@include width;
-	@include button;
 	#deleteBtn {
 		background: red;
 	}

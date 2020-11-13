@@ -1,7 +1,6 @@
 import { hideModal } from "../dom/toggleModal";
 
 export const autoFillForm = (data) => {
-	console.log(data);
 	document.querySelector("#name").value = data.name;
 	document.querySelector("#email").value = data.email;
 	document

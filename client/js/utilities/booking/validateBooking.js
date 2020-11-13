@@ -1,18 +1,21 @@
 import { addClassList, removeClassList } from "../dom/toggleClassList";
 
 const inputs = document.querySelectorAll("input");
+const selects = document.querySelectorAll("select");
 const errorBoxes = document.querySelectorAll(".error");
+
+const fields = Array.from(inputs).concat(Array.from(selects));
 
 export const showError = (index) => {
 	addClassList(errorBoxes[index], "errorActive");
-	addClassList(inputs[index], "inputInvalid");
-	inputs[index].scrollIntoView();
+	addClassList(fields[index], "inputInvalid");
+	fields[index].scrollIntoView();
 };
 
 export const removeError = (index) => {
-	inputs[index].oninput = () => {
-		if (inputs[index].validity.valid) {
-			removeClassList(inputs[index], "inputInvalid");
+	fields[index].oninput = () => {
+		if (fields[index].validity.valid) {
+			removeClassList(fields[index], "inputInvalid");
 			removeClassList(errorBoxes[index], "errorActive");
 		}
 	};
@@ -20,7 +23,7 @@ export const removeError = (index) => {
 
 export const validateBooking = () => {
 	let error = false;
-	inputs.forEach((input, index) => {
+	fields.forEach((input, index) => {
 		if (!input.validity.valid) {
 			error = true;
 			showError(index);

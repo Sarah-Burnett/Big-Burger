@@ -4,7 +4,6 @@ const createDate = (date, time = "17:00") => {
 	const year = parseInt(date.substr(6));
 	const hour = parseInt(time.substr(0, 2));
 	const mins = parseInt(time.substr(3, 5));
-	console.log({ day, month, year, hour, mins });
 	return new Date(year, month, day, hour, mins);
 };
 
