@@ -3,15 +3,9 @@
 > Front-end landing page and CRUD booking form with HTML/SASS/vanilla JS bundled with parcel. <br> NodeJS/express back-end to serve client and booking REST API with MongoDB/mongoose.
 
 Three responsive pages to site:
-- Index - images, menu,  reviews slider, locations sliders and map modal
+- Index - includes menu, reviews and location sliders and map modal
 - Book - validated booking form to make a booking for the restaurant
-- Booking - view booking from form/query string booking id which can be edited/deleted 
-
-## To do
-- Add date dropdown and get time (started dates branch)
-- Testing
-- Restaurant site to view and analyse bookings - routes and pug template started although need auth and filtering...
-- Email to confirm booking
+- Booking - view booking from form/query string booking id which can be updated/deleted 
 
 ## Installation
 ``` bash
