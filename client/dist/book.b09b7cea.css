@@ -14,7 +14,7 @@
   transition: opacity 0.6s ease;
   pointer-events: none;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   .modalBg {
     top: 0;
     height: 100vh;
@@ -31,43 +31,13 @@
 }
 .modal button {
   margin: 1em;
-  padding: 1em;
-  border-style: none;
-  background: #36970f;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 14px;
-  line-height: 1.2;
-  cursor: pointer;
   width: 90%;
   border-radius: 1px;
-}
-@media (min-width: 600px) {
-  .modal button {
-    font-size: 16px;
-  }
-}
-@media (min-width: 900px) {
-  .modal button {
-    font-size: 18px;
-  }
-}
-@media (min-width: 1200px) {
-  .modal button {
-    font-size: 20px;
-  }
-}
-@media (min-width: 1800px) {
-  .modal button {
-    font-size: 22px;
-  }
-}
-.modal button:hover {
-  background: #205909;
 }
 .modal input, .modal form textarea, form .modal textarea {
   width: 90%;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   .modal {
     width: 60vw;
     height: 60vh;
@@ -120,7 +90,7 @@
   width: 100%;
   max-height: 92vh;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   .map {
     height: 60vh;
   }
@@ -213,7 +183,7 @@ nav #backBtn:hover {
 #blank {
   height: 0;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   #blank {
     height: 10vh;
   }
@@ -231,7 +201,7 @@ nav #backBtn:hover {
   padding: 1em;
   overflow-y: scroll;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   #bookingForm {
     -ms-overflow-style: none;
   }
@@ -257,7 +227,7 @@ form .option,
 form .dropdownContent {
   width: 95vw;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   form {
     width: 70vw;
   }
@@ -286,7 +256,7 @@ form .row .option,
 form .row .dropdownContent {
   width: 95vw;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   form .row {
     width: 70vw;
   }
@@ -302,7 +272,7 @@ form .row .dropdownContent {
     width: 50vw;
   }
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   form .row {
     display: flex;
     align-items: flex-start;
@@ -321,7 +291,7 @@ form select {
   border: none;
   background: #f5f5f5;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   form input, form textarea,
 form select {
     padding: 1vw;
@@ -340,7 +310,7 @@ form .error {
   opacity: 0;
   color: red;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   form .error {
     text-align: left;
   }
@@ -360,7 +330,7 @@ form .message .option,
 form .message .dropdownContent {
   width: 95vw;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   form .message {
     width: 70vw;
   }
@@ -376,7 +346,7 @@ form .message .dropdownContent {
     width: 50vw;
   }
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   form .message textarea {
     margin-top: 2vh;
     width: 70vw;
@@ -404,7 +374,7 @@ form .buttons textarea,
 .buttons .dropdownContent {
   width: 95vw;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   .buttons {
     width: 70vw;
   }
@@ -485,7 +455,7 @@ form .buttons textarea[type=submit]:disabled:hover {
 .buttons button {
   margin: 1vh 0;
 }
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   .buttons {
     display: grid;
     justify-content: center;

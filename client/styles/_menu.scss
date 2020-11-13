@@ -1,68 +1,60 @@
 #menu-title {
-    @extend #home-title;
-    flex-direction: column;
-    h2 {
-        height: 100vh;
-        display: block;
-        @include flexCenter(row);
-    }
-    .arrow {
-        height: 10vh;
-        text-decoration: none; 
-        color: $green;
-        &:hover{
-            color: $darkGreen;
-        }
-        span {
-            display: none;
-        }
-    }
+	@extend #home-title;
+	flex-direction: column;
+	h2 {
+		height: 100vh;
+		display: block;
+		@include flexCenter(row);
+	}
+	.arrow {
+		height: 10vh;
+		text-decoration: none;
+		color: $green;
+		&:hover {
+			color: $darkGreen;
+		}
+		span {
+			display: none;
+		}
+	}
 }
 
 #menu-content {
-    height: auto;
-    min-height: 90vh;
-    .menu-nav {
-        min-height: 25vh;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        @include media(450px){
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        }
-        @include media(600px){
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        }
-        align-items: center;
-        justify-content: space-around;
-        button {
-            font-family: 'Source Sans Pro', sans-serif;
-            height: 15vh;
-            flex: 1;
-            margin: 1vw;
-            @media (min-width: 720px) {
-                padding: 1em;
-                margin: 0 1em;
-            }
-            border-style: none;
-            background: $green;
-            cursor: pointer;
-            &:hover {
-                background: $darkGreen;
-            }
-        }
-    }  
-    .menu-container {
-        width: 100vw;
-        transition: opacity 0.6s ease;
-        padding: 1em;
-        min-height: 65vh;
-        .menu-list {
-            padding: 2vh 1vw;
-            @include media($tablet){
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-gap: 10px
-            }
-        }
-    }
+	height: auto;
+	min-height: 90vh;
+	.menu-nav {
+		min-height: 25vh;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+		@include media(450px) {
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		}
+		@include media(600px) {
+			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+		}
+		align-items: center;
+		justify-content: space-around;
+		button {
+			height: 15vh;
+			flex: 1;
+			margin: 1vw;
+			@media (min-width: 720px) {
+				margin: 0 1em;
+			}
+		}
+	}
+	.menu-container {
+		width: 100vw;
+		transition: opacity 0.6s ease;
+		padding: 1em;
+		min-height: 65vh;
+		.menu-list {
+			padding: 2vh 1vw;
+			@include media($tablet) {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				grid-gap: 10px;
+			}
+		}
+	}
 }

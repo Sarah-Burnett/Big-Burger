@@ -1,7 +1,6 @@
 import { addClassList, removeClassList } from "../dom/toggleClassList";
 
 const inputs = document.querySelectorAll("input");
-const selects = document.querySelectorAll("select");
 const errorBoxes = document.querySelectorAll(".error");
 
 export const showError = (index) => {

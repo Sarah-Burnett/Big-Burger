@@ -1,57 +1,52 @@
 #location {
-    height: auto;
-    min-height: 90vh;
-    @include media($tablet){
-        height: 90vh;
-    };
-    padding: 1em;
-    @include flexCenter(column);
-    h2 {
-        height: 10vh;
-    }
-    .location-container{
-        width: 100vw;
-        height: 65vh;
-        position: relative;
-        .location-item {
-            position: absolute;
-            width: 100vw;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-            opacity: 0;
-            pointer-events: none;
-            &:nth-child(1) {opacity: 1; pointer-events: auto}
-            button {
-                font-family: 'Source Sans Pro', sans-serif;
-                margin: 1vh;
-                padding: 1em;
-                border-style: none;
-                background: $green;
-                cursor: pointer;
-                &:hover {
-                    background: $darkGreen;
-                }
-            }
-            .contact {
-                a {
-                    text-decoration: none;
-                    color: white;
-                }
-                p:hover {
-                    color: $green;
-                }
-            }
-        }
-    } 
-    //dot in index
+	height: auto;
+	min-height: 90vh;
+	@include media($tablet) {
+		height: 90vh;
+	}
+	padding: 1em;
+	@include flexCenter(column);
+	h2 {
+		height: 10vh;
+	}
+	.location-container {
+		width: 100vw;
+		height: 65vh;
+		position: relative;
+		.location-item {
+			position: absolute;
+			width: 100vw;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-around;
+			opacity: 0;
+			pointer-events: none;
+			&:nth-child(1) {
+				opacity: 1;
+				pointer-events: auto;
+			}
+			button {
+				margin: 1vh;
+			}
+			.contact {
+				a {
+					text-decoration: none;
+					color: white;
+				}
+				p:hover {
+					color: $green;
+				}
+			}
+		}
+	}
+	//dot in index
 }
 
-// icons 
+// icons
 
 @include media($tablet) {
-    .swipe {
-        display: none;
-    }
+	.swipe {
+		display: none;
+	}
 }

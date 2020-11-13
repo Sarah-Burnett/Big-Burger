@@ -1,4 +1,3 @@
-const { forEach } = require("./forEach");
 import { green, darkGreen } from "../styles";
 import { hideElement, displayElement } from "./changeVisibility";
 

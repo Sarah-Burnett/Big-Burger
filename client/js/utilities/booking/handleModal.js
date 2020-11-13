@@ -1,7 +1,5 @@
 import { SHOW_BOOKED, SHOW_FAILED, SHOW_FULL, SHOW_CANCELLED } from "./types";
-
 import { showModal } from "../dom/toggleModal";
-import { setInnerHTML } from "../dom/setInnerHTML";
 
 const getModalParams = (type, payload) => {
 	switch (type) {
@@ -38,6 +36,6 @@ export const handleModal = (type, payload) => {
 		payload
 	);
 	console.log(modalSelector, HTMLSelector, newHTML);
-	if (HTMLSelector) setInnerHTML(HTMLSelector, newHTML);
+	if (HTMLSelector) document.querySelector(HTMLSelector).innerHTML = newHTML;
 	showModal(modalSelector);
 };

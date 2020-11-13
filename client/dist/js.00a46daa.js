@@ -117,70 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/utilities/styles.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.darkGreen = exports.green = exports.white = void 0;
-var white = '#F5F5F5';
-exports.white = white;
-var green = '#36970F';
-exports.green = green;
-var darkGreen = '#205909';
-exports.darkGreen = darkGreen;
-},{}],"js/utilities/dom/changeVisibility.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.displayElement = exports.hideElement = void 0;
-
-var hideElement = function hideElement(elem) {
-  elem.style.opacity = "0";
-  elem.style.pointerEvents = "none";
-};
-
-exports.hideElement = hideElement;
-
-var displayElement = function displayElement(elem) {
-  console.log(elem);
-  elem.style.opacity = "1";
-  elem.style.pointerEvents = "auto";
-};
-
-exports.displayElement = displayElement;
-},{}],"js/utilities/dom/updateActiveDot.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.updateActiveDot = void 0;
-
-var _styles = require("../styles");
-
-var _changeVisibility = require("./changeVisibility");
-
-var changeBackground = function changeBackground(dot, color) {
-  return dot.style.background = color;
-};
-
-var updateActiveDot = function updateActiveDot(dotList, textList, index) {
-  dotList.forEach(function (dot) {
-    return changeBackground(dot, _styles.green);
-  });
-  textList.forEach(function (item) {
-    return (0, _changeVisibility.hideElement)(item);
-  });
-  changeBackground(dotList[index], _styles.darkGreen);
-  (0, _changeVisibility.displayElement)(textList[index]);
-};
-
-exports.updateActiveDot = updateActiveDot;
-},{"../styles":"js/utilities/styles.js","./changeVisibility":"js/utilities/dom/changeVisibility.js"}],"js/utilities/dom/toggleClassList.js":[function(require,module,exports) {
+})({"js/utilities/dom/toggleClassList.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -230,7 +167,28 @@ var showModal = function showModal(modal) {
 };
 
 exports.showModal = showModal;
-},{"./toggleClassList":"js/utilities/dom/toggleClassList.js"}],"menu.json":[function(require,module,exports) {
+},{"./toggleClassList":"js/utilities/dom/toggleClassList.js"}],"js/utilities/dom/changeVisibility.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.displayElement = exports.hideElement = void 0;
+
+var hideElement = function hideElement(elem) {
+  elem.style.opacity = "0";
+  elem.style.pointerEvents = "none";
+};
+
+exports.hideElement = hideElement;
+
+var displayElement = function displayElement(elem) {
+  elem.style.opacity = "1";
+  elem.style.pointerEvents = "auto";
+};
+
+exports.displayElement = displayElement;
+},{}],"menu.json":[function(require,module,exports) {
 module.exports = [{
   "menu": "To tempt your appetite",
   "intro": "What will it be",
@@ -343,41 +301,19 @@ var updateMenu = function updateMenu(index) {
 };
 
 exports.updateMenu = updateMenu;
-},{"./changeVisibility":"js/utilities/dom/changeVisibility.js","/menu.json":"menu.json"}],"js/utilities/dom/forEach.js":[function(require,module,exports) {
+},{"./changeVisibility":"js/utilities/dom/changeVisibility.js","/menu.json":"menu.json"}],"js/utilities/styles.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.forEach = void 0;
-
-function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-var forEach = function forEach(nodeList, cb1, cb2) {
-  var nodes = nodeList;
-  if (typeof nodeList === "string") nodes = document.querySelectorAll(nodes);
-
-  var _iterator = _createForOfIteratorHelper(nodes),
-      _step;
-
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var node = _step.value;
-      cb1(node);
-      if (cb2) cb2(node);
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-};
-
-exports.forEach = forEach;
+exports.darkGreen = exports.green = exports.white = void 0;
+var white = '#F5F5F5';
+exports.white = white;
+var green = '#36970F';
+exports.green = green;
+var darkGreen = '#205909';
+exports.darkGreen = darkGreen;
 },{}],"js/utilities/dom/Carousel.js":[function(require,module,exports) {
 "use strict";
 
@@ -395,9 +331,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var _require = require("./forEach"),
-    forEach = _require.forEach;
 
 var displayDotActive = function displayDotActive(dot) {
   return dot.style.background = _styles.green;
@@ -448,10 +381,8 @@ var Carousel = /*#__PURE__*/function () {
 }();
 
 exports.default = Carousel;
-},{"./forEach":"js/utilities/dom/forEach.js","../styles":"js/utilities/styles.js","./changeVisibility":"js/utilities/dom/changeVisibility.js"}],"js/index.js":[function(require,module,exports) {
+},{"../styles":"js/utilities/styles.js","./changeVisibility":"js/utilities/dom/changeVisibility.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
-
-var _updateActiveDot = require("./utilities/dom/updateActiveDot");
 
 var _toggleModal = require("./utilities/dom/toggleModal");
 
@@ -478,10 +409,18 @@ new SmoothScroll('a[href*="#"]', {
   header: "[data-scroll-header]"
 }); //update menu contents
 
-starterBtn.addEventListener("click", (0, _updateMenu.updateMenu)(0));
-sidesBtn.addEventListener("click", (0, _updateMenu.updateMenu)(1));
-burgerBtn.addEventListener("click", (0, _updateMenu.updateMenu)(2));
-puddingBtn.addEventListener("click", (0, _updateMenu.updateMenu)(3));
+starterBtn.addEventListener("click", function () {
+  return (0, _updateMenu.updateMenu)(0);
+});
+sidesBtn.addEventListener("click", function () {
+  return (0, _updateMenu.updateMenu)(1);
+});
+burgerBtn.addEventListener("click", function () {
+  return (0, _updateMenu.updateMenu)(2);
+});
+puddingBtn.addEventListener("click", function () {
+  return (0, _updateMenu.updateMenu)(3);
+});
 {
   var review = new _Carousel.default(".review-item", ".review-dot");
   var reviewInterval;
@@ -508,49 +447,7 @@ puddingBtn.addEventListener("click", (0, _updateMenu.updateMenu)(3));
       return location.changeItem(index);
     });
   });
-} // //review carousel
-// {
-// 	let reviewCounter = 0;
-// 	let reviewInterval;
-// 	const reviewItems = document.querySelectorAll(".review-item");
-// 	const reviewDots = document.querySelectorAll(".review-dot");
-// 	const updateReviewDot = (index) => {
-// 		updateActiveDot(reviewDots, reviewItems, index);
-// 	};
-// 	//auto update review
-// 	const autoUpdateReview = () => {
-// 		updateReviewDot(reviewCounter);
-// 		return reviewCounter < reviewItems.length - 1
-// 			? reviewCounter++
-// 			: (reviewCounter = 0);
-// 	};
-// 	const setReviewInterval = () => {
-// 		reviewInterval = setInterval(autoUpdateReview, 3000);
-// 	};
-// 	setReviewInterval();
-// 	//manually click to update review
-// 	const manualUpdateReview = (index) => {
-// 		clearInterval(reviewInterval);
-// 		updateReviewDot(index);
-// 		reviewCounter = index;
-// 		setReviewInterval();
-// 	};
-// 	reviewDots.forEach((dot, index) => {
-// 		addEventListener(dot, () => manualUpdateReview(index));
-// 	});
-// }
-// //location carousel
-// {
-// 	const locationItems = document.querySelectorAll(".location-item");
-// 	const locationDots = document.querySelectorAll(".location-dot");
-// 	const updateLocationDot = (index) => {
-// 		updateActiveDot(locationDots, locationItems, index);
-// 	};
-// 	locationDots.forEach((dot, index) => {
-// 		addEventListener(dot, () => updateLocationDot(index));
-// 	});
-// }
-//location modals
+} //location modals
 
 document.querySelector(".glensgaich-btn").addEventListener("click", function () {
   return (0, _toggleModal.showModal)(".glensgaich-map");
@@ -559,11 +456,9 @@ document.querySelector(".tanygrisiau-btn").addEventListener("click", function ()
   return (0, _toggleModal.showModal)(".tanygirisau-map");
 });
 document.querySelectorAll(".modal-close").forEach(function (close) {
-  return close.addEventListener("click", function () {
-    return _toggleModal.hideModal;
-  });
+  return close.addEventListener("click", _toggleModal.hideModal);
 });
-},{"./utilities/dom/updateActiveDot":"js/utilities/dom/updateActiveDot.js","./utilities/dom/toggleModal":"js/utilities/dom/toggleModal.js","./utilities/dom/updateMenu":"js/utilities/dom/updateMenu.js","./utilities/dom/toggleClassList":"js/utilities/dom/toggleClassList.js","./utilities/dom/Carousel":"js/utilities/dom/Carousel.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./utilities/dom/toggleModal":"js/utilities/dom/toggleModal.js","./utilities/dom/updateMenu":"js/utilities/dom/updateMenu.js","./utilities/dom/toggleClassList":"js/utilities/dom/toggleClassList.js","./utilities/dom/Carousel":"js/utilities/dom/Carousel.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -591,7 +486,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62786" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51249" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

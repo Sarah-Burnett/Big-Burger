@@ -10,10 +10,6 @@ import {
 	SHOW_FULL,
 	GET_AVAILABILITY,
 } from "./types";
-import {
-	addSessionStorage,
-	removeSessionStorage,
-} from "../storage/addSessionStorage";
 import { handleModal } from "./handleModal";
 import { autoFillForm } from "./autofillForm";
 import { showError } from "./validateBooking";
@@ -32,9 +28,9 @@ const getFetchParams = (type, params) => {
 				resolved: function (res) {
 					setAvailableParty(res.data.party);
 				},
-				rejected: function (res) {
-					console.log("fail");
-					// setAvailableParty([2, 3, 4, 5, 6, 7, 8]);
+				rejected: function () {
+					console.log("failed to get availability");
+					setAvailableParty([2, 3, 4, 5, 6, 7, 8]);
 				},
 			};
 		case POST_BOOKING:
@@ -42,11 +38,11 @@ const getFetchParams = (type, params) => {
 				method: "POST",
 				url: "./api/book",
 				resolved: function (res) {
-					removeSessionStorage("booking");
+					sessionStorage.removeItem("booking");
 					handleModal(SHOW_BOOKED, res.data);
 				},
 				rejected: function (err) {
-					addSessionStorage("booking", JSON.stringify(params));
+					sessionStorage.addItem("booking", JSON.stringify(params));
 					err.response.status === 409
 						? handleModal(SHOW_FULL, err.response.data)
 						: handleModal(SHOW_FAILED);
@@ -71,7 +67,7 @@ const getFetchParams = (type, params) => {
 					handleModal(SHOW_BOOKED, res.data);
 				},
 				rejected: function (err) {
-					addSessionStorage("booking", JSON.stringify(params));
+					sessionStorage.addItem("booking", JSON.stringify(params));
 					err.response.status === 409
 						? handleModal(SHOW_FULL, err.response.data)
 						: handleModal(SHOW_FAILED);

@@ -1,6 +1,5 @@
 import { fetch } from "./fetch";
 import { validateBooking } from "./validateBooking";
-import { addSessionStorage } from "../storage/addSessionStorage";
 import { createDate } from "./createDate";
 
 export const setParams = () => {
@@ -23,7 +22,7 @@ export const handleSubmit = (e, type, button) => {
 		console.log(name.value);
 		const params = setParams();
 		console.log(params);
-		addSessionStorage("booking", JSON.stringify(params));
+		sessionStorage.addItem("booking", JSON.stringify(params));
 		document.querySelector(button).disabled = true;
 		fetch(type, params);
 	}

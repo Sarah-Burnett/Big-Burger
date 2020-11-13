@@ -1,4 +1,3 @@
-import { updateActiveDot } from "./utilities/dom/updateActiveDot";
 import { showModal, hideModal } from "./utilities/dom/toggleModal";
 import { updateMenu } from "./utilities/dom/updateMenu";
 import {
@@ -24,10 +23,10 @@ new SmoothScroll('a[href*="#"]', {
 });
 
 //update menu contents
-starterBtn.addEventListener("click", updateMenu(0));
-sidesBtn.addEventListener("click", updateMenu(1));
-burgerBtn.addEventListener("click", updateMenu(2));
-puddingBtn.addEventListener("click", updateMenu(3));
+starterBtn.addEventListener("click", () => updateMenu(0));
+sidesBtn.addEventListener("click", () => updateMenu(1));
+burgerBtn.addEventListener("click", () => updateMenu(2));
+puddingBtn.addEventListener("click", () => updateMenu(3));
 
 {
 	const review = new Carousel(".review-item", ".review-dot");
@@ -52,50 +51,6 @@ puddingBtn.addEventListener("click", updateMenu(3));
 	});
 }
 
-// //review carousel
-// {
-// 	let reviewCounter = 0;
-// 	let reviewInterval;
-// 	const reviewItems = document.querySelectorAll(".review-item");
-// 	const reviewDots = document.querySelectorAll(".review-dot");
-// 	const updateReviewDot = (index) => {
-// 		updateActiveDot(reviewDots, reviewItems, index);
-// 	};
-// 	//auto update review
-// 	const autoUpdateReview = () => {
-// 		updateReviewDot(reviewCounter);
-// 		return reviewCounter < reviewItems.length - 1
-// 			? reviewCounter++
-// 			: (reviewCounter = 0);
-// 	};
-// 	const setReviewInterval = () => {
-// 		reviewInterval = setInterval(autoUpdateReview, 3000);
-// 	};
-// 	setReviewInterval();
-// 	//manually click to update review
-// 	const manualUpdateReview = (index) => {
-// 		clearInterval(reviewInterval);
-// 		updateReviewDot(index);
-// 		reviewCounter = index;
-// 		setReviewInterval();
-// 	};
-// 	reviewDots.forEach((dot, index) => {
-// 		addEventListener(dot, () => manualUpdateReview(index));
-// 	});
-// }
-
-// //location carousel
-// {
-// 	const locationItems = document.querySelectorAll(".location-item");
-// 	const locationDots = document.querySelectorAll(".location-dot");
-// 	const updateLocationDot = (index) => {
-// 		updateActiveDot(locationDots, locationItems, index);
-// 	};
-// 	locationDots.forEach((dot, index) => {
-// 		addEventListener(dot, () => updateLocationDot(index));
-// 	});
-// }
-
 //location modals
 document
 	.querySelector(".glensgaich-btn")
@@ -105,4 +60,4 @@ document
 	.addEventListener("click", () => showModal(".tanygirisau-map"));
 document
 	.querySelectorAll(".modal-close")
-	.forEach((close) => close.addEventListener("click", () => hideModal));
+	.forEach((close) => close.addEventListener("click", hideModal));

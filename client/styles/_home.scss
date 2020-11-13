@@ -1,6 +1,6 @@
 
 #home-title {
-    height: 100vh;
+    height: 90vh;
     background-image: url(/images/burger-mob.jpg);
     @include media($desktop) {
         background-image: url(/images/burger-desktop.jpg);

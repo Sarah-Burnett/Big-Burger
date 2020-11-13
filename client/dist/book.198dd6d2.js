@@ -4798,25 +4798,6 @@ var PUT_BOOKING = "PUT_BOOKING";
 exports.PUT_BOOKING = PUT_BOOKING;
 var DELETE_BOOKING = "DELETE_BOOKING";
 exports.DELETE_BOOKING = DELETE_BOOKING;
-},{}],"js/utilities/storage/addSessionStorage.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.removeSessionStorage = exports.addSessionStorage = void 0;
-
-var addSessionStorage = function addSessionStorage(key, value) {
-  sessionStorage.setItem(key, value);
-};
-
-exports.addSessionStorage = addSessionStorage;
-
-var removeSessionStorage = function removeSessionStorage(key) {
-  return sessionStorage.removeItem(key);
-};
-
-exports.removeSessionStorage = removeSessionStorage;
 },{}],"js/utilities/dom/toggleClassList.js":[function(require,module,exports) {
 "use strict";
 
@@ -4867,20 +4848,7 @@ var showModal = function showModal(modal) {
 };
 
 exports.showModal = showModal;
-},{"./toggleClassList":"js/utilities/dom/toggleClassList.js"}],"js/utilities/dom/setInnerHTML.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.setInnerHTML = void 0;
-
-var setInnerHTML = function setInnerHTML(id, html) {
-  document.querySelector(id).innerHTML = html;
-};
-
-exports.setInnerHTML = setInnerHTML;
-},{}],"js/utilities/booking/handleModal.js":[function(require,module,exports) {
+},{"./toggleClassList":"js/utilities/dom/toggleClassList.js"}],"js/utilities/booking/handleModal.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4891,8 +4859,6 @@ exports.handleModal = void 0;
 var _types = require("./types");
 
 var _toggleModal = require("../dom/toggleModal");
-
-var _setInnerHTML = require("../dom/setInnerHTML");
 
 var getModalParams = function getModalParams(type, payload) {
   switch (type) {
@@ -4929,47 +4895,12 @@ var handleModal = function handleModal(type, payload) {
       newHTML = _getModalParams.newHTML;
 
   console.log(modalSelector, HTMLSelector, newHTML);
-  if (HTMLSelector) (0, _setInnerHTML.setInnerHTML)(HTMLSelector, newHTML);
+  if (HTMLSelector) document.querySelector(HTMLSelector).innerHTML = newHTML;
   (0, _toggleModal.showModal)(modalSelector);
 };
 
 exports.handleModal = handleModal;
-},{"./types":"js/utilities/booking/types.js","../dom/toggleModal":"js/utilities/dom/toggleModal.js","../dom/setInnerHTML":"js/utilities/dom/setInnerHTML.js"}],"js/utilities/dom/forEach.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.forEach = void 0;
-
-function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-var forEach = function forEach(nodeList, cb1, cb2) {
-  var nodes = nodeList;
-  if (typeof nodeList === "string") nodes = document.querySelectorAll(nodes);
-
-  var _iterator = _createForOfIteratorHelper(nodes),
-      _step;
-
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var node = _step.value;
-      cb1(node);
-      if (cb2) cb2(node);
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-};
-
-exports.forEach = forEach;
-},{}],"js/utilities/booking/autofillForm.js":[function(require,module,exports) {
+},{"./types":"js/utilities/booking/types.js","../dom/toggleModal":"js/utilities/dom/toggleModal.js"}],"js/utilities/booking/autofillForm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4979,20 +4910,18 @@ exports.autoFillForm = void 0;
 
 var _toggleModal = require("../dom/toggleModal");
 
-var _forEach = require("../dom/forEach");
-
 var autoFillForm = function autoFillForm(data) {
   console.log(data);
   document.querySelector("#name").value = data.name;
   document.querySelector("#email").value = data.email;
-  (0, _forEach.forEach)("select", function (select) {
+  document.querySelectorAll("select").forEach(function (select) {
     return select.value = data[select.name];
   });
   if (document.querySelector(".modal-active")) (0, _toggleModal.hideModal)();
 };
 
 exports.autoFillForm = autoFillForm;
-},{"../dom/toggleModal":"js/utilities/dom/toggleModal.js","../dom/forEach":"js/utilities/dom/forEach.js"}],"js/utilities/booking/validateBooking.js":[function(require,module,exports) {
+},{"../dom/toggleModal":"js/utilities/dom/toggleModal.js"}],"js/utilities/booking/validateBooking.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5003,7 +4932,6 @@ exports.validateBooking = exports.removeError = exports.showError = void 0;
 var _toggleClassList = require("../dom/toggleClassList");
 
 var inputs = document.querySelectorAll("input");
-var selects = document.querySelectorAll("select");
 var errorBoxes = document.querySelectorAll(".error");
 
 var showError = function showError(index) {
@@ -5050,8 +4978,6 @@ var _fetch = require("./fetch");
 
 var _types = require("./types");
 
-var _forEach = require("../dom/forEach");
-
 var getAvailableParty = function getAvailableParty(restaurant, day, time) {
   var id = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
   return (0, _fetch.fetch)(_types.GET_AVAILABILITY, {
@@ -5082,12 +5008,10 @@ var setAvailableParty = function setAvailableParty() {
 
     party.append(option);
   }
-
-  (0, _forEach.forEach)('[data-dropdown="party"] button', changeInputValue);
 };
 
 exports.setAvailableParty = setAvailableParty;
-},{"./fetch":"js/utilities/booking/fetch.js","./types":"js/utilities/booking/types.js","../dom/forEach":"js/utilities/dom/forEach.js"}],"js/utilities/booking/fetch.js":[function(require,module,exports) {
+},{"./fetch":"js/utilities/booking/fetch.js","./types":"js/utilities/booking/types.js"}],"js/utilities/booking/fetch.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5098,8 +5022,6 @@ exports.fetch = void 0;
 var _axios = _interopRequireDefault(require("axios"));
 
 var _types = require("./types");
-
-var _addSessionStorage = require("../storage/addSessionStorage");
 
 var _handleModal = require("./handleModal");
 
@@ -5120,8 +5042,9 @@ var getFetchParams = function getFetchParams(type, params) {
         resolved: function resolved(res) {
           (0, _availableParty.setAvailableParty)(res.data.party);
         },
-        rejected: function rejected(res) {
-          console.log("fail"); // setAvailableParty([2, 3, 4, 5, 6, 7, 8]);
+        rejected: function rejected() {
+          console.log("failed to get availability");
+          (0, _availableParty.setAvailableParty)([2, 3, 4, 5, 6, 7, 8]);
         }
       };
 
@@ -5130,11 +5053,11 @@ var getFetchParams = function getFetchParams(type, params) {
         method: "POST",
         url: "./api/book",
         resolved: function resolved(res) {
-          (0, _addSessionStorage.removeSessionStorage)("booking");
+          sessionStorage.removeItem("booking");
           (0, _handleModal.handleModal)(_types.SHOW_BOOKED, res.data);
         },
         rejected: function rejected(err) {
-          (0, _addSessionStorage.addSessionStorage)("booking", JSON.stringify(params));
+          sessionStorage.addItem("booking", JSON.stringify(params));
           err.response.status === 409 ? (0, _handleModal.handleModal)(_types.SHOW_FULL, err.response.data) : (0, _handleModal.handleModal)(_types.SHOW_FAILED);
         }
       };
@@ -5159,7 +5082,7 @@ var getFetchParams = function getFetchParams(type, params) {
           (0, _handleModal.handleModal)(_types.SHOW_BOOKED, res.data);
         },
         rejected: function rejected(err) {
-          (0, _addSessionStorage.addSessionStorage)("booking", JSON.stringify(params));
+          sessionStorage.addItem("booking", JSON.stringify(params));
           err.response.status === 409 ? (0, _handleModal.handleModal)(_types.SHOW_FULL, err.response.data) : (0, _handleModal.handleModal)(_types.SHOW_FAILED);
         }
       };
@@ -5198,7 +5121,7 @@ var fetch = function fetch(type, params) {
 };
 
 exports.fetch = fetch;
-},{"axios":"node_modules/axios/index.js","./types":"js/utilities/booking/types.js","../storage/addSessionStorage":"js/utilities/storage/addSessionStorage.js","./handleModal":"js/utilities/booking/handleModal.js","./autofillForm":"js/utilities/booking/autofillForm.js","./validateBooking":"js/utilities/booking/validateBooking.js","./availableParty":"js/utilities/booking/availableParty.js"}],"js/utilities/booking/createDate.js":[function(require,module,exports) {
+},{"axios":"node_modules/axios/index.js","./types":"js/utilities/booking/types.js","./handleModal":"js/utilities/booking/handleModal.js","./autofillForm":"js/utilities/booking/autofillForm.js","./validateBooking":"js/utilities/booking/validateBooking.js","./availableParty":"js/utilities/booking/availableParty.js"}],"js/utilities/booking/createDate.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5228,8 +5151,6 @@ exports.handleSubmit = exports.setParams = void 0;
 var _fetch = require("./fetch");
 
 var _validateBooking = require("./validateBooking");
-
-var _addSessionStorage = require("../storage/addSessionStorage");
 
 var _createDate = require("./createDate");
 
@@ -5265,14 +5186,14 @@ var handleSubmit = function handleSubmit(e, type, button) {
     console.log(name.value);
     var params = setParams();
     console.log(params);
-    (0, _addSessionStorage.addSessionStorage)("booking", JSON.stringify(params));
+    sessionStorage.addItem("booking", JSON.stringify(params));
     document.querySelector(button).disabled = true;
     (0, _fetch.fetch)(type, params);
   }
 };
 
 exports.handleSubmit = handleSubmit;
-},{"./fetch":"js/utilities/booking/fetch.js","./validateBooking":"js/utilities/booking/validateBooking.js","../storage/addSessionStorage":"js/utilities/storage/addSessionStorage.js","./createDate":"js/utilities/booking/createDate.js"}],"node_modules/date-fns/esm/addMonths/index.js":[function(require,module,exports) {
+},{"./fetch":"js/utilities/booking/fetch.js","./validateBooking":"js/utilities/booking/validateBooking.js","./createDate":"js/utilities/booking/createDate.js"}],"node_modules/date-fns/esm/addMonths/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20708,25 +20629,7 @@ var setAvailableTimes = function setAvailableTimes(date, restaurant) {
 };
 
 exports.setAvailableTimes = setAvailableTimes;
-},{"date-fns":"node_modules/date-fns/esm/index.js","date-fns/format":"node_modules/date-fns/esm/format/index.js","./createDate":"js/utilities/booking/createDate.js"}],"js/utilities/dom/addEventListener.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.addEventListener = void 0;
-
-var addEventListener = function addEventListener(node, cb) {
-  var event = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "click";
-  typeof node === "string" ? document.querySelector(node).addEventListener(event, function () {
-    return cb(node);
-  }) : node.addEventListener(event, function () {
-    return cb(node);
-  });
-};
-
-exports.addEventListener = addEventListener;
-},{}],"js/book.js":[function(require,module,exports) {
+},{"date-fns":"node_modules/date-fns/esm/index.js","date-fns/format":"node_modules/date-fns/esm/format/index.js","./createDate":"js/utilities/booking/createDate.js"}],"js/book.js":[function(require,module,exports) {
 "use strict";
 
 var _availableDates = require("./utilities/booking/availableDates");
@@ -20741,36 +20644,37 @@ var _availableTimes = require("./utilities/booking/availableTimes");
 
 var _availableParty = require("./utilities/booking/availableParty");
 
-var _addEventListener = require("./utilities/dom/addEventListener");
-
 //preparing form and select options
 (0, _availableDates.setAvailableDates)(Date.now());
 (0, _availableTimes.setAvailableTimes)(day.value, restaurant.value);
 (0, _availableParty.getAvailableParty)(restaurant.value, day.value, time.value); //change select options when restaurant changes
 
-(0, _addEventListener.addEventListener)(restaurant, function () {
+restaurant.onchange = function () {
   if (day.value) (0, _availableTimes.setAvailableTimes)(day.value, restaurant.value);
   if (day.value && time.value) (0, _availableParty.getAvailableParty)(restaurant.value, day.value, time.value);
-}, "change"); //change select options when day changes
+}; //change select options when day changes
 
-(0, _addEventListener.addEventListener)(day, function () {
+
+day.onchange = function () {
   if (restaurant.value) (0, _availableTimes.setAvailableTimes)(day.value, restaurant.value);
   if (restaurant.value && time.value) (0, _availableParty.getAvailableParty)(restaurant.value, day.value, time.value);
-}, "change"); //change select options when time changes
+}; //change select options when time changes
 
-(0, _addEventListener.addEventListener)(time, function () {
+
+time.onchange = function () {
   if (restaurant.value && day.value) (0, _availableParty.getAvailableParty)(restaurant.value, day.value, time.value);
-}, "change"); //fill from session storage
+}; //fill from session storage
+
 
 if (sessionStorage.booking) {
   (0, _autofillForm.autoFillForm)(JSON.parse(sessionStorage.booking));
 } // create booking /book
 
 
-(0, _addEventListener.addEventListener)(".postBookForm", function (e) {
-  return (0, _submitBooking.handleSubmit)(e, _types.POST_BOOKING, ".bookBtn");
-}, "submit");
-},{"./utilities/booking/availableDates":"js/utilities/booking/availableDates.js","./utilities/booking/submitBooking":"js/utilities/booking/submitBooking.js","./utilities/booking/types":"js/utilities/booking/types.js","./utilities/booking/autofillForm":"js/utilities/booking/autofillForm.js","./utilities/booking/availableTimes":"js/utilities/booking/availableTimes.js","./utilities/booking/availableParty":"js/utilities/booking/availableParty.js","./utilities/dom/addEventListener":"js/utilities/dom/addEventListener.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+document.querySelector(".postBookForm").onsubmit = function (e) {
+  (0, _submitBooking.handleSubmit)(e, _types.POST_BOOKING, ".bookBtn");
+};
+},{"./utilities/booking/availableDates":"js/utilities/booking/availableDates.js","./utilities/booking/submitBooking":"js/utilities/booking/submitBooking.js","./utilities/booking/types":"js/utilities/booking/types.js","./utilities/booking/autofillForm":"js/utilities/booking/autofillForm.js","./utilities/booking/availableTimes":"js/utilities/booking/availableTimes.js","./utilities/booking/availableParty":"js/utilities/booking/availableParty.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -20798,7 +20702,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62786" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51249" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
