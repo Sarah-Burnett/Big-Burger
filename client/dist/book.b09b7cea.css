@@ -31,6 +31,7 @@
 }
 .modal button {
   margin: 1em;
+<<<<<<< HEAD
   padding: 1em;
   border-style: none;
   background: #36970f;
@@ -44,6 +45,11 @@
 .modal button:hover {
   background: #205909;
 }
+=======
+  width: 90%;
+  border-radius: 1px;
+}
+>>>>>>> dates
 .modal input, .modal form textarea, form .modal textarea {
   width: 90%;
 }
@@ -143,6 +149,59 @@ body {
   outline-color: #205909;
 }
 
+button,
+input[type=submit],
+form textarea[type=submit] {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  line-height: 1.2;
+  border-style: none;
+  background: #36970f;
+  cursor: pointer;
+  height: 10vh;
+  line-height: 10vh;
+  border-style: none;
+  width: 100%;
+}
+@media (min-width: 600px) {
+  button,
+input[type=submit],
+form textarea[type=submit] {
+    font-size: 16px;
+  }
+}
+@media (min-width: 900px) {
+  button,
+input[type=submit],
+form textarea[type=submit] {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1200px) {
+  button,
+input[type=submit],
+form textarea[type=submit] {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1800px) {
+  button,
+input[type=submit],
+form textarea[type=submit] {
+    font-size: 22px;
+  }
+}
+button:hover,
+input[type=submit]:hover,
+form textarea[type=submit]:hover {
+  background: #205909;
+}
+button:disabled:hover,
+input[type=submit]:disabled:hover,
+form textarea[type=submit]:disabled:hover {
+  background: #36970f;
+}
+
 nav {
   position: fixed;
   z-index: 99;
@@ -201,6 +260,19 @@ nav #backBtn:hover {
   align-items: center;
   justify-content: space-between;
   padding: 1em;
+<<<<<<< HEAD
+=======
+  overflow-y: scroll;
+}
+@media (min-width: 900px) {
+  #bookingForm {
+    -ms-overflow-style: none;
+  }
+  #bookingForm::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+>>>>>>> dates
 }
 
 form {
@@ -214,6 +286,11 @@ form .label,
 form .field,
 form input,
 form textarea,
+<<<<<<< HEAD
+=======
+form select,
+form .option,
+>>>>>>> dates
 form .dropdownContent {
   width: 95vw;
 }
@@ -227,6 +304,11 @@ form .dropdownContent {
   form .field,
 form input,
 form textarea,
+<<<<<<< HEAD
+=======
+form select,
+form .option,
+>>>>>>> dates
 form .dropdownContent {
     width: 50vw;
   }
@@ -239,6 +321,11 @@ form .row .label,
 form .row .field,
 form .row input,
 form .row textarea,
+<<<<<<< HEAD
+=======
+form .row select,
+form .row .option,
+>>>>>>> dates
 form .row .dropdownContent {
   width: 95vw;
 }
@@ -252,6 +339,11 @@ form .row .dropdownContent {
   form .row .field,
 form .row input,
 form .row textarea,
+<<<<<<< HEAD
+=======
+form .row select,
+form .row .option,
+>>>>>>> dates
 form .row .dropdownContent {
     width: 50vw;
   }
@@ -263,21 +355,40 @@ form .row .dropdownContent {
     margin: 2vh 0 1vw;
   }
 }
-form input, form textarea {
+form input, form textarea,
+form select {
   display: block;
   width: 100%;
   font-family: "Source Sans Pro", sans-serif;
   font-size: larger;
+<<<<<<< HEAD
   text-align: center;
   height: 65px;
   padding: 5px;
+=======
+  text-align: left;
+  height: 10vh;
+  padding: 2vw;
+>>>>>>> dates
   border: none;
   background: #f5f5f5;
 }
 @media (min-width: 900px) {
+<<<<<<< HEAD
   form input, form textarea {
     padding: 2px;
+=======
+  form input, form textarea,
+form select {
+    padding: 1vw;
+>>>>>>> dates
   }
+}
+form option {
+  padding: 2vw;
+}
+form option:hover {
+  background: #36970f;
 }
 form .inputInvalid {
   border: 2px solid red;
@@ -301,6 +412,11 @@ form .message .label,
 form .message .field,
 form .message input,
 form .message textarea,
+<<<<<<< HEAD
+=======
+form .message select,
+form .message .option,
+>>>>>>> dates
 form .message .dropdownContent {
   width: 95vw;
 }
@@ -314,6 +430,11 @@ form .message .dropdownContent {
   form .message .field,
 form .message input,
 form .message textarea,
+<<<<<<< HEAD
+=======
+form .message select,
+form .message .option,
+>>>>>>> dates
 form .message .dropdownContent {
     width: 50vw;
   }
@@ -327,9 +448,9 @@ form .message .dropdownContent {
 form textarea {
   min-height: 25vh;
   resize: vertical;
-  text-align: center;
   background: #f5f5f5;
   color: black;
+<<<<<<< HEAD
 }
 
 .dropdown {
@@ -395,6 +516,9 @@ form .dropdownContent textarea[type=submit]:hover {
 }
 .dropdown:focus-within .dropdownContent::-webkit-scrollbar {
   display: none;
+=======
+  padding: 2vh;
+>>>>>>> dates
 }
 
 .buttons {
@@ -406,6 +530,11 @@ form .dropdownContent textarea[type=submit]:hover {
 .buttons input,
 .buttons form textarea,
 form .buttons textarea,
+<<<<<<< HEAD
+=======
+.buttons select,
+.buttons .option,
+>>>>>>> dates
 .buttons .dropdownContent {
   width: 95vw;
 }
@@ -420,10 +549,16 @@ form .buttons textarea,
 .buttons input,
 .buttons form textarea,
 form .buttons textarea,
+<<<<<<< HEAD
+=======
+.buttons select,
+.buttons .option,
+>>>>>>> dates
 .buttons .dropdownContent {
     width: 50vw;
   }
 }
+<<<<<<< HEAD
 .buttons button,
 .buttons input[type=submit],
 .buttons form textarea[type=submit],
@@ -444,6 +579,8 @@ form .buttons textarea[type=submit] {
 form .buttons textarea[type=submit]:hover {
   background: #205909;
 }
+=======
+>>>>>>> dates
 .buttons #deleteBtn {
   background: red;
 }

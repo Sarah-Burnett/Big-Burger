@@ -2,39 +2,56 @@ import {
 	findBookingfromURL,
 	findBookingfromForm,
 } from "./utilities/booking/findBooking";
-import { setAvailableDates } from "./utilities/booking/availableDates";
-import { changeInputValue } from "./utilities/dom/changeInputValue";
 import { editForm } from "./utilities/booking/editForm";
-import { handleSubmit } from "./utilities/booking/submitBooking";
 import { fetch } from "./utilities/booking/fetch";
 import { DELETE_BOOKING, PUT_BOOKING } from "./utilities/booking/types";
+import { setAvailableDates } from "./utilities/booking/availableDates";
+import { handleSubmit } from "./utilities/booking/submitBooking";
+import {
+	getAvailableParty,
+	setAvailableParty,
+} from "./utilities/booking/availableParty";
+import { setAvailableTimes } from "./utilities/booking/availableTimes";
 
-//preparing form and form Buttons
 setAvailableDates(Date.now());
-document.querySelector("#date").addEventListener("onchange", (event) => {
-	if (event.target.validity.valid) {
-		const day = getDayFromDate;
-		setAvailableTimes(day);
-	}
-});
-// form dropdown buttons
-document.querySelectorAll(".dropdownBtn").forEach((btn) => {
-	btn.addEventListener("click", () => {
-		changeInputValue(btn.dataset.input, btn.dataset.value);
-	});
-});
+setAvailableTimes(day.value, restaurant.value);
+setAvailableParty();
 
 //edit form
+editBtn.onclick = (e) => {
+	editForm(e);
+	getAvailableParty(restaurant.value, day.value, time.value, id.value);
+};
 
-document.querySelector("#editBtn").onclick = (event) => editForm(event);
+//change select options when restaurant changes
+restaurant.onchange = () => {
+	if (day.value) setAvailableTimes(day.value, restaurant.value);
+	if (day.value && time.value)
+		getAvailableParty(restaurant.value, day.value, time.value);
+};
+
+//change select options when day changes
+day.onchange = () => {
+	if (restaurant.value) setAvailableTimes(day.value, restaurant.value);
+	if (restaurant.value && time.value)
+		getAvailableParty(restaurant.value, day.value, time.value);
+};
+
+//change select options when time changes
+time.onchange = () => {
+	if (restaurant.value && day.value)
+		getAvailableParty(restaurant.value, day.value, time.value);
+};
 
 //booking CRUD
 //get existing booking
 findBookingfromURL();
-document.querySelector("#findBtn").onclick = (e) => findBookingfromForm(e);
+findBtn.onclick = (e) => findBookingfromForm(e);
+
 // delete booking
-document.querySelector("#deleteBtn").onclick = () =>
+deleteBtn.onclick = () =>
 	fetch(DELETE_BOOKING, { id: document.querySelector("#id").value });
+
 //update booking
 document.querySelector(".putBookForm").onsubmit = (e) =>
 	handleSubmit(e, PUT_BOOKING, ".bookBtn");

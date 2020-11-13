@@ -15,7 +15,6 @@ export const findBookingfromURL = () => {
 export const findBookingfromForm = (event) => { 
   event.preventDefault();
   const id = document.querySelector('#id').value;
-  // getBooking(document.querySelector('#id').value)
   fetch(GET_BOOKING, { id });
 };
 

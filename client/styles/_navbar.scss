@@ -18,7 +18,7 @@ nav {
 		z-index: 98;
 		height: 10vh;
 	}
-	.burger {
+	#burger {
 		cursor: pointer;
 		padding: 1vw;
 		.line1,
@@ -121,7 +121,7 @@ nav {
 		}
 	}
 
-	.burger {
+	#burger {
 		display: none;
 	}
 }

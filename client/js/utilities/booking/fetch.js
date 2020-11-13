@@ -8,24 +8,39 @@ import {
 	SHOW_FAILED,
 	SHOW_BOOKED,
 	SHOW_FULL,
+	GET_AVAILABILITY,
 } from "./types";
-import { addSessionStorage } from "../storage/addSessionStorage";
 import { handleModal } from "./handleModal";
 import { autoFillForm } from "./autofillForm";
 import { showError } from "./validateBooking";
-
+import { setAvailableParty } from "./availableParty";
 
 const getFetchParams = (type, params) => {
 	switch (type) {
+		case GET_AVAILABILITY:
+			return {
+				method: "GET",
+				url: `./api/book/avail
+				?restaurant=${params.restaurant}
+				&day=${params.day}
+				&time=${params.time}
+				&id=${params.id}`,
+				resolved: function (res) {
+					setAvailableParty(res.data.party);
+				},
+				rejected: function () {
+					setAvailableParty([2, 3, 4, 5, 6, 7, 8]);
+				},
+			};
 		case POST_BOOKING:
 			return {
 				method: "POST",
 				url: "./api/book",
 				resolved: function (res) {
+					sessionStorage.removeItem("booking");
 					handleModal(SHOW_BOOKED, res.data);
 				},
 				rejected: function (err) {
-					addSessionStorage("booking", JSON.stringify(params));
 					err.response.status === 409
 						? handleModal(SHOW_FULL, err.response.data)
 						: handleModal(SHOW_FAILED);
@@ -45,16 +60,15 @@ const getFetchParams = (type, params) => {
 		case PUT_BOOKING:
 			return {
 				method: "PUT",
-				url: `./api/booking/${document.querySelector('#id').value}`,
+				url: `./api/booking/${document.querySelector("#id").value}`,
 				resolved: function (res) {
-					handleModal(SHOW_BOOKED, res.data)
+					handleModal(SHOW_BOOKED, res.data);
 				},
 				rejected: function (err) {
-					addSessionStorage("booking", JSON.stringify(params));
 					err.response.status === 409
 						? handleModal(SHOW_FULL, err.response.data)
 						: handleModal(SHOW_FAILED);
-				}
+				},
 			};
 		case DELETE_BOOKING:
 			return {

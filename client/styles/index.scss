@@ -40,9 +40,9 @@ button {
 	height: 15px;
 	width: 15px;
 	margin: 0 2px;
-	background-color: $green;
+	background-color: $darkGreen;
 	&:nth-child(1) {
-		background-color: $darkGreen;
+		background-color: $green;
 	}
 	border-radius: 50%;
 	display: inline-block;
@@ -52,6 +52,17 @@ button {
 
 a {
 	cursor: pointer;
+}
+
+button {
+	font-family: "Source Sans Pro", sans-serif;
+	padding: 1em;
+	border-style: none;
+	background: $green;
+	cursor: pointer;
+	&:hover {
+		background: $darkGreen;
+	}
 }
 
 @import "navbar";

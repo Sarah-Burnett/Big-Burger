@@ -38,19 +38,11 @@
 		align-items: center;
 		justify-content: space-around;
 		button {
-			font-family: "Source Sans Pro", sans-serif;
 			height: 15vh;
 			flex: 1;
-            padding: 1vw;
-			@media (min-width: $desktop) {
-				padding: 1em;
+			margin: 1vw;
+			@media (min-width: 720px) {
 				margin: 0 1em;
-			}
-			border-style: none;
-			background: $green;
-			cursor: pointer;
-			&:hover {
-				background: $darkGreen;
 			}
 		}
 	}

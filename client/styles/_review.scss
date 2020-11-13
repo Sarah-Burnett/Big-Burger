@@ -19,7 +19,7 @@
 	}
 	@include flexCenter(column);
 	h2 {
-		height: 10vh;
+		min-height: 10vh;
 	}
 
 	//dot in index

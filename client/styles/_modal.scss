@@ -27,15 +27,6 @@
 	margin: auto;
 	button {
 		margin: 1em;
-		padding: 1em;
-		border-style: none;
-		background: $green;
-		font-family: "Source Sans Pro", sans-serif;
-		@include fontSize;
-		cursor: pointer;
-		&:hover {
-			background: $darkGreen;
-		}
 		width: 90%;
 		@include borderRadius;
 	}

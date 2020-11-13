@@ -117,101 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/utilities/styles.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.darkGreen = exports.green = exports.white = void 0;
-var white = '#F5F5F5';
-exports.white = white;
-var green = '#36970F';
-exports.green = green;
-var darkGreen = '#205909';
-exports.darkGreen = darkGreen;
-},{}],"js/utilities/dom/changeBackground.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.changeBackground = void 0;
-
-var _styles = require("../styles");
-
-var changeBackground = function changeBackground(elem) {
-  var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _styles.green;
-  elem.style.background = color;
-};
-
-exports.changeBackground = changeBackground;
-},{"../styles":"js/utilities/styles.js"}],"js/utilities/dom/changeVisibility.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.displayElement = exports.hideElement = void 0;
-
-var hideElement = function hideElement(elem) {
-  elem.style.opacity = "0";
-  elem.style.pointerEvents = "none";
-};
-
-exports.hideElement = hideElement;
-
-var displayElement = function displayElement(elem) {
-  elem.style.opacity = "1";
-  elem.style.pointerEvents = "auto";
-};
-
-exports.displayElement = displayElement;
-},{}],"js/utilities/dom/updateActiveDot.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.updateActiveDot = void 0;
-
-var _styles = require("../styles");
-
-var _changeBackground = require("./changeBackground");
-
-var _changeVisibility = require("./changeVisibility");
-
-var updateActiveDot = function updateActiveDot(dotList, textList, index) {
-  dotList.forEach(function (dot) {
-    return (0, _changeBackground.changeBackground)(dot, _styles.green);
-  });
-  textList.forEach(function (item) {
-    return (0, _changeVisibility.hideElement)(item);
-  });
-  (0, _changeBackground.changeBackground)(dotList[index], _styles.darkGreen);
-  (0, _changeVisibility.displayElement)(textList[index]);
-};
-
-exports.updateActiveDot = updateActiveDot;
-},{"../styles":"js/utilities/styles.js","./changeBackground":"js/utilities/dom/changeBackground.js","./changeVisibility":"js/utilities/dom/changeVisibility.js"}],"js/utilities/dom/addEventListener.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.addEventListener = void 0;
-
-var addEventListener = function addEventListener(node, cb) {
-  var event = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "click";
-  typeof node === "string" ? document.querySelector(node).addEventListener(event, function () {
-    return cb(node);
-  }) : node.addEventListener(event, function () {
-    return cb(node);
-  });
-};
-
-exports.addEventListener = addEventListener;
-},{}],"js/utilities/dom/toggleClassList.js":[function(require,module,exports) {
+})({"js/utilities/dom/toggleClassList.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -261,7 +167,28 @@ var showModal = function showModal(modal) {
 };
 
 exports.showModal = showModal;
-},{"./toggleClassList":"js/utilities/dom/toggleClassList.js"}],"menu.json":[function(require,module,exports) {
+},{"./toggleClassList":"js/utilities/dom/toggleClassList.js"}],"js/utilities/dom/changeVisibility.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.displayElement = exports.hideElement = void 0;
+
+var hideElement = function hideElement(elem) {
+  elem.style.opacity = "0";
+  elem.style.pointerEvents = "none";
+};
+
+exports.hideElement = hideElement;
+
+var displayElement = function displayElement(elem) {
+  elem.style.opacity = "1";
+  elem.style.pointerEvents = "auto";
+};
+
+exports.displayElement = displayElement;
+},{}],"menu.json":[function(require,module,exports) {
 module.exports = [{
   "menu": "To tempt your appetite",
   "intro": "What will it be",
@@ -374,45 +301,111 @@ var updateMenu = function updateMenu(index) {
 };
 
 exports.updateMenu = updateMenu;
-},{"./changeVisibility":"js/utilities/dom/changeVisibility.js","/menu.json":"menu.json"}],"js/utilities/dom/forEach.js":[function(require,module,exports) {
+},{"./changeVisibility":"js/utilities/dom/changeVisibility.js","/menu.json":"menu.json"}],"js/utilities/styles.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.forEach = void 0;
-
-var forEach = function forEach(nodeList, cb) {
-  typeof nodeList === "string" ? document.querySelectorAll(nodeList).forEach(function (node) {
-    return cb(node);
-  }) : nodeList.forEach(function (node) {
-    return cb(node);
-  });
-};
-
-exports.forEach = forEach;
-},{}],"js/index.js":[function(require,module,exports) {
+exports.darkGreen = exports.green = exports.white = void 0;
+var white = '#F5F5F5';
+exports.white = white;
+var green = '#36970F';
+exports.green = green;
+var darkGreen = '#205909';
+exports.darkGreen = darkGreen;
+},{}],"js/utilities/dom/Carousel.js":[function(require,module,exports) {
 "use strict";
 
-var _updateActiveDot = require("./utilities/dom/updateActiveDot");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
-var _addEventListener = require("./utilities/dom/addEventListener");
+var _styles = require("../styles");
+
+var _changeVisibility = require("./changeVisibility");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var displayDotActive = function displayDotActive(dot) {
+  return dot.style.background = _styles.green;
+};
+
+var displayDotInactive = function displayDotInactive(dot) {
+  return dot.style.background = _styles.darkGreen;
+};
+
+var Carousel = /*#__PURE__*/function () {
+  function Carousel(items, dots) {
+    _classCallCheck(this, Carousel);
+
+    this.items = document.querySelectorAll(items);
+    this.dots = document.querySelectorAll(dots);
+    this.length = this.items.length;
+    this.activeIndex = 0;
+    this.interval = false;
+  }
+
+  _createClass(Carousel, [{
+    key: "changeItem",
+    value: function changeItem(index) {
+      (0, _changeVisibility.hideElement)(this.items[this.activeIndex]);
+      displayDotInactive(this.dots[this.activeIndex]);
+      (0, _changeVisibility.displayElement)(this.items[index]);
+      displayDotActive(this.dots[index]);
+      this.activeIndex = index;
+      return this;
+    }
+  }, {
+    key: "autoChangeItem",
+    value: function autoChangeItem() {
+      var index = this.activeIndex + 1;
+
+      if (index < this.length) {
+        this.changeItem(index);
+        this.activeIndex = index;
+        return;
+      }
+
+      this.changeItem(0);
+      this.activeIndex = 0;
+    }
+  }]);
+
+  return Carousel;
+}();
+
+exports.default = Carousel;
+},{"../styles":"js/utilities/styles.js","./changeVisibility":"js/utilities/dom/changeVisibility.js"}],"js/index.js":[function(require,module,exports) {
+"use strict";
 
 var _toggleModal = require("./utilities/dom/toggleModal");
 
 var _updateMenu = require("./utilities/dom/updateMenu");
 
-var _forEach = require("./utilities/dom/forEach");
-
 var _toggleClassList = require("./utilities/dom/toggleClassList");
+
+var _Carousel = _interopRequireDefault(require("./utilities/dom/Carousel"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //nav bar - fixed on scroll & mob nav
 window.onscroll = function () {
   window.pageYOffset >= 10 ? (0, _toggleClassList.addClassList)("nav", "nav-fixed") : (0, _toggleClassList.removeClassList)("nav", "nav-fixed");
 };
 
+<<<<<<< HEAD
 (0, _addEventListener.addEventListener)(".burger", function () {
   return (0, _toggleClassList.toggleClassList)("body", "nav-active");
+=======
+burger.addEventListener("click", function () {
+  return (0, _toggleClassList.toggleClassList)("nav", "nav-active");
+>>>>>>> dates
 }); // smooth scroll
 
 new SmoothScroll('a[href*="#"]', {
@@ -421,17 +414,18 @@ new SmoothScroll('a[href*="#"]', {
   header: "[data-scroll-header]"
 }); //update menu contents
 
-(0, _addEventListener.addEventListener)("#button-starter", function () {
+starterBtn.addEventListener("click", function () {
   return (0, _updateMenu.updateMenu)(0);
 });
-(0, _addEventListener.addEventListener)("#button-sides", function () {
+sidesBtn.addEventListener("click", function () {
   return (0, _updateMenu.updateMenu)(1);
 });
-(0, _addEventListener.addEventListener)("#button-burger", function () {
+burgerBtn.addEventListener("click", function () {
   return (0, _updateMenu.updateMenu)(2);
 });
-(0, _addEventListener.addEventListener)("#button-pudding", function () {
+puddingBtn.addEventListener("click", function () {
   return (0, _updateMenu.updateMenu)(3);
+<<<<<<< HEAD
 }); //review carousel
 
 {
@@ -481,20 +475,47 @@ new SmoothScroll('a[href*="#"]', {
   locationDots.forEach(function (dot, index) {
     (0, _addEventListener.addEventListener)(dot, function () {
       return updateLocationDot(index);
+=======
+});
+{
+  var review = new _Carousel.default(".review-item", ".review-dot");
+  var reviewInterval;
+
+  var setReviewInterval = function setReviewInterval() {
+    reviewInterval = setInterval(function () {
+      return review.autoChangeItem();
+    }, 3000);
+  };
+
+  review.dots.forEach(function (item, index) {
+    item.addEventListener("click", function () {
+      clearInterval(reviewInterval);
+      review.changeItem(index);
+      setReviewInterval();
+    });
+  });
+  setReviewInterval();
+}
+{
+  var location = new _Carousel.default(".location-item", ".location-dot");
+  location.dots.forEach(function (item, index) {
+    item.addEventListener("click", function () {
+      return location.changeItem(index);
+>>>>>>> dates
     });
   });
 } //location modals
 
-(0, _addEventListener.addEventListener)(".glensgaich-btn", function () {
+document.querySelector(".glensgaich-btn").addEventListener("click", function () {
   return (0, _toggleModal.showModal)(".glensgaich-map");
 });
-(0, _addEventListener.addEventListener)(".tanygrisiau-btn", function () {
+document.querySelector(".tanygrisiau-btn").addEventListener("click", function () {
   return (0, _toggleModal.showModal)(".tanygirisau-map");
 });
-(0, _forEach.forEach)(".modal-close", function (close) {
-  return (0, _addEventListener.addEventListener)(close, _toggleModal.hideModal);
+document.querySelectorAll(".modal-close").forEach(function (close) {
+  return close.addEventListener("click", _toggleModal.hideModal);
 });
-},{"./utilities/dom/updateActiveDot":"js/utilities/dom/updateActiveDot.js","./utilities/dom/addEventListener":"js/utilities/dom/addEventListener.js","./utilities/dom/toggleModal":"js/utilities/dom/toggleModal.js","./utilities/dom/updateMenu":"js/utilities/dom/updateMenu.js","./utilities/dom/forEach":"js/utilities/dom/forEach.js","./utilities/dom/toggleClassList":"js/utilities/dom/toggleClassList.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./utilities/dom/toggleModal":"js/utilities/dom/toggleModal.js","./utilities/dom/updateMenu":"js/utilities/dom/updateMenu.js","./utilities/dom/toggleClassList":"js/utilities/dom/toggleClassList.js","./utilities/dom/Carousel":"js/utilities/dom/Carousel.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -522,7 +543,11 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+<<<<<<< HEAD
   var ws = new WebSocket(protocol + '://' + hostname + ':' + "54907" + '/');
+=======
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54689" + '/');
+>>>>>>> dates
 
   ws.onmessage = function (event) {
     checkedAssets = {};

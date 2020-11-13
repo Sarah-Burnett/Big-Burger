@@ -1,9 +1,10 @@
 import { hideModal } from "../dom/toggleModal";
 
 export const autoFillForm = (data) => {
-	const inputs = document.querySelectorAll("input");
-	inputs.forEach((input) => {
-		if (input.name !== "id") input.value = data[input.name];
-	});
+	document.querySelector("#name").value = data.name;
+	document.querySelector("#email").value = data.email;
+	document
+		.querySelectorAll("select")
+		.forEach((select) => (select.value = data[select.name]));
 	if (document.querySelector(".modal-active")) hideModal();
 };

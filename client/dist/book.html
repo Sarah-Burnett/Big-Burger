@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="/book.b09b7cea.css">
 		<link rel="icon" href="/favicon.8003f84c.png">
 		<title>Big-Burger Booking Form</title>
+		<script src="/book.198dd6d2.js" defer=""></script>
 	<script src="/book.b09b7cea.js"></script></head>
 	<body>
 		<nav data-scroll-header="" class="header">
@@ -40,129 +41,52 @@
 					<div class="label">
 						<label for="restaurant"><h3>Restaurant</h3></label>
 					</div>
-					<div class="field dropdown">
-						<input readonly="" name="restaurant" id="restaurant" value="Glensgaich" pattern="Tanygirisau||Glensgaich" required="">
-						<div class="dropdownContent">
-							<button type="button" class="dropdownBtn" data-input="#restaurant" data-value="Glensgaich">
-								Glensgaich
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#restaurant" data-value="Tanygirisau">
-								Tanygirisau
-							</button>
-						</div>
-						<p class="error restaurantError">Please select a restaurant/p></p>
+					<div class="field">
+						<select readonly="" name="restaurant" id="restaurant" required="">
+							<option value="Glensgaich">Glensgaich</option>
+							<option value="Tanygirisau">Tanygirisau</option>
+						</select>
+						<p class="error">Please select a restaurant</p>
 					</div>
 				</div>
-				<div class="row date">
+				<div class="row day">
 					<div class="label">
-						<label for="date"><h3>Date of Booking</h3></label>
+						<label for="day"><h3>Date of Booking</h3></label>
 					</div>
+<<<<<<< HEAD
 					<div class="field dropdown">
 						<input id="date" name="date" required="">
 						<div class="dropdownContent" data-dropdown="date"></div>
 						<p class="error">
 							Please select a date (dd/mm/yy) in the next two weeks
 						</p>
+=======
+					<div class="field">
+						<select id="day" name="day" required=""></select>
+						<p class="error">Please select a date</p>
+>>>>>>> dates
 					</div>
 				</div>
 				<div class="row time">
 					<div class="label">
 						<label for="time"><h3>Time of Booking</h3></label>
 					</div>
-					<div class="field dropdown">
-						<input readonly="" id="time" name="time" value="17:00" pattern="^[0-2][0-9]:[03][0]$" required="">
-						<div class="dropdownContent">
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="12:00" data-day="wkend">
-								12:00
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="12:30" data-day="wkend">
-								12:30
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="13:00" data-day="wkend">
-								13:00
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="13:30" data-day="wkend">
-								13:30
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="14:00" data-day="wkend">
-								14:00
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="14:30" data-day="wkend">
-								14:30
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="15:00" data-day="wkend">
-								15:00
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="15:30" data-day="wkend">
-								15:30
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="16:00" data-day="wkend">
-								16:00
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="16:30" data-day="wkend">
-								16:30
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="17:00">
-								17:00
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="17:30">
-								17:30
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="18:00">
-								18:00
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="18:30">
-								18:30
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="19:00">
-								19:00
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="19:30">
-								19:00
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="20:00">
-								20:00
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="20:30" data-day="nosun">
-								20:30
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#time" data-value="21:00" data-day="nosun">
-								21:00
-							</button>
-						</div>
-						<p class="error">Please select the time you would like to book</p>
+					<div class="field">
+						<select id="time" name="time" required="">
+							<option disabled="">Please select a restaurant and date</option>
+						</select>
+						<p class="error">Please select a time</p>
 					</div>
 				</div>
 				<div class="row party">
 					<div class="label">
 						<label for="party"><h3>Booking party</h3></label>
 					</div>
-					<div class="field dropdown">
-						<input readonly="" type="number" id="party" name="party" min="2" max="8" value="2" required="">
-						<div class="dropdownContent">
-							<button type="button" class="dropdownBtn" data-input="#party" data-value="2">
-								2
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#party" data-value="3">
-								3
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#party" data-value="4">
-								4
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#party" data-value="5">
-								5
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#party" data-value="6">
-								6
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#party" data-value="7">
-								7
-							</button>
-							<button type="button" class="dropdownBtn" data-input="#party" data-value="8">
-								8
-							</button>
-						</div>
-						<p class="error">Please select the number of people between 2-8</p>
+					<div class="field">
+						<select id="party" name="party" required="">
+							<option disabled="">Please select a time</option>
+						</select>
+						<p class="error">Please select the number of people</p>
 					</div>
 				</div>
 				<div class="message">
@@ -197,6 +121,5 @@
 				<p>Please refresh to try again or give us a call</p>
 			</div>
 		</div>
-		<script src="/book.198dd6d2.js"></script>
 	</body>
 </html>

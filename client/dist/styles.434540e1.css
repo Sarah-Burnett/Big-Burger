@@ -40,18 +40,29 @@ button {
   height: 15px;
   width: 15px;
   margin: 0 2px;
-  background-color: #36970f;
+  background-color: #205909;
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.3s ease;
   cursor: pointer;
 }
 .dot:nth-child(1) {
-  background-color: #205909;
+  background-color: #36970f;
 }
 
 a {
   cursor: pointer;
+}
+
+button {
+  font-family: "Source Sans Pro", sans-serif;
+  padding: 1em;
+  border-style: none;
+  background: #36970f;
+  cursor: pointer;
+}
+button:hover {
+  background: #205909;
 }
 
 nav {
@@ -75,13 +86,13 @@ nav img {
   z-index: 98;
   height: 10vh;
 }
-nav .burger {
+nav #burger {
   cursor: pointer;
   padding: 1vw;
 }
-nav .burger .line1,
-nav .burger .line2,
-nav .burger .line3 {
+nav #burger .line1,
+nav #burger .line2,
+nav #burger .line3 {
   width: 35px;
   height: 5px;
   background-color: #f5f5f5;
@@ -178,7 +189,7 @@ nav .burger .line3 {
     font-size: inherit;
   }
 
-  .burger {
+  #burger {
     display: none;
   }
 }
@@ -301,22 +312,21 @@ nav .burger .line3 {
   }
 }
 #menu-content .menu-nav button {
-  font-family: "Source Sans Pro", sans-serif;
   height: 15vh;
   flex: 1;
+<<<<<<< HEAD
   padding: 1vw;
   border-style: none;
   background: #36970f;
   cursor: pointer;
+=======
+  margin: 1vw;
+>>>>>>> dates
 }
 @media (min-width: 900px) {
   #menu-content .menu-nav button {
-    padding: 1em;
     margin: 0 1em;
   }
-}
-#menu-content .menu-nav button:hover {
-  background: #205909;
 }
 #menu-content .menu-container {
   width: 100vw;
@@ -408,7 +418,10 @@ nav .burger .line3 {
 #location .location-container {
   width: 100vw;
   min-height: 65vh;
+<<<<<<< HEAD
   margin: 2vh;
+=======
+>>>>>>> dates
   position: relative;
   overflow-y: auto;
   display: flex;
@@ -438,15 +451,7 @@ nav .burger .line3 {
   pointer-events: auto;
 }
 #location .location-container .location-item button {
-  font-family: "Source Sans Pro", sans-serif;
   margin: 1vh;
-  padding: 1em;
-  border-style: none;
-  background: #36970f;
-  cursor: pointer;
-}
-#location .location-container .location-item button:hover {
-  background: #205909;
 }
 #location .location-container .location-item .contact a {
   text-decoration: none;
@@ -558,6 +563,7 @@ nav .burger .line3 {
 }
 .modal button {
   margin: 1em;
+<<<<<<< HEAD
   padding: 1em;
   border-style: none;
   background: #36970f;
@@ -571,6 +577,11 @@ nav .burger .line3 {
 .modal button:hover {
   background: #205909;
 }
+=======
+  width: 90%;
+  border-radius: 1px;
+}
+>>>>>>> dates
 .modal input {
   width: 90%;
 }

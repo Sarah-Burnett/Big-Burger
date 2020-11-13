@@ -31,15 +31,7 @@
 				pointer-events: auto;
 			}
 			button {
-				font-family: "Source Sans Pro", sans-serif;
 				margin: 1vh;
-				padding: 1em;
-				border-style: none;
-				background: $green;
-				cursor: pointer;
-				&:hover {
-					background: $darkGreen;
-				}
 			}
 			.contact {
 				a {

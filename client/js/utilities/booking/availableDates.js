@@ -13,6 +13,7 @@ export const getAvailableDates = (today) => {
 
 export const setAvailableDates = (today) => {
 	const dates = getAvailableDates(today);
+<<<<<<< HEAD
 	const dropdownContainer = document.querySelector('[data-dropdown="date"]');
 	for (const date of dates) {
 		const newButton = document.createElement("button");
@@ -28,4 +29,16 @@ export const setAvailableDates = (today) => {
 		dates[0],
 		"dd/MM/yyyy"
 	);
+=======
+	day.innerHTML = "";
+	for (const date of dates) {
+		const option = document.createElement("option");
+		option.value = format(date, "dd/MM/yyyy");
+		option.innerHTML = format(date, "eee do MMM");
+		day.append(option);
+	}
+	day.value = format(dates[0], "dd/MM/yyyy");
+>>>>>>> dates
 };
+
+
