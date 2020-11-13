@@ -1,6 +1,7 @@
 #menu-title {
 	@extend #home-title;
 	height: 90vh;
+	min-height: 90vh;
 	flex-direction: column;
 	h2 {
 		height: 100%;

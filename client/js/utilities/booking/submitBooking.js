@@ -1,10 +1,6 @@
 import { fetch } from "./fetch";
 import { validateBooking } from "./validateBooking";
-<<<<<<< HEAD
-import { addSessionStorage } from "../storage/addSessionStorage";
-=======
 import { createDate } from "./createDate";
->>>>>>> dates
 
 export const setParams = () => {
 	const form = document.querySelector("#bookForm");
@@ -21,12 +17,6 @@ export const setParams = () => {
 
 export const handleSubmit = (e, type, button) => {
 	e.preventDefault();
-<<<<<<< HEAD
-	const params = setParams();
-	console.log(params);
-	addSessionStorage("booking", JSON.stringify(params));
-=======
->>>>>>> dates
 	const err = validateBooking();
 	if (!err) {
 		const params = setParams();

@@ -42,7 +42,6 @@ router.get("/avail", async (req, res) => {
 	for (let i = diff; i >= 2; i--) {
 		if (i <= 8) party.unshift(i);
 	}
-	console.log({ party });
 	return res.json({ party });
 });
 

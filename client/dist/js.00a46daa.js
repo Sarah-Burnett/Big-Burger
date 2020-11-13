@@ -399,13 +399,8 @@ window.onscroll = function () {
   window.pageYOffset >= 10 ? (0, _toggleClassList.addClassList)("nav", "nav-fixed") : (0, _toggleClassList.removeClassList)("nav", "nav-fixed");
 };
 
-<<<<<<< HEAD
-(0, _addEventListener.addEventListener)(".burger", function () {
-  return (0, _toggleClassList.toggleClassList)("body", "nav-active");
-=======
 burger.addEventListener("click", function () {
   return (0, _toggleClassList.toggleClassList)("nav", "nav-active");
->>>>>>> dates
 }); // smooth scroll
 
 new SmoothScroll('a[href*="#"]', {
@@ -425,57 +420,6 @@ burgerBtn.addEventListener("click", function () {
 });
 puddingBtn.addEventListener("click", function () {
   return (0, _updateMenu.updateMenu)(3);
-<<<<<<< HEAD
-}); //review carousel
-
-{
-  var reviewCounter = 0;
-  var reviewInterval;
-  var reviewItems = document.querySelectorAll(".review-item");
-  var reviewDots = document.querySelectorAll(".review-dot");
-
-  var updateReviewDot = function updateReviewDot(index) {
-    (0, _updateActiveDot.updateActiveDot)(reviewDots, reviewItems, index);
-  }; //auto update review
-
-
-  var autoUpdateReview = function autoUpdateReview() {
-    updateReviewDot(reviewCounter);
-    return reviewCounter < reviewItems.length - 1 ? reviewCounter++ : reviewCounter = 0;
-  };
-
-  var setReviewInterval = function setReviewInterval() {
-    reviewInterval = setInterval(autoUpdateReview, 3000);
-  };
-
-  setReviewInterval(); //manually click to update review
-
-  var manualUpdateReview = function manualUpdateReview(index) {
-    clearInterval(reviewInterval);
-    updateReviewDot(index);
-    reviewCounter = index;
-    setReviewInterval();
-  };
-
-  reviewDots.forEach(function (dot, index) {
-    (0, _addEventListener.addEventListener)(dot, function () {
-      return manualUpdateReview(index);
-    });
-  });
-} //location carousel
-
-{
-  var locationItems = document.querySelectorAll(".location-item");
-  var locationDots = document.querySelectorAll(".location-dot");
-
-  var updateLocationDot = function updateLocationDot(index) {
-    (0, _updateActiveDot.updateActiveDot)(locationDots, locationItems, index);
-  };
-
-  locationDots.forEach(function (dot, index) {
-    (0, _addEventListener.addEventListener)(dot, function () {
-      return updateLocationDot(index);
-=======
 });
 {
   var review = new _Carousel.default(".review-item", ".review-dot");
@@ -501,7 +445,6 @@ puddingBtn.addEventListener("click", function () {
   location.dots.forEach(function (item, index) {
     item.addEventListener("click", function () {
       return location.changeItem(index);
->>>>>>> dates
     });
   });
 } //location modals
@@ -543,11 +486,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-<<<<<<< HEAD
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54907" + '/');
-=======
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54689" + '/');
->>>>>>> dates
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58569" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

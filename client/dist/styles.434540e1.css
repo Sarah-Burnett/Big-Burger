@@ -193,8 +193,8 @@ nav #burger .line3 {
     display: none;
   }
 }
-#home-title, #reviews, #menu-title {
-  min-height: 90vh;
+#home-title, #menu-title {
+  min-height: 100vh;
   background-image: url(/burger-mob.a9b91a67.jpg);
   background-repeat: no-repeat no-repeat;
   background-size: cover;
@@ -206,25 +206,26 @@ nav #burger .line3 {
   flex-direction: row;
 }
 @media (min-width: 900px) {
-  #home-title, #reviews, #menu-title {
+  #home-title, #menu-title {
     background-image: url(/burger-desktop.37203440.jpg);
   }
 }
 
-#about-page {
+#about-page, #reviews {
+  height: 90vh;
   min-height: 90vh;
 }
-#about-page .about-image {
+#about-page .about-image, #reviews .about-image {
   display: none;
 }
-#about-page .about-content {
+#about-page .about-content, #reviews .about-content {
   padding: 10vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-#about-page .about-content div {
+#about-page .about-content div, #reviews .about-content div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -233,11 +234,11 @@ nav #burger .line3 {
   padding: 2em;
 }
 @media only screen and (min-width: 500px) {
-  #about-page {
+  #about-page, #reviews {
     display: flex;
     flex-direction: column-reverse;
   }
-  #about-page .about-image {
+  #about-page .about-image, #reviews .about-image {
     background-image: url(/waitress.91bd79d5.jpg);
     background-repeat: no-repeat no-repeat;
     background-size: cover;
@@ -248,24 +249,25 @@ nav #burger .line3 {
   }
 }
 @media only screen and (min-width: 900px) {
-  #about-page {
+  #about-page, #reviews {
     flex-direction: row;
   }
-  #about-page .about-image {
+  #about-page .about-image, #reviews .about-image {
     width: 50vw;
     height: 90vh;
   }
-  #about-page .about-content {
+  #about-page .about-content, #reviews .about-content {
     width: 50vw;
     height: 90vh;
   }
-  #about-page .about-content div {
+  #about-page .about-content div, #reviews .about-content div {
     width: 40vw;
   }
 }
 
 #menu-title {
   height: 90vh;
+  min-height: 90vh;
   flex-direction: column;
 }
 #menu-title h2 {
@@ -314,16 +316,9 @@ nav #burger .line3 {
 #menu-content .menu-nav button {
   height: 15vh;
   flex: 1;
-<<<<<<< HEAD
-  padding: 1vw;
-  border-style: none;
-  background: #36970f;
-  cursor: pointer;
-=======
   margin: 1vw;
->>>>>>> dates
 }
-@media (min-width: 900px) {
+@media (min-width: 720px) {
   #menu-content .menu-nav button {
     margin: 0 1em;
   }
@@ -374,7 +369,7 @@ nav #burger .line3 {
   }
 }
 #reviews h2 {
-  height: 10vh;
+  min-height: 10vh;
 }
 #reviews .review-container {
   min-height: 60vh;
@@ -418,10 +413,7 @@ nav #burger .line3 {
 #location .location-container {
   width: 100vw;
   min-height: 65vh;
-<<<<<<< HEAD
   margin: 2vh;
-=======
->>>>>>> dates
   position: relative;
   overflow-y: auto;
   display: flex;
@@ -563,25 +555,9 @@ nav #burger .line3 {
 }
 .modal button {
   margin: 1em;
-<<<<<<< HEAD
-  padding: 1em;
-  border-style: none;
-  background: #36970f;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 20px;
-  line-height: 1.2;
-  cursor: pointer;
   width: 90%;
   border-radius: 1px;
 }
-.modal button:hover {
-  background: #205909;
-}
-=======
-  width: 90%;
-  border-radius: 1px;
-}
->>>>>>> dates
 .modal input {
   width: 90%;
 }

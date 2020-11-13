@@ -1,6 +1,6 @@
 
 #home-title {
-    min-height: 90vh;
+    min-height: 100vh;
     background-image: url(/images/burger-mob.jpg);
     @include media($desktop) {
         background-image: url(/images/burger-desktop.jpg);
