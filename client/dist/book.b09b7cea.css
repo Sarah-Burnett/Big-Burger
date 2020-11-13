@@ -358,7 +358,7 @@ form .message .dropdownContent {
   }
 }
 form textarea {
-  min-height: 25vh;
+  min-height: 30vh;
   resize: vertical;
   background: #f5f5f5;
   color: black;

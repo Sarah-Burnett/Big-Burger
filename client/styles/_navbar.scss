@@ -72,23 +72,25 @@ nav {
 .nav-active {
 	height: 100vh;
 	overflow: hidden;
-	.nav-links {
-		transform: translateX(-100vw);
-		pointer-events: auto;
-		padding-bottom: 1em;
-		z-index: 100;
-		a {
-			opacity: 1;
+	nav {
+		.nav-links {
+			transform: translateX(-100vw);
+			pointer-events: auto;
+			padding-bottom: 1em;
+			z-index: 100;
+			a {
+				opacity: 1;
+			}
 		}
-	}
-	.line1 {
-		transform: rotate(-45deg) translate(-9px, 6px);
-	}
-	.line2 {
-		opacity: 0;
-	}
-	.line3 {
-		transform: rotate(45deg) translate(-8px, -8px);
+		.line1 {
+			transform: rotate(-45deg) translate(-9px, 6px);
+		}
+		.line2 {
+			opacity: 0;
+		}
+		.line3 {
+			transform: rotate(45deg) translate(-8px, -8px);
+		}
 	}
 }
 .nav-fixed {

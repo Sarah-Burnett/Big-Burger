@@ -13,7 +13,10 @@ window.onscroll = () => {
 		? addClassList("nav", "nav-fixed")
 		: removeClassList("nav", "nav-fixed");
 };
-burger.addEventListener("click", () => toggleClassList("nav", "nav-active"));
+burger.addEventListener("click", () => toggleClassList("body", "nav-active"));
+document
+	.querySelector(".nav-links")
+	.addEventListener("click", () => removeClassList("body", "nav-active"));
 
 // smooth scroll
 new SmoothScroll('a[href*="#"]', {

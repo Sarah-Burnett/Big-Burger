@@ -140,22 +140,22 @@ nav #burger .line3 {
   height: 100vh;
   overflow: hidden;
 }
-.nav-active .nav-links {
+.nav-active nav .nav-links {
   transform: translateX(-100vw);
   pointer-events: auto;
   padding-bottom: 1em;
   z-index: 100;
 }
-.nav-active .nav-links a {
+.nav-active nav .nav-links a {
   opacity: 1;
 }
-.nav-active .line1 {
+.nav-active nav .line1 {
   transform: rotate(-45deg) translate(-9px, 6px);
 }
-.nav-active .line2 {
+.nav-active nav .line2 {
   opacity: 0;
 }
-.nav-active .line3 {
+.nav-active nav .line3 {
   transform: rotate(45deg) translate(-8px, -8px);
 }
 
@@ -212,7 +212,6 @@ nav #burger .line3 {
 }
 
 #about-page, #reviews {
-  height: 90vh;
   min-height: 90vh;
 }
 #about-page .about-image, #reviews .about-image {

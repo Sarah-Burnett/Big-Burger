@@ -5,6 +5,7 @@ export const addClassList = (elem, className) => {
 };
 
 export const removeClassList = (elem, className) => {
+	console.log("hi");
 	typeof elem === "string"
 		? document.querySelector(elem).classList.remove(className)
 		: elem.classList.remove(className);

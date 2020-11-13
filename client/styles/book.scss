@@ -194,7 +194,7 @@ form {
 	}
 	textarea {
 		@extend input;
-		min-height: 25vh;
+		min-height: 30vh;
 		resize: vertical;
 		background: $white;
 		color: black;
