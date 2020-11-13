@@ -1,6 +1,5 @@
 import { fetch } from "./fetch";
 import { GET_AVAILABILITY } from "./types";
-import { changeInputValue } from "./changeInputValue";
 import { forEach } from "../dom/forEach";
 
 export const getAvailableParty = (restaurant, day, time, id = null) => {

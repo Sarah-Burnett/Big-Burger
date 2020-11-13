@@ -2147,29 +2147,7 @@ var validateBooking = function validateBooking() {
 };
 
 exports.validateBooking = validateBooking;
-},{"../dom/toggleClassList":"js/utilities/dom/toggleClassList.js"}],"js/utilities/booking/changeInputValue.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.clickEventChangesInputValue = exports.changeInputValue = void 0;
-
-//typeof btn is node
-var changeInputValue = function changeInputValue(btn) {
-  document.querySelector(btn.dataset.input).value = btn.dataset.value;
-  document.activeElement.blur();
-};
-
-exports.changeInputValue = changeInputValue;
-
-var clickEventChangesInputValue = function clickEventChangesInputValue(btn) {
-  console.log("hi");
-  addEventListener(btn, changeInputValue);
-};
-
-exports.clickEventChangesInputValue = clickEventChangesInputValue;
-},{}],"js/utilities/booking/availableParty.js":[function(require,module,exports) {
+},{"../dom/toggleClassList":"js/utilities/dom/toggleClassList.js"}],"js/utilities/booking/availableParty.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2180,8 +2158,6 @@ exports.setAvailableParty = exports.getAvailableParty = void 0;
 var _fetch = require("./fetch");
 
 var _types = require("./types");
-
-var _changeInputValue = require("./changeInputValue");
 
 var _forEach = require("../dom/forEach");
 
@@ -2216,11 +2192,11 @@ var setAvailableParty = function setAvailableParty() {
     party.append(option);
   }
 
-  (0, _forEach.forEach)('[data-dropdown="party"] button', _changeInputValue.changeInputValue);
+  (0, _forEach.forEach)('[data-dropdown="party"] button', changeInputValue);
 };
 
 exports.setAvailableParty = setAvailableParty;
-},{"./fetch":"js/utilities/booking/fetch.js","./types":"js/utilities/booking/types.js","./changeInputValue":"js/utilities/booking/changeInputValue.js","../dom/forEach":"js/utilities/dom/forEach.js"}],"js/utilities/booking/fetch.js":[function(require,module,exports) {
+},{"./fetch":"js/utilities/booking/fetch.js","./types":"js/utilities/booking/types.js","../dom/forEach":"js/utilities/dom/forEach.js"}],"js/utilities/booking/fetch.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5226,29 +5202,7 @@ function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
 function cleanEscapedString(input) {
   return input.match(escapedStringRegExp)[1].replace(doubleQuoteRegExp, "'");
 }
-},{"../isValid/index.js":"node_modules/date-fns/esm/isValid/index.js","../locale/en-US/index.js":"node_modules/date-fns/esm/locale/en-US/index.js","../subMilliseconds/index.js":"node_modules/date-fns/esm/subMilliseconds/index.js","../toDate/index.js":"node_modules/date-fns/esm/toDate/index.js","../_lib/format/formatters/index.js":"node_modules/date-fns/esm/_lib/format/formatters/index.js","../_lib/format/longFormatters/index.js":"node_modules/date-fns/esm/_lib/format/longFormatters/index.js","../_lib/getTimezoneOffsetInMilliseconds/index.js":"node_modules/date-fns/esm/_lib/getTimezoneOffsetInMilliseconds/index.js","../_lib/protectedTokens/index.js":"node_modules/date-fns/esm/_lib/protectedTokens/index.js","../_lib/toInteger/index.js":"node_modules/date-fns/esm/_lib/toInteger/index.js","../_lib/requiredArgs/index.js":"node_modules/date-fns/esm/_lib/requiredArgs/index.js"}],"js/utilities/dom/createButton.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.createDropdownButton = exports.createButton = void 0;
-
-var createButton = function createButton(className) {
-  var newButton = document.createElement("button");
-  newButton.classList.add(className);
-  newButton.type = "button";
-  return newButton;
-};
-
-exports.createButton = createButton;
-
-var createDropdownButton = function createDropdownButton() {
-  return createButton("dropdownBtn");
-};
-
-exports.createDropdownButton = createDropdownButton;
-},{}],"js/utilities/booking/availableDates.js":[function(require,module,exports) {
+},{"../isValid/index.js":"node_modules/date-fns/esm/isValid/index.js","../locale/en-US/index.js":"node_modules/date-fns/esm/locale/en-US/index.js","../subMilliseconds/index.js":"node_modules/date-fns/esm/subMilliseconds/index.js","../toDate/index.js":"node_modules/date-fns/esm/toDate/index.js","../_lib/format/formatters/index.js":"node_modules/date-fns/esm/_lib/format/formatters/index.js","../_lib/format/longFormatters/index.js":"node_modules/date-fns/esm/_lib/format/longFormatters/index.js","../_lib/getTimezoneOffsetInMilliseconds/index.js":"node_modules/date-fns/esm/_lib/getTimezoneOffsetInMilliseconds/index.js","../_lib/protectedTokens/index.js":"node_modules/date-fns/esm/_lib/protectedTokens/index.js","../_lib/toInteger/index.js":"node_modules/date-fns/esm/_lib/toInteger/index.js","../_lib/requiredArgs/index.js":"node_modules/date-fns/esm/_lib/requiredArgs/index.js"}],"js/utilities/booking/availableDates.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5259,12 +5213,6 @@ exports.setAvailableDates = exports.getAvailableDates = void 0;
 var _addDays = _interopRequireDefault(require("date-fns/addDays"));
 
 var _format = _interopRequireDefault(require("date-fns/format"));
-
-var _createButton = require("../dom/createButton");
-
-var _forEach = require("../dom/forEach");
-
-var _changeInputValue = require("./changeInputValue");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5313,7 +5261,7 @@ var setAvailableDates = function setAvailableDates(today) {
 };
 
 exports.setAvailableDates = setAvailableDates;
-},{"date-fns/addDays":"node_modules/date-fns/esm/addDays/index.js","date-fns/format":"node_modules/date-fns/esm/format/index.js","../dom/createButton":"js/utilities/dom/createButton.js","../dom/forEach":"js/utilities/dom/forEach.js","./changeInputValue":"js/utilities/booking/changeInputValue.js"}],"js/utilities/booking/createDate.js":[function(require,module,exports) {
+},{"date-fns/addDays":"node_modules/date-fns/esm/addDays/index.js","date-fns/format":"node_modules/date-fns/esm/format/index.js"}],"js/utilities/booking/createDate.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20823,7 +20771,25 @@ var setAvailableTimes = function setAvailableTimes(date, restaurant) {
 };
 
 exports.setAvailableTimes = setAvailableTimes;
-},{"date-fns":"node_modules/date-fns/esm/index.js","date-fns/format":"node_modules/date-fns/esm/format/index.js","./createDate":"js/utilities/booking/createDate.js"}],"js/booking.js":[function(require,module,exports) {
+},{"date-fns":"node_modules/date-fns/esm/index.js","date-fns/format":"node_modules/date-fns/esm/format/index.js","./createDate":"js/utilities/booking/createDate.js"}],"js/utilities/dom/addEventListener.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addEventListener = void 0;
+
+var addEventListener = function addEventListener(node, cb) {
+  var event = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "click";
+  typeof node === "string" ? document.querySelector(node).addEventListener(event, function () {
+    return cb(node);
+  }) : node.addEventListener(event, function () {
+    return cb(node);
+  });
+};
+
+exports.addEventListener = addEventListener;
+},{}],"js/booking.js":[function(require,module,exports) {
 "use strict";
 
 var _findBooking = require("./utilities/booking/findBooking");
@@ -20842,35 +20808,45 @@ var _availableParty = require("./utilities/booking/availableParty");
 
 var _availableTimes = require("./utilities/booking/availableTimes");
 
+var _addEventListener = require("./utilities/dom/addEventListener");
+
 (0, _availableDates.setAvailableDates)(Date.now());
 (0, _availableTimes.setAvailableTimes)(day.value, restaurant.value);
 (0, _availableParty.setAvailableParty)(); //edit form
 
-document.querySelector("#editBtn").onclick = function (event) {
-  (0, _editForm.editForm)(event);
+(0, _addEventListener.addEventListener)("#editBtn", function (e) {
+  (0, _editForm.editForm)(e);
   (0, _availableParty.getAvailableParty)(restaurant.value, day.value, time.value, id.value);
-}; //booking CRUD
+}); //change select options when restaurant changes
+
+(0, _addEventListener.addEventListener)(restaurant, function () {
+  if (day.value) (0, _availableTimes.setAvailableTimes)(day.value, restaurant.value);
+  if (day.value && time.value) (0, _availableParty.getAvailableParty)(restaurant.value, day.value, time.value);
+}, "change"); //change select options when day changes
+
+(0, _addEventListener.addEventListener)(day, function () {
+  if (restaurant.value) (0, _availableTimes.setAvailableTimes)(day.value, restaurant.value);
+  if (restaurant.value && time.value) (0, _availableParty.getAvailableParty)(restaurant.value, day.value, time.value);
+}, "change"); //change select options when time changes
+
+(0, _addEventListener.addEventListener)(time, function () {
+  if (restaurant.value && day.value) (0, _availableParty.getAvailableParty)(restaurant.value, day.value, time.value);
+}, "change"); //booking CRUD
 //get existing booking
 
-
 (0, _findBooking.findBookingfromURL)();
-
-document.querySelector("#findBtn").onclick = function (e) {
+(0, _addEventListener.addEventListener)("#findBtn", function (e) {
   return (0, _findBooking.findBookingfromForm)(e);
-}; // delete booking
+}); // delete booking
 
+(0, _addEventListener.addEventListener)("#deleteBtn", (0, _fetch.fetch)(_types.DELETE_BOOKING, {
+  id: document.querySelector("#id").value
+})); //update booking
 
-document.querySelector("#deleteBtn").onclick = function () {
-  return (0, _fetch.fetch)(_types.DELETE_BOOKING, {
-    id: document.querySelector("#id").value
-  });
-}; //update booking
-
-
-document.querySelector(".putBookForm").onsubmit = function (e) {
+(0, _addEventListener.addEventListener)(".putBookForm", function (e) {
   return (0, _submitBooking.handleSubmit)(e, _types.PUT_BOOKING, ".bookBtn");
-};
-},{"./utilities/booking/findBooking":"js/utilities/booking/findBooking.js","./utilities/booking/editForm":"js/utilities/booking/editForm.js","./utilities/booking/fetch":"js/utilities/booking/fetch.js","./utilities/booking/types":"js/utilities/booking/types.js","./utilities/booking/availableDates":"js/utilities/booking/availableDates.js","./utilities/booking/submitBooking":"js/utilities/booking/submitBooking.js","./utilities/booking/availableParty":"js/utilities/booking/availableParty.js","./utilities/booking/availableTimes":"js/utilities/booking/availableTimes.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+}, "submit");
+},{"./utilities/booking/findBooking":"js/utilities/booking/findBooking.js","./utilities/booking/editForm":"js/utilities/booking/editForm.js","./utilities/booking/fetch":"js/utilities/booking/fetch.js","./utilities/booking/types":"js/utilities/booking/types.js","./utilities/booking/availableDates":"js/utilities/booking/availableDates.js","./utilities/booking/submitBooking":"js/utilities/booking/submitBooking.js","./utilities/booking/availableParty":"js/utilities/booking/availableParty.js","./utilities/booking/availableTimes":"js/utilities/booking/availableTimes.js","./utilities/dom/addEventListener":"js/utilities/dom/addEventListener.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -20898,7 +20874,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54072" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60029" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

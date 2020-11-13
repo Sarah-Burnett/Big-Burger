@@ -4,6 +4,7 @@ export const hideElement = (elem) => {
 };
 
 export const displayElement = (elem) => {
+	console.log(elem);
 	elem.style.opacity = "1";
 	elem.style.pointerEvents = "auto";
 };

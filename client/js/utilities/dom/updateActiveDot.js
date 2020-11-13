@@ -1,6 +1,7 @@
 import { green, darkGreen } from "../styles";
-import { changeBackground } from "./changeBackground";
 import { hideElement, displayElement } from "./changeVisibility";
+
+const changeBackground = (dot, color) => dot.style.background = color;
 
 export const updateActiveDot = (dotList, textList, index) => {
 	dotList.forEach((dot) => changeBackground(dot, green));

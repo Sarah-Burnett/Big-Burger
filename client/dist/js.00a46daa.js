@@ -130,23 +130,7 @@ var green = '#36970F';
 exports.green = green;
 var darkGreen = '#205909';
 exports.darkGreen = darkGreen;
-},{}],"js/utilities/dom/changeBackground.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.changeBackground = void 0;
-
-var _styles = require("../styles");
-
-var changeBackground = function changeBackground(elem) {
-  var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _styles.green;
-  elem.style.background = color;
-};
-
-exports.changeBackground = changeBackground;
-},{"../styles":"js/utilities/styles.js"}],"js/utilities/dom/changeVisibility.js":[function(require,module,exports) {
+},{}],"js/utilities/dom/changeVisibility.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -162,6 +146,7 @@ var hideElement = function hideElement(elem) {
 exports.hideElement = hideElement;
 
 var displayElement = function displayElement(elem) {
+  console.log(elem);
   elem.style.opacity = "1";
   elem.style.pointerEvents = "auto";
 };
@@ -177,23 +162,25 @@ exports.updateActiveDot = void 0;
 
 var _styles = require("../styles");
 
-var _changeBackground = require("./changeBackground");
-
 var _changeVisibility = require("./changeVisibility");
+
+var changeBackground = function changeBackground(dot, color) {
+  return dot.style.background = color;
+};
 
 var updateActiveDot = function updateActiveDot(dotList, textList, index) {
   dotList.forEach(function (dot) {
-    return (0, _changeBackground.changeBackground)(dot, _styles.green);
+    return changeBackground(dot, _styles.green);
   });
   textList.forEach(function (item) {
     return (0, _changeVisibility.hideElement)(item);
   });
-  (0, _changeBackground.changeBackground)(dotList[index], _styles.darkGreen);
+  changeBackground(dotList[index], _styles.darkGreen);
   (0, _changeVisibility.displayElement)(textList[index]);
 };
 
 exports.updateActiveDot = updateActiveDot;
-},{"../styles":"js/utilities/styles.js","./changeBackground":"js/utilities/dom/changeBackground.js","./changeVisibility":"js/utilities/dom/changeVisibility.js"}],"js/utilities/dom/addEventListener.js":[function(require,module,exports) {
+},{"../styles":"js/utilities/styles.js","./changeVisibility":"js/utilities/dom/changeVisibility.js"}],"js/utilities/dom/addEventListener.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -452,52 +439,56 @@ new SmoothScroll('a[href*="#"]', {
   return (0, _updateMenu.updateMenu)(3);
 }); //review carousel
 
-var reviewCounter = 0;
-var reviewInterval;
-var reviewItems = document.querySelectorAll(".review-item");
-var reviewDots = document.querySelectorAll(".review-dot");
+{
+  var reviewCounter = 0;
+  var reviewInterval;
+  var reviewItems = document.querySelectorAll(".review-item");
+  var reviewDots = document.querySelectorAll(".review-dot");
 
-var updateReviewDot = function updateReviewDot(index) {
-  (0, _updateActiveDot.updateActiveDot)(reviewDots, reviewItems, index);
-}; //auto update review
+  var updateReviewDot = function updateReviewDot(index) {
+    (0, _updateActiveDot.updateActiveDot)(reviewDots, reviewItems, index);
+  }; //auto update review
 
 
-var autoUpdateReview = function autoUpdateReview() {
-  updateReviewDot(reviewCounter);
-  return reviewCounter < reviewItems.length - 1 ? reviewCounter++ : reviewCounter = 0;
-};
+  var autoUpdateReview = function autoUpdateReview() {
+    updateReviewDot(reviewCounter);
+    return reviewCounter < reviewItems.length - 1 ? reviewCounter++ : reviewCounter = 0;
+  };
 
-var setReviewInterval = function setReviewInterval() {
-  reviewInterval = setInterval(autoUpdateReview, 3000);
-};
+  var setReviewInterval = function setReviewInterval() {
+    reviewInterval = setInterval(autoUpdateReview, 3000);
+  };
 
-setReviewInterval(); //manually click to update review
+  setReviewInterval(); //manually click to update review
 
-var manualUpdateReview = function manualUpdateReview(index) {
-  clearInterval(reviewInterval);
-  updateReviewDot(index);
-  reviewCounter = index;
-  setReviewInterval();
-};
+  var manualUpdateReview = function manualUpdateReview(index) {
+    clearInterval(reviewInterval);
+    updateReviewDot(index);
+    reviewCounter = index;
+    setReviewInterval();
+  };
 
-reviewDots.forEach(function (dot, index) {
-  (0, _addEventListener.addEventListener)(dot, function () {
-    return manualUpdateReview(index);
+  reviewDots.forEach(function (dot, index) {
+    (0, _addEventListener.addEventListener)(dot, function () {
+      return manualUpdateReview(index);
+    });
   });
-}); //location carousel
+} //location carousel
 
-var locationItems = document.querySelectorAll(".location-item");
-var locationDots = document.querySelectorAll(".location-dot");
+{
+  var locationItems = document.querySelectorAll(".location-item");
+  var locationDots = document.querySelectorAll(".location-dot");
 
-var updateLocationDot = function updateLocationDot(index) {
-  (0, _updateActiveDot.updateActiveDot)(locationDots, locationItems, index);
-};
+  var updateLocationDot = function updateLocationDot(index) {
+    (0, _updateActiveDot.updateActiveDot)(locationDots, locationItems, index);
+  };
 
-locationDots.forEach(function (dot, index) {
-  (0, _addEventListener.addEventListener)(dot, function () {
-    return updateLocationDot(index);
+  locationDots.forEach(function (dot, index) {
+    (0, _addEventListener.addEventListener)(dot, function () {
+      return updateLocationDot(index);
+    });
   });
-}); //location modals
+} //location modals
 
 (0, _addEventListener.addEventListener)(".glensgaich-btn", function () {
   return (0, _toggleModal.showModal)(".glensgaich-map");
@@ -536,7 +527,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54072" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60029" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

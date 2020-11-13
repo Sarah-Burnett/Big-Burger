@@ -12,24 +12,64 @@ import {
 	setAvailableParty,
 } from "./utilities/booking/availableParty";
 import { setAvailableTimes } from "./utilities/booking/availableTimes";
+import { addEventListener } from "./utilities/dom/addEventListener";
 
 setAvailableDates(Date.now());
 setAvailableTimes(day.value, restaurant.value);
 setAvailableParty();
 
 //edit form
-document.querySelector("#editBtn").onclick = (event) => {
-	editForm(event);
+addEventListener("#editBtn", (e) => {
+	editForm(e);
 	getAvailableParty(restaurant.value, day.value, time.value, id.value);
-};
+});
+
+//change select options when restaurant changes
+addEventListener(
+	restaurant,
+	() => {
+		if (day.value) setAvailableTimes(day.value, restaurant.value);
+		if (day.value && time.value)
+			getAvailableParty(restaurant.value, day.value, time.value);
+	},
+	"change"
+);
+
+//change select options when day changes
+addEventListener(
+	day,
+	() => {
+		if (restaurant.value) setAvailableTimes(day.value, restaurant.value);
+		if (restaurant.value && time.value)
+			getAvailableParty(restaurant.value, day.value, time.value);
+	},
+	"change"
+);
+
+//change select options when time changes
+addEventListener(
+	time,
+	() => {
+		if (restaurant.value && day.value)
+			getAvailableParty(restaurant.value, day.value, time.value);
+	},
+	"change"
+);
 
 //booking CRUD
 //get existing booking
 findBookingfromURL();
-document.querySelector("#findBtn").onclick = (e) => findBookingfromForm(e);
+addEventListener("#findBtn", (e) => findBookingfromForm(e));
+
 // delete booking
-document.querySelector("#deleteBtn").onclick = () =>
-	fetch(DELETE_BOOKING, { id: document.querySelector("#id").value });
+addEventListener(
+	"#deleteBtn",
+	fetch(DELETE_BOOKING, { id: document.querySelector("#id").value })
+);
+
 //update booking
-document.querySelector(".putBookForm").onsubmit = (e) =>
-	handleSubmit(e, PUT_BOOKING, ".bookBtn");
+addEventListener(
+	".putBookForm",
+	(e) => handleSubmit(e, PUT_BOOKING, ".bookBtn"),
+	"submit"
+);

@@ -1,8 +1,5 @@
 import addDays from "date-fns/addDays";
 import format from "date-fns/format";
-import { createDropdownButton } from "../dom/createButton";
-import { forEach } from "../dom/forEach";
-import { clickEventChangesInputValue } from "./changeInputValue";
 
 export const getAvailableDates = (today) => {
 	let current = today;
@@ -25,3 +22,5 @@ export const setAvailableDates = (today) => {
 	}
 	day.value = format(dates[0], "dd/MM/yyyy");
 };
+
+
