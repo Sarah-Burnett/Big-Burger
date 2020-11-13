@@ -180,25 +180,7 @@ var updateActiveDot = function updateActiveDot(dotList, textList, index) {
 };
 
 exports.updateActiveDot = updateActiveDot;
-},{"../styles":"js/utilities/styles.js","./changeVisibility":"js/utilities/dom/changeVisibility.js"}],"js/utilities/dom/addEventListener.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.addEventListener = void 0;
-
-var addEventListener = function addEventListener(node, cb) {
-  var event = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "click";
-  typeof node === "string" ? document.querySelector(node).addEventListener(event, function () {
-    return cb(node);
-  }) : node.addEventListener(event, function () {
-    return cb(node);
-  });
-};
-
-exports.addEventListener = addEventListener;
-},{}],"js/utilities/dom/toggleClassList.js":[function(require,module,exports) {
+},{"../styles":"js/utilities/styles.js","./changeVisibility":"js/utilities/dom/changeVisibility.js"}],"js/utilities/dom/toggleClassList.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -396,27 +378,97 @@ var forEach = function forEach(nodeList, cb1, cb2) {
 };
 
 exports.forEach = forEach;
-},{}],"js/index.js":[function(require,module,exports) {
+},{}],"js/utilities/dom/Carousel.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _styles = require("../styles");
+
+var _changeVisibility = require("./changeVisibility");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var _require = require("./forEach"),
+    forEach = _require.forEach;
+
+var displayDotActive = function displayDotActive(dot) {
+  return dot.style.background = _styles.green;
+};
+
+var displayDotInactive = function displayDotInactive(dot) {
+  return dot.style.background = _styles.darkGreen;
+};
+
+var Carousel = /*#__PURE__*/function () {
+  function Carousel(items, dots) {
+    _classCallCheck(this, Carousel);
+
+    this.items = document.querySelectorAll(items);
+    this.dots = document.querySelectorAll(dots);
+    this.length = this.items.length;
+    this.activeIndex = 0;
+    this.interval = false;
+  }
+
+  _createClass(Carousel, [{
+    key: "changeItem",
+    value: function changeItem(index) {
+      (0, _changeVisibility.hideElement)(this.items[this.activeIndex]);
+      displayDotInactive(this.dots[this.activeIndex]);
+      (0, _changeVisibility.displayElement)(this.items[index]);
+      displayDotActive(this.dots[index]);
+      this.activeIndex = index;
+      return this;
+    }
+  }, {
+    key: "autoChangeItem",
+    value: function autoChangeItem() {
+      var index = this.activeIndex + 1;
+
+      if (index < this.length) {
+        this.changeItem(index);
+        this.activeIndex = index;
+        return;
+      }
+
+      this.changeItem(0);
+      this.activeIndex = 0;
+    }
+  }]);
+
+  return Carousel;
+}();
+
+exports.default = Carousel;
+},{"./forEach":"js/utilities/dom/forEach.js","../styles":"js/utilities/styles.js","./changeVisibility":"js/utilities/dom/changeVisibility.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
 var _updateActiveDot = require("./utilities/dom/updateActiveDot");
-
-var _addEventListener = require("./utilities/dom/addEventListener");
 
 var _toggleModal = require("./utilities/dom/toggleModal");
 
 var _updateMenu = require("./utilities/dom/updateMenu");
 
-var _forEach = require("./utilities/dom/forEach");
-
 var _toggleClassList = require("./utilities/dom/toggleClassList");
+
+var _Carousel = _interopRequireDefault(require("./utilities/dom/Carousel"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //nav bar - fixed on scroll & mob nav
 window.onscroll = function () {
   window.pageYOffset >= 10 ? (0, _toggleClassList.addClassList)("nav", "nav-fixed") : (0, _toggleClassList.removeClassList)("nav", "nav-fixed");
 };
 
-(0, _addEventListener.addEventListener)(".burger", function () {
+burger.addEventListener("click", function () {
   return (0, _toggleClassList.toggleClassList)("nav", "nav-active");
 }); // smooth scroll
 
@@ -426,80 +478,92 @@ new SmoothScroll('a[href*="#"]', {
   header: "[data-scroll-header]"
 }); //update menu contents
 
-(0, _addEventListener.addEventListener)("#button-starter", function () {
-  return (0, _updateMenu.updateMenu)(0);
-});
-(0, _addEventListener.addEventListener)("#button-sides", function () {
-  return (0, _updateMenu.updateMenu)(1);
-});
-(0, _addEventListener.addEventListener)("#button-burger", function () {
-  return (0, _updateMenu.updateMenu)(2);
-});
-(0, _addEventListener.addEventListener)("#button-pudding", function () {
-  return (0, _updateMenu.updateMenu)(3);
-}); //review carousel
-
+starterBtn.addEventListener("click", (0, _updateMenu.updateMenu)(0));
+sidesBtn.addEventListener("click", (0, _updateMenu.updateMenu)(1));
+burgerBtn.addEventListener("click", (0, _updateMenu.updateMenu)(2));
+puddingBtn.addEventListener("click", (0, _updateMenu.updateMenu)(3));
 {
-  var reviewCounter = 0;
+  var review = new _Carousel.default(".review-item", ".review-dot");
   var reviewInterval;
-  var reviewItems = document.querySelectorAll(".review-item");
-  var reviewDots = document.querySelectorAll(".review-dot");
-
-  var updateReviewDot = function updateReviewDot(index) {
-    (0, _updateActiveDot.updateActiveDot)(reviewDots, reviewItems, index);
-  }; //auto update review
-
-
-  var autoUpdateReview = function autoUpdateReview() {
-    updateReviewDot(reviewCounter);
-    return reviewCounter < reviewItems.length - 1 ? reviewCounter++ : reviewCounter = 0;
-  };
 
   var setReviewInterval = function setReviewInterval() {
-    reviewInterval = setInterval(autoUpdateReview, 3000);
+    reviewInterval = setInterval(function () {
+      return review.autoChangeItem();
+    }, 3000);
   };
 
-  setReviewInterval(); //manually click to update review
-
-  var manualUpdateReview = function manualUpdateReview(index) {
-    clearInterval(reviewInterval);
-    updateReviewDot(index);
-    reviewCounter = index;
-    setReviewInterval();
-  };
-
-  reviewDots.forEach(function (dot, index) {
-    (0, _addEventListener.addEventListener)(dot, function () {
-      return manualUpdateReview(index);
+  review.dots.forEach(function (item, index) {
+    item.addEventListener("click", function () {
+      clearInterval(reviewInterval);
+      review.changeItem(index);
+      setReviewInterval();
     });
   });
-} //location carousel
-
+  setReviewInterval();
+}
 {
-  var locationItems = document.querySelectorAll(".location-item");
-  var locationDots = document.querySelectorAll(".location-dot");
-
-  var updateLocationDot = function updateLocationDot(index) {
-    (0, _updateActiveDot.updateActiveDot)(locationDots, locationItems, index);
-  };
-
-  locationDots.forEach(function (dot, index) {
-    (0, _addEventListener.addEventListener)(dot, function () {
-      return updateLocationDot(index);
+  var location = new _Carousel.default(".location-item", ".location-dot");
+  location.dots.forEach(function (item, index) {
+    item.addEventListener("click", function () {
+      return location.changeItem(index);
     });
   });
-} //location modals
+} // //review carousel
+// {
+// 	let reviewCounter = 0;
+// 	let reviewInterval;
+// 	const reviewItems = document.querySelectorAll(".review-item");
+// 	const reviewDots = document.querySelectorAll(".review-dot");
+// 	const updateReviewDot = (index) => {
+// 		updateActiveDot(reviewDots, reviewItems, index);
+// 	};
+// 	//auto update review
+// 	const autoUpdateReview = () => {
+// 		updateReviewDot(reviewCounter);
+// 		return reviewCounter < reviewItems.length - 1
+// 			? reviewCounter++
+// 			: (reviewCounter = 0);
+// 	};
+// 	const setReviewInterval = () => {
+// 		reviewInterval = setInterval(autoUpdateReview, 3000);
+// 	};
+// 	setReviewInterval();
+// 	//manually click to update review
+// 	const manualUpdateReview = (index) => {
+// 		clearInterval(reviewInterval);
+// 		updateReviewDot(index);
+// 		reviewCounter = index;
+// 		setReviewInterval();
+// 	};
+// 	reviewDots.forEach((dot, index) => {
+// 		addEventListener(dot, () => manualUpdateReview(index));
+// 	});
+// }
+// //location carousel
+// {
+// 	const locationItems = document.querySelectorAll(".location-item");
+// 	const locationDots = document.querySelectorAll(".location-dot");
+// 	const updateLocationDot = (index) => {
+// 		updateActiveDot(locationDots, locationItems, index);
+// 	};
+// 	locationDots.forEach((dot, index) => {
+// 		addEventListener(dot, () => updateLocationDot(index));
+// 	});
+// }
+//location modals
 
-(0, _addEventListener.addEventListener)(".glensgaich-btn", function () {
+document.querySelector(".glensgaich-btn").addEventListener("click", function () {
   return (0, _toggleModal.showModal)(".glensgaich-map");
 });
-(0, _addEventListener.addEventListener)(".tanygrisiau-btn", function () {
+document.querySelector(".tanygrisiau-btn").addEventListener("click", function () {
   return (0, _toggleModal.showModal)(".tanygirisau-map");
 });
-(0, _forEach.forEach)(".modal-close", function (close) {
-  return (0, _addEventListener.addEventListener)(close, _toggleModal.hideModal);
+document.querySelectorAll(".modal-close").forEach(function (close) {
+  return close.addEventListener("click", function () {
+    return _toggleModal.hideModal;
+  });
 });
-},{"./utilities/dom/updateActiveDot":"js/utilities/dom/updateActiveDot.js","./utilities/dom/addEventListener":"js/utilities/dom/addEventListener.js","./utilities/dom/toggleModal":"js/utilities/dom/toggleModal.js","./utilities/dom/updateMenu":"js/utilities/dom/updateMenu.js","./utilities/dom/forEach":"js/utilities/dom/forEach.js","./utilities/dom/toggleClassList":"js/utilities/dom/toggleClassList.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./utilities/dom/updateActiveDot":"js/utilities/dom/updateActiveDot.js","./utilities/dom/toggleModal":"js/utilities/dom/toggleModal.js","./utilities/dom/updateMenu":"js/utilities/dom/updateMenu.js","./utilities/dom/toggleClassList":"js/utilities/dom/toggleClassList.js","./utilities/dom/Carousel":"js/utilities/dom/Carousel.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -527,7 +591,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60029" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62786" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

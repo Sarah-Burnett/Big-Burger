@@ -1,13 +1,12 @@
 import { updateActiveDot } from "./utilities/dom/updateActiveDot";
-import { addEventListener } from "./utilities/dom/addEventListener";
 import { showModal, hideModal } from "./utilities/dom/toggleModal";
 import { updateMenu } from "./utilities/dom/updateMenu";
-import { forEach } from "./utilities/dom/forEach";
 import {
 	addClassList,
 	removeClassList,
 	toggleClassList,
 } from "./utilities/dom/toggleClassList";
+import Carousel from "./utilities/dom/Carousel";
 
 //nav bar - fixed on scroll & mob nav
 window.onscroll = () => {
@@ -15,7 +14,7 @@ window.onscroll = () => {
 		? addClassList("nav", "nav-fixed")
 		: removeClassList("nav", "nav-fixed");
 };
-addEventListener(".burger", () => toggleClassList("nav", "nav-active"));
+burger.addEventListener("click", () => toggleClassList("nav", "nav-active"));
 
 // smooth scroll
 new SmoothScroll('a[href*="#"]', {
@@ -25,56 +24,85 @@ new SmoothScroll('a[href*="#"]', {
 });
 
 //update menu contents
-addEventListener("#button-starter", () => updateMenu(0));
-addEventListener("#button-sides", () => updateMenu(1));
-addEventListener("#button-burger", () => updateMenu(2));
-addEventListener("#button-pudding", () => updateMenu(3));
+starterBtn.addEventListener("click", updateMenu(0));
+sidesBtn.addEventListener("click", updateMenu(1));
+burgerBtn.addEventListener("click", updateMenu(2));
+puddingBtn.addEventListener("click", updateMenu(3));
 
-//review carousel
 {
-	let reviewCounter = 0;
+	const review = new Carousel(".review-item", ".review-dot");
 	let reviewInterval;
-	const reviewItems = document.querySelectorAll(".review-item");
-	const reviewDots = document.querySelectorAll(".review-dot");
-	const updateReviewDot = (index) => {
-		updateActiveDot(reviewDots, reviewItems, index);
-	};
-	//auto update review
-	const autoUpdateReview = () => {
-		updateReviewDot(reviewCounter);
-		return reviewCounter < reviewItems.length - 1
-			? reviewCounter++
-			: (reviewCounter = 0);
-	};
 	const setReviewInterval = () => {
-		reviewInterval = setInterval(autoUpdateReview, 3000);
+		reviewInterval = setInterval(() => review.autoChangeItem(), 3000);
 	};
+	review.dots.forEach((item, index) => {
+		item.addEventListener("click", () => {
+			clearInterval(reviewInterval);
+			review.changeItem(index);
+			setReviewInterval();
+		});
+	});
 	setReviewInterval();
-	//manually click to update review
-	const manualUpdateReview = (index) => {
-		clearInterval(reviewInterval);
-		updateReviewDot(index);
-		reviewCounter = index;
-		setReviewInterval();
-	};
-	reviewDots.forEach((dot, index) => {
-		addEventListener(dot, () => manualUpdateReview(index));
+}
+
+{
+	const location = new Carousel(".location-item", ".location-dot");
+	location.dots.forEach((item, index) => {
+		item.addEventListener("click", () => location.changeItem(index));
 	});
 }
 
-//location carousel
-{
-	const locationItems = document.querySelectorAll(".location-item");
-	const locationDots = document.querySelectorAll(".location-dot");
-	const updateLocationDot = (index) => {
-		updateActiveDot(locationDots, locationItems, index);
-	};
-	locationDots.forEach((dot, index) => {
-		addEventListener(dot, () => updateLocationDot(index));
-	});
-}
+// //review carousel
+// {
+// 	let reviewCounter = 0;
+// 	let reviewInterval;
+// 	const reviewItems = document.querySelectorAll(".review-item");
+// 	const reviewDots = document.querySelectorAll(".review-dot");
+// 	const updateReviewDot = (index) => {
+// 		updateActiveDot(reviewDots, reviewItems, index);
+// 	};
+// 	//auto update review
+// 	const autoUpdateReview = () => {
+// 		updateReviewDot(reviewCounter);
+// 		return reviewCounter < reviewItems.length - 1
+// 			? reviewCounter++
+// 			: (reviewCounter = 0);
+// 	};
+// 	const setReviewInterval = () => {
+// 		reviewInterval = setInterval(autoUpdateReview, 3000);
+// 	};
+// 	setReviewInterval();
+// 	//manually click to update review
+// 	const manualUpdateReview = (index) => {
+// 		clearInterval(reviewInterval);
+// 		updateReviewDot(index);
+// 		reviewCounter = index;
+// 		setReviewInterval();
+// 	};
+// 	reviewDots.forEach((dot, index) => {
+// 		addEventListener(dot, () => manualUpdateReview(index));
+// 	});
+// }
+
+// //location carousel
+// {
+// 	const locationItems = document.querySelectorAll(".location-item");
+// 	const locationDots = document.querySelectorAll(".location-dot");
+// 	const updateLocationDot = (index) => {
+// 		updateActiveDot(locationDots, locationItems, index);
+// 	};
+// 	locationDots.forEach((dot, index) => {
+// 		addEventListener(dot, () => updateLocationDot(index));
+// 	});
+// }
 
 //location modals
-addEventListener(".glensgaich-btn", () => showModal(".glensgaich-map"));
-addEventListener(".tanygrisiau-btn", () => showModal(".tanygirisau-map"));
-forEach(".modal-close", (close) => addEventListener(close, hideModal));
+document
+	.querySelector(".glensgaich-btn")
+	.addEventListener("click", () => showModal(".glensgaich-map"));
+document
+	.querySelector(".tanygrisiau-btn")
+	.addEventListener("click", () => showModal(".tanygirisau-map"));
+document
+	.querySelectorAll(".modal-close")
+	.forEach((close) => close.addEventListener("click", () => hideModal));

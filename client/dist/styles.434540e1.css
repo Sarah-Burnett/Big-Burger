@@ -51,14 +51,14 @@ body {
   height: 15px;
   width: 15px;
   margin: 0 2px;
-  background-color: #36970f;
+  background-color: #205909;
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.3s ease;
   cursor: pointer;
 }
 .dot:nth-child(1) {
-  background-color: #205909;
+  background-color: #36970f;
 }
 
 a {
@@ -86,13 +86,13 @@ nav img {
   z-index: 98;
   height: 10vh;
 }
-nav .burger {
+nav #burger {
   cursor: pointer;
   padding: 1vw;
 }
-nav .burger .line1,
-nav .burger .line2,
-nav .burger .line3 {
+nav #burger .line1,
+nav #burger .line2,
+nav #burger .line3 {
   width: 35px;
   height: 5px;
   background-color: #f5f5f5;
@@ -185,7 +185,7 @@ nav .burger .line3 {
     font-size: inherit;
   }
 
-  .burger {
+  #burger {
     display: none;
   }
 }

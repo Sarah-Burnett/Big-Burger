@@ -5,7 +5,7 @@ import { hideElement, displayElement } from "./changeVisibility";
 const displayDotActive = (dot) => (dot.style.background = green);
 const displayDotInactive = (dot) => (dot.style.background = darkGreen);
 
-class Carousel {
+export default class Carousel {
 	constructor(items, dots) {
 		this.items = document.querySelectorAll(items);
 		this.dots = document.querySelectorAll(dots);
@@ -22,29 +22,13 @@ class Carousel {
 		return this;
 	}
 	autoChangeItem() {
-		if (this.activeIndex < this.length) {
-			this.activeIndex++;
+		let index = this.activeIndex + 1;
+		if (index < this.length) {
+			this.changeItem(index);
+			this.activeIndex = index;
+			return;
 		}
-		this.changeItem(this.activeIndex);
+		this.changeItem(0);
+		this.activeIndex = 0;
 	}
-}
-
-{
-	const review = new Carousel(".review-item", ".review-dot");
-	let reviewInterval;
-	const setReviewInterval = () => {
-		reviewInterval = setInterval(review.autoChangeSlide(), 3000);
-	};
-	forEach(review.items, (item, index) => {
-		clearInterval(reviewInterval);
-		review.changeItem(index);
-		setReviewInterval();
-	});
-}
-
-{
-	const location = new Carousel(".location-item", ".location-dot");
-	forEach(location.items, (item, index) => {
-		location.hideOldItem().showNewItem(index);
-	});
 }
