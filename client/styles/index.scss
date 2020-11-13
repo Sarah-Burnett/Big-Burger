@@ -6,6 +6,11 @@
 	box-sizing: border-box;
 }
 
+html, body {
+	overflow-x: hidden; 
+	width: 100%;
+}
+
 html {
 	scroll-behavior: smooth;
 }
@@ -18,7 +23,6 @@ body {
 	line-height: 2;
 	text-shadow: 1px 1px 2px black;
 	text-align: center;
-	overflow-x: hidden;
 	padding: 1vh;
 }
 

@@ -15,7 +15,7 @@ window.onscroll = () => {
 		? addClassList("nav", "nav-fixed")
 		: removeClassList("nav", "nav-fixed");
 };
-addEventListener(".burger", () => toggleClassList("nav", "nav-active"));
+addEventListener(".burger", () => toggleClassList("body", "nav-active"));
 
 // smooth scroll
 new SmoothScroll('a[href*="#"]', {

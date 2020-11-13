@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -18,7 +23,6 @@ body {
   line-height: 2;
   text-shadow: 1px 1px 2px black;
   text-align: center;
-  overflow-x: hidden;
   padding: 1vh;
 }
 
@@ -121,6 +125,10 @@ nav .burger .line3 {
   text-decoration: underline #36970f solid;
 }
 
+.nav-active {
+  height: 100vh;
+  overflow: hidden;
+}
 .nav-active .nav-links {
   transform: translateX(-100vw);
   pointer-events: auto;
@@ -175,7 +183,7 @@ nav .burger .line3 {
   }
 }
 #home-title, #reviews, #menu-title {
-  height: 100vh;
+  min-height: 90vh;
   background-image: url(/burger-mob.a9b91a67.jpg);
   background-repeat: no-repeat no-repeat;
   background-size: cover;
@@ -246,10 +254,11 @@ nav .burger .line3 {
 }
 
 #menu-title {
+  height: 90vh;
   flex-direction: column;
 }
 #menu-title h2 {
-  height: 100vh;
+  height: 100%;
   display: block;
   display: flex;
   align-items: center;
@@ -358,13 +367,20 @@ nav .burger .line3 {
   height: 10vh;
 }
 #reviews .review-container {
-  height: 60vh;
+  min-height: 60vh;
   width: 100vw;
   position: relative;
+  margin: 2vh;
+  overflow-y: auto;
+}
+@media (max-height: 640px) {
+  #reviews .review-container {
+    font-size: smaller;
+  }
 }
 #reviews .review-container .review-item {
   opacity: 0;
-  height: 60vh;
+  min-height: 60vh;
   width: 100vw;
   position: absolute;
   display: flex;
@@ -378,10 +394,10 @@ nav .burger .line3 {
 }
 #reviews .review-container .review-item .review-text {
   width: 50vw;
+  margin: 2vh;
 }
 
 #location {
-  height: auto;
   min-height: 90vh;
   padding: 1em;
   display: flex;
@@ -389,22 +405,22 @@ nav .burger .line3 {
   justify-content: center;
   flex-direction: column;
 }
-@media (min-width: 500px) {
-  #location {
-    height: 90vh;
-  }
-}
-#location h2 {
-  height: 10vh;
-}
 #location .location-container {
   width: 100vw;
-  height: 65vh;
+  min-height: 65vh;
+  margin: 2vh;
   position: relative;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: space-around;
+}
+@media (max-height: 700px), (max-width: 300px) {
+  #location .location-container {
+    font-size: smaller;
+    min-height: 80vh;
+  }
 }
 #location .location-container .location-item {
   position: absolute;

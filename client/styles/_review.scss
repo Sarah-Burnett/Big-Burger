@@ -1,38 +1,55 @@
 #reviews {
-    @extend #home-title;
-    background:linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url(/images/burger-mob.jpg);
-    background-repeat: no-repeat no-repeat;
-    background-size: cover;
-    background-position: center;
-    @include media($desktop) {
-        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url(/images/burger-desktop.jpg);
-    }
-    @include flexCenter(column);    
-    h2 {
-        height: 10vh;
-    }
- 
-    //dot in index
-   
-    .review-container {
-        height: 60vh;
-        width: 100vw;
-        position: relative;
-        .review-item {
-            opacity: 0;
-            &:nth-child(1) {opacity: 1};
-            height: 60vh;
-            width: 100vw;
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.6s ease;
-            .review-text {
-                width: 50vw;
-            }
-        }
-    }    
-}
+	@extend #home-title;
+	background: linear-gradient(
+			to bottom,
+			rgba(0, 0, 0, 0.5) 0%,
+			rgba(0, 0, 0, 0.5) 100%
+		),
+		url(/images/burger-mob.jpg);
+	background-repeat: no-repeat no-repeat;
+	background-size: cover;
+	background-position: center;
+	@include media($desktop) {
+		background-image: linear-gradient(
+				to bottom,
+				rgba(0, 0, 0, 0.5) 0%,
+				rgba(0, 0, 0, 0.5) 100%
+			),
+			url(/images/burger-desktop.jpg);
+	}
+	@include flexCenter(column);
+	h2 {
+		height: 10vh;
+	}
 
+	//dot in index
+
+	.review-container {
+		min-height: 60vh;
+		width: 100vw;
+		position: relative;
+		margin: 2vh;
+		overflow-y: auto;
+		@media (max-height: 640px) {
+            font-size: smaller;
+		}
+		.review-item {
+			opacity: 0;
+			&:nth-child(1) {
+				opacity: 1;
+			}
+			min-height: 60vh;
+			width: 100vw;
+			position: absolute;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			transition: opacity 0.6s ease;
+			.review-text {
+				width: 50vw;
+				margin: 2vh;
+			}
+		}
+	}
+}
