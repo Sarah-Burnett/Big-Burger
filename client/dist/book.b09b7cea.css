@@ -107,17 +107,17 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-image: url(/burger-bg.dd8dc30b.jpeg);
-  background-repeat: no-repeat no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 90vh;
-  margin-top: 10vh;
   width: 100vw;
   color: #f5f5f5;
   font-family: "Source Sans Pro", sans-serif;
@@ -185,13 +185,17 @@ nav #backBtn:hover {
   color: #205909;
 }
 
-#blank {
-  height: 0;
-}
-@media (min-width: 900px) {
-  #blank {
-    height: 10vh;
-  }
+#background {
+  background-image: url(/burger-bg.dd8dc30b.jpeg);
+  background-repeat: no-repeat no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  z-index: -99;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
 #bookingForm {
@@ -291,7 +295,6 @@ form select {
   font-family: "Source Sans Pro", sans-serif;
   font-size: larger;
   text-align: left;
-  height: 10vh;
   padding: 2vw;
   border: none;
   background: #f5f5f5;
