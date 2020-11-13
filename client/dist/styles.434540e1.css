@@ -201,7 +201,7 @@ nav #burger .line3 {
   }
 }
 #home-title, #reviews, #menu-title {
-  height: 90vh;
+  min-height: 90vh;
   background-image: url(/burger-mob.a9b91a67.jpg);
   background-repeat: no-repeat no-repeat;
   background-size: cover;
@@ -354,7 +354,7 @@ nav #burger .line3 {
   height: 10vh;
 }
 #reviews .review-container {
-  height: 60vh;
+  min-height: 60vh;
   width: 100vw;
   position: relative;
 }
@@ -395,7 +395,7 @@ nav #burger .line3 {
 }
 #location .location-container {
   width: 100vw;
-  height: 65vh;
+  min-height: 65vh;
   position: relative;
 }
 #location .location-container .location-item {
