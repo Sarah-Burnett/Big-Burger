@@ -9,7 +9,8 @@
 		"client-install": "cd client && npm install",
 		"client": "npm start --prefix client",
 		"dev": "concurrently \"npm run server\" \"npm run client\"",
-		"test": "jest --watch"
+		"jest": "jest --watch",
+		"cypress": "npx cypress open"
 	},
 	"repository": {
 		"type": "git",
@@ -21,6 +22,7 @@
 		"url": "https://github.com/sarahkvburnett/big-burger/issues"
 	},
 	"dependencies": {
+		"cypress": "^5.6.0",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
 		"express-validator": "^6.4.1",
