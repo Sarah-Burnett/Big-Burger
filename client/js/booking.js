@@ -12,9 +12,10 @@ import {
 	setAvailableParty,
 } from "./utilities/booking/availableParty";
 import { setAvailableTimes } from "./utilities/booking/availableTimes";
+import { createDate } from "./utilities/booking/createDate";
 
 setAvailableDates(Date.now());
-setAvailableTimes(day.value, restaurant.value);
+setAvailableTimes(createDate("14/11/2020"), restaurant.value);
 setAvailableParty();
 
 //edit form

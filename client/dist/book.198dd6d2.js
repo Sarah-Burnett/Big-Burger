@@ -5126,6 +5126,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createDate = void 0;
 
+// date in format dd/mm/yy
+// time in format hh:mm
 var createDate = function createDate(date) {
   var time = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "17:00";
   var day = parseInt(date.substr(0, 2));
@@ -20580,6 +20582,7 @@ exports.openingHours = openingHours;
 var getAvailableTimes = function getAvailableTimes(date, restaurant) {
   var times = [];
   var day = (0, _format.default)(date, "eee");
+  console.log(date);
 
   var _openingHours$restaur = _slicedToArray(openingHours[restaurant][day], 2),
       opening = _openingHours$restaur[0],
@@ -20697,7 +20700,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60074" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49233" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

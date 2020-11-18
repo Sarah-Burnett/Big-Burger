@@ -5188,6 +5188,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createDate = void 0;
 
+// date in format dd/mm/yy
+// time in format hh:mm
 var createDate = function createDate(date) {
   var time = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "17:00";
   var day = parseInt(date.substr(0, 2));
@@ -20642,6 +20644,7 @@ exports.openingHours = openingHours;
 var getAvailableTimes = function getAvailableTimes(date, restaurant) {
   var times = [];
   var day = (0, _format.default)(date, "eee");
+  console.log(date);
 
   var _openingHours$restaur = _slicedToArray(openingHours[restaurant][day], 2),
       opening = _openingHours$restaur[0],
@@ -20705,8 +20708,10 @@ var _availableParty = require("./utilities/booking/availableParty");
 
 var _availableTimes = require("./utilities/booking/availableTimes");
 
+var _createDate = require("./utilities/booking/createDate");
+
 (0, _availableDates.setAvailableDates)(Date.now());
-(0, _availableTimes.setAvailableTimes)(day.value, restaurant.value);
+(0, _availableTimes.setAvailableTimes)((0, _createDate.createDate)("14/11/2020"), restaurant.value);
 (0, _availableParty.setAvailableParty)(); //edit form
 
 editBtn.onclick = function (e) {
@@ -20750,7 +20755,7 @@ deleteBtn.onclick = function () {
 document.querySelector(".putBookForm").onsubmit = function (e) {
   return (0, _submitBooking.handleSubmit)(e, _types.PUT_BOOKING, ".bookBtn");
 };
-},{"./utilities/booking/findBooking":"js/utilities/booking/findBooking.js","./utilities/booking/editForm":"js/utilities/booking/editForm.js","./utilities/booking/fetch":"js/utilities/booking/fetch.js","./utilities/booking/types":"js/utilities/booking/types.js","./utilities/booking/availableDates":"js/utilities/booking/availableDates.js","./utilities/booking/submitBooking":"js/utilities/booking/submitBooking.js","./utilities/booking/availableParty":"js/utilities/booking/availableParty.js","./utilities/booking/availableTimes":"js/utilities/booking/availableTimes.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./utilities/booking/findBooking":"js/utilities/booking/findBooking.js","./utilities/booking/editForm":"js/utilities/booking/editForm.js","./utilities/booking/fetch":"js/utilities/booking/fetch.js","./utilities/booking/types":"js/utilities/booking/types.js","./utilities/booking/availableDates":"js/utilities/booking/availableDates.js","./utilities/booking/submitBooking":"js/utilities/booking/submitBooking.js","./utilities/booking/availableParty":"js/utilities/booking/availableParty.js","./utilities/booking/availableTimes":"js/utilities/booking/availableTimes.js","./utilities/booking/createDate":"js/utilities/booking/createDate.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -20778,7 +20783,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60074" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49233" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
