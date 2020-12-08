@@ -9,12 +9,12 @@ require("dotenv").config();
 const app = express();
 
 mongoose
-	.connect(process.env.DBCONNECTION, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-	})
-	.then(console.log("Mongoose connection open"))
-	.catch((err) => console.log(`Connection error: ${err.message}`));
+  .connect(process.env.DBCONNECTION, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(console.log("Mongoose connection open"))
+  .catch((err) => console.log(`Connection error: ${err.message}`));
 
 //encoding
 app.use(express.urlencoded({ extended: true }));
@@ -27,7 +27,7 @@ app.set("view engine", "pug");
 
 //logging
 var accessLogStream = fs.createWriteStream(path.join(__dirname, "access.log"), {
-	flags: "a",
+  flags: "a",
 });
 app.use(morgan("combined", { stream: accessLogStream }));
 
