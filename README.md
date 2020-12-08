@@ -1,17 +1,10 @@
 # Big-Burger restaurant
 
-<<<<<<< HEAD
-> Front-end: landing page and CRUD booking form (HTML/SASS/vanilla JS) <br> Back-end: Node.js/Express/MongoDB REST API for booking and to serve parcel bundled client
-=======
 > Front-end landing page and CRUD booking form with HTML/SASS/vanilla JS bundled with parcel. <br> NodeJS/express back-end to serve client and booking REST API with MongoDB/mongoose.
->>>>>>> dates
 
 Three responsive pages to site:
 - Index - includes menu, reviews and location sliders and map modal
 - Book - validated booking form to make a booking for the restaurant
-<<<<<<< HEAD
-- Booking - view booking from form/query string booking id which can be updated/deleted 
-=======
 - Booking - view booking from form/query string booking id which can be edited/deleted 
 
 ## To do
@@ -22,7 +15,6 @@ Three responsive pages to site:
 - Testing
 - Restaurant site to view and analyse bookings - routes and pug template started although need auth and filtering...
 - Email to confirm booking
->>>>>>> dates
 
 ## Installation
 ``` bash
