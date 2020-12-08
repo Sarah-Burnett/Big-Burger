@@ -24,6 +24,6 @@ npm start
 # Run the client only
 npm run client
 
-#Server runs on http://localhost:3000 and client on http://localhost:1234
+#Server runs on http://localhost:3020 and client on http://localhost:1234
 #Environment variables - MongoURI and TotalBookingSize
 ```
